@@ -23,8 +23,8 @@ function RangeChart() {
   const max = 50;
   const toP = v => Math.min((Math.log10(Math.max(v, 1)) / Math.log10(max)) * 100, 100);
 
-  // Sort most dangerous first (smallest worst-case margin)
-  const ranged = S.filter(s => s.marginBest != null).sort((a, b) => a.marginWorst - b.marginWorst);
+  // Sort by dangerRank — reflects typical real-world per-use risk, not rare outliers
+  const ranged = S.filter(s => s.marginBest != null).sort((a, b) => b.dangerRank - a.dangerRank);
   const safe = S.filter(s => s.marginBest == null && s.marginWorst == null);
 
   return <div style={{ background: "rgba(255,255,255,0.02)", borderRadius: 12, border: "1px solid rgba(255,255,255,0.06)", padding: 20, marginBottom: 18 }}>

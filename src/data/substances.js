@@ -31,7 +31,7 @@ export const ADDICT_COLORS = ["#22c55e", "#60a5fa", "#f59e0b", "#f97316", "#ef44
 export const S = [
   {id:"lsd",n:"LSD",cat:"psychedelic",aka:["Acid","Lucy","Tabs","Blotter"],src:"semi-synthetic",
     desc:"Classical psychedelic. One of the safest substances by every measure.",
-    atDose:1,atDoseLabel:"Very safe at normal doses",marginBest:null,marginWorst:null,marginLabel:"No known physical danger at any dose",marginExplain:"There is no documented case of physical death from LSD alone. Clinical studies have administered massive accidental doses (thousands of µg) without physical harm. The only real risk is psychological overwhelm — a terrifying experience, not a medical one. At ~3-5x a normal dose, the experience becomes extremely intense but your body is fine.",
+    atDose:1,atDoseLabel:"Very safe at normal doses",dangerRank:0,marginBest:null,marginWorst:null,marginLabel:"No known physical danger at any dose",marginExplain:"There is no documented case of physical death from LSD alone. Clinical studies have administered massive accidental doses (thousands of µg) without physical harm. The only real risk is psychological overwhelm — a terrifying experience, not a medical one. At ~3-5x a normal dose, the experience becomes extremely intense but your body is fine.",
     supplyRisk:2,supplyLabel:"Usually what it claims",supplyExplain:"Blotter limits what fits. Occasionally NBOMes sold as LSD — USE EHRLICH REAGENT TEST.",
     addict:1,addictLabel:"Not addictive",overwhelm:4,overwhelmLabel:"Very easy — especially liquid. A few drops too many = a very different experience",
     feels:["Euphoria","Visual patterns","Deep introspection","Synesthesia","Awe","Giggles"],
@@ -43,7 +43,7 @@ export const S = [
 
   {id:"mushrooms",n:"Psilocybin Mushrooms",cat:"psychedelic",aka:["Shrooms","Magic Mushrooms","Caps"],src:"natural",
     desc:"Among the safest psychoactives known. Identifiable whole mushrooms.",
-    atDose:1,atDoseLabel:"Very safe",marginBest:null,marginWorst:null,marginLabel:"No known physical danger at any dose",marginExplain:"No documented death from psilocybin toxicity. You'd need to eat roughly 4 pounds of dried mushrooms. Your stomach would reject them long before that. Like LSD, the risk is psychological intensity, not physical harm.",
+    atDose:1,atDoseLabel:"Very safe",dangerRank:0,marginBest:null,marginWorst:null,marginLabel:"No known physical danger at any dose",marginExplain:"No documented death from psilocybin toxicity. You'd need to eat roughly 4 pounds of dried mushrooms. Your stomach would reject them long before that. Like LSD, the risk is psychological intensity, not physical harm.",
     supplyRisk:1,supplyLabel:"Almost always real",supplyExplain:"Whole mushrooms identifiable by species. Very rarely adulterated.",
     addict:1,addictLabel:"Not addictive",overwhelm:2,overwhelmLabel:"Moderate — whole mushrooms are easy to weigh, but potency varies between batches",
     feels:["Visual hallucinations","Emotional waves","Euphoria","Spiritual experiences","Connection to nature","Giggles"],
@@ -55,7 +55,7 @@ export const S = [
 
   {id:"dmt",n:"DMT",cat:"psychedelic",aka:["Dimitri","Spirit Molecule","Ayahuasca"],src:"natural",
     desc:"Extremely potent, very short when smoked. Overwhelming but physically safe.",
-    atDose:1,atDoseLabel:"Safe",marginBest:null,marginWorst:null,marginLabel:"No known physical danger — self-limiting",marginExplain:"Smoked DMT is self-limiting — the experience becomes so intense that taking more is impossible. No documented death from DMT toxicity alone. Ayahuasca (oral + MAOI) carries additional interaction risks but the DMT itself has an enormous physical margin.",
+    atDose:1,atDoseLabel:"Safe",dangerRank:0,marginBest:null,marginWorst:null,marginLabel:"No known physical danger — self-limiting",marginExplain:"Smoked DMT is self-limiting — the experience becomes so intense that taking more is impossible. No documented death from DMT toxicity alone. Ayahuasca (oral + MAOI) carries additional interaction risks but the DMT itself has an enormous physical margin.",
     supplyRisk:2,supplyLabel:"Usually what it claims",supplyExplain:"Distinctive look/smell. Some fentanyl reports in powder — use fentanyl strips.",
     addict:1,addictLabel:"Not addictive",overwhelm:2,overwhelmLabel:"Moderate — intensity is self-limiting. Very hard to take more once it hits",
     feels:["Intense hallucinations","Entity encounters","Ego dissolution","Time distortion","Profound awe"],
@@ -67,7 +67,7 @@ export const S = [
 
   {id:"mescaline",n:"Mescaline",cat:"psychedelic",aka:["Peyote","San Pedro"],src:"natural",
     desc:"Natural cactus psychedelic. Long duration, wide safety margin.",
-    atDose:1,atDoseLabel:"Safe",marginBest:null,marginWorst:null,marginLabel:"No known physical danger at realistic doses",marginExplain:"The severe nausea from cactus material prevents overconsumption. No documented deaths from mescaline alone. The experience becomes very intense at 2-3x a normal dose, but your body handles it fine.",
+    atDose:1,atDoseLabel:"Safe",dangerRank:0,marginBest:null,marginWorst:null,marginLabel:"No known physical danger at realistic doses",marginExplain:"The severe nausea from cactus material prevents overconsumption. No documented deaths from mescaline alone. The experience becomes very intense at 2-3x a normal dose, but your body handles it fine.",
     supplyRisk:2,supplyLabel:"Usually what it claims",supplyExplain:"Cactus is identifiable. Synthetic mescaline very rare.",
     addict:1,addictLabel:"Not addictive",overwhelm:1,overwhelmLabel:"Hard — requires eating a lot of cactus material. Nausea stops you first",
     feels:["Color enhancement","Euphoria","Body warmth","Nature connection","Introspection"],
@@ -79,7 +79,7 @@ export const S = [
 
   {id:"2cx",n:"2C-x (2C-B, 2C-E, 2C-I)",cat:"psychedelic",aka:["Nexus","Bees","Tusi","Pink cocaine"],src:"synthetic",
     desc:"Phenethylamine psychedelic family. Very dose-sensitive — small increases cause big jumps. 'Tusi/pink cocaine' sold as 2C-B usually isn't.",
-    atDose:2,atDoseLabel:"Safe if dosed carefully",marginBest:4,marginWorst:2,marginLabel:"Some room, but effects jump sharply with small increases",marginExplain:"2C-B is not particularly toxic at recreational doses, but the dose-response curve is unusually steep. The difference between 15mg and 30mg is not 'twice as strong' — it's a qualitatively different experience. Vasoconstriction becomes concerning above 40-50mg. Always use a milligram scale.",
+    atDose:2,atDoseLabel:"Safe if dosed carefully",dangerRank:8,marginBest:4,marginWorst:2,marginLabel:"Some room, but effects jump sharply with small increases",marginExplain:"2C-B is not particularly toxic at recreational doses, but the dose-response curve is unusually steep. The difference between 15mg and 30mg is not 'twice as strong' — it's a qualitatively different experience. Vasoconstriction becomes concerning above 40-50mg. Always use a milligram scale.",
     supplyRisk:4,supplyLabel:"Often not what it claims",supplyExplain:"'Tusi'/'pink cocaine' often contains ketamine, MDMA, caffeine, or no 2C-B at all. Reagent test essential.",
     addict:1,addictLabel:"Not addictive",overwhelm:4,overwhelmLabel:"Very easy — 5mg more can feel like a completely different drug",
     feels:["Vivid colors","Body euphoria","Enhanced touch","Mild empathy","Giggles","Music enhancement"],
@@ -91,7 +91,7 @@ export const S = [
 
   {id:"mdma",n:"MDMA",cat:"empathogen",aka:["Ecstasy","Molly","E","X","Mandy"],src:"synthetic",
     desc:"The drug itself is moderately safe. Real dangers: overheating, water intoxication, and what's actually in the pill.",
-    atDose:2,atDoseLabel:"Moderately safe",marginBest:4,marginWorst:1.5,marginLabel:"Moderate room in good conditions, almost none in bad conditions",marginExplain:"Clinical trials safely administer 120mg + 60mg booster (180mg total) to screened healthy adults. Most recreational use at 100-150mg is well-tolerated. But in a hot, crowded environment without water breaks, danger starts around 200mg. Risk multipliers: heat, dehydration, re-dosing, and pre-existing heart conditions.",
+    atDose:2,atDoseLabel:"Moderately safe",dangerRank:13,marginBest:4,marginWorst:1.5,marginLabel:"Moderate room in good conditions, almost none in bad conditions",marginExplain:"Clinical trials safely administer 120mg + 60mg booster (180mg total) to screened healthy adults. Most recreational use at 100-150mg is well-tolerated. But in a hot, crowded environment without water breaks, danger starts around 200mg. Risk multipliers: heat, dehydration, re-dosing, and pre-existing heart conditions.",
     supplyRisk:4,supplyLabel:"Often fake or cut — TEST IT",supplyExplain:"Only ~74% of 'MDMA' contains only MDMA (DrugsData 2023). Often meth, cathinones, or nothing. ALWAYS test.",
     addict:2,addictLabel:"Low addiction potential",overwhelm:3,overwhelmLabel:"Moderate — temptation to re-dose when it 'isn\\'t working yet'",
     feels:["Intense euphoria","Deep empathy","Love for everyone","Enhanced touch","Music is incredible","Jaw clenching"],
@@ -103,7 +103,7 @@ export const S = [
 
   {id:"cocaine",n:"Cocaine",cat:"stimulant",aka:["Coke","Snow","Blow","Crack"],src:"natural",
     desc:"Short duration drives compulsive re-dosing. Street supply heavily cut and increasingly fentanyl-contaminated.",
-    atDose:3,atDoseLabel:"Cardiac risk at any dose",marginBest:5,marginWorst:1,marginLabel:"Moderate for most people, but unpredictable heart risk for some",marginExplain:"Most people tolerate a few lines (100-300mg total) without incident. The honest risk: about 1 in 50,000 users will have a cardiac event that's not clearly dose-related. The risk rises steeply with dose, re-dosing over hours, combining with alcohol (creates cocaethylene), and any pre-existing heart condition — even undiagnosed ones.",
+    atDose:3,atDoseLabel:"Cardiac risk at any dose",dangerRank:11,marginBest:5,marginWorst:1,marginLabel:"Moderate for most people, but unpredictable heart risk for some",marginExplain:"Most people tolerate a few lines (100-300mg total) without incident. The honest risk: about 1 in 50,000 users will have a cardiac event that's not clearly dose-related. The risk rises steeply with dose, re-dosing over hours, combining with alcohol (creates cocaethylene), and any pre-existing heart condition — even undiagnosed ones.",
     supplyRisk:5,supplyLabel:"Very often contaminated — TEST",supplyExplain:"~70% US cocaine contains levamisole. Fentanyl contamination rising (>10% in NE states). Use fentanyl strips EVERY TIME.",
     addict:4,addictLabel:"Highly addictive",overwhelm:4,overwhelmLabel:"Very easy — short duration drives compulsive re-dosing",
     feels:["Euphoria & confidence","Extreme alertness","Numbness","Talkativeness","Feeling invincible"],
@@ -115,7 +115,7 @@ export const S = [
 
   {id:"amphetamines",n:"Amphetamine",cat:"stimulant",aka:["Speed","Adderall","Dexedrine","Vyvanse"],src:"synthetic",
     desc:"Medical ADHD stimulant. Pharmaceutical versions consistent; street speed is not.",
-    atDose:2,atDoseLabel:"Safe at prescribed doses",marginBest:5,marginWorst:3,marginLabel:"Moderate room with pharmaceutical pills",marginExplain:"Prescribed Adderall at 20-30mg is well-tolerated. Clinical toxicity typically appears around 100-150mg+ (3-5x a normal dose): racing heart, dangerously elevated blood pressure, risk of stroke. Street speed has unknown purity, so the effective margin is smaller. Tolerance builds but cardiovascular strain persists.",
+    atDose:2,atDoseLabel:"Safe at prescribed doses",dangerRank:4,marginBest:5,marginWorst:3,marginLabel:"Moderate room with pharmaceutical pills",marginExplain:"Prescribed Adderall at 20-30mg is well-tolerated. Clinical toxicity typically appears around 100-150mg+ (3-5x a normal dose): racing heart, dangerously elevated blood pressure, risk of stroke. Street speed has unknown purity, so the effective margin is smaller. Tolerance builds but cardiovascular strain persists.",
     supplyRisk:3,supplyLabel:"Sometimes not what it claims",supplyExplain:"Pharmacy Adderall: safe. Street speed or pressed pills: may be meth or fentanyl. Counterfeit Adderall increasing.",
     addict:3,addictLabel:"Moderately addictive",overwhelm:2,overwhelmLabel:"Moderate — pharmaceutical pills are consistent doses",
     feels:["Laser focus","Endless energy","Euphoria","Confidence","Appetite gone","Talkativeness"],
@@ -127,7 +127,7 @@ export const S = [
 
   {id:"methamphetamine",n:"Methamphetamine",cat:"stimulant",aka:["Meth","Crystal","Ice","Tina","Glass"],src:"synthetic",
     desc:"Extremely potent, long-acting, addictive, neurotoxic. Duration can exceed 24 hours.",
-    atDose:4,atDoseLabel:"Harmful even at typical doses",marginBest:4,marginWorst:2,marginLabel:"Some room for a single dose, but binge use erases it",marginExplain:"A single dose of 15-30mg in a non-tolerant person is intense but not typically dangerous. Physical danger (hyperthermia, cardiac events, psychosis) usually appears at 60-120mg+. BUT: meth's extreme duration (24+ hours) drives compulsive re-dosing, and cumulative dose over a binge is where most deaths occur.",
+    atDose:4,atDoseLabel:"Harmful even at typical doses",dangerRank:12,marginBest:4,marginWorst:2,marginLabel:"Some room for a single dose, but binge use erases it",marginExplain:"A single dose of 15-30mg in a non-tolerant person is intense but not typically dangerous. Physical danger (hyperthermia, cardiac events, psychosis) usually appears at 60-120mg+. BUT: meth's extreme duration (24+ hours) drives compulsive re-dosing, and cumulative dose over a binge is where most deaths occur.",
     supplyRisk:2,supplyLabel:"Usually pure",supplyExplain:"Street meth ~88% pure (LA 2024). The danger IS the drug. Some fentanyl cross-contamination.",
     addict:5,addictLabel:"Extremely addictive",overwhelm:4,overwhelmLabel:"Very easy — compulsive re-dosing over 24+ hours",
     feels:["Extreme euphoria","Superhuman energy","Invincibility","Hypersexuality","Extreme focus"],
@@ -139,7 +139,7 @@ export const S = [
 
   {id:"nicotine",n:"Nicotine",cat:"stimulant",aka:["Cigarettes","Vape","Tobacco","Snus","Juul","Zyn"],src:"natural",
     desc:"The most addictive commonly used substance. The drug itself is less harmful than the delivery method — smoking kills, nicotine pouches don't (much).",
-    atDose:2,atDoseLabel:"Low acute toxicity",marginBest:20,marginWorst:3,marginLabel:"Very wide from smoking, dangerous from concentrated liquid",marginExplain:"You'd need to smoke dozens of cigarettes back-to-back to approach nicotine toxicity — nausea stops you. But concentrated vape juice (36-50mg/ml) is a serious poison risk if swallowed, especially for children. A teaspoon of high-strength liquid can be fatal for a toddler.",
+    atDose:2,atDoseLabel:"Low acute toxicity",dangerRank:2,marginBest:20,marginWorst:3,marginLabel:"Very wide from smoking, dangerous from concentrated liquid",marginExplain:"You'd need to smoke dozens of cigarettes back-to-back to approach nicotine toxicity — nausea stops you. But concentrated vape juice (36-50mg/ml) is a serious poison risk if swallowed, especially for children. A teaspoon of high-strength liquid can be fatal for a toddler.",
     supplyRisk:1,supplyLabel:"Always real",supplyExplain:"Commercial products are standardized and regulated.",
     addict:5,addictLabel:"EXTREMELY addictive",overwhelm:1,overwhelmLabel:"Hard — nausea stops you. BUT liquid nicotine is extremely easy to overdose",
     feels:["Alertness","Calm focus","Stress relief","Appetite suppression","Buzz (non-tolerant)"],
@@ -151,7 +151,7 @@ export const S = [
 
   {id:"cannabis",n:"Cannabis",cat:"cannabinoid",aka:["Marijuana","Weed","THC","Pot","Edibles"],src:"natural",
     desc:"No human has ever died from cannabis toxicity. Edibles need extra patience — onset is slow.",
-    atDose:1,atDoseLabel:"Very safe",marginBest:null,marginWorst:null,marginLabel:"No known physical danger at any dose",marginExplain:"No human has ever died from cannabis toxicity. The ratio is over 1,000:1. Edibles can cause extreme anxiety and psychological distress that feels like an emergency — but your body is completely fine. If you've eaten too much: lie down, put on something comforting, and wait. It will end.",
+    atDose:1,atDoseLabel:"Very safe",dangerRank:0,marginBest:null,marginWorst:null,marginLabel:"No known physical danger at any dose",marginExplain:"No human has ever died from cannabis toxicity. The ratio is over 1,000:1. Edibles can cause extreme anxiety and psychological distress that feels like an emergency — but your body is completely fine. If you've eaten too much: lie down, put on something comforting, and wait. It will end.",
     supplyRisk:1,supplyLabel:"Almost always real",supplyExplain:"Flower is identifiable. Black market vape carts can contain vitamin E acetate. Dispensary products safest.",
     addict:2,addictLabel:"Low addiction potential",overwhelm:4,overwhelmLabel:"Very easy with edibles — slow onset tricks you into eating more",
     feels:["Relaxation","Euphoria","Appetite boost","Time feels slow","Music sounds amazing","Giggles"],
@@ -163,7 +163,7 @@ export const S = [
 
   {id:"ketamine",n:"Ketamine",cat:"dissociative",aka:["K","Special K","Ket","Vitamin K"],src:"synthetic",
     desc:"Safe margin alone, but lethal mixed with downers. Regular use destroys your bladder.",
-    atDose:2,atDoseLabel:"Safe at normal doses",marginBest:8,marginWorst:2,marginLabel:"Good room alone, almost none mixed with alcohol or opioids",marginExplain:"Ketamine is used medically as an anesthetic at doses 5-10x a recreational bump — so the drug itself has a decent margin. The real danger alone is choking on vomit if you lose consciousness at high doses (~4-5x). But mixing with alcohol, opioids, or GHB drops the margin dramatically.",
+    atDose:2,atDoseLabel:"Safe at normal doses",dangerRank:5,marginBest:8,marginWorst:2,marginLabel:"Good room alone, almost none mixed with alcohol or opioids",marginExplain:"Ketamine is used medically as an anesthetic at doses 5-10x a recreational bump — so the drug itself has a decent margin. The real danger alone is choking on vomit if you lose consciousness at high doses (~4-5x). But mixing with alcohol, opioids, or GHB drops the margin dramatically.",
     supplyRisk:3,supplyLabel:"Sometimes not what it claims",supplyExplain:"Some fentanyl contamination. Sometimes cut. Test with fentanyl strips.",
     addict:3,addictLabel:"Moderately addictive",overwhelm:3,overwhelmLabel:"Moderate — dose-response can be steep, especially insufflated",
     feels:["Floating/disconnection","Pain relief","Euphoria","K-hole (high dose)","Wonky movement","Music distortion"],
@@ -175,7 +175,7 @@ export const S = [
 
   {id:"pcp",n:"PCP",cat:"dissociative",aka:["Angel Dust","Wet","Sherm","Dust"],src:"synthetic",
     desc:"Powerful dissociative that can cause extreme agitation, violence, and psychosis. Unpredictable reactions.",
-    atDose:4,atDoseLabel:"Dangerous — unpredictable",marginBest:3,marginWorst:1,marginLabel:"Unpredictable — some people have severe reactions at normal doses",marginExplain:"PCP's danger isn't primarily overdose toxicity — it's unpredictable behavioral effects. At 5-10mg (2-3x a normal dose), agitation, psychosis, and violent behavior become likely. Deaths are often from trauma during intoxication rather than direct toxicity. The margin depends heavily on the individual.",
+    atDose:4,atDoseLabel:"Dangerous — unpredictable",dangerRank:14,marginBest:3,marginWorst:1,marginLabel:"Unpredictable — some people have severe reactions at normal doses",marginExplain:"PCP's danger isn't primarily overdose toxicity — it's unpredictable behavioral effects. At 5-10mg (2-3x a normal dose), agitation, psychosis, and violent behavior become likely. Deaths are often from trauma during intoxication rather than direct toxicity. The margin depends heavily on the individual.",
     supplyRisk:3,supplyLabel:"Sometimes not what it claims",supplyExplain:"Sometimes sold as LSD or THC. PCP-dipped cigarettes/joints may have wildly variable dosing.",
     addict:3,addictLabel:"Moderately addictive",overwhelm:4,overwhelmLabel:"Very easy — response is unpredictable at any dose",
     feels:["Dissociation","Numbness","Invincibility feeling","Distorted perception","Agitation"],
@@ -187,7 +187,7 @@ export const S = [
 
   {id:"dxm",n:"DXM",cat:"dissociative",aka:["Dextromethorphan","Robo","Robotripping"],src:"synthetic",
     desc:"Biggest danger: OTHER ingredients in the cough medicine. NEVER use products with acetaminophen.",
-    atDose:2,atDoseLabel:"Safe if pure DXM only",marginBest:5,marginWorst:1,marginLabel:"Decent for pure DXM, deadly if the product contains Tylenol",marginExplain:"DXM itself has a moderate margin. But many cough medicines contain acetaminophen (Tylenol), and a recreational DXM dose of that syrup delivers a liver-destroying dose of acetaminophen. Also: ~7% of people are poor metabolizers — for them, a normal dose hits 3-5x harder. Use DXM-only products.",
+    atDose:2,atDoseLabel:"Safe if pure DXM only",dangerRank:9,marginBest:5,marginWorst:1,marginLabel:"Decent for pure DXM, deadly if the product contains Tylenol",marginExplain:"DXM itself has a moderate margin. But many cough medicines contain acetaminophen (Tylenol), and a recreational DXM dose of that syrup delivers a liver-destroying dose of acetaminophen. Also: ~7% of people are poor metabolizers — for them, a normal dose hits 3-5x harder. Use DXM-only products.",
     supplyRisk:3,supplyLabel:"Check the other ingredients!",supplyExplain:"Check EVERY ingredient. Acetaminophen in cough syrup = liver death at recreational DXM doses. DXM-only products only.",
     addict:2,addictLabel:"Low addiction potential",overwhelm:3,overwhelmLabel:"Moderate — plateau system is confusing. Easy to overshoot",
     feels:["Dissociation","Euphoria","Music sounds incredible","Plateau-dependent effects","Robowalk"],
@@ -199,7 +199,7 @@ export const S = [
 
   {id:"nitrous",n:"Nitrous Oxide",cat:"dissociative",aka:["Laughing Gas","N2O","Whippets","Nangs"],src:"synthetic",
     desc:"Safe drug, dangerous delivery. Deaths from suffocation, not the substance itself.",
-    atDose:1,atDoseLabel:"Very safe",marginBest:null,marginWorst:null,marginLabel:"Danger is the delivery method, not the amount",marginExplain:"Each individual balloon is self-limiting. The gas has an enormous safety margin per use. Deaths are from: suffocation (using bags or masks instead of balloons — NEVER do this), falls while standing, and chronic B12 depletion from daily heavy use over weeks or months causing nerve damage.",
+    atDose:1,atDoseLabel:"Very safe",dangerRank:0,marginBest:null,marginWorst:null,marginLabel:"Danger is the delivery method, not the amount",marginExplain:"Each individual balloon is self-limiting. The gas has an enormous safety margin per use. Deaths are from: suffocation (using bags or masks instead of balloons — NEVER do this), falls while standing, and chronic B12 depletion from daily heavy use over weeks or months causing nerve damage.",
     supplyRisk:1,supplyLabel:"Almost always real",supplyExplain:"Food-grade N2O chargers are standardized. No adulteration.",
     addict:2,addictLabel:"Low-moderate (binge pattern)",overwhelm:1,overwhelmLabel:"Hard — each hit is tiny and brief. Self-limiting",
     feels:["Brief euphoria","Dissociation","Wah-wah sounds","Tingling","Uncontrollable laughter"],
@@ -211,7 +211,7 @@ export const S = [
 
   {id:"poppers",n:"Poppers (Alkyl Nitrites)",cat:"inhalant",aka:["Amyl Nitrite","Rush","Jungle Juice","Room Odorizer"],src:"synthetic",
     desc:"Vasodilator inhalant. Brief rush and muscle relaxation. LETHAL combined with Viagra/Cialis or any PDE5 inhibitor — fatal blood pressure drop.",
-    atDose:2,atDoseLabel:"Safe at normal use",marginBest:null,marginWorst:null,marginLabel:"Danger is swallowing or drug interactions, not inhaling",marginExplain:"Inhaling poppers has a wide margin — the effects are brief and self-limiting. The dangers: swallowing the liquid (call poison control immediately), combining with Viagra/Cialis/Levitra (fatal blood pressure crash), and use with pre-existing heart conditions.",
+    atDose:2,atDoseLabel:"Safe at normal use",dangerRank:0,marginBest:null,marginWorst:null,marginLabel:"Danger is swallowing or drug interactions, not inhaling",marginExplain:"Inhaling poppers has a wide margin — the effects are brief and self-limiting. The dangers: swallowing the liquid (call poison control immediately), combining with Viagra/Cialis/Levitra (fatal blood pressure crash), and use with pre-existing heart conditions.",
     supplyRisk:2,supplyLabel:"Usually what it claims",supplyExplain:"Commercial products standardized. Some contain more harmful isomers (isopropyl nitrite). Amyl and butyl nitrite preferred.",
     addict:1,addictLabel:"Not addictive",overwhelm:1,overwhelmLabel:"Hard — effects are brief and self-limiting",
     feels:["Head rush","Warmth","Muscle relaxation","Heightened sensation","Dizziness","Brief euphoria"],
@@ -223,7 +223,7 @@ export const S = [
 
   {id:"alcohol",n:"Alcohol",cat:"depressant",aka:["Ethanol","Booze","Beer","Wine","Liquor"],src:"natural",
     desc:"Highest overall harm score of ANY substance. Legal status ≠ safety.",
-    atDose:3,atDoseLabel:"Harmful even moderately",marginBest:5,marginWorst:2,marginLabel:"Moderate room for poisoning, but choking on vomit kills at lower amounts",marginExplain:"Acute alcohol poisoning (BAC >0.35%) requires roughly 15-20 drinks in a few hours for a 150lb person. But the most common alcohol death is aspiration — choking on vomit while unconscious — which can happen at 8-10 drinks. ALWAYS put an unconscious person on their side (recovery position).",
+    atDose:3,atDoseLabel:"Harmful even moderately",dangerRank:10,marginBest:5,marginWorst:2,marginLabel:"Moderate room for poisoning, but choking on vomit kills at lower amounts",marginExplain:"Acute alcohol poisoning (BAC >0.35%) requires roughly 15-20 drinks in a few hours for a 150lb person. But the most common alcohol death is aspiration — choking on vomit while unconscious — which can happen at 8-10 drinks. ALWAYS put an unconscious person on their side (recovery position).",
     supplyRisk:1,supplyLabel:"Almost always real",supplyExplain:"Commercial alcohol regulated. Moonshine can contain methanol.",
     addict:4,addictLabel:"Highly addictive",overwhelm:4,overwhelmLabel:"Very easy — being drunk impairs your judgment about drinking more",
     feels:["Disinhibition","Relaxation","Confidence","Warmth","Slurred speech","Emotional amplification"],
@@ -235,7 +235,7 @@ export const S = [
 
   {id:"ghb",n:"GHB",cat:"depressant",aka:["G","Liquid Ecstasy","GBL","1,4-BD","Fantasy"],src:"synthetic",
     desc:"Great at right dose, deadly 0.5g later. Narrowest dosing window of any recreational drug.",
-    atDose:2,atDoseLabel:"Safe IF precisely dosed",marginBest:2.5,marginWorst:1.5,marginLabel:"Very narrow — less than a teaspoon between comfortable and unconscious",marginExplain:"A comfortable dose is 1-2.5g. At 4-5g most people lose consciousness. That's only 2-2.5x, and the difference is less than a teaspoon of liquid. With ANY alcohol, the margin shrinks to about 1.5x. Always measure with a syringe. Never pour. Never mix with alcohol.",
+    atDose:2,atDoseLabel:"Safe IF precisely dosed",dangerRank:17,marginBest:2.5,marginWorst:1.5,marginLabel:"Very narrow — less than a teaspoon between comfortable and unconscious",marginExplain:"A comfortable dose is 1-2.5g. At 4-5g most people lose consciousness. That's only 2-2.5x, and the difference is less than a teaspoon of liquid. With ANY alcohol, the margin shrinks to about 1.5x. Always measure with a syringe. Never pour. Never mix with alcohol.",
     supplyRisk:2,supplyLabel:"Usually pure",supplyExplain:"Liquid hard to cut. But GBL is ~2× more potent than GHB — know which you have.",
     addict:4,addictLabel:"Highly addictive",overwhelm:5,overwhelmLabel:"Extremely easy — the difference between perfect and unconscious is < half a teaspoon",
     feels:["Euphoria","Extreme sociability","Disinhibition","Muscle relaxation","Horniness","Music enhancement"],
@@ -247,7 +247,7 @@ export const S = [
 
   {id:"benzodiazepine",n:"Benzodiazepines",cat:"benzodiazepine",aka:["Benzos","Xanax","Valium","Klonopin","Ativan"],src:"synthetic",
     desc:"Safe alone. Combined with opioids or alcohol: one of the deadliest drug combos in existence.",
-    atDose:2,atDoseLabel:"Safe alone",marginBest:30,marginWorst:1,marginLabel:"Very wide ALONE — almost none with opioids or alcohol",marginExplain:"Benzos alone have a genuinely large safety margin. People have taken massive overdoses of Xanax (30-50x normal) and survived with medical care. BUT: add any opioid and the margin drops to ~1x. Benzos + opioids is the #1 poly-drug death combination in America.",
+    atDose:2,atDoseLabel:"Safe alone",dangerRank:3,marginBest:30,marginWorst:1,marginLabel:"Very wide ALONE — almost none with opioids or alcohol",marginExplain:"Benzos alone have a genuinely large safety margin. People have taken massive overdoses of Xanax (30-50x normal) and survived with medical care. BUT: add any opioid and the margin drops to ~1x. Benzos + opioids is the #1 poly-drug death combination in America.",
     supplyRisk:5,supplyLabel:"Street pills often contain fentanyl",supplyExplain:"Pharmacy benzos: safe. Street 'Xanax bars': EXTREME fentanyl risk. Counterfeit pressed pills are a #1 fentanyl vector.",
     addict:4,addictLabel:"Highly addictive",overwhelm:3,overwhelmLabel:"Moderate — amnesia makes you forget you already took some",
     feels:["Anxiety gone","Calm","Sedation","Muscle relaxation","Disinhibition","Memory gaps"],
@@ -259,7 +259,7 @@ export const S = [
 
   {id:"opioids",n:"Opioids (Heroin)",cat:"opioid",aka:["Heroin","Morphine","H","Smack","Dope","Codeine"],src:"both",
     desc:"Narrowest safety margin of common drugs. #1 overdose killer. In most US markets, 'heroin' IS fentanyl now.",
-    atDose:4,atDoseLabel:"Dangerous",marginBest:3,marginWorst:1,marginLabel:"Small margin even with known doses, unknown with street supply",marginExplain:"With pharmaceutical opioids of known potency: respiratory depression typically starts at ~2-3x a standard dose. With street heroin — which in most US markets is actually fentanyl — the potency is completely unknown. The effective margin from street supply is essentially unknowable.",
+    atDose:4,atDoseLabel:"Dangerous",dangerRank:16,marginBest:3,marginWorst:1,marginLabel:"Small margin even with known doses, unknown with street supply",marginExplain:"With pharmaceutical opioids of known potency: respiratory depression typically starts at ~2-3x a standard dose. With street heroin — which in most US markets is actually fentanyl — the potency is completely unknown. The effective margin from street supply is essentially unknowable.",
     supplyRisk:5,supplyLabel:"Assume it's fentanyl until tested",supplyExplain:"In most US markets, 'heroin' = fentanyl. You cannot tell by look/smell/taste. ALWAYS fentanyl strips. CARRY NARCAN.",
     addict:5,addictLabel:"EXTREMELY addictive",overwhelm:4,overwhelmLabel:"Very easy — street supply potency is unknown",
     feels:["Euphoria ('warm blanket')","Total pain relief","Deep sedation","Warmth","Nausea","Itching"],
@@ -271,7 +271,7 @@ export const S = [
 
   {id:"fentanyl",n:"Fentanyl",cat:"opioid",aka:["Fent","Blues","Pressed pills","China White"],src:"synthetic",
     desc:"50-100× morphine potency. Lethal dose invisible to naked eye. Primary overdose crisis driver. Found in pills, powder, cocaine, meth, and counterfeit prescriptions.",
-    atDose:5,atDoseLabel:"LETHAL at street doses",marginBest:20,marginWorst:1,marginLabel:"Wide in medical settings, essentially zero from street supply",marginExplain:"Pharmaceutical fentanyl (patches, lozenges) in medical settings has a known dose and is administered with monitoring — the margin is meaningful. But street fentanyl in pressed pills or powder has completely random distribution. Two pills from the same batch can contain 0.1mg and 5mg. From street supply, the effective margin is 1x — every dose is a guess.",
+    atDose:5,atDoseLabel:"LETHAL at street doses",dangerRank:18,marginBest:20,marginWorst:1,marginLabel:"Wide in medical settings, essentially zero from street supply",marginExplain:"Pharmaceutical fentanyl (patches, lozenges) in medical settings has a known dose and is administered with monitoring — the margin is meaningful. But street fentanyl in pressed pills or powder has completely random distribution. Two pills from the same batch can contain 0.1mg and 5mg. From street supply, the effective margin is 1x — every dose is a guess.",
     supplyRisk:5,supplyLabel:"THIS is what contaminates other drugs",supplyExplain:"Fentanyl IS the contamination problem. Now also adulterated with xylazine ('tranq') and medetomidine.",
     addict:5,addictLabel:"EXTREMELY addictive",overwhelm:5,overwhelmLabel:"Impossible to dose safely without precision equipment",
     feels:["Brief intense euphoria","Total pain elimination","Extreme sedation"],
@@ -283,7 +283,7 @@ export const S = [
 
   {id:"tramadol",n:"Tramadol",cat:"opioid",aka:["Ultram","Tramal"],src:"synthetic",
     desc:"Atypical opioid. Uniquely causes seizures AND serotonin syndrome — double danger most opioids don't have.",
-    atDose:2,atDoseLabel:"Safe at low Rx doses",marginBest:6,marginWorst:2,marginLabel:"Moderate alone, less with antidepressants",marginExplain:"From tramadol alone: seizure risk climbs above 400mg (~4-6x a 75-100mg dose). But tramadol also acts on serotonin, so if you're on SSRIs, the margin for serotonin syndrome is much smaller — potentially 2x or less. If you take any antidepressant, tell your doctor before taking tramadol.",
+    atDose:2,atDoseLabel:"Safe at low Rx doses",dangerRank:7,marginBest:6,marginWorst:2,marginLabel:"Moderate alone, less with antidepressants",marginExplain:"From tramadol alone: seizure risk climbs above 400mg (~4-6x a 75-100mg dose). But tramadol also acts on serotonin, so if you're on SSRIs, the margin for serotonin syndrome is much smaller — potentially 2x or less. If you take any antidepressant, tell your doctor before taking tramadol.",
     supplyRisk:2,supplyLabel:"Usually what it claims",supplyExplain:"Usually pharmaceutical.",
     addict:3,addictLabel:"Moderately addictive",overwhelm:2,overwhelmLabel:"Moderate — pharmaceutical pills are consistent",
     feels:["Mild euphoria","Pain relief","Warmth","Mood lift"],
@@ -295,7 +295,7 @@ export const S = [
 
   {id:"kratom",n:"Kratom",cat:"opioid",aka:["Mitragynine","Ketum","Biak"],src:"natural",
     desc:"Plant-based. Low doses stimulating, high doses sedating. Under-researched but increasingly popular.",
-    atDose:2,atDoseLabel:"Likely safe at low doses",marginBest:5,marginWorst:2,marginLabel:"Moderate alone, narrower with other opioids",marginExplain:"Kratom alone at 3-5g is generally well-tolerated. Serious nausea and sedation appear around 15-20g (3-5x). Deaths from kratom alone are very rare. But kratom acts on opioid receptors — combining with other opioids narrows the margin significantly.",
+    atDose:2,atDoseLabel:"Likely safe at low doses",dangerRank:6,marginBest:5,marginWorst:2,marginLabel:"Moderate alone, narrower with other opioids",marginExplain:"Kratom alone at 3-5g is generally well-tolerated. Serious nausea and sedation appear around 15-20g (3-5x). Deaths from kratom alone are very rare. But kratom acts on opioid receptors — combining with other opioids narrows the margin significantly.",
     supplyRisk:3,supplyLabel:"Sometimes not what it claims",supplyExplain:"Unregulated. Products vary in potency. Some contaminated with heavy metals or salmonella.",
     addict:3,addictLabel:"Moderately addictive",overwhelm:2,overwhelmLabel:"Moderate — powder is hard to measure precisely but margin is wide",
     feels:["Energy (low dose)","Pain relief (high dose)","Mood lift","Sedation (high dose)","Sociability"],
@@ -307,7 +307,7 @@ export const S = [
 
   {id:"caffeine",n:"Caffeine",cat:"stimulant",aka:["Coffee","Tea","Energy drinks","Pre-workout"],src:"natural",
     desc:"Safe from beverages. Pure caffeine powder is surprisingly deadly — a tablespoon can kill.",
-    atDose:1,atDoseLabel:"Very safe (beverages)",marginBest:50,marginWorst:5,marginLabel:"Huge from drinks, surprisingly narrow from pure powder",marginExplain:"From coffee or energy drinks: you'd need 75-100 cups to reach a lethal dose. From caffeine pills (200mg): about 50 pills, still a very wide margin. But from pure caffeine powder: a tablespoon (~10,000mg) is lethal. Several teenagers have died from measuring errors with bulk caffeine powder.",
+    atDose:1,atDoseLabel:"Very safe (beverages)",dangerRank:1,marginBest:50,marginWorst:5,marginLabel:"Huge from drinks, surprisingly narrow from pure powder",marginExplain:"From coffee or energy drinks: you'd need 75-100 cups to reach a lethal dose. From caffeine pills (200mg): about 50 pills, still a very wide margin. But from pure caffeine powder: a tablespoon (~10,000mg) is lethal. Several teenagers have died from measuring errors with bulk caffeine powder.",
     supplyRisk:1,supplyLabel:"Always real",supplyExplain:"Commercial products standardized.",
     addict:2,addictLabel:"Mildly addictive",overwhelm:1,overwhelmLabel:"Hard from drinks — but pure powder is shockingly easy to overdose",
     feels:["Alertness","Focus","Energy","Reduced tiredness","Mild anxiety at high dose"],
@@ -319,7 +319,7 @@ export const S = [
 
   {id:"ssri",n:"SSRIs",cat:"depressant",aka:["Prozac","Zoloft","Lexapro","Sertraline"],src:"synthetic",
     desc:"Not recreational. Here because SSRIs dramatically change how other drugs work. Critical interaction profile.",
-    atDose:1,atDoseLabel:"Safe as prescribed",marginBest:null,marginWorst:null,marginLabel:"Not recreational — here for interaction awareness",marginExplain:"SSRIs themselves are not the danger. The danger is what they do to other drugs: they block MDMA from working (tempting people to dangerously re-dose), they reduce psychedelic effects, and they can cause fatal serotonin syndrome with tramadol, DXM, or MAOIs.",
+    atDose:1,atDoseLabel:"Safe as prescribed",dangerRank:0,marginBest:null,marginWorst:null,marginLabel:"Not recreational — here for interaction awareness",marginExplain:"SSRIs themselves are not the danger. The danger is what they do to other drugs: they block MDMA from working (tempting people to dangerously re-dose), they reduce psychedelic effects, and they can cause fatal serotonin syndrome with tramadol, DXM, or MAOIs.",
     supplyRisk:1,supplyLabel:"Always real",supplyExplain:"Pharmaceutical.",
     addict:1,addictLabel:"Not addictive (but discontinuation syndrome)",overwhelm:1,overwhelmLabel:"Hard — pharmaceutical pills",
     feels:["Antidepressant (weeks)","Blocks MDMA","Reduces psychedelics"],
@@ -331,7 +331,7 @@ export const S = [
 
   {id:"maoi",n:"MAOIs",cat:"depressant",aka:["Nardil","Parnate","Harmaline","Syrian Rue"],src:"both",
     desc:"Most interaction-dangerous drug class. MAOIs make dozens of substances AND certain foods lethal.",
-    atDose:2,atDoseLabel:"Safe as Rx (with dietary restrictions)",marginBest:null,marginWorst:null,marginLabel:"Not about dose — MAOIs make other things lethal",marginExplain:"The MAOI itself isn't what kills you. It's the interaction: MAOIs prevent your body from breaking down tyramine, serotonin, and various other substances. A normal dose of MDMA, a block of aged cheese, or a dose of cold medicine can become lethal.",
+    atDose:2,atDoseLabel:"Safe as Rx (with dietary restrictions)",dangerRank:0,marginBest:null,marginWorst:null,marginLabel:"Not about dose — MAOIs make other things lethal",marginExplain:"The MAOI itself isn't what kills you. It's the interaction: MAOIs prevent your body from breaking down tyramine, serotonin, and various other substances. A normal dose of MDMA, a block of aged cheese, or a dose of cold medicine can become lethal.",
     supplyRisk:1,supplyLabel:"Always real",supplyExplain:"Pharmaceutical or identifiable plant (Syrian Rue).",
     addict:1,addictLabel:"Not addictive",overwhelm:1,overwhelmLabel:"Hard — pharmaceutical pills, but interaction danger is the real risk",
     feels:["Antidepressant","Potentiates substances dramatically"],

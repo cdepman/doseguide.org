@@ -122,15 +122,15 @@ export default function App() {
                   <div style={{ marginBottom: 14 }}>
                     <h4 style={{ fontSize: 11, color: "#6b6860", fontFamily: "'DM Mono',monospace", marginBottom: 8, textTransform: "uppercase", letterSpacing: "0.05em" }}>Category</h4>
                     <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-                      <button onClick={() => setCatF(null)} style={{ padding: "10px 16px", borderRadius: 8, border: "1px solid", cursor: "pointer", fontSize: 13, fontFamily: "'DM Mono',monospace", background: !catF ? "rgba(255,255,255,0.1)" : "transparent", borderColor: !catF ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.06)", color: !catF ? "#e8e6e3" : "#555", minHeight: 40 }}>All</button>
-                      {Object.entries(CAT).map(([k, v]) => <button key={k} onClick={() => setCatF(catF === k ? null : k)} style={{ padding: "10px 16px", borderRadius: 8, border: "1px solid", cursor: "pointer", fontSize: 13, fontFamily: "'DM Mono',monospace", background: catF === k ? v.b : "transparent", borderColor: catF === k ? v.c + "40" : "rgba(255,255,255,0.06)", color: catF === k ? v.c : "#555", minHeight: 40 }}>{v.l}</button>)}
+                      <button onClick={() => setCatF(null)} style={{ padding: "10px 16px", borderRadius: 8, border: "1px solid", cursor: "pointer", fontSize: 13, fontFamily: "'DM Mono',monospace", background: !catF ? "rgba(255,255,255,0.1)" : "transparent", borderColor: !catF ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.06)", color: !catF ? "#e8e6e3" : "#555", minHeight: 44 }}>All</button>
+                      {Object.entries(CAT).map(([k, v]) => <button key={k} onClick={() => setCatF(catF === k ? null : k)} style={{ padding: "10px 16px", borderRadius: 8, border: "1px solid", cursor: "pointer", fontSize: 13, fontFamily: "'DM Mono',monospace", background: catF === k ? v.b : "transparent", borderColor: catF === k ? v.c + "40" : "rgba(255,255,255,0.06)", color: catF === k ? v.c : "#555", minHeight: 44 }}>{v.l}</button>)}
                     </div>
                   </div>
                   {/* Sort */}
                   <div>
                     <h4 style={{ fontSize: 11, color: "#6b6860", fontFamily: "'DM Mono',monospace", marginBottom: 8, textTransform: "uppercase", letterSpacing: "0.05em" }}>Sort by</h4>
                     <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-                      {SORTS.map(s => <button key={s.id} onClick={() => setSort(s.id)} style={{ padding: "10px 16px", borderRadius: 8, border: "1px solid", cursor: "pointer", fontSize: 13, fontFamily: "'DM Mono',monospace", background: sort === s.id ? "rgba(255,255,255,0.1)" : "transparent", borderColor: sort === s.id ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.06)", color: sort === s.id ? "#e8e6e3" : "#555", minHeight: 40 }}>{s.label}</button>)}
+                      {SORTS.map(s => <button key={s.id} onClick={() => setSort(s.id)} style={{ padding: "10px 16px", borderRadius: 8, border: "1px solid", cursor: "pointer", fontSize: 13, fontFamily: "'DM Mono',monospace", background: sort === s.id ? "rgba(255,255,255,0.1)" : "transparent", borderColor: sort === s.id ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.06)", color: sort === s.id ? "#e8e6e3" : "#555", minHeight: 44 }}>{s.label}</button>)}
                     </div>
                   </div>
                   {/* Clear / Done */}
@@ -154,8 +154,8 @@ export default function App() {
 
       <footer style={{ borderTop: "1px solid rgba(255,255,255,0.04)", padding: "16px", textAlign: "center" }}>
         <p style={{ fontSize: 12, color: "#666", maxWidth: 660, margin: "0 auto 5px", lineHeight: 1.5 }}>Overdose: <strong style={{ color: "#aaa" }}>Call 911 + Narcan</strong> · Struggling: <strong style={{ color: "#aaa" }}>SAMHSA 1-800-662-4357</strong></p>
-        <p style={{ fontSize: 10, color: "#3a3a3a", fontFamily: "'DM Mono',monospace", marginBottom: 4 }}>Data: TripSit · Nutt et al. 2010 · NHTSA · DrugsData · DanceSafe · PsychonautWiki</p>
-        <p style={{ fontSize: 10, color: "#3a3a3a", fontFamily: "'DM Mono',monospace" }}>Open source — <a href="https://github.com/cdepman/doseguide.org" target="_blank" rel="noopener noreferrer" style={{ color: "#555", textDecoration: "none", borderBottom: "1px solid #333" }}>contribute on GitHub</a></p>
+        <p style={{ fontSize: 12, color: "#3a3a3a", fontFamily: "'DM Mono',monospace", marginBottom: 4 }}>Data: TripSit · Nutt et al. 2010 · NHTSA · DrugsData · DanceSafe · PsychonautWiki</p>
+        <p style={{ fontSize: 12, color: "#3a3a3a", fontFamily: "'DM Mono',monospace" }}>Open source — <a href="https://github.com/cdepman/doseguide.org" target="_blank" rel="noopener noreferrer" style={{ color: "#555", textDecoration: "none", borderBottom: "1px solid #333" }}>contribute on GitHub</a></p>
       </footer>
     </main>
 
@@ -163,7 +163,7 @@ export default function App() {
     <nav className="mobile-tab-bar" style={{ display: "none", position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 50, background: "rgba(17,17,19,0.92)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)", borderTop: "1px solid rgba(255,255,255,0.06)", paddingBottom: "env(safe-area-inset-bottom, 0)", justifyContent: "space-around" }}>
       {TABS.map(t => <button key={t.id} onClick={() => switchView(t.id)} style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 2, padding: "8px 4px 6px", border: "none", background: "transparent", cursor: "pointer", color: view === t.id ? "#e8e6e3" : "#555", minHeight: 50, justifyContent: "center", WebkitTapHighlightColor: "transparent" }}>
         <span style={{ fontSize: 18, lineHeight: 1, transition: "transform 0.15s", transform: view === t.id ? "scale(1.15)" : "scale(1)" }}>{t.icon}</span>
-        <span style={{ fontSize: 10, fontFamily: "'DM Mono',monospace", transition: "color 0.15s" }}>{t.label}</span>
+        <span style={{ fontSize: 11, fontFamily: "'DM Mono',monospace", transition: "color 0.15s" }}>{t.label}</span>
       </button>)}
     </nav>
 

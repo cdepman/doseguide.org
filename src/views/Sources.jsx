@@ -37,12 +37,12 @@ export default function Sources() {
       return <div key={i} style={{ background: "rgba(255,255,255,0.02)", borderRadius: 10, border: "1px solid rgba(255,255,255,0.06)", padding: 16, marginBottom: 10 }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 8, marginBottom: 6, flexWrap: "wrap" }}>
           <a href={src.url} target="_blank" rel="noopener noreferrer" style={{ fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 17, color: "#e8e6e3", textDecoration: "none", borderBottom: "1px solid rgba(255,255,255,0.15)", fontWeight: 400 }}>{src.name}</a>
-          <span style={{ fontSize: 9.5, padding: "2px 8px", borderRadius: 12, background: tc.bg, color: tc.c, fontFamily: "'DM Mono',monospace", flexShrink: 0 }}>{src.type}</span>
+          <span style={{ fontSize: 12, padding: "4px 10px", borderRadius: 12, background: tc.bg, color: tc.c, fontFamily: "'DM Mono',monospace", flexShrink: 0 }}>{src.type}</span>
         </div>
-        <p style={{ margin: "0 0 6px", fontSize: 12.5, color: "#8a8780", lineHeight: 1.6 }}>{src.desc}</p>
-        <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-          <a href={src.url} target="_blank" rel="noopener noreferrer" style={{ fontSize: 11, color: "#6b9080", fontFamily: "'DM Mono',monospace", textDecoration: "none" }}>↗ Visit site</a>
-          {src.link2 && <a href={src.link2} target="_blank" rel="noopener noreferrer" style={{ fontSize: 11, color: "#6b9080", fontFamily: "'DM Mono',monospace", textDecoration: "none" }}>↗ {src.link2label}</a>}
+        <p style={{ margin: "0 0 8px", fontSize: 13, color: "#8a8780", lineHeight: 1.6 }}>{src.desc}</p>
+        <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+          <a href={src.url} target="_blank" rel="noopener noreferrer" style={{ fontSize: 13, color: "#6b9080", fontFamily: "'DM Mono',monospace", textDecoration: "none", padding: "4px 0", minHeight: 32, display: "inline-flex", alignItems: "center" }}>↗ Visit site</a>
+          {src.link2 && <a href={src.link2} target="_blank" rel="noopener noreferrer" style={{ fontSize: 13, color: "#6b9080", fontFamily: "'DM Mono',monospace", textDecoration: "none", padding: "4px 0", minHeight: 32, display: "inline-flex", alignItems: "center" }}>↗ {src.link2label}</a>}
         </div>
       </div>;
     })}

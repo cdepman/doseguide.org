@@ -35,7 +35,7 @@ function InfoPanel({ substance, field, open, onClose }) {
 
 // Tiny info dot at end of row
 function Dot({ onClick }) {
-  return <span onClick={e => { e.stopPropagation(); onClick(); }} style={{ width: 14, height: 14, borderRadius: 7, background: "rgba(255,255,255,0.04)", color: "#444", fontSize: 8, cursor: "pointer", display: "inline-flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>i</span>;
+  return <span onClick={e => { e.stopPropagation(); onClick(); }} style={{ width: 28, height: 28, borderRadius: 14, background: "rgba(255,255,255,0.04)", color: "#555", fontSize: 12, cursor: "pointer", display: "inline-flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontFamily: "'DM Mono',monospace" }}>?</span>;
 }
 
 function marginColor(v) {
@@ -56,7 +56,7 @@ function RangeChart({ onInfo }) {
   return <div style={{ background: "rgba(255,255,255,0.02)", borderRadius: 12, border: "1px solid rgba(255,255,255,0.06)", padding: 20, marginBottom: 18 }}>
     <h3 style={{ margin: "0 0 2px", fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 18, color: "#e8e6e3", fontWeight: 400 }}>Room For Error <span style={{ fontSize: 12, color: "#6b6860", fontFamily: "'DM Mono',monospace" }}>(normal doses before danger)</span></h3>
     <p style={{ margin: "0 0 6px", fontSize: 12, color: "#6b6860" }}>Solid = worst case, faded = best case.</p>
-    <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 10, fontSize: 9.5, fontFamily: "'DM Mono',monospace", color: "#555" }}>
+    <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 10, fontSize: 12, fontFamily: "'DM Mono',monospace", color: "#555" }}>
       <span><span style={{ color: "#ef4444" }}>●</span> &lt;3x</span>
       <span><span style={{ color: "#f59e0b" }}>●</span> 3-5x</span>
       <span><span style={{ color: "#60a5fa" }}>●</span> 5-10x</span>
@@ -67,12 +67,12 @@ function RangeChart({ onInfo }) {
       const wWorst = toP(s.marginWorst); const wBest = toP(s.marginBest);
       const colWorst = marginColor(s.marginWorst); const colBest = marginColor(s.marginBest);
       return <div key={s.id} style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
-        <span style={{ width: 90, fontSize: 10.5, color: CAT[s.cat].c, fontFamily: "'DM Mono',monospace", textAlign: "right", flexShrink: 0 }}>{s.n.split("(")[0].trim().substring(0, 11)}</span>
+        <span style={{ width: 90, fontSize: 12, color: CAT[s.cat].c, fontFamily: "'DM Mono',monospace", textAlign: "right", flexShrink: 0 }}>{s.n.split("(")[0].trim().substring(0, 11)}</span>
         <div style={{ flex: 1, height: 10, borderRadius: 5, background: "rgba(255,255,255,0.03)", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", left: 0, width: `${wBest}%`, height: "100%", borderRadius: 5, background: `linear-gradient(90deg, ${colWorst}30, ${colBest}40)` }} />
           <div style={{ position: "absolute", left: 0, width: `${Math.max(wWorst, 2)}%`, height: "100%", borderRadius: 5, background: `linear-gradient(90deg, ${colWorst}aa, ${colWorst})` }} />
         </div>
-        <span style={{ fontSize: 9.5, color: "#a09d97", fontFamily: "'DM Mono',monospace", minWidth: 50, textAlign: "right", whiteSpace: "nowrap" }}>{s.marginWorst}x–{s.marginBest}x</span>
+        <span style={{ fontSize: 12, color: "#a09d97", fontFamily: "'DM Mono',monospace", minWidth: 50, textAlign: "right", whiteSpace: "nowrap" }}>{s.marginWorst}x–{s.marginBest}x</span>
         <Dot onClick={() => onInfo(s, "margin")} />
       </div>;
     })}
@@ -80,9 +80,9 @@ function RangeChart({ onInfo }) {
     {contextual.length > 0 && <>
       <div style={{ height: 1, background: "rgba(255,255,255,0.06)", margin: "6px 0" }} />
       {contextual.map(s => <div key={s.id} style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
-        <span style={{ width: 90, fontSize: 10.5, color: CAT[s.cat].c, fontFamily: "'DM Mono',monospace", textAlign: "right", flexShrink: 0 }}>{s.n.split("(")[0].trim().substring(0, 11)}</span>
+        <span style={{ width: 90, fontSize: 12, color: CAT[s.cat].c, fontFamily: "'DM Mono',monospace", textAlign: "right", flexShrink: 0 }}>{s.n.split("(")[0].trim().substring(0, 11)}</span>
         <div style={{ flex: 1, height: 8, borderRadius: 4, overflow: "hidden" }}><div style={{ width: "100%", height: "100%", borderRadius: 4, background: "linear-gradient(90deg, #60a5fa22, #60a5fa55)" }} /></div>
-        <span style={{ fontSize: 9.5, color: "#60a5fa", fontFamily: "'DM Mono',monospace", minWidth: 50, textAlign: "right", whiteSpace: "nowrap" }}>context</span>
+        <span style={{ fontSize: 12, color: "#60a5fa", fontFamily: "'DM Mono',monospace", minWidth: 50, textAlign: "right", whiteSpace: "nowrap" }}>context</span>
         <Dot onClick={() => onInfo(s, "margin")} />
       </div>)}
     </>}
@@ -90,9 +90,9 @@ function RangeChart({ onInfo }) {
     {safe.length > 0 && <>
       <div style={{ height: 1, background: "rgba(255,255,255,0.06)", margin: "6px 0" }} />
       {safe.map(s => <div key={s.id} style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
-        <span style={{ width: 90, fontSize: 10.5, color: CAT[s.cat].c, fontFamily: "'DM Mono',monospace", textAlign: "right", flexShrink: 0 }}>{s.n.split("(")[0].trim().substring(0, 11)}</span>
+        <span style={{ width: 90, fontSize: 12, color: CAT[s.cat].c, fontFamily: "'DM Mono',monospace", textAlign: "right", flexShrink: 0 }}>{s.n.split("(")[0].trim().substring(0, 11)}</span>
         <div style={{ flex: 1, height: 8, borderRadius: 4, overflow: "hidden" }}><div style={{ width: "100%", height: "100%", borderRadius: 4, background: "linear-gradient(90deg, #22c55e55, #22c55e)" }} /></div>
-        <span style={{ fontSize: 9.5, color: "#4ade80", fontFamily: "'DM Mono',monospace", minWidth: 50, textAlign: "right", whiteSpace: "nowrap" }}>no lethal dose</span>
+        <span style={{ fontSize: 12, color: "#4ade80", fontFamily: "'DM Mono',monospace", minWidth: 50, textAlign: "right", whiteSpace: "nowrap" }}>no lethal dose</span>
         <Dot onClick={() => onInfo(s, "margin")} />
       </div>)}
     </>}
@@ -119,16 +119,16 @@ function AddictionChart({ onInfo }) {
       const wLife = Math.min((s.addictLife / max) * 100, 100);
       const col = addictColor(s.addictPct);
       return <div key={s.id} style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
-        <span style={{ width: 90, fontSize: 10.5, color: CAT[s.cat].c, fontFamily: "'DM Mono',monospace", textAlign: "right", flexShrink: 0 }}>{s.n.split("(")[0].trim().substring(0, 11)}</span>
+        <span style={{ width: 90, fontSize: 12, color: CAT[s.cat].c, fontFamily: "'DM Mono',monospace", textAlign: "right", flexShrink: 0 }}>{s.n.split("(")[0].trim().substring(0, 11)}</span>
         <div style={{ flex: 1, height: 10, borderRadius: 5, background: "rgba(255,255,255,0.03)", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", left: 0, width: `${wLife}%`, height: "100%", borderRadius: 5, background: `${col}25` }} />
           <div style={{ position: "absolute", left: 0, width: `${w10}%`, height: "100%", borderRadius: 5, background: `linear-gradient(90deg, ${col}88, ${col})` }} />
         </div>
-        <span style={{ fontSize: 9.5, color: "#a09d97", fontFamily: "'DM Mono',monospace", minWidth: 28, textAlign: "right" }}>{s.addictPct}%</span>
+        <span style={{ fontSize: 12, color: "#a09d97", fontFamily: "'DM Mono',monospace", minWidth: 28, textAlign: "right" }}>{s.addictPct}%</span>
         <Dot onClick={() => onInfo(s, "addict")} />
       </div>;
     })}
-    <div style={{ display: "flex", gap: 16, marginTop: 8, fontSize: 9.5, fontFamily: "'DM Mono',monospace", color: "#555" }}>
+    <div style={{ display: "flex", gap: 16, marginTop: 8, fontSize: 12, fontFamily: "'DM Mono',monospace", color: "#555" }}>
       <span>█ within 10 years</span>
       <span style={{ opacity: 0.5 }}>░ lifetime</span>
     </div>
@@ -153,11 +153,11 @@ function SupplyChart({ onInfo }) {
     {risky.map(s => {
       const col = supplyColor(s.pctAsExpected);
       return <div key={s.id} style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
-        <span style={{ width: 90, fontSize: 10.5, color: CAT[s.cat].c, fontFamily: "'DM Mono',monospace", textAlign: "right", flexShrink: 0 }}>{s.n.split("(")[0].trim().substring(0, 11)}</span>
+        <span style={{ width: 90, fontSize: 12, color: CAT[s.cat].c, fontFamily: "'DM Mono',monospace", textAlign: "right", flexShrink: 0 }}>{s.n.split("(")[0].trim().substring(0, 11)}</span>
         <div style={{ flex: 1, height: 10, borderRadius: 5, background: "rgba(255,255,255,0.03)", overflow: "hidden" }}>
           <div style={{ width: `${s.pctAsExpected}%`, height: "100%", borderRadius: 5, background: `linear-gradient(90deg, ${col}88, ${col})` }} />
         </div>
-        <span style={{ fontSize: 9.5, color: col, fontFamily: "'DM Mono',monospace", minWidth: 28, textAlign: "right" }}>{s.pctAsExpected}%</span>
+        <span style={{ fontSize: 12, color: col, fontFamily: "'DM Mono',monospace", minWidth: 28, textAlign: "right" }}>{s.pctAsExpected}%</span>
         <Dot onClick={() => onInfo(s, "supply")} />
       </div>;
     })}
@@ -165,11 +165,11 @@ function SupplyChart({ onInfo }) {
     {safe.length > 0 && <>
       <div style={{ height: 1, background: "rgba(255,255,255,0.06)", margin: "6px 0" }} />
       {safe.map(s => <div key={s.id} style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
-        <span style={{ width: 90, fontSize: 10.5, color: CAT[s.cat].c, fontFamily: "'DM Mono',monospace", textAlign: "right", flexShrink: 0 }}>{s.n.split("(")[0].trim().substring(0, 11)}</span>
+        <span style={{ width: 90, fontSize: 12, color: CAT[s.cat].c, fontFamily: "'DM Mono',monospace", textAlign: "right", flexShrink: 0 }}>{s.n.split("(")[0].trim().substring(0, 11)}</span>
         <div style={{ flex: 1, height: 8, borderRadius: 4, overflow: "hidden" }}>
           <div style={{ width: `${s.pctAsExpected}%`, height: "100%", borderRadius: 4, background: "linear-gradient(90deg, #22c55e55, #22c55e)" }} />
         </div>
-        <span style={{ fontSize: 9.5, color: "#4ade80", fontFamily: "'DM Mono',monospace", minWidth: 28, textAlign: "right" }}>{s.pctAsExpected}%</span>
+        <span style={{ fontSize: 12, color: "#4ade80", fontFamily: "'DM Mono',monospace", minWidth: 28, textAlign: "right" }}>{s.pctAsExpected}%</span>
         <Dot onClick={() => onInfo(s, "supply")} />
       </div>)}
     </>}
@@ -188,7 +188,7 @@ function HarmChart({ onInfo }) {
       const w = Math.min((v / max) * 100, 100);
       const col = v > 50 ? "#ef4444" : v > 30 ? "#f97316" : v > 15 ? "#f59e0b" : "#22c55e";
       return <div key={s.id} style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
-        <span style={{ width: 90, fontSize: 10.5, color: CAT[s.cat].c, fontFamily: "'DM Mono',monospace", textAlign: "right", flexShrink: 0 }}>{s.n.split("(")[0].trim().substring(0, 11)}</span>
+        <span style={{ width: 90, fontSize: 12, color: CAT[s.cat].c, fontFamily: "'DM Mono',monospace", textAlign: "right", flexShrink: 0 }}>{s.n.split("(")[0].trim().substring(0, 11)}</span>
         <div style={{ flex: 1, height: 8, borderRadius: 4, background: "rgba(255,255,255,0.04)", overflow: "hidden" }}>
           <div style={{ width: `${w}%`, height: "100%", borderRadius: 4, background: `linear-gradient(90deg,${col}44,${col})` }} />
         </div>

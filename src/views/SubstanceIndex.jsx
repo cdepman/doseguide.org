@@ -27,12 +27,14 @@ export default function SubstanceIndex({ filtered, expanded, setExpanded }) {
               {s.feels.slice(0, 4).map(f => <span key={f} style={{ fontSize: 12, padding: "4px 9px", borderRadius: 6, background: "rgba(34,197,94,0.08)", color: "#5ab87a" }}>{f}</span>)}
               {s.odRisk.slice(0, 1).map(r => <span key={r} style={{ fontSize: 12, padding: "4px 9px", borderRadius: 6, background: "rgba(239,68,68,0.08)", color: "#e07070" }}>{r.length > 35 ? r.substring(0, 35) + "…" : r}</span>)}
             </div>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: 12 }}>
+            {/* Safety dots — full width */}
+            <div style={{ marginBottom: 8 }}>
               <SafetyDots s={s} compact={false} />
-              <div style={{ display: "flex", alignItems: "center", gap: 4, flexShrink: 0 }} title={s.addictLabel}>
-                {[1, 2, 3, 4, 5].map(i => <div key={i} style={{ width: 6, height: 16, borderRadius: 2, background: i <= s.addict ? ac : "rgba(255,255,255,0.06)" }} />)}
-                <span style={{ fontSize: 10, color: "#6b6860", fontFamily: "'DM Mono',monospace", marginLeft: 3 }}>addiction</span>
-              </div>
+            </div>
+            {/* Addiction — own row */}
+            <div style={{ display: "flex", alignItems: "center", gap: 4 }} title={s.addictLabel}>
+              {[1, 2, 3, 4, 5].map(i => <div key={i} style={{ width: 6, height: 16, borderRadius: 2, background: i <= s.addict ? ac : "rgba(255,255,255,0.06)" }} />)}
+              <span style={{ fontSize: 10, color: "#6b6860", fontFamily: "'DM Mono',monospace", marginLeft: 3 }}>addiction · {s.addictLabel.toLowerCase()}</span>
             </div>
           </div>
           <div style={{ display: "grid", gridTemplateRows: isExp ? "1fr" : "0fr", transition: "grid-template-rows 0.35s ease" }}>

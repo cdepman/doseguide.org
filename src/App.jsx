@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo, useRef, useEffect } from "react";
+import { useState, useCallback, useMemo, useRef } from "react";
 import { S, CAT, parseDur } from "./data/substances";
 import SubstanceIndex from "./views/SubstanceIndex";
 import CombinationChecker from "./views/CombinationChecker";
@@ -27,19 +27,6 @@ const TABS = [
   { id: "matrix", label: "Matrix", icon: "⊞" },
   { id: "sources", label: "Sources", icon: "◈" },
 ];
-
-function Drawer({ open, onClose, title, children }) {
-  return <>
-    <div className={`drawer-overlay${open ? " open" : ""}`} onClick={onClose} />
-    <div className={`drawer-panel${open ? " open" : ""}`}>
-      <div style={{ padding: "12px 20px 8px", display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-        <span style={{ fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 17, color: "#e8e6e3" }}>{title}</span>
-        <button onClick={onClose} style={{ width: 36, height: 36, borderRadius: 18, border: "none", background: "rgba(255,255,255,0.06)", color: "#888", fontSize: 18, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>×</button>
-      </div>
-      <div style={{ padding: "12px 20px 20px" }}>{children}</div>
-    </div>
-  </>;
-}
 
 export default function App() {
   const [sel, setSel] = useState([]);
@@ -72,24 +59,8 @@ export default function App() {
   }, [search, catF, sort]);
 
   const activeFilters = (catF ? 1 : 0) + (sort !== "default" ? 1 : 0);
-
-  // Filter drawer content (shared between index and combos)
-  const FilterDrawerContent = () => <div>
-    <div style={{ marginBottom: 16 }}>
-      <h4 style={{ fontSize: 12, color: "#6b6860", fontFamily: "'DM Mono',monospace", marginBottom: 8, textTransform: "uppercase", letterSpacing: "0.05em" }}>Category</h4>
-      <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-        <button onClick={() => setCatF(null)} style={{ padding: "10px 16px", borderRadius: 8, border: "1px solid", cursor: "pointer", fontSize: 13, fontFamily: "'DM Mono',monospace", background: !catF ? "rgba(255,255,255,0.1)" : "transparent", borderColor: !catF ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.06)", color: !catF ? "#e8e6e3" : "#555" }}>All</button>
-        {Object.entries(CAT).map(([k, v]) => <button key={k} onClick={() => setCatF(catF === k ? null : k)} style={{ padding: "10px 16px", borderRadius: 8, border: "1px solid", cursor: "pointer", fontSize: 13, fontFamily: "'DM Mono',monospace", background: catF === k ? v.b : "transparent", borderColor: catF === k ? v.c + "40" : "rgba(255,255,255,0.06)", color: catF === k ? v.c : "#555" }}>{v.l}</button>)}
-      </div>
-    </div>
-    <div>
-      <h4 style={{ fontSize: 12, color: "#6b6860", fontFamily: "'DM Mono',monospace", marginBottom: 8, textTransform: "uppercase", letterSpacing: "0.05em" }}>Sort by</h4>
-      <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-        {SORTS.map(s => <button key={s.id} onClick={() => setSort(s.id)} style={{ padding: "10px 16px", borderRadius: 8, border: "1px solid", cursor: "pointer", fontSize: 13, fontFamily: "'DM Mono',monospace", background: sort === s.id ? "rgba(255,255,255,0.1)" : "transparent", borderColor: sort === s.id ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.06)", color: sort === s.id ? "#e8e6e3" : "#555" }}>{s.label}</button>)}
-      </div>
-    </div>
-    <button onClick={() => setFilterOpen(false)} style={{ width: "100%", marginTop: 20, padding: "14px", borderRadius: 10, border: "none", background: "rgba(255,255,255,0.08)", color: "#e8e6e3", fontSize: 15, fontFamily: "'DM Mono',monospace", cursor: "pointer" }}>Done</button>
-  </div>;
+  const activeCatLabel = catF ? CAT[catF].l : null;
+  const activeSortLabel = sort !== "default" ? SORTS.find(x => x.id === sort)?.label : null;
 
   return <div style={{ height: "100%", display: "flex", flexDirection: "column", background: "#111113", color: "#c7c4be", fontFamily: "'Source Serif 4',Georgia,serif" }}>
 
@@ -100,16 +71,9 @@ export default function App() {
           <svg width="24" height="24" viewBox="0 0 28 28"><circle cx="14" cy="14" r="12" fill="none" stroke="#22c55e" strokeWidth="2" opacity="0.8" /><path d="M14 6v16M8 10l6-4 6 4M8 18l6 4 6-4" fill="none" stroke="#22c55e" strokeWidth="1.5" strokeLinejoin="round" opacity="0.6" /></svg>
           <div><h1 style={{ margin: 0, fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 20, color: "#e8e6e3", fontWeight: 400 }}>DoseGuide<span style={{ color: "#555", fontSize: 14 }}>.org</span></h1></div>
         </div>
-
-        {/* Desktop nav — hidden on mobile */}
         <nav className="desktop-nav" style={{ display: "flex", gap: 2 }}>
           {TABS.map(t => <button key={t.id} onClick={() => switchView(t.id)} style={{ padding: "8px 14px", borderRadius: 7, border: "none", cursor: "pointer", background: view === t.id ? "rgba(255,255,255,0.1)" : "transparent", color: view === t.id ? "#e8e6e3" : "#6b6860", fontFamily: "'DM Mono',monospace", fontSize: 12, minHeight: 36 }}>{t.label}</button>)}
         </nav>
-
-        {/* Mobile filter button — only on index/combos */}
-        {(view === "index" || view === "combos") && <button className="mobile-filter-btn" onClick={() => setFilterOpen(true)} style={{ display: "none", minWidth: 44, minHeight: 44, borderRadius: 10, border: "1px solid rgba(255,255,255,0.08)", background: activeFilters ? "rgba(168,85,247,0.12)" : "transparent", color: activeFilters ? "#a855f7" : "#666", fontSize: 13, fontFamily: "'DM Mono',monospace", cursor: "pointer", alignItems: "center", justifyContent: "center", gap: 4, position: "relative" }}>
-          ⚙{activeFilters > 0 && <span style={{ position: "absolute", top: 4, right: 4, width: 8, height: 8, borderRadius: 4, background: "#a855f7" }} />}
-        </button>}
       </div>
     </header>
 
@@ -126,19 +90,58 @@ export default function App() {
         <div key={pageKey} className="page-enter">
 
           {view === "index" && <>
-            {/* Mobile: search bar inline, filters in drawer */}
-            <input type="text" placeholder="Search name or street name..." value={search} onChange={e => setSearch(e.target.value)} style={{ width: "100%", padding: "12px 14px", borderRadius: 10, border: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.03)", color: "#c7c4be", fontFamily: "'Source Serif 4',Georgia,serif", outline: "none", marginBottom: 10, boxSizing: "border-box" }} />
-            {/* Desktop: inline filter bar */}
-            <div className="desktop-only" style={{ marginBottom: 14 }}>
-              <div style={{ display: "flex", gap: 4, flexWrap: "wrap", marginBottom: 8 }}>
-                <button onClick={() => setCatF(null)} style={{ padding: "6px 12px", borderRadius: 6, border: "1px solid", cursor: "pointer", fontSize: 12, fontFamily: "'DM Mono',monospace", background: !catF ? "rgba(255,255,255,0.1)" : "transparent", borderColor: !catF ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.06)", color: !catF ? "#e8e6e3" : "#555" }}>All</button>
-                {Object.entries(CAT).map(([k, v]) => <button key={k} onClick={() => setCatF(catF === k ? null : k)} style={{ padding: "6px 12px", borderRadius: 6, border: "1px solid", cursor: "pointer", fontSize: 12, fontFamily: "'DM Mono',monospace", background: catF === k ? v.b : "transparent", borderColor: catF === k ? v.c + "40" : "rgba(255,255,255,0.06)", color: catF === k ? v.c : "#555" }}>{v.l}</button>)}
+            {/* Search */}
+            <input type="text" placeholder="Search name or street name..." value={search} onChange={e => setSearch(e.target.value)} style={{ width: "100%", padding: "12px 14px", borderRadius: 10, border: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.03)", color: "#c7c4be", fontFamily: "'Source Serif 4',Georgia,serif", outline: "none", marginBottom: 8, boxSizing: "border-box" }} />
+
+            {/* Filter & Sort toggle button */}
+            <button onClick={() => setFilterOpen(!filterOpen)} style={{
+              width: "100%", padding: "10px 14px", borderRadius: 10, cursor: "pointer", marginBottom: 12,
+              border: `1px solid ${filterOpen ? "rgba(255,255,255,0.12)" : activeFilters ? "rgba(168,85,247,0.3)" : "rgba(255,255,255,0.06)"}`,
+              background: filterOpen ? "rgba(255,255,255,0.05)" : activeFilters ? "rgba(168,85,247,0.06)" : "rgba(255,255,255,0.02)",
+              display: "flex", alignItems: "center", justifyContent: "space-between", minHeight: 44,
+              transition: "all 0.2s ease",
+            }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <span style={{ fontSize: 14, color: activeFilters ? "#a855f7" : "#666" }}>⚙</span>
+                <span style={{ fontSize: 13, fontFamily: "'DM Mono',monospace", color: activeFilters ? "#c7c4be" : "#666" }}>
+                  {activeFilters ? <>
+                    {activeCatLabel && <span style={{ color: CAT[catF].c }}>{activeCatLabel}</span>}
+                    {activeCatLabel && activeSortLabel && <span style={{ color: "#444" }}> · </span>}
+                    {activeSortLabel && <span style={{ color: "#a09d97" }}>{activeSortLabel}</span>}
+                  </> : "Filter & Sort"}
+                </span>
               </div>
-              <div style={{ display: "flex", gap: 4, flexWrap: "wrap" }}>
-                <span style={{ fontSize: 11, color: "#555", fontFamily: "'DM Mono',monospace", padding: "4px 0", marginRight: 4 }}>Sort:</span>
-                {SORTS.map(s => <button key={s.id} onClick={() => setSort(s.id)} style={{ padding: "5px 10px", borderRadius: 5, border: "1px solid", cursor: "pointer", fontSize: 11, fontFamily: "'DM Mono',monospace", background: sort === s.id ? "rgba(255,255,255,0.1)" : "transparent", borderColor: sort === s.id ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.06)", color: sort === s.id ? "#e8e6e3" : "#555" }}>{s.label}</button>)}
+              <span style={{ fontSize: 11, color: "#555", transition: "transform 0.3s ease", transform: filterOpen ? "rotate(180deg)" : "rotate(0deg)", display: "inline-block" }}>▼</span>
+            </button>
+
+            {/* Collapsible filter panel */}
+            <div style={{ display: "grid", gridTemplateRows: filterOpen ? "1fr" : "0fr", transition: "grid-template-rows 0.35s cubic-bezier(0.32, 0.72, 0, 1)" }}>
+              <div style={{ overflow: "hidden" }}>
+                <div style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: 12, padding: 16, marginBottom: 12 }}>
+                  {/* Category */}
+                  <div style={{ marginBottom: 14 }}>
+                    <h4 style={{ fontSize: 11, color: "#6b6860", fontFamily: "'DM Mono',monospace", marginBottom: 8, textTransform: "uppercase", letterSpacing: "0.05em" }}>Category</h4>
+                    <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+                      <button onClick={() => setCatF(null)} style={{ padding: "10px 16px", borderRadius: 8, border: "1px solid", cursor: "pointer", fontSize: 13, fontFamily: "'DM Mono',monospace", background: !catF ? "rgba(255,255,255,0.1)" : "transparent", borderColor: !catF ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.06)", color: !catF ? "#e8e6e3" : "#555", minHeight: 40 }}>All</button>
+                      {Object.entries(CAT).map(([k, v]) => <button key={k} onClick={() => setCatF(catF === k ? null : k)} style={{ padding: "10px 16px", borderRadius: 8, border: "1px solid", cursor: "pointer", fontSize: 13, fontFamily: "'DM Mono',monospace", background: catF === k ? v.b : "transparent", borderColor: catF === k ? v.c + "40" : "rgba(255,255,255,0.06)", color: catF === k ? v.c : "#555", minHeight: 40 }}>{v.l}</button>)}
+                    </div>
+                  </div>
+                  {/* Sort */}
+                  <div>
+                    <h4 style={{ fontSize: 11, color: "#6b6860", fontFamily: "'DM Mono',monospace", marginBottom: 8, textTransform: "uppercase", letterSpacing: "0.05em" }}>Sort by</h4>
+                    <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+                      {SORTS.map(s => <button key={s.id} onClick={() => setSort(s.id)} style={{ padding: "10px 16px", borderRadius: 8, border: "1px solid", cursor: "pointer", fontSize: 13, fontFamily: "'DM Mono',monospace", background: sort === s.id ? "rgba(255,255,255,0.1)" : "transparent", borderColor: sort === s.id ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.06)", color: sort === s.id ? "#e8e6e3" : "#555", minHeight: 40 }}>{s.label}</button>)}
+                    </div>
+                  </div>
+                  {/* Clear / Done */}
+                  <div style={{ display: "flex", gap: 8, marginTop: 14 }}>
+                    {activeFilters > 0 && <button onClick={() => { setCatF(null); setSort("default"); }} style={{ flex: 1, padding: "12px", borderRadius: 10, border: "1px solid rgba(255,255,255,0.06)", background: "transparent", color: "#888", fontSize: 13, fontFamily: "'DM Mono',monospace", cursor: "pointer", minHeight: 44 }}>Clear all</button>}
+                    <button onClick={() => setFilterOpen(false)} style={{ flex: 1, padding: "12px", borderRadius: 10, border: "none", background: "rgba(255,255,255,0.08)", color: "#e8e6e3", fontSize: 13, fontFamily: "'DM Mono',monospace", cursor: "pointer", minHeight: 44 }}>Done</button>
+                  </div>
+                </div>
               </div>
             </div>
+
             <SubstanceIndex filtered={filtered} expanded={expanded} setExpanded={setExpanded} />
           </>}
 
@@ -163,22 +166,15 @@ export default function App() {
       </button>)}
     </nav>
 
-    {/* ── FILTER DRAWER (mobile) ── */}
-    <Drawer open={filterOpen} onClose={() => setFilterOpen(false)} title="Filter & Sort">
-      <FilterDrawerContent />
-    </Drawer>
-
     {/* ── RESPONSIVE STYLES ── */}
     <style>{`
       @media (max-width: 768px) {
         .desktop-nav { display: none !important; }
         .desktop-only { display: none !important; }
         .mobile-tab-bar { display: flex !important; }
-        .mobile-filter-btn { display: flex !important; }
       }
       @media (min-width: 769px) {
         .mobile-tab-bar { display: none !important; }
-        .mobile-filter-btn { display: none !important; }
       }
     `}</style>
   </div>;

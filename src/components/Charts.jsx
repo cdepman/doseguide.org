@@ -23,8 +23,8 @@ function RangeChart() {
   const max = 50;
   const toP = v => Math.min((Math.log10(Math.max(v, 1)) / Math.log10(max)) * 100, 100);
 
-  // Sort by dangerRank — reflects typical real-world per-use risk, not rare outliers
-  const ranged = S.filter(s => s.marginBest != null).sort((a, b) => b.dangerRank - a.dangerRank);
+  // Sort by dangerRank ascending (lower = more dangerous = top)
+  const ranged = S.filter(s => s.marginBest != null).sort((a, b) => a.dangerRank - b.dangerRank);
   const safe = S.filter(s => s.marginBest == null && s.marginWorst == null);
 
   return <div style={{ background: "rgba(255,255,255,0.02)", borderRadius: 12, border: "1px solid rgba(255,255,255,0.06)", padding: 20, marginBottom: 18 }}>
@@ -71,7 +71,7 @@ function RangeChart() {
         <div style={{ flex: 1, height: 8, borderRadius: 4, overflow: "hidden" }}>
           <div style={{ width: "100%", height: "100%", borderRadius: 4, background: "linear-gradient(90deg, #22c55e55, #22c55e)" }} />
         </div>
-        <span style={{ fontSize: 9.5, color: "#4ade80", fontFamily: "'DM Mono',monospace", minWidth: 60, textAlign: "right", whiteSpace: "nowrap" }}>no limit</span>
+        <span style={{ fontSize: 9.5, color: "#4ade80", fontFamily: "'DM Mono',monospace", minWidth: 60, textAlign: "right", whiteSpace: "nowrap" }}>no lethal dose</span>
       </div>)}
     </>}
   </div>;

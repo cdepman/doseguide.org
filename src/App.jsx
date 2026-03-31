@@ -167,8 +167,8 @@ export default function App() {
     </main>
 
     {/* ── BOTTOM TAB BAR (mobile) ── */}
-    <nav className="mobile-tab-bar" style={{ display: "none", position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 50, background: "rgba(17,17,19,0.95)", backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)", borderTop: "1px solid rgba(255,255,255,0.08)", paddingBottom: "env(safe-area-inset-bottom, 0)", justifyContent: "space-around" }}>
-      {TABS.map(t => <button key={t.id} onClick={() => switchView(t.id)} style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 4, padding: "12px 4px 10px", border: "none", background: "transparent", cursor: "pointer", color: view === t.id ? "#e8e6e3" : "#555", minHeight: 64, justifyContent: "center", WebkitTapHighlightColor: "transparent" }}>
+    <nav className="mobile-tab-bar" style={{ display: "none", position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 50, background: "#1e1e22", borderTop: "1px solid rgba(255,255,255,0.12)", paddingBottom: "env(safe-area-inset-bottom, 0)", justifyContent: "space-around" }}>
+      {TABS.map(t => <button key={t.id} onClick={() => switchView(t.id)} style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 4, padding: "12px 4px 10px", border: "none", background: "transparent", cursor: "pointer", color: view === t.id ? "#e8e6e3" : "#666", minHeight: 64, justifyContent: "center", WebkitTapHighlightColor: "transparent" }}>
         <span style={{ fontSize: 22, lineHeight: 1, transition: "transform 0.15s", transform: view === t.id ? "scale(1.15)" : "scale(1)", display: "flex", alignItems: "center", justifyContent: "center", height: 24 }}>{t.iconSvg ? <t.iconSvg /> : t.icon}</span>
         <span style={{ fontSize: 12, fontFamily: "'DM Mono',monospace", transition: "color 0.15s" }}>{t.label}</span>
       </button>)}

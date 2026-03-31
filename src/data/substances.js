@@ -42,7 +42,7 @@ export const S = [
     dose:{threshold:"15 µg",light:"25–75 µg",common:"75–150 µg",strong:"150–300 µg",heavy:"300+ µg"},
     lethal:{headline:"Nobody has ever died from taking too much LSD.",note:"No confirmed death from LSD toxicity alone. Even massive accidental doses have been survived.",cmp:"bag",sz:60,realworld:"There is no realistic amount you could fit on blotter paper that would kill you. People have accidentally taken thousands of doses and survived."}},
 
-  {id:"mushrooms",n:"Psilocybin Mushrooms",cat:"psychedelic",aka:["Shrooms","Magic Mushrooms","Caps"],src:"natural",
+  {id:"mushrooms",n:"Psilocybin Mushrooms",sn:"Mushrooms",cat:"psychedelic",aka:["Shrooms","Magic Mushrooms","Caps"],src:"natural",
     desc:"Among the safest psychoactives known. Identifiable whole mushrooms.",
     atDose:1,atDoseLabel:"Very safe",dangerRank:99,marginBest:null,marginWorst:null,marginLabel:"No known physical danger at any dose",marginExplain:"No documented death from psilocybin toxicity. You'd need to eat roughly 4 pounds of dried mushrooms. Your stomach would reject them long before that. Like LSD, the risk is psychological intensity, not physical harm.",
     supplyRisk:1,pctAsExpected:99,supplyLabel:"~99% — whole mushrooms are identifiable",supplyExplain:"Very rarely adulterated. Main risk is misidentified species when foraging.",
@@ -81,7 +81,7 @@ export const S = [
     dose:{threshold:"50 mg",light:"100–150 mg",common:"200–300 mg",strong:"300–500 mg",heavy:"500+ mg"},
     lethal:{headline:"You'd need to eat over 2 ounces of pure mescaline — roughly a full shot glass of powder.",note:"Very high safety margin. The severe nausea from cactus material makes overconsumption extremely unlikely.",cmp:"cup",sz:40,realworld:"Picture a full shot glass of pure powder, or eating several feet of cactus. You'd be vomiting long before reaching danger."}},
 
-  {id:"2cx",n:"2C-x (2C-B, 2C-E, 2C-I)",cat:"psychedelic",aka:["Nexus","Bees","Tusi","Pink cocaine"],src:"synthetic",
+  {id:"2cx",n:"2C-x (2C-B, 2C-E, 2C-I)",sn:"2C-x",cat:"psychedelic",aka:["Nexus","Bees","Tusi","Pink cocaine"],src:"synthetic",
     desc:"Phenethylamine psychedelic family. Very dose-sensitive — small increases cause big jumps. 'Tusi/pink cocaine' sold as 2C-B usually isn't.",
     atDose:2,atDoseLabel:"Safe if dosed carefully",dangerRank:10,marginBest:4,marginWorst:2,marginLabel:"Some room, but effects jump sharply with small increases",marginExplain:"2C-B is not particularly toxic at recreational doses, but the dose-response curve is unusually steep. The difference between 15mg and 30mg is not 'twice as strong' — it's a qualitatively different experience. Vasoconstriction becomes concerning above 40-50mg. Always use a milligram scale.",
     supplyRisk:4,pctAsExpected:50,supplyLabel:"~50% — 'Tusi/pink cocaine' is almost never 2C-B",supplyExplain:"'Tusi' frequently contains ketamine, MDMA, caffeine, or no 2C-B at all. Actual 2C-B is typically white. Reagent test essential.",
@@ -120,7 +120,7 @@ export const S = [
     dose:{threshold:"10 mg",light:"20–50 mg",common:"50–100 mg",strong:"100–150 mg",heavy:"150+ mg"},
     lethal:{headline:"Your heart decides — some people have died from a single line.",note:"Heart sensitivity varies wildly between individuals. There is no way to predict who will have a cardiac event.",cmp:"line",sz:[50,8],realworld:"A person with an undiagnosed heart condition can die from the same amount their friend does every weekend. There's no 'safe' test dose."}},
 
-  {id:"amphetamines",n:"Amphetamine",cat:"stimulant",aka:["Speed","Adderall","Dexedrine","Vyvanse"],src:"synthetic",
+  {id:"amphetamines",n:"Amphetamine",sn:"Amfeta",cat:"stimulant",aka:["Speed","Adderall","Dexedrine","Vyvanse"],src:"synthetic",
     desc:"Medical ADHD stimulant. Pharmaceutical versions consistent; street speed is not.",
     atDose:2,atDoseLabel:"Safe at prescribed doses",dangerRank:15,marginBest:5,marginWorst:3,marginLabel:"Moderate room with pharmaceutical pills",marginExplain:"Prescribed Adderall at 20-30mg is well-tolerated. Clinical toxicity typically appears around 100-150mg+ (3-5x a normal dose): racing heart, dangerously elevated blood pressure, risk of stroke. Street speed has unknown purity, so the effective margin is smaller. Tolerance builds but cardiovascular strain persists.",
     supplyRisk:3,pctAsExpected:91,supplyLabel:"~91% from pharmacy; street speed varies",supplyExplain:"Pharmacy Adderall: 100% safe. Street speed or pressed pills: may contain meth or fentanyl. Counterfeit Adderall increasing.",
@@ -133,7 +133,7 @@ export const S = [
     dose:{threshold:"5 mg",light:"10–20 mg",common:"20–40 mg",strong:"40–70 mg",heavy:"70+ mg"},
     lethal:{headline:"Lethal dose varies hugely — but heart strain is always there.",note:"Even tolerant users carry cardiovascular risk. The lethal dose depends on your heart, not just the amount.",cmp:"pill",sz:22,realworld:"A handful of pills could be fatal for one person and barely noticeable for another. It depends on your heart, not your tolerance."}},
 
-  {id:"methamphetamine",n:"Methamphetamine",cat:"stimulant",aka:["Meth","Crystal","Ice","Tina","Glass"],src:"synthetic",
+  {id:"methamphetamine",n:"Methamphetamine",sn:"Meth",cat:"stimulant",aka:["Meth","Crystal","Ice","Tina","Glass"],src:"synthetic",
     desc:"Extremely potent, long-acting, addictive, neurotoxic. Duration can exceed 24 hours.",
     atDose:4,atDoseLabel:"Harmful even at typical doses",dangerRank:6,marginBest:4,marginWorst:2,marginLabel:"Some room for a single dose, but binge use erases it",marginExplain:"A single dose of 15-30mg in a non-tolerant person is intense but not typically dangerous. Physical danger (hyperthermia, cardiac events, psychosis) usually appears at 60-120mg+. BUT: meth's extreme duration (24+ hours) drives compulsive re-dosing, and cumulative dose over a binge is where most deaths occur.",
     supplyRisk:2,pctAsExpected:88,supplyLabel:"~88% pure — the danger IS the drug",supplyExplain:"Ironically among the purest illicit drugs. The danger is the substance itself, not contaminants.",
@@ -211,7 +211,7 @@ export const S = [
     dose:{threshold:"75 mg",light:"100–200 mg",common:"200–400 mg",strong:"400–700 mg",heavy:"700+ mg"},
     lethal:{headline:"The DXM won't kill you — the Tylenol in the cough syrup will destroy your liver.",note:"Deaths are from acetaminophen (Tylenol) or antihistamines in the cough medicine, NOT from DXM itself. Only use products where DXM is the ONLY active ingredient.",cmp:"bottle",sz:[28,50],realworld:"A recreational dose of cough syrup that contains Tylenol can put you in liver failure. Read. Every. Ingredient. On. The. Label."}},
 
-  {id:"nitrous",n:"Nitrous Oxide",cat:"dissociative",aka:["Laughing Gas","N2O","Whippets","Nangs"],src:"synthetic",
+  {id:"nitrous",n:"Nitrous Oxide",sn:"Nitrous",cat:"dissociative",aka:["Laughing Gas","N2O","Whippets","Nangs"],src:"synthetic",
     desc:"Safe drug, dangerous delivery. Deaths from suffocation, not the substance itself.",
     atDose:1,atDoseLabel:"Very safe",dangerRank:17,marginBest:null,marginWorst:null,marginLabel:"Danger is the delivery method, not the amount",marginExplain:"Each individual balloon is self-limiting. The gas has an enormous safety margin per use. Deaths are from: suffocation (using bags or masks instead of balloons — NEVER do this), falls while standing, and chronic B12 depletion from daily heavy use over weeks or months causing nerve damage.",
     supplyRisk:1,pctAsExpected:99,supplyLabel:"~99% — industrial product",supplyExplain:"Food-grade N2O chargers are standardized. Risk is method and chronic use, not purity.",
@@ -224,7 +224,7 @@ export const S = [
     dose:{threshold:"1 charger",light:"1",common:"1–2",strong:"2–3",heavy:"3+"},
     lethal:{headline:"The gas won't kill you — but a bag over your head will. ALWAYS use a balloon.",note:"N2O itself has a very wide safety margin. Every death is from cutting off oxygen supply (bags, masks) or from chronic B12 depletion.",cmp:"canister",sz:30,realworld:"Never breathe from a bag, mask, or directly from a tank. Always fill a balloon first. Falls while standing are the other main danger."}},
 
-  {id:"poppers",n:"Poppers (Alkyl Nitrites)",cat:"inhalant",aka:["Amyl Nitrite","Rush","Jungle Juice","Room Odorizer"],src:"synthetic",
+  {id:"poppers",n:"Poppers (Alkyl Nitrites)",sn:"Poppers",cat:"inhalant",aka:["Amyl Nitrite","Rush","Jungle Juice","Room Odorizer"],src:"synthetic",
     desc:"Vasodilator inhalant. Brief rush and muscle relaxation. LETHAL combined with Viagra/Cialis or any PDE5 inhibitor — fatal blood pressure drop.",
     atDose:2,atDoseLabel:"Safe at normal use",dangerRank:18,marginBest:null,marginWorst:null,marginLabel:"Danger is swallowing or drug interactions, not inhaling",marginExplain:"Inhaling poppers has a wide margin — the effects are brief and self-limiting. The dangers: swallowing the liquid (call poison control immediately), combining with Viagra/Cialis/Levitra (fatal blood pressure crash), and use with pre-existing heart conditions.",
     supplyRisk:2,pctAsExpected:90,supplyLabel:"~90% — but some isomers are worse",supplyExplain:"Amyl and butyl nitrite preferred. Isopropyl nitrite is harsher and linked to eye damage. Labels may not be accurate.",
@@ -263,7 +263,7 @@ export const S = [
     dose:{threshold:"0.3 g",light:"0.5–1 g",common:"1–2.5 g",strong:"2.5–4 g",heavy:"4+ g (unconsciousness)"},
     lethal:{headline:"The difference between a great time and unconsciousness is less than half a teaspoon.",note:"GHB has the narrowest dosing window of any recreational drug. Adding ANY alcohol makes it potentially fatal.",cmp:"spoon",sz:34,realworld:"4-5ml alone can knock you out (that's less than a teaspoon). Add just one drink of alcohol and 1-2ml can kill you. ALWAYS measure with a syringe — never pour."}},
 
-  {id:"benzodiazepine",n:"Benzodiazepines",cat:"benzodiazepine",aka:["Benzos","Xanax","Valium","Klonopin","Ativan"],src:"synthetic",
+  {id:"benzodiazepine",n:"Benzodiazepines",sn:"Benzos",cat:"benzodiazepine",aka:["Benzos","Xanax","Valium","Klonopin","Ativan"],src:"synthetic",
     desc:"Safe alone. Combined with opioids or alcohol: one of the deadliest drug combos in existence.",
     atDose:2,atDoseLabel:"Safe alone",dangerRank:13,marginBest:30,marginWorst:1,marginLabel:"Very wide ALONE — almost none with opioids or alcohol",marginExplain:"Benzos alone have a genuinely large safety margin. People have taken massive overdoses of Xanax (30-50x normal) and survived with medical care. BUT: add any opioid and the margin drops to ~1x. Benzos + opioids is the #1 poly-drug death combination in America.",
     supplyRisk:5,pctAsExpected:60,supplyLabel:"~60% from pharmacy; street pills extremely dangerous",supplyExplain:"Pharmacy benzos: 100% safe. Street 'Xanax bars': frequently contain fentanyl or novel benzos. One of the primary vectors for fentanyl poisoning.",
@@ -276,7 +276,7 @@ export const S = [
     dose:{threshold:"Varies",light:"0.25 mg alp eq",common:"0.5–1 mg",strong:"1–2 mg",heavy:"2+ mg"},
     lethal:{headline:"Very hard to die from benzos alone. Mix with opioids or alcohol: one of the deadliest combos.",note:"Benzodiazepines alone have a wide safety margin. The danger is combinations — benzos + opioids is the #1 cause of poly-drug death in the US.",cmp:"pill",sz:22,realworld:"Taking 10 Xanax might just knock you out for a day. Taking 2 Xanax with a few drinks or any opioid can stop your breathing permanently."}},
 
-  {id:"opioids",n:"Opioids (Heroin)",cat:"opioid",aka:["Heroin","Morphine","H","Smack","Dope","Codeine"],src:"both",
+  {id:"opioids",n:"Opioids (Heroin)",sn:"Opioids",cat:"opioid",aka:["Heroin","Morphine","H","Smack","Dope","Codeine"],src:"both",
     desc:"Narrowest safety margin of common drugs. #1 overdose killer. In most US markets, 'heroin' IS fentanyl now.",
     atDose:4,atDoseLabel:"Dangerous",dangerRank:3,marginBest:3,marginWorst:1,marginLabel:"Small margin even with known doses, unknown with street supply",marginExplain:"With pharmaceutical opioids of known potency: respiratory depression typically starts at ~2-3x a standard dose. With street heroin — which in most US markets is actually fentanyl — the potency is completely unknown. The effective margin from street supply is essentially unknowable.",
     supplyRisk:5,pctAsExpected:12,supplyLabel:"~12% — 'heroin' is almost always fentanyl now",supplyExplain:"In most US markets, what's sold as heroin is primarily fentanyl. Only 1.9% of tested samples contain actual heroin. ASSUME IT'S FENTANYL. Always carry Narcan.",

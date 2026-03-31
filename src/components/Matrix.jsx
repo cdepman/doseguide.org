@@ -63,11 +63,11 @@ export default function Matrix() {
           {/* Substance names */}
           <tr>
             <th style={{ width: 80, minWidth: 80 }} />
-            {flat.map(s => <th key={s.id} style={{ color: CAT[s.cat].c, padding: "3px 1px", writingMode: "vertical-rl", textOrientation: "mixed", height: 80, fontSize: 10, fontWeight: 500, whiteSpace: "nowrap" }}>{s.n.split("(")[0].trim().substring(0, 12)}</th>)}
+            {flat.map(s => <th key={s.id} style={{ color: CAT[s.cat].c, padding: "3px 1px", writingMode: "vertical-rl", textOrientation: "mixed", height: 80, fontSize: 10, fontWeight: 500, whiteSpace: "nowrap" }}>{(s.sn || s.n)}</th>)}
           </tr>
         </thead>
         <tbody>{flat.map(row => <tr key={row.id}>
-          <td style={{ color: CAT[row.cat].c, textAlign: "right", paddingRight: 6, fontSize: 10, fontWeight: 500, whiteSpace: "nowrap" }}>{row.n.split("(")[0].trim().substring(0, 12)}</td>
+          <td style={{ color: CAT[row.cat].c, textAlign: "right", paddingRight: 6, fontSize: 10, fontWeight: 500, whiteSpace: "nowrap" }}>{(row.sn || row.n)}</td>
           {flat.map(col => {
             if (row.id === col.id) return <td key={col.id} style={{ width: cs, height: cs, textAlign: "center", background: "rgba(255,255,255,0.015)", borderRadius: 3, color: "#2a2a2e", fontSize: 10 }}>·</td>;
             const risk = cr(row.id, col.id); const lv = risk ? RL[risk] : null;

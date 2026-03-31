@@ -68,7 +68,7 @@ function RangeChart({ onInfo }) {
       const colWorst = marginColor(s.marginWorst); const colBest = marginColor(s.marginBest);
       return <div key={s.id} style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
         <span style={{ width: 90, fontSize: 12, color: CAT[s.cat].c, fontFamily: "'DM Mono',monospace", textAlign: "right", flexShrink: 0 }}>{s.n.split("(")[0].trim().substring(0, 11)}</span>
-        <div style={{ flex: 1, height: 10, borderRadius: 5, background: "rgba(255,255,255,0.03)", position: "relative", overflow: "hidden" }}>
+        <div style={{ flex: 1, height: 20, borderRadius: 6, background: "rgba(255,255,255,0.03)", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", left: 0, width: `${wBest}%`, height: "100%", borderRadius: 5, background: `linear-gradient(90deg, ${colWorst}30, ${colBest}40)` }} />
           <div style={{ position: "absolute", left: 0, width: `${Math.max(wWorst, 2)}%`, height: "100%", borderRadius: 5, background: `linear-gradient(90deg, ${colWorst}aa, ${colWorst})` }} />
         </div>
@@ -81,7 +81,7 @@ function RangeChart({ onInfo }) {
       <div style={{ height: 1, background: "rgba(255,255,255,0.06)", margin: "6px 0" }} />
       {contextual.map(s => <div key={s.id} style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
         <span style={{ width: 90, fontSize: 12, color: CAT[s.cat].c, fontFamily: "'DM Mono',monospace", textAlign: "right", flexShrink: 0 }}>{s.n.split("(")[0].trim().substring(0, 11)}</span>
-        <div style={{ flex: 1, height: 8, borderRadius: 4, overflow: "hidden" }}><div style={{ width: "100%", height: "100%", borderRadius: 4, background: "linear-gradient(90deg, #60a5fa22, #60a5fa55)" }} /></div>
+        <div style={{ flex: 1, height: 16, borderRadius: 5, overflow: "hidden" }}><div style={{ width: "100%", height: "100%", borderRadius: 4, background: "linear-gradient(90deg, #60a5fa22, #60a5fa55)" }} /></div>
         <span style={{ fontSize: 12, color: "#60a5fa", fontFamily: "'DM Mono',monospace", minWidth: 50, textAlign: "right", whiteSpace: "nowrap" }}>context</span>
         <Dot onClick={() => onInfo(s, "margin")} />
       </div>)}
@@ -91,7 +91,7 @@ function RangeChart({ onInfo }) {
       <div style={{ height: 1, background: "rgba(255,255,255,0.06)", margin: "6px 0" }} />
       {safe.map(s => <div key={s.id} style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
         <span style={{ width: 90, fontSize: 12, color: CAT[s.cat].c, fontFamily: "'DM Mono',monospace", textAlign: "right", flexShrink: 0 }}>{s.n.split("(")[0].trim().substring(0, 11)}</span>
-        <div style={{ flex: 1, height: 8, borderRadius: 4, overflow: "hidden" }}><div style={{ width: "100%", height: "100%", borderRadius: 4, background: "linear-gradient(90deg, #22c55e55, #22c55e)" }} /></div>
+        <div style={{ flex: 1, height: 16, borderRadius: 5, overflow: "hidden" }}><div style={{ width: "100%", height: "100%", borderRadius: 4, background: "linear-gradient(90deg, #22c55e55, #22c55e)" }} /></div>
         <span style={{ fontSize: 12, color: "#4ade80", fontFamily: "'DM Mono',monospace", minWidth: 50, textAlign: "right", whiteSpace: "nowrap" }}>no lethal dose</span>
         <Dot onClick={() => onInfo(s, "margin")} />
       </div>)}
@@ -120,7 +120,7 @@ function AddictionChart({ onInfo }) {
       const col = addictColor(s.addictPct);
       return <div key={s.id} style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
         <span style={{ width: 90, fontSize: 12, color: CAT[s.cat].c, fontFamily: "'DM Mono',monospace", textAlign: "right", flexShrink: 0 }}>{s.n.split("(")[0].trim().substring(0, 11)}</span>
-        <div style={{ flex: 1, height: 10, borderRadius: 5, background: "rgba(255,255,255,0.03)", position: "relative", overflow: "hidden" }}>
+        <div style={{ flex: 1, height: 20, borderRadius: 6, background: "rgba(255,255,255,0.03)", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", left: 0, width: `${wLife}%`, height: "100%", borderRadius: 5, background: `${col}25` }} />
           <div style={{ position: "absolute", left: 0, width: `${w10}%`, height: "100%", borderRadius: 5, background: `linear-gradient(90deg, ${col}88, ${col})` }} />
         </div>
@@ -154,7 +154,7 @@ function SupplyChart({ onInfo }) {
       const col = supplyColor(s.pctAsExpected);
       return <div key={s.id} style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
         <span style={{ width: 90, fontSize: 12, color: CAT[s.cat].c, fontFamily: "'DM Mono',monospace", textAlign: "right", flexShrink: 0 }}>{s.n.split("(")[0].trim().substring(0, 11)}</span>
-        <div style={{ flex: 1, height: 10, borderRadius: 5, background: "rgba(255,255,255,0.03)", overflow: "hidden" }}>
+        <div style={{ flex: 1, height: 20, borderRadius: 6, background: "rgba(255,255,255,0.03)", overflow: "hidden" }}>
           <div style={{ width: `${s.pctAsExpected}%`, height: "100%", borderRadius: 5, background: `linear-gradient(90deg, ${col}88, ${col})` }} />
         </div>
         <span style={{ fontSize: 12, color: col, fontFamily: "'DM Mono',monospace", minWidth: 28, textAlign: "right" }}>{s.pctAsExpected}%</span>
@@ -166,7 +166,7 @@ function SupplyChart({ onInfo }) {
       <div style={{ height: 1, background: "rgba(255,255,255,0.06)", margin: "6px 0" }} />
       {safe.map(s => <div key={s.id} style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
         <span style={{ width: 90, fontSize: 12, color: CAT[s.cat].c, fontFamily: "'DM Mono',monospace", textAlign: "right", flexShrink: 0 }}>{s.n.split("(")[0].trim().substring(0, 11)}</span>
-        <div style={{ flex: 1, height: 8, borderRadius: 4, overflow: "hidden" }}>
+        <div style={{ flex: 1, height: 16, borderRadius: 5, overflow: "hidden" }}>
           <div style={{ width: `${s.pctAsExpected}%`, height: "100%", borderRadius: 4, background: "linear-gradient(90deg, #22c55e55, #22c55e)" }} />
         </div>
         <span style={{ fontSize: 12, color: "#4ade80", fontFamily: "'DM Mono',monospace", minWidth: 28, textAlign: "right" }}>{s.pctAsExpected}%</span>
@@ -189,7 +189,7 @@ function HarmChart({ onInfo }) {
       const col = v > 50 ? "#ef4444" : v > 30 ? "#f97316" : v > 15 ? "#f59e0b" : "#22c55e";
       return <div key={s.id} style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
         <span style={{ width: 90, fontSize: 12, color: CAT[s.cat].c, fontFamily: "'DM Mono',monospace", textAlign: "right", flexShrink: 0 }}>{s.n.split("(")[0].trim().substring(0, 11)}</span>
-        <div style={{ flex: 1, height: 8, borderRadius: 4, background: "rgba(255,255,255,0.04)", overflow: "hidden" }}>
+        <div style={{ flex: 1, height: 16, borderRadius: 5, background: "rgba(255,255,255,0.04)", overflow: "hidden" }}>
           <div style={{ width: `${w}%`, height: "100%", borderRadius: 4, background: `linear-gradient(90deg,${col}44,${col})` }} />
         </div>
         <span style={{ fontSize: 10.5, color: "#a09d97", fontFamily: "'DM Mono',monospace", minWidth: 28, textAlign: "right" }}>{v}</span>

@@ -21,7 +21,7 @@ export default function SubstanceIndex({ filtered, expanded, setExpanded }) {
             </div>
             <p style={{ margin: "0 0 10px", fontSize: 13.5, color: "#8a8780", lineHeight: 1.55 }}>{s.desc}</p>
             <div style={{ display: "flex", gap: 5, flexWrap: "wrap", marginBottom: 10 }}>
-              {s.routes.map(r => <span key={r.nm} style={{ fontSize: 11, padding: "4px 10px", borderRadius: 6, background: "rgba(255,255,255,0.04)", color: "#8a8780", fontFamily: "'DM Mono',monospace" }}>{r.nm} · <span style={{ color: "#5a8a70" }}>🚀{r.onset}</span> · <span style={{ color: "#6878a0" }}>⏳{r.dur}</span></span>)}
+              {s.routes.map(r => <span key={r.nm} style={{ fontSize: 11, padding: "4px 10px", borderRadius: 6, background: "rgba(255,255,255,0.04)", color: "#8a8780", fontFamily: "'DM Mono',monospace" }}>{r.nm} · <span style={{ color: "#5a8a70" }}>🚀 {r.onset}</span> · <span style={{ color: "#6878a0" }}>⏳ {r.dur}</span></span>)}
             </div>
             <div style={{ display: "flex", gap: 4, flexWrap: "wrap", marginBottom: 10 }}>
               {s.feels.slice(0, 5).map(f => <span key={f} style={{ fontSize: 11, padding: "3px 8px", borderRadius: 5, background: "rgba(34,197,94,0.08)", color: "#5ab87a" }}>{f}</span>)}

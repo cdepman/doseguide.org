@@ -24,12 +24,14 @@ async function generate() {
   // Load and draw logo
   const logo = await loadImage(resolve(__dirname, '../public/logo.png'));
   const logoSize = 140;
-  const logoX = 80, logoY = 170;
+  const blockH = 250;
+  const topY = (H - blockH) / 2;
+  const logoX = 80, logoY = topY;
   ctx.drawImage(logo, logoX, logoY, logoSize, logoSize);
 
   // Title — "DoseGuide" + ".org"
   const titleX = logoX + logoSize + 30;
-  const titleY = 260;
+  const titleY = topY + 90;
   ctx.fillStyle = '#e8e6e3';
   ctx.font = 'bold 72px Georgia, serif';
   const titleW = ctx.measureText('DoseGuide').width;

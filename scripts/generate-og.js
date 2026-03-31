@@ -11,27 +11,24 @@ async function generate() {
   const ctx = canvas.getContext('2d');
 
   // Background
-  ctx.fillStyle = '#111113';
+  ctx.fillStyle = '#151517';
   ctx.fillRect(0, 0, W, H);
 
-  // Subtle gradient
-  const grad = ctx.createLinearGradient(0, 0, W, H);
-  grad.addColorStop(0, 'rgba(34,197,94,0.05)');
-  grad.addColorStop(1, 'rgba(168,85,247,0.03)');
-  ctx.fillStyle = grad;
-  ctx.fillRect(0, 0, W, H);
+  // No gradient — match logo background exactly
 
   // Load and draw logo
   const logo = await loadImage(resolve(__dirname, '../public/logo.png'));
   const logoSize = 140;
   const blockH = 250;
   const topY = (H - blockH) / 2;
-  const logoX = 80, logoY = topY;
-  ctx.drawImage(logo, logoX, logoY, logoSize, logoSize);
 
   // Title — "DoseGuide" + ".org"
-  const titleX = logoX + logoSize + 30;
+  const titleX = 80 + logoSize + 30;
   const titleY = topY + 90;
+
+  // Align logo top with text top (72px Georgia ascent ~55px above baseline)
+  const logoX = 80, logoY = titleY - 65;
+  ctx.drawImage(logo, logoX, logoY, logoSize, logoSize);
   ctx.fillStyle = '#e8e6e3';
   ctx.font = 'bold 72px Georgia, serif';
   const titleW = ctx.measureText('DoseGuide').width;

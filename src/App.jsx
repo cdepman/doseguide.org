@@ -20,10 +20,17 @@ const SORTS = [
   { id: "shortest", label: "Shortest lasting ↓", fn: (a, b) => parseDur(a) - parseDur(b) },
 ];
 
+const CombosIcon = () => <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5">
+  <circle cx="10" cy="5" r="3.5" /><rect x="2" y="12" width="6" height="6" rx="1" /><polygon points="16,11 20,19 12,19" />
+</svg>;
+const RankingsIcon = () => <svg width="20" height="14" viewBox="0 0 20 14" fill="currentColor">
+  <rect x="0" y="0" width="6" height="3" rx="1.5" opacity="0.4" /><rect x="0" y="5.5" width="12" height="3" rx="1.5" opacity="0.6" /><rect x="0" y="11" width="19" height="3" rx="1.5" />
+</svg>;
+
 const TABS = [
-  { id: "index", label: "Substances", icon: "◎" },
-  { id: "combos", label: "Combos", icon: "⬡" },
-  { id: "rankings", label: "Rankings", icon: "▥" },
+  { id: "index", label: "Home", icon: "◎" },
+  { id: "combos", label: "Combos", iconSvg: CombosIcon },
+  { id: "rankings", label: "Rankings", iconSvg: RankingsIcon },
   { id: "matrix", label: "Matrix", icon: "⊞" },
   { id: "sources", label: "Sources", icon: "◈" },
 ];
@@ -72,7 +79,7 @@ export default function App() {
           <div><h1 style={{ margin: 0, fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 20, color: "#e8e6e3", fontWeight: 400 }}>DoseGuide<span style={{ color: "#555", fontSize: 14 }}>.org</span></h1></div>
         </div>
         <nav className="desktop-nav" style={{ display: "flex", gap: 2 }}>
-          {TABS.map(t => <button key={t.id} onClick={() => switchView(t.id)} style={{ padding: "8px 14px", borderRadius: 7, border: "none", cursor: "pointer", background: view === t.id ? "rgba(255,255,255,0.1)" : "transparent", color: view === t.id ? "#e8e6e3" : "#6b6860", fontFamily: "'DM Mono',monospace", fontSize: 12, minHeight: 36 }}>{t.label}</button>)}
+          {TABS.map(t => <button key={t.id} onClick={() => switchView(t.id)} style={{ padding: "8px 14px", borderRadius: 7, border: "none", cursor: "pointer", background: view === t.id ? "rgba(255,255,255,0.1)" : "transparent", color: view === t.id ? "#e8e6e3" : "#6b6860", fontFamily: "'DM Mono',monospace", fontSize: 13, minHeight: 36 }}>{t.label}</button>)}
         </nav>
       </div>
     </header>
@@ -160,10 +167,10 @@ export default function App() {
     </main>
 
     {/* ── BOTTOM TAB BAR (mobile) ── */}
-    <nav className="mobile-tab-bar" style={{ display: "none", position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 50, background: "rgba(17,17,19,0.92)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)", borderTop: "1px solid rgba(255,255,255,0.06)", paddingBottom: "env(safe-area-inset-bottom, 0)", justifyContent: "space-around" }}>
-      {TABS.map(t => <button key={t.id} onClick={() => switchView(t.id)} style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 2, padding: "8px 4px 6px", border: "none", background: "transparent", cursor: "pointer", color: view === t.id ? "#e8e6e3" : "#555", minHeight: 50, justifyContent: "center", WebkitTapHighlightColor: "transparent" }}>
-        <span style={{ fontSize: 18, lineHeight: 1, transition: "transform 0.15s", transform: view === t.id ? "scale(1.15)" : "scale(1)" }}>{t.icon}</span>
-        <span style={{ fontSize: 11, fontFamily: "'DM Mono',monospace", transition: "color 0.15s" }}>{t.label}</span>
+    <nav className="mobile-tab-bar" style={{ display: "none", position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 50, background: "rgba(17,17,19,0.95)", backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)", borderTop: "1px solid rgba(255,255,255,0.08)", paddingBottom: "env(safe-area-inset-bottom, 0)", justifyContent: "space-around" }}>
+      {TABS.map(t => <button key={t.id} onClick={() => switchView(t.id)} style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 4, padding: "12px 4px 10px", border: "none", background: "transparent", cursor: "pointer", color: view === t.id ? "#e8e6e3" : "#555", minHeight: 64, justifyContent: "center", WebkitTapHighlightColor: "transparent" }}>
+        <span style={{ fontSize: 22, lineHeight: 1, transition: "transform 0.15s", transform: view === t.id ? "scale(1.15)" : "scale(1)", display: "flex", alignItems: "center", justifyContent: "center", height: 24 }}>{t.iconSvg ? <t.iconSvg /> : t.icon}</span>
+        <span style={{ fontSize: 12, fontFamily: "'DM Mono',monospace", transition: "color 0.15s" }}>{t.label}</span>
       </button>)}
     </nav>
 

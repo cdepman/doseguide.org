@@ -8,14 +8,14 @@ import Sources from "./views/Sources";
 
 const SORTS = [
   { id: "default", label: "Default", fn: null },
-  { id: "safest", label: "Safest ↓", fn: (a, b) => a.atDose - b.atDose },
-  { id: "dangerous", label: "Most dangerous ↓", fn: (a, b) => b.atDose - a.atDose },
-  { id: "odEasy", label: "Most dangerous ↓", fn: (a, b) => (b.dangerRank || 0) - (a.dangerRank || 0) },
-  { id: "odHard", label: "Least dangerous ↓", fn: (a, b) => (a.dangerRank || 0) - (b.dangerRank || 0) },
-  { id: "dirtySupply", label: "Most contaminated ↓", fn: (a, b) => b.supplyRisk - a.supplyRisk },
-  { id: "cleanSupply", label: "Cleanest supply ↓", fn: (a, b) => a.supplyRisk - b.supplyRisk },
-  { id: "mostAddict", label: "Most addictive ↓", fn: (a, b) => b.addict - a.addict },
-  { id: "leastAddict", label: "Least addictive ↓", fn: (a, b) => a.addict - b.addict },
+  { id: "physSafe", label: "Physically safest ↓", fn: (a, b) => b.dangerRank - a.dangerRank },
+  { id: "physDanger", label: "Most physically dangerous ↓", fn: (a, b) => a.dangerRank - b.dangerRank },
+  { id: "psychSafe", label: "Psychologically safest ↓", fn: (a, b) => a.overwhelm - b.overwhelm },
+  { id: "psychRisk", label: "Most psychologically risky ↓", fn: (a, b) => b.overwhelm - a.overwhelm },
+  { id: "dirtySupply", label: "Most contaminated ↓", fn: (a, b) => a.pctAsExpected - b.pctAsExpected },
+  { id: "cleanSupply", label: "Cleanest supply ↓", fn: (a, b) => b.pctAsExpected - a.pctAsExpected },
+  { id: "mostAddict", label: "Most addictive ↓", fn: (a, b) => b.addictPct - a.addictPct },
+  { id: "leastAddict", label: "Least addictive ↓", fn: (a, b) => a.addictPct - b.addictPct },
   { id: "longest", label: "Longest lasting ↓", fn: (a, b) => parseDur(b) - parseDur(a) },
   { id: "shortest", label: "Shortest lasting ↓", fn: (a, b) => parseDur(a) - parseDur(b) },
 ];

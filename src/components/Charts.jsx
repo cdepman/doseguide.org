@@ -24,8 +24,8 @@ function RangeChart() {
   const toP = v => Math.min((Math.log10(Math.max(v, 1)) / Math.log10(max)) * 100, 100);
 
   // Sort by dangerRank ascending (lower = more dangerous = top)
-  const ranged = S.filter(s => s.marginBest != null).sort((a, b) => a.dangerRank - b.dangerRank);
-  const safe = S.filter(s => s.marginBest == null && s.marginWorst == null);
+  const ranged = S.filter(s => s.dangerRank < 99).sort((a, b) => a.dangerRank - b.dangerRank);
+  const safe = S.filter(s => s.dangerRank >= 99);
 
   return <div style={{ background: "rgba(255,255,255,0.02)", borderRadius: 12, border: "1px solid rgba(255,255,255,0.06)", padding: 20, marginBottom: 18 }}>
     <h3 style={{ margin: "0 0 2px", fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 18, color: "#e8e6e3", fontWeight: 400 }}>Room For Error <span style={{ fontSize: 12, color: "#6b6860", fontFamily: "'DM Mono',monospace" }}>(how many normal doses before danger)</span></h3>

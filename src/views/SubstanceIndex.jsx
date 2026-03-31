@@ -1,4 +1,4 @@
-import { CAT, SRC_ICONS, ADDICT_COLORS } from "../data/substances";
+import { CAT, SRC_ICONS } from "../data/substances";
 import SafetyDots from "../components/SafetyDots";
 import Detail from "../components/Detail";
 
@@ -6,7 +6,8 @@ export default function SubstanceIndex({ filtered, expanded, setExpanded }) {
   return <div>
     <h2 style={{ fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 22, color: "#e8e6e3", fontWeight: 400, margin: "0 0 12px" }}>Substance Directory</h2>
     <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-      {filtered.map(s => { const c = CAT[s.cat]; const ac = ADDICT_COLORS[s.addict - 1]; const isExp = expanded === s.id;
+      {filtered.map(s => { const c = CAT[s.cat]; const isExp = expanded === s.id;
+        const addCol = s.addictPct >= 15 ? "#ef4444" : s.addictPct >= 10 ? "#f97316" : s.addictPct >= 5 ? "#f59e0b" : s.addictPct >= 2 ? "#60a5fa" : "#22c55e";
         return <div key={s.id} style={{ background: "rgba(255,255,255,0.025)", borderRadius: 12, border: `1px solid ${isExp ? c.c + "40" : "rgba(255,255,255,0.06)"}`, overflow: "hidden", transition: "border-color 0.3s" }}>
           <div onClick={() => setExpanded(isExp ? null : s.id)} style={{ padding: "14px 16px", cursor: "pointer", minHeight: 44 }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
@@ -31,10 +32,13 @@ export default function SubstanceIndex({ filtered, expanded, setExpanded }) {
             <div style={{ marginBottom: 8 }}>
               <SafetyDots s={s} compact={false} />
             </div>
-            {/* Addiction — own row */}
-            <div style={{ display: "flex", alignItems: "center", gap: 4 }} title={s.addictLabel}>
-              {[1, 2, 3, 4, 5].map(i => <div key={i} style={{ width: 6, height: 16, borderRadius: 2, background: i <= s.addict ? ac : "rgba(255,255,255,0.06)" }} />)}
-              <span style={{ fontSize: 10, color: "#6b6860", fontFamily: "'DM Mono',monospace", marginLeft: 3 }}>addiction · {s.addictLabel.toLowerCase()}</span>
+            {/* Addiction — own row with percentage bar */}
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }} title={s.addictNote}>
+              <div style={{ width: 60, height: 6, borderRadius: 3, background: "rgba(255,255,255,0.06)", overflow: "hidden", flexShrink: 0 }}>
+                <div style={{ width: `${Math.min((s.addictPct / 20) * 100, 100)}%`, height: "100%", borderRadius: 3, background: addCol }} />
+              </div>
+              <span style={{ fontSize: 10, color: addCol, fontFamily: "'DM Mono',monospace" }}>{s.addictPct}%</span>
+              <span style={{ fontSize: 10, color: "#6b6860", fontFamily: "'DM Mono',monospace" }}>addiction risk · {s.addictLabel.toLowerCase()}</span>
             </div>
           </div>
           <div style={{ display: "grid", gridTemplateRows: isExp ? "1fr" : "0fr", transition: "grid-template-rows 0.35s ease" }}>

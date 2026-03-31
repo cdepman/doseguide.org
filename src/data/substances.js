@@ -213,7 +213,7 @@ export const S = [
 
   {id:"nitrous",n:"Nitrous Oxide",cat:"dissociative",aka:["Laughing Gas","N2O","Whippets","Nangs"],src:"synthetic",
     desc:"Safe drug, dangerous delivery. Deaths from suffocation, not the substance itself.",
-    atDose:1,atDoseLabel:"Very safe",dangerRank:99,marginBest:null,marginWorst:null,marginLabel:"Danger is the delivery method, not the amount",marginExplain:"Each individual balloon is self-limiting. The gas has an enormous safety margin per use. Deaths are from: suffocation (using bags or masks instead of balloons — NEVER do this), falls while standing, and chronic B12 depletion from daily heavy use over weeks or months causing nerve damage.",
+    atDose:1,atDoseLabel:"Very safe",dangerRank:17,marginBest:null,marginWorst:null,marginLabel:"Danger is the delivery method, not the amount",marginExplain:"Each individual balloon is self-limiting. The gas has an enormous safety margin per use. Deaths are from: suffocation (using bags or masks instead of balloons — NEVER do this), falls while standing, and chronic B12 depletion from daily heavy use over weeks or months causing nerve damage.",
     supplyRisk:1,pctAsExpected:99,supplyLabel:"~99% — industrial product",supplyExplain:"Food-grade N2O chargers are standardized. Risk is method and chronic use, not purity.",
     addict:2,addictLabel:"Low-moderate (binge pattern)",addictPct:2,addictLife:3,addictSource:"Estimated from clinical case reports",addictNote:"Binge patterns develop in a small minority. The brief duration can drive compulsive re-dosing within a session, but between-session craving is uncommon.",
     overwhelm:2,overwhelmLabel:"Brief dissociation — disorienting but very short",
@@ -226,7 +226,7 @@ export const S = [
 
   {id:"poppers",n:"Poppers (Alkyl Nitrites)",cat:"inhalant",aka:["Amyl Nitrite","Rush","Jungle Juice","Room Odorizer"],src:"synthetic",
     desc:"Vasodilator inhalant. Brief rush and muscle relaxation. LETHAL combined with Viagra/Cialis or any PDE5 inhibitor — fatal blood pressure drop.",
-    atDose:2,atDoseLabel:"Safe at normal use",dangerRank:99,marginBest:null,marginWorst:null,marginLabel:"Danger is swallowing or drug interactions, not inhaling",marginExplain:"Inhaling poppers has a wide margin — the effects are brief and self-limiting. The dangers: swallowing the liquid (call poison control immediately), combining with Viagra/Cialis/Levitra (fatal blood pressure crash), and use with pre-existing heart conditions.",
+    atDose:2,atDoseLabel:"Safe at normal use",dangerRank:18,marginBest:null,marginWorst:null,marginLabel:"Danger is swallowing or drug interactions, not inhaling",marginExplain:"Inhaling poppers has a wide margin — the effects are brief and self-limiting. The dangers: swallowing the liquid (call poison control immediately), combining with Viagra/Cialis/Levitra (fatal blood pressure crash), and use with pre-existing heart conditions.",
     supplyRisk:2,pctAsExpected:90,supplyLabel:"~90% — but some isomers are worse",supplyExplain:"Amyl and butyl nitrite preferred. Isopropyl nitrite is harsher and linked to eye damage. Labels may not be accurate.",
     addict:1,addictLabel:"Not addictive",addictPct:0.5,addictLife:1,addictSource:"Clinical consensus",addictNote:"Essentially no addiction potential. Some habitual use in sexual contexts but not clinically meaningful dependence.",
     overwhelm:1,overwhelmLabel:"Brief head rush — too short to overwhelm",
@@ -330,7 +330,7 @@ export const S = [
 
   {id:"caffeine",n:"Caffeine",cat:"stimulant",aka:["Coffee","Tea","Energy drinks","Pre-workout"],src:"natural",
     desc:"Safe from beverages. Pure caffeine powder is surprisingly deadly — a tablespoon can kill.",
-    atDose:1,atDoseLabel:"Very safe (beverages)",dangerRank:17,marginBest:50,marginWorst:5,marginLabel:"Huge from drinks, surprisingly narrow from pure powder",marginExplain:"From coffee or energy drinks: you'd need 75-100 cups to reach a lethal dose. From caffeine pills (200mg): about 50 pills, still a very wide margin. But from pure caffeine powder: a tablespoon (~10,000mg) is lethal. Several teenagers have died from measuring errors with bulk caffeine powder.",
+    atDose:1,atDoseLabel:"Very safe (beverages)",dangerRank:20,marginBest:50,marginWorst:5,marginLabel:"Huge from drinks, surprisingly narrow from pure powder",marginExplain:"From coffee or energy drinks: you'd need 75-100 cups to reach a lethal dose. From caffeine pills (200mg): about 50 pills, still a very wide margin. But from pure caffeine powder: a tablespoon (~10,000mg) is lethal. Several teenagers have died from measuring errors with bulk caffeine powder.",
     supplyRisk:1,pctAsExpected:99,supplyLabel:"~99% — commercial products standardized",supplyExplain:"Commercial caffeine products are standardized and regulated.",
     addict:2,addictLabel:"Mildly addictive",addictPct:8,addictLife:12,addictSource:"Estimated from DSM-5 caffeine use disorder criteria",addictNote:"Withdrawal (headaches, fatigue) is extremely common but mild and brief. Most people consider it a minor inconvenience rather than an addiction.",
     overwhelm:0,overwhelmLabel:"No psychological risk",
@@ -343,7 +343,7 @@ export const S = [
 
   {id:"ssri",n:"SSRIs",cat:"depressant",aka:["Prozac","Zoloft","Lexapro","Sertraline"],src:"synthetic",
     desc:"Not recreational. Here because SSRIs dramatically change how other drugs work. Critical interaction profile.",
-    atDose:1,atDoseLabel:"Safe as prescribed",dangerRank:99,marginBest:null,marginWorst:null,marginLabel:"Not recreational — here for interaction awareness",marginExplain:"SSRIs themselves are not the danger. The danger is what they do to other drugs: they block MDMA from working (tempting people to dangerously re-dose), they reduce psychedelic effects, and they can cause fatal serotonin syndrome with tramadol, DXM, or MAOIs.",
+    atDose:1,atDoseLabel:"Safe as prescribed",dangerRank:21,marginBest:null,marginWorst:null,marginLabel:"Not recreational — here for interaction awareness",marginExplain:"SSRIs themselves are not the danger. The danger is what they do to other drugs: they block MDMA from working (tempting people to dangerously re-dose), they reduce psychedelic effects, and they can cause fatal serotonin syndrome with tramadol, DXM, or MAOIs.",
     supplyRisk:1,pctAsExpected:100,supplyLabel:"100% — pharmaceutical",supplyExplain:"No supply risk from pharmacy-dispensed medication.",
     addict:1,addictLabel:"Not addictive (but discontinuation syndrome)",addictPct:0,addictLife:0,addictSource:"Clinical consensus",addictNote:"Not addictive. Discontinuation syndrome is physical dependence, not addiction — no craving, no reward-seeking. Taper slowly under medical guidance.",
     overwhelm:2,overwhelmLabel:"Can cause emotional blunting or agitation initially",
@@ -356,7 +356,7 @@ export const S = [
 
   {id:"maoi",n:"MAOIs",cat:"depressant",aka:["Nardil","Parnate","Harmaline","Syrian Rue"],src:"both",
     desc:"Most interaction-dangerous drug class. MAOIs make dozens of substances AND certain foods lethal.",
-    atDose:2,atDoseLabel:"Safe as Rx (with dietary restrictions)",dangerRank:99,marginBest:null,marginWorst:null,marginLabel:"Not about dose — MAOIs make other things lethal",marginExplain:"The MAOI itself isn't what kills you. It's the interaction: MAOIs prevent your body from breaking down tyramine, serotonin, and various other substances. A normal dose of MDMA, a block of aged cheese, or a dose of cold medicine can become lethal.",
+    atDose:2,atDoseLabel:"Safe as Rx (with dietary restrictions)",dangerRank:19,marginBest:null,marginWorst:null,marginLabel:"Not about dose — MAOIs make other things lethal",marginExplain:"The MAOI itself isn't what kills you. It's the interaction: MAOIs prevent your body from breaking down tyramine, serotonin, and various other substances. A normal dose of MDMA, a block of aged cheese, or a dose of cold medicine can become lethal.",
     supplyRisk:1,pctAsExpected:100,supplyLabel:"100% — pharmaceutical or identifiable plant",supplyExplain:"Pharmaceutical MAOIs or Syrian Rue (identifiable plant) — no supply concerns.",
     addict:1,addictLabel:"Not addictive",addictPct:0,addictLife:0,addictSource:"Clinical consensus",addictNote:"No addiction potential whatsoever.",
     overwhelm:3,overwhelmLabel:"Not overwhelming alone — but potentiates everything dramatically",

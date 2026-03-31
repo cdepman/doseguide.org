@@ -80,7 +80,7 @@ export default function App() {
     {/* ── DISCLAIMER ── */}
     <div style={{ flexShrink: 0, maxWidth: 1200, margin: "0 auto", width: "100%", padding: "6px 16px" }}>
       <div style={{ background: "rgba(245,158,11,0.06)", border: "1px solid rgba(245,158,11,0.15)", borderRadius: 7, padding: "7px 12px", fontSize: 12, color: "#a09070", lineHeight: 1.5 }}>
-        <strong style={{ color: "#c4a050" }}>Harm reduction — not medical advice.</strong> <span className="desktop-only">Data: <a href="https://tripsit.me" style={{ color: "#c4a050" }} target="_blank" rel="noopener">TripSit</a>, Nutt et al., NHTSA, DrugsData, DanceSafe. </span><strong>Always test your substances.</strong>
+        <strong style={{ color: "#c4a050" }}>Harm reduction — not medical advice.</strong> <span className="desktop-only">Data: TripSit, Nutt et al., NHTSA, DrugsData, DanceSafe. </span><strong>Always test your substances.</strong>
       </div>
     </div>
 
@@ -154,7 +154,8 @@ export default function App() {
 
       <footer style={{ borderTop: "1px solid rgba(255,255,255,0.04)", padding: "16px", textAlign: "center" }}>
         <p style={{ fontSize: 12, color: "#666", maxWidth: 660, margin: "0 auto 5px", lineHeight: 1.5 }}>Overdose: <strong style={{ color: "#aaa" }}>Call 911 + Narcan</strong> · Struggling: <strong style={{ color: "#aaa" }}>SAMHSA 1-800-662-4357</strong></p>
-        <p style={{ fontSize: 10, color: "#3a3a3a", fontFamily: "'DM Mono',monospace" }}>Data: TripSit · Nutt et al. 2010 · NHTSA · DrugsData · DanceSafe · PsychonautWiki</p>
+        <p style={{ fontSize: 10, color: "#3a3a3a", fontFamily: "'DM Mono',monospace", marginBottom: 4 }}>Data: TripSit · Nutt et al. 2010 · NHTSA · DrugsData · DanceSafe · PsychonautWiki</p>
+        <p style={{ fontSize: 10, color: "#3a3a3a", fontFamily: "'DM Mono',monospace" }}>Open source — <a href="https://github.com/cdepman/doseguide.org" target="_blank" rel="noopener noreferrer" style={{ color: "#555", textDecoration: "none", borderBottom: "1px solid #333" }}>contribute on GitHub</a></p>
       </footer>
     </main>
 

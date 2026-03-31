@@ -18,16 +18,18 @@ async function generate() {
 
   // Load and draw logo
   const logo = await loadImage(resolve(__dirname, '../public/logo.png'));
-  const logoSize = 140;
+  const logoSize = 200;
+  const logoPadding = 10; // logo has ~10px internal padding before content starts
   const blockH = 250;
   const topY = (H - blockH) / 2;
 
   // Title — "DoseGuide" + ".org"
-  const titleX = 80 + logoSize + 30;
+  const titleX = 80 + logoSize + 20;
   const titleY = topY + 90;
 
-  // Align logo top with text top (72px Georgia ascent ~55px above baseline)
-  const logoX = 80, logoY = titleY - 65;
+  // Logo top aligned with text top, offset by internal padding so the icons align
+  // Text ascent for 72px Georgia bold is ~55px above baseline
+  const logoX = 80, logoY = titleY - 55 - logoPadding;
   ctx.drawImage(logo, logoX, logoY, logoSize, logoSize);
   ctx.fillStyle = '#e8e6e3';
   ctx.font = 'bold 72px Georgia, serif';

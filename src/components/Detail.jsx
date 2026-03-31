@@ -2,9 +2,11 @@ import { CAT } from "../data/substances";
 
 function LethalViz({ s }) {
   if (!s.lethal.cmp) return null;
-  const bad = s.margin && s.margin <= 10; const med = s.margin && s.margin <= 20;
+  const w = s.marginWorst;
+  const safe = w == null; // null = no physical danger
+  const bad = !safe && w <= 2;
+  const med = !safe && w <= 3;
   const col = bad ? "#ef4444" : med ? "#f97316" : "#f59e0b";
-  const safe = s.margin && s.margin >= 100;
   const sz = typeof s.lethal.sz === "number" ? { w: s.lethal.sz, h: s.lethal.sz } : { w: s.lethal.sz[0], h: s.lethal.sz[1] };
   return <div style={{ background: bad ? "rgba(239,68,68,0.07)" : safe ? "rgba(34,197,94,0.05)" : "rgba(0,0,0,0.2)", borderRadius: 10, padding: 14, border: `1px solid ${bad ? "rgba(239,68,68,0.25)" : safe ? "rgba(34,197,94,0.15)" : "rgba(255,255,255,0.06)"}`, marginBottom: 12 }}>
     <p style={{ margin: "0 0 10px", fontSize: 16, fontFamily: "'Instrument Serif',Georgia,serif", color: bad ? "#ef4444" : safe ? "#4ade80" : "#e8e6e3", fontWeight: 400, lineHeight: 1.4 }}>{s.lethal.headline}</p>

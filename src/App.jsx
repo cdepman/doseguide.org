@@ -10,8 +10,8 @@ const SORTS = [
   { id: "default", label: "Default", fn: null },
   { id: "safest", label: "Safest ↓", fn: (a, b) => a.atDose - b.atDose },
   { id: "dangerous", label: "Most dangerous ↓", fn: (a, b) => b.atDose - a.atDose },
-  { id: "odEasy", label: "Easiest to OD ↓", fn: (a, b) => (a.margin || 9999) - (b.margin || 9999) },
-  { id: "odHard", label: "Hardest to OD ↓", fn: (a, b) => (b.margin || 9999) - (a.margin || 9999) },
+  { id: "odEasy", label: "Easiest to OD ↓", fn: (a, b) => (a.marginWorst || 9999) - (b.marginWorst || 9999) },
+  { id: "odHard", label: "Hardest to OD ↓", fn: (a, b) => (b.marginWorst || 9999) - (a.marginWorst || 9999) },
   { id: "dirtySupply", label: "Most contaminated ↓", fn: (a, b) => b.supplyRisk - a.supplyRisk },
   { id: "cleanSupply", label: "Cleanest supply ↓", fn: (a, b) => a.supplyRisk - b.supplyRisk },
   { id: "mostAddict", label: "Most addictive ↓", fn: (a, b) => b.addict - a.addict },
@@ -58,7 +58,7 @@ export default function App() {
     <header style={{ borderBottom: "1px solid rgba(255,255,255,0.06)", padding: "10px 18px" }}><div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8 }}>
       <div style={{ display: "flex", alignItems: "center", gap: 8, cursor: "pointer" }} onClick={() => setView("index")}>
         <svg width="24" height="24" viewBox="0 0 28 28"><circle cx="14" cy="14" r="12" fill="none" stroke="#22c55e" strokeWidth="2" opacity="0.8" /><path d="M14 6v16M8 10l6-4 6 4M8 18l6 4 6-4" fill="none" stroke="#22c55e" strokeWidth="1.5" strokeLinejoin="round" opacity="0.6" /></svg>
-        <div><h1 style={{ margin: 0, fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 20, color: "#e8e6e3", fontWeight: 400 }}>SafeDose</h1><p style={{ margin: 0, fontSize: 10, color: "#555", fontFamily: "'DM Mono',monospace" }}>Evidence-based harm reduction</p></div>
+        <div><h1 style={{ margin: 0, fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 20, color: "#e8e6e3", fontWeight: 400 }}>DoseGuide<span style={{ color: "#555", fontSize: 14 }}>.org</span></h1><p style={{ margin: 0, fontSize: 10, color: "#555", fontFamily: "'DM Mono',monospace" }}>Evidence-based harm reduction</p></div>
       </div>
       <nav style={{ display: "flex", gap: 2 }}>{nb("index", "Substances")}{nb("combos", "Combinations")}{nb("rankings", "Rankings")}{nb("matrix", "Matrix")}{nb("sources", "Sources")}</nav>
     </div></header>

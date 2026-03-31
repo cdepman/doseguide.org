@@ -23,7 +23,7 @@ const DEFAULT_TYPE_COLOR = { bg: "rgba(34,197,94,0.12)", c: "#22c55e" };
 export default function Sources() {
   return <div style={{ maxWidth: 760 }}>
     <h2 style={{ fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 22, color: "#e8e6e3", fontWeight: 400, marginBottom: 4 }}>Data Sources</h2>
-    <p style={{ fontSize: 13, color: "#8a8780", lineHeight: 1.6, marginBottom: 20 }}>SafeDose synthesizes data from peer-reviewed research, government agencies, and community harm reduction organizations. Every piece of data in this tool can be traced to one or more of these sources.</p>
+    <p style={{ fontSize: 13, color: "#8a8780", lineHeight: 1.6, marginBottom: 20 }}>DoseGuide synthesizes data from peer-reviewed research, government agencies, and community harm reduction organizations. Every piece of data in this tool can be traced to one or more of these sources.</p>
     {SOURCES.map((src, i) => {
       const tc = TYPE_COLORS[src.type] || DEFAULT_TYPE_COLOR;
       return <div key={i} style={{ background: "rgba(255,255,255,0.02)", borderRadius: 10, border: "1px solid rgba(255,255,255,0.06)", padding: 16, marginBottom: 10 }}>

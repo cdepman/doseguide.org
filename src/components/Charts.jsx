@@ -113,23 +113,28 @@ function AddictionChart({ onInfo }) {
 
   return <div style={{ background: "rgba(255,255,255,0.02)", borderRadius: 12, border: "1px solid rgba(255,255,255,0.06)", padding: 20, marginBottom: 18 }}>
     <h3 style={{ margin: "0 0 2px", fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 18, color: "#e8e6e3", fontWeight: 400 }}>How Addictive? <span style={{ fontSize: 12, color: "#6b6860", fontFamily: "'DM Mono',monospace" }}>(dependence within 10 years)</span></h3>
-    <p style={{ margin: "0 0 10px", fontSize: 12, color: "#6b6860" }}>Based on Lopez-Quintero 2011 (NESARC) and clinical estimates.</p>
+    <p style={{ margin: "0 0 10px", fontSize: 12, color: "#6b6860" }}>Solid bars: measured (Lopez-Quintero 2011, Anthony 1994). Dashed bars: clinical estimates.</p>
     {items.map(s => {
       const w10 = Math.min((s.addictPct / max) * 100, 100);
       const wLife = Math.min((s.addictLife / max) * 100, 100);
       const col = addictColor(s.addictPct);
+      const est = s.addictEstimated;
       return <div key={s.id} style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
         <span style={{ width: 70, fontSize: 12, color: CAT[s.cat].c, fontFamily: "'DM Mono',monospace", textAlign: "right", flexShrink: 0 }}>{(s.sn || s.n)}</span>
         <div style={{ flex: 1, height: 20, borderRadius: 6, background: "rgba(255,255,255,0.03)", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", left: 0, width: `${wLife}%`, height: "100%", borderRadius: 5, background: `${col}25` }} />
-          <div style={{ position: "absolute", left: 0, width: `${w10}%`, height: "100%", borderRadius: 5, background: `linear-gradient(90deg, ${col}88, ${col})` }} />
+          {est
+            ? <div style={{ position: "absolute", left: 0, width: `${w10}%`, height: "100%", borderRadius: 5, background: `repeating-linear-gradient(90deg, ${col}88 0px, ${col} 4px, transparent 4px, transparent 7px)` }} />
+            : <div style={{ position: "absolute", left: 0, width: `${w10}%`, height: "100%", borderRadius: 5, background: `linear-gradient(90deg, ${col}88, ${col})` }} />
+          }
         </div>
-        <span style={{ fontSize: 12, color: "#a09d97", fontFamily: "'DM Mono',monospace", minWidth: 28, textAlign: "right" }}>{s.addictPct}%</span>
+        <span style={{ fontSize: 12, color: "#a09d97", fontFamily: "'DM Mono',monospace", minWidth: 28, textAlign: "right" }}>{s.addictPct}%{est ? "*" : ""}</span>
         <Dot onClick={() => onInfo(s, "addict")} />
       </div>;
     })}
     <div style={{ display: "flex", gap: 16, marginTop: 8, fontSize: 12, fontFamily: "'DM Mono',monospace", color: "#555" }}>
-      <span>█ within 10 years</span>
+      <span>█ measured</span>
+      <span>┆ estimated*</span>
       <span style={{ opacity: 0.5 }}>░ lifetime</span>
     </div>
   </div>;
@@ -182,20 +187,28 @@ function HarmChart({ onInfo }) {
 
   return <div style={{ background: "rgba(255,255,255,0.02)", borderRadius: 12, border: "1px solid rgba(255,255,255,0.06)", padding: 20, marginBottom: 18 }}>
     <h3 style={{ margin: "0 0 2px", fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 18, color: "#e8e6e3", fontWeight: 400 }}>Total Damage <span style={{ fontSize: 12, color: "#6b6860", fontFamily: "'DM Mono',monospace" }}>(to you + to society)</span></h3>
-    <p style={{ margin: "0 0 10px", fontSize: 12, color: "#6b6860" }}>Nutt et al. (Lancet 2010). Alcohol scores highest of any drug.</p>
+    <p style={{ margin: "0 0 10px", fontSize: 12, color: "#6b6860" }}>Solid bars: Nutt et al. (Lancet 2010) — 20 substances scored by expert panel. Dashed bars: estimated by DoseGuide based on clinical literature.</p>
     {items.map(s => {
       const v = s.harm;
       const w = Math.min((v / max) * 100, 100);
       const col = v > 50 ? "#ef4444" : v > 30 ? "#f97316" : v > 15 ? "#f59e0b" : "#22c55e";
+      const est = s.harmEstimated;
       return <div key={s.id} style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
         <span style={{ width: 70, fontSize: 12, color: CAT[s.cat].c, fontFamily: "'DM Mono',monospace", textAlign: "right", flexShrink: 0 }}>{(s.sn || s.n)}</span>
         <div style={{ flex: 1, height: 16, borderRadius: 5, background: "rgba(255,255,255,0.04)", overflow: "hidden" }}>
-          <div style={{ width: `${w}%`, height: "100%", borderRadius: 4, background: `linear-gradient(90deg,${col}44,${col})` }} />
+          {est
+            ? <div style={{ width: `${w}%`, height: "100%", borderRadius: 4, background: `repeating-linear-gradient(90deg, ${col}66 0px, ${col}66 4px, transparent 4px, transparent 7px)` }} />
+            : <div style={{ width: `${w}%`, height: "100%", borderRadius: 4, background: `linear-gradient(90deg,${col}44,${col})` }} />
+          }
         </div>
-        <span style={{ fontSize: 10.5, color: "#a09d97", fontFamily: "'DM Mono',monospace", minWidth: 28, textAlign: "right" }}>{v}</span>
+        <span style={{ fontSize: 10.5, color: "#a09d97", fontFamily: "'DM Mono',monospace", minWidth: 28, textAlign: "right" }}>{v}{est ? "*" : ""}</span>
         <Dot onClick={() => onInfo(s, "harm")} />
       </div>;
     })}
+    <div style={{ display: "flex", gap: 16, marginTop: 8, fontSize: 11, fontFamily: "'DM Mono',monospace", color: "#555" }}>
+      <span>█ Nutt 2010</span>
+      <span>┆ Estimated*</span>
+    </div>
   </div>;
 }
 

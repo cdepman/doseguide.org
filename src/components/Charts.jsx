@@ -140,8 +140,8 @@ function AddictionChart({ onInfo }) {
   const max = 25;
 
   return <div style={{ background: "rgba(255,255,255,0.02)", borderRadius: 12, border: "1px solid rgba(255,255,255,0.06)", padding: 20, marginBottom: 18 }}>
-    <h3 style={{ margin: "0 0 2px", fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 18, color: "#e8e6e3", fontWeight: 400 }}>How Addictive? <span style={{ fontSize: 12, color: "#6b6860", fontFamily: "'DM Mono',monospace" }}>(dependence within 10 years)</span></h3>
-    <p style={{ margin: "0 0 10px", fontSize: 12, color: "#6b6860" }}>Solid bars: measured (Lopez-Quintero 2011, Anthony 1994). Dashed bars: clinical estimates.</p>
+    <h3 style={{ margin: "0 0 2px", fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 18, color: "#e8e6e3", fontWeight: 400 }}>How Addictive? <span style={{ fontSize: 12, color: "#6b6860", fontFamily: "'DM Mono',monospace" }}>(estimated likelihood of dependence)</span></h3>
+    <p style={{ margin: "0 0 10px", fontSize: 12, color: "#6b6860" }}>Solid bars: measured (Lopez-Quintero 2011, Anthony 1994). Dashed bars: clinical estimates. Timeframes vary: tobacco/alcohol/cocaine from survival analysis (lifetime); hallucinogens from Stone 2007 (24 months).</p>
     {items.map(s => {
       const w10 = Math.min((s.addictPct / max) * 100, 100);
       const wLife = Math.min((s.addictLife / max) * 100, 100);

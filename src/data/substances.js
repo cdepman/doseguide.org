@@ -69,6 +69,16 @@ export const CITE = {
   schmid2015:      "Schmid et al. Interactions between bupropion and MDMA in healthy subjects. J Pharmacol Exp Ther 353(1):102-111, 2015.",
   cheitlin1999:    "Cheitlin et al. AHA/ACC expert consensus: use of sildenafil in patients with cardiovascular disease. Circulation 99:168-177, 1999.",
   fda2019_gaba:    "FDA Drug Safety Communication: Serious breathing problems with gabapentin and pregabalin when used with CNS depressants. December 2019.",
+  // ── MECHANISM SOURCES ──
+  busardo2015:    "Busardò & Jones. GHB pharmacology, clinical, forensic, and analytical toxicology. Curr Neuropharmacol 13(1):47-70, 2015.",
+  finck1995:      "Finck et al. Nitrous oxide selectively releases Met5-enkephalin into canine CSF. Anesth Analg 80(4):747-752, 1995.",
+  quock1993:      "Czech & Quock. N₂O anxiolytic effect mediated by benzodiazepine receptors. Psychopharmacology 113(2):211-216, 1993.",
+  suen2022:       "Suen et al. Opioid-methamphetamine neurochemistry and clinical implications. Front Pharmacol 13:859563, 2022.",
+  mendelson1995:  "Mendelson et al. Methamphetamine and ethanol interactions in humans. Clin Pharmacol Ther 57(5):559-568, 1995.",
+  rickli2018:     "Rickli et al. Opioid-induced inhibition of the human 5-HT and noradrenaline transporters in vitro. Br J Pharmacol 175(3):532-543, 2018.",
+  codd1995:       "Codd et al. Serotonin and norepinephrine uptake inhibiting activity of centrally acting analgesics. JPET 274(3):1263-1270, 1995.",
+  papaseit2018:   "Papaseit et al. Human pharmacology of 2C-B: lack of serotonergic toxicity. Sci Rep 8:5378, 2018.",
+  kruegel2016:    "Kruegel et al. Synthetic and receptor signaling explorations of the mitragyna alkaloids. J Am Chem Soc 138(21):6754-6764, 2016.",
 };
 
 // Confidence levels for estimated values

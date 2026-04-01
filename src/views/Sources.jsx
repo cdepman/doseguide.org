@@ -68,7 +68,7 @@ export default function Sources() {
 
   return <div style={{ maxWidth: 760 }}>
     <h2 style={{ fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 22, color: "#e8e6e3", fontWeight: 400, marginBottom: 4 }}>Data Sources</h2>
-    <p style={{ fontSize: 13, color: "#8a8780", lineHeight: 1.6, marginBottom: 14 }}>DoseGuide synthesizes data from peer-reviewed research, government agencies, and community harm reduction organizations. Every piece of data in this tool can be traced to one or more of these sources.</p>
+    <p style={{ fontSize: 13, color: "#8a8780", lineHeight: 1.6, marginBottom: 14 }}>DoseGuide cites primary sources wherever possible. Fields are annotated with confidence tiers: measured (direct from peer-reviewed data), derived (calculated from primary sources), estimated (informed approximation), or editorial (team judgment). See each substance's detail page for per-field sourcing.</p>
 
     {/* Jump tabs */}
     <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 18, position: "sticky", top: 0, zIndex: 5, background: "#111113", padding: "8px 0 10px", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>

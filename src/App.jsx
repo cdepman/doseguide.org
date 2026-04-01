@@ -7,6 +7,7 @@ import Charts from "./components/Charts";
 import Matrix from "./components/Matrix";
 import InteractionsMobile from "./components/InteractionsMobile";
 import Sources from "./views/Sources";
+import CrisisFooter from "./components/CrisisFooter";
 
 const SORTS = [
   { id: "default", label: "Default", fn: null },
@@ -119,7 +120,7 @@ export default function App() {
     </div>
 
     {/* ── SCROLLABLE MAIN ── */}
-    <main ref={scrollRef} className="scroll-main" style={{ flex: 1, overflow: "auto", paddingBottom: "calc(70px + env(safe-area-inset-bottom, 0px))" }}>
+    <main ref={scrollRef} className="scroll-main" style={{ flex: 1, overflow: "auto", paddingBottom: "calc(110px + env(safe-area-inset-bottom, 0px))" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "14px 16px" }}>
         <div key={pageKey} className="page-enter">
 
@@ -187,7 +188,7 @@ export default function App() {
       </div>
 
       <footer style={{ borderTop: "1px solid rgba(255,255,255,0.04)", padding: "16px", textAlign: "center" }}>
-        <p style={{ fontSize: 12, color: "#666", maxWidth: 660, margin: "0 auto 5px", lineHeight: 1.5 }}>Overdose: <strong style={{ color: "#aaa" }}>Call 911 + Narcan</strong> · Struggling: <strong style={{ color: "#aaa" }}>SAMHSA 1-800-662-4357</strong></p>
+        <p style={{ fontSize: 12, color: "#3a3a3a", fontFamily: "'DM Mono',monospace", marginBottom: 4 }}>Data: TripSit · Nutt et al. 2010 · Broman et al. 2025 · Gable 2004 · DrugsData · DanceSafe · PsychonautWiki</p>
         <p style={{ fontSize: 12, color: "#3a3a3a", fontFamily: "'DM Mono',monospace" }}>Open source — <a href="https://github.com/cdepman/doseguide.org" target="_blank" rel="noopener noreferrer" style={{ color: "#555", textDecoration: "none", borderBottom: "1px solid #333" }}>contribute on GitHub</a></p>
       </footer>
     </main>
@@ -210,6 +211,8 @@ export default function App() {
       </div>
     </>, document.body)}
 
+    <CrisisFooter />
+
     {/* ── BOTTOM TAB BAR (mobile) ── */}
     <nav className="mobile-tab-bar" style={{ display: "none", position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 50, background: "#1e1e22", borderTop: "1px solid rgba(255,255,255,0.12)", paddingBottom: "env(safe-area-inset-bottom, 0)", justifyContent: "space-around" }}>
       {TABS.map(t => <button key={t.id} onClick={() => switchView(t.id)} style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 4, padding: "12px 4px 10px", border: "none", background: "transparent", cursor: "pointer", color: view === t.id ? "#e8e6e3" : "#666", minHeight: 64, justifyContent: "center", WebkitTapHighlightColor: "transparent" }}>
@@ -227,6 +230,7 @@ export default function App() {
       }
       @media (min-width: 769px) {
         .mobile-tab-bar { display: none !important; }
+        .crisis-bar { bottom: 0px !important; }
       }
     `}</style>
   </div>;

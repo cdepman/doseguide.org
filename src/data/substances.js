@@ -47,6 +47,8 @@ export const CITE = {
   barrios2025:    "Barrios et al. Ketamine use in a large global sample. J Psychopharmacol 39(1), 2025. GDS 2018 n=130,761.",
   dijkstra2021:   "Dijkstra et al. GHB use disorder: a systematic review. Int J Drug Policy 94:103230, 2021.",
   lim2024:        "Lim et al. Fentanyl co-occurrence in stimulant samples. Lancet Regional Health Americas, 2024. 11.9M NFLIS samples.",
+  delatorre2004:  "de la Torre et al. MDMA pharmacokinetics: non-linear, mechanism-based inhibition of CYP2D6. Clin Pharmacokinet 43(3):157-169, 2004.",
+  nayak2021:      "Nayak et al. Classic psychedelic coadministration with lithium: retrospective analysis. J Psychopharmacol 35(4):398-401, 2021. 80 online reports: 47% seizures with lithium.",
   // ── INTERACTION/COMBINATION SOURCES ──
   liechti2000:    "Liechti et al. Acute psychological effects of MDMA after pretreatment with citalopram. Neuropsychopharmacology 22:513-521, 2000.",
   liechti2006:    "Liechti et al. GHB and MDMA co-use. Pharmacology 77(1):9-15, 2006.",
@@ -255,7 +257,7 @@ export const S = [
     desc:"The drug itself is moderately safe. Real dangers: overheating, water intoxication, and what's actually in the pill.",
     atDose:2,atDoseLabel:"Moderately safe",
     dangerRank:5,marginBest:4,marginWorst:1.5,marginLabel:"Moderate room in good conditions, almost none in bad conditions",
-    marginExplain:"Clinical trials (MAPS Phase 2/3) safely administer 120mg + 60mg booster (180mg total) to screened healthy adults. Most recreational use at 100-150mg is well-tolerated. But in a hot, crowded environment without water breaks, danger starts around 200mg. Risk multipliers: heat, dehydration, re-dosing, and pre-existing heart conditions.",
+    marginExplain:"Clinical trials (MAPS Phase 2/3) safely administer 120mg + 60mg booster (180mg total) to screened healthy adults. Most recreational use at 100-150mg is well-tolerated. But in a hot, crowded environment without water breaks, danger starts around 200mg. IMPORTANT: MDMA inactivates the liver enzyme (CYP2D6) that metabolizes it — so a second dose doesn't just add to the first, it hits harder because your body can't clear it as fast (de la Torre et al. 2004). This is why redosing is more dangerous than the initial dose. Risk multipliers: heat, dehydration, re-dosing, and pre-existing heart conditions.",
     supplyRisk:4,pctAsExpected:74,supplyLabel:"~74% contains only MDMA",
     supplyExplain:"26% contains something else: meth, cathinones, caffeine, or nothing. Pressed pills are higher risk than crystal. Reagent testing and fentanyl strips can identify what's actually in the sample.",
     addict:2,addictLabel:"Low addiction potential",addictPct:3,addictLife:5,
@@ -835,6 +837,25 @@ export const S = [
       harm:          {ref:null, conf:"editorial", note:"Not scored in Nutt 2010 (not a recreational drug). Harm set to null — included for interaction awareness only."},
       addictPct:     {ref:null, conf:"editorial", note:"Clinical consensus."},
     }},
+];
+
+// ── MEDICATION INTERACTION WARNINGS ──────────────────────────────────────────
+// Medications that aren't recreational substances but have critical
+// interactions with substances in our database. Shown as warnings on
+// relevant substance detail pages.
+export const MED_WARNINGS = [
+  {
+    id: "lithium",
+    medication: "Lithium",
+    aka: ["Lithobid", "Eskalith", "lithium carbonate"],
+    affectedCats: ["psychedelic"],
+    affectedIds: [],
+    severity: "dangerous",
+    color: "#ef4444",
+    title: "LITHIUM + PSYCHEDELICS — SEIZURE RISK",
+    text: "If you take lithium (for bipolar disorder or mood stabilization): LSD, psilocybin mushrooms, mescaline, and other classical psychedelics carry a severe seizure risk. A retrospective analysis found 47% of lithium + psychedelic reports involved seizures, and 39% required emergency medical attention. This is one of the most dangerous drug interactions known. Lamotrigine does not carry this risk.",
+    source: "Nayak et al. 2021, J Psychopharmacol 35(4):398-401. Retrospective analysis of 80 online experience reports.",
+  },
 ];
 
 // ── HELPER ───────────────────────────────────────────────────────────────────

@@ -8,8 +8,9 @@
     <meta name="theme-color" content="#111113" />
     <link rel="icon" type="image/png" href="/logo.png" />
     <link rel="apple-touch-icon" href="/logo.png" />
-    <title>DoseGuide.org — Harm Reduction Guide</title>
-    <meta name="description" content="Evidence-based drug safety information. Dosage, interactions, and harm reduction data from peer-reviewed research." />
+    <title>DoseGuide.org — Evidence-Based Harm Reduction</title>
+    <meta name="description" content="Free, open-source harm reduction resource. 25+ substances with safety margins, lethal dose ratios, drug interactions, addiction rates, and supply purity data — all sourced from peer-reviewed research including The Lancet, NESARC, and Gable 2004. Built by Charlie Depman in honor of Dr. Mark Depman." />
+    <link rel="canonical" href="https://doseguide.org/" />
 
     <!-- Open Graph -->
     <meta property="og:url" content="https://doseguide.org/" />
@@ -28,6 +29,62 @@
     <meta name="twitter:description" content="25+ substances. Real safety margins. Drug interactions. Addiction data. All sourced from peer-reviewed research." />
     <meta name="twitter:image" content="https://doseguide.org/og-image.png" />
     <meta name="twitter:image:alt" content="DoseGuide.org — Evidence-based harm reduction guide" />
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "DoseGuide.org",
+      "url": "https://doseguide.org",
+      "description": "Evidence-based harm reduction resource with drug safety data from peer-reviewed research.",
+      "publisher": {
+        "@type": "Person",
+        "name": "Charlie Depman"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "name": "About DoseGuide",
+      "url": "https://doseguide.org",
+      "description": "DoseGuide is an open-source harm reduction resource. It does not encourage drug use. It exists because people use drugs whether or not they have good information, and the evidence is clear that informed users have better outcomes. All data is sourced from peer-reviewed research, government agencies, and established harm reduction organizations including the Global Drug Survey, The Lancet, DanceSafe, and SAMHSA. This project is personal. My father, Dr. Mark Depman, spent a good part of his career as an emergency physician in Vermont working at the intersection of substance use and harm reduction. In 2025, the Vermont Association for Mental Health and Addiction Recovery established the Dr. Mark Depman Trailblazer Award in his honor. DoseGuide is built in that spirit. — Charlie Depman",
+      "author": {
+        "@type": "Person",
+        "name": "Charlie Depman"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalWebPage",
+      "name": "DoseGuide.org — Evidence-Based Harm Reduction",
+      "url": "https://doseguide.org",
+      "about": {
+        "@type": "MedicalCondition",
+        "name": "Substance Use",
+        "associatedAnatomy": { "@type": "AnatomicalStructure", "name": "Brain" }
+      },
+      "medicalAudience": {
+        "@type": "MedicalAudience",
+        "audienceType": "Patient"
+      },
+      "lastReviewed": "2026-03-31",
+      "mainContentOfPage": {
+        "@type": "WebPageElement",
+        "description": "Safety margins, lethal dose ratios (Gable 2004), MCDA harm scores (Nutt 2010, Broman 2025), addiction capture rates (Lopez-Quintero 2011, Anthony 1994), drug interaction data (TripSit + peer-reviewed corrections), and supply purity data (DrugsData, Maryland RAD, DEA) for 25+ substances."
+      },
+      "citation": [
+        "Nutt DJ, King LA, Phillips LD. Drug harms in the UK. Lancet. 2010;376:1558-1565.",
+        "Lopez-Quintero C, et al. Probability of transition to dependence. Drug Alcohol Depend. 2011;115:120-130.",
+        "Gable RS. Comparison of acute lethal toxicity. Addiction. 2004;99:686-696.",
+        "Broman M, et al. US drug policy does not align with experts' rankings. Harm Reduction J. 2025;23:17."
+      ]
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Instrument+Serif&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..900;1,8..60,300..900&display=swap" rel="stylesheet" />

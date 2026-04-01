@@ -1,4 +1,4 @@
-import { CAT, SRC_LABELS } from "../data/substances";
+import { CAT, SRC_LABELS, MED_WARNINGS } from "../data/substances";
 
 function LethalViz({ s }) {
   if (!s.lethal.cmp) return null;
@@ -33,7 +33,13 @@ export default function Detail({ s }) {
   const c = CAT[s.cat];
   const lvls = [{ l: "Threshold", v: s.dose.threshold, c: "#4ade80" }, { l: "Light", v: s.dose.light, c: "#86efac" }, { l: "Common", v: s.dose.common, c: "#fbbf24" }, { l: "Strong", v: s.dose.strong, c: "#f97316" }, { l: "Heavy", v: s.dose.heavy, c: "#ef4444" }];
   const Sec = ({ title, children }) => <div style={{ marginBottom: 14 }}><h4 style={{ margin: "0 0 6px", fontSize: 12, color: "#6b6860", fontFamily: "'DM Mono',monospace", textTransform: "uppercase", letterSpacing: "0.08em" }}>{title}</h4>{children}</div>;
+  const medWarnings = MED_WARNINGS.filter(w => w.affectedCats.includes(s.cat) || w.affectedIds.includes(s.id));
   return <div>
+    {medWarnings.map(w => <div key={w.id} style={{ background: "rgba(239,68,68,0.08)", border: "1.5px solid rgba(239,68,68,0.35)", borderRadius: 10, padding: "12px 14px", marginBottom: 14 }}>
+      <div style={{ fontSize: 14, fontWeight: 700, color: w.color, fontFamily: "'DM Mono',monospace", marginBottom: 6 }}>{w.title}</div>
+      <p style={{ margin: 0, fontSize: 13, color: "#c08080", lineHeight: 1.6 }}>{w.text}</p>
+      <p style={{ margin: "8px 0 0", fontSize: 11, color: "#555", fontFamily: "'DM Mono',monospace" }}>Source: {w.source}</p>
+    </div>)}
     {(s.marginExplain || s.supplyRisk >= 3) && <div style={{ background: "rgba(255,255,255,0.03)", borderRadius: 8, padding: 12, marginBottom: 14, border: "1px solid rgba(255,255,255,0.05)" }}>
       {s.marginExplain && <p style={{ margin: "0 0 4px", fontSize: 13, color: "#7a7670", lineHeight: 1.5 }}>{s.marginExplain}</p>}
       {s.supplyRisk >= 3 && <p style={{ margin: "4px 0 0", fontSize: 13, color: "#d4a040", background: "rgba(245,158,11,0.06)", padding: "8px 10px", borderRadius: 6 }}>⚠ {s.supplyExplain}</p>}

@@ -579,6 +579,7 @@ export const S = [
       addictPct:     {ref:null, conf:"estimated", note:"Minimal addiction potential. Estimate based on pharmacology."},
       margin:        {ref:null, conf:"editorial", note:"Danger is interaction-based (PDE5 inhibitors) and ingestion, not dose-dependent inhalation toxicity."},
       pctAsExpected: {ref:null, conf:"editorial", note:"90% estimated. Isomer variation (isopropyl vs amyl) is the main quality concern."},
+      dose:          {ref:"erowid", conf:"derived", note:"Dose ranges from Erowid and PsychonautWiki community consensus. Poppers are inhaled in variable amounts; 'dose' is approximated as number of inhalations rather than precise volume."},
     }},
 
   // ═══════════════════════════════════════════════════════════════════════════

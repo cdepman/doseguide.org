@@ -18,6 +18,14 @@ function LethalViz({ s }) {
       <p style={{ margin: 0, fontSize: 14, color: "#a09d97", lineHeight: 1.5, fontFamily: "'Source Serif 4',Georgia,serif" }}>{s.lethal.realworld}</p>
     </div>
     <p style={{ margin: 0, fontSize: 13, color: "#6b6860", lineHeight: 1.5, borderTop: "1px solid rgba(255,255,255,0.04)", paddingTop: 8 }}>{s.lethal.note}</p>
+    {s.lethal.gable && <div style={{ marginTop: 8, padding: "8px 10px", background: "rgba(255,255,255,0.02)", borderRadius: 6, border: "1px solid rgba(255,255,255,0.04)" }}>
+      <div style={{ display: "flex", gap: 12, flexWrap: "wrap", fontSize: 12, fontFamily: "'DM Mono',monospace", color: "#6b6860" }}>
+        <span>effective <span style={{ color: "#4ade80" }}>{s.lethal.gable.ed}</span></span>
+        <span>lethal <span style={{ color: "#ef4444" }}>{s.lethal.gable.ld}</span></span>
+        <span>ratio <span style={{ color: "#c7c4be" }}>{s.lethal.gable.ratio}</span></span>
+      </div>
+      <p style={{ margin: "4px 0 0", fontSize: 10, color: "#555", fontFamily: "'DM Mono',monospace" }}>Gable 2004{s.lethal.gable.note ? ` · ${s.lethal.gable.note}` : ""}</p>
+    </div>}
   </div>;
 }
 

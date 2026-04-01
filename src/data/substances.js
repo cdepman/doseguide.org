@@ -255,7 +255,7 @@ export const S = [
     longTerm:["Neurotoxicity from repeated use","Depression during comedowns","Memory impairment","Serotonin depletion — neurotoxicity research suggests 3+ months between uses for recovery"],
     harm:9,routes:[{nm:"Oral",onset:"30–60 min",dur:"3–5 hr"},{nm:"Insufflated",onset:"5–15 min",dur:"2–4 hr"}],
     dose:{threshold:"30 mg",light:"40–75 mg",common:"75–125 mg",strong:"125–175 mg",heavy:"175+ mg"},
-    lethal:{headline:"People have died from as little as 1-2 pills — but usually from overheating, not the drug itself.",note:"Most MDMA deaths are from hyperthermia (overheating in hot environments) or hyponatremia (drinking too much water). Heat, dehydration, and re-dosing are the primary risk multipliers.",cmp:"pill",sz:22,realworld:"1-2 pills (150-300mg) in a hot club without water breaks has killed otherwise healthy people. It's not about how much — it's about the environment."},
+    lethal:{headline:"People have died from as little as 1-2 pills — but usually from overheating, not the drug itself.",note:"Most MDMA deaths are from hyperthermia (overheating in hot environments) or hyponatremia (drinking too much water). Heat, dehydration, and re-dosing are the primary risk multipliers.",cmp:"pill",sz:22,realworld:"1-2 pills (150-300mg) in a hot club without water breaks has killed otherwise healthy people. It's not about how much — it's about the environment.",gable:{ed:"125 mg",ld:"~2 g",ratio:"16:1"}},
     _src:{
       harm:          {ref:"nutt2010", conf:"measured", note:"Nutt 2010: ecstasy overall harm = 9"},
       addictPct:     {ref:"schlag2020", conf:"estimated", note:"Schlag 2020 reviews capture rates across studies. No study directly reports MDMA 10-year dependence probability. 3% is an estimate consistent with the rank-ordering (below cannabis, above psychedelics)."},
@@ -283,7 +283,7 @@ export const S = [
     longTerm:["Nasal septum damage","Cardiovascular disease","Addiction","Paranoia","Financial ruin"],
     harm:27,routes:[{nm:"Insufflated",onset:"1–5 min",dur:"15–45 min"},{nm:"Smoked (crack)",onset:"Seconds",dur:"5–15 min"},{nm:"Intravenous",onset:"Seconds",dur:"10–20 min"}],
     dose:{threshold:"10 mg",light:"20–50 mg",common:"50–100 mg",strong:"100–150 mg",heavy:"150+ mg"},
-    lethal:{headline:"Your heart decides — some people have died from a single line.",note:"Heart sensitivity varies wildly between individuals. There is no way to predict who will have a cardiac event.",cmp:"line",sz:[50,8],realworld:"A person with an undiagnosed heart condition can die from the same amount their friend does every weekend. There's no 'safe' test dose."},
+    lethal:{headline:"Your heart decides — some people have died from a single line.",note:"Heart sensitivity varies wildly between individuals. There is no way to predict who will have a cardiac event.",cmp:"line",sz:[50,8],realworld:"A person with an undiagnosed heart condition can die from the same amount their friend does every weekend. There's no 'safe' test dose.",gable:{ed:"80 mg intranasal",ld:"~1.2 g",ratio:"15:1"}},
     _src:{
       harm:          {ref:"nutt2010", conf:"measured", note:"Nutt 2010: cocaine (powder) overall harm = 27. Note: crack cocaine scored 54 separately; this entry combines both forms under the lower score."},
       addictPct:     {ref:"lopez2011", conf:"derived", note:"Lopez-Quintero 2011 Table 2: cocaine cumulative probability of dependence. 14.8% is approximately the 10-year estimate from their survival analysis. Lifetime = 20.9%."},
@@ -341,7 +341,7 @@ export const S = [
     longTerm:["Severe brain damage","Psychosis (common)","Devastating addiction","Tooth decay ('meth mouth')","Premature aging","Cardiovascular disease"],
     harm:33,routes:[{nm:"Smoked",onset:"Seconds",dur:"8–24 hr"},{nm:"Insufflated",onset:"3–5 min",dur:"8–24 hr"},{nm:"Oral",onset:"15–30 min",dur:"10–24 hr"}],
     dose:{threshold:"5 mg",light:"5–15 mg",common:"15–30 mg",strong:"30–60 mg",heavy:"60+ mg"},
-    lethal:{headline:"100mg — about a tenth of a gram — can kill someone without tolerance.",note:"The extreme duration (up to 24 hours) means your body has no chance to recover. Effects stack as you stay awake.",cmp:"pill",sz:22,realworld:"A tenth of a gram is a small pinch of powder. And unlike most drugs, the effects last so long that your body can't recover between doses."},
+    lethal:{headline:"100mg — about a tenth of a gram — can kill someone without tolerance.",note:"The extreme duration (up to 24 hours) means your body has no chance to recover. Effects stack as you stay awake.",cmp:"pill",sz:22,realworld:"A tenth of a gram is a small pinch of powder. And unlike most drugs, the effects last so long that your body can't recover between doses.",gable:{ed:"15 mg oral",ld:">150 mg",ratio:"10:1"}},
     _src:{
       harm:          {ref:"nutt2010", conf:"measured", note:"Nutt 2010: metamfetamine overall harm = 33"},
       addictPct:     {ref:"samhsa", conf:"estimated", note:"No survival analysis data. 15% estimated from SAMHSA 2016 treatment data and comparison to amphetamine rates. Schlag 2020 review supports meth > amphetamine."},
@@ -370,7 +370,7 @@ export const S = [
     longTerm:["Powerful dependence (harder to quit than heroin for many)","Cancer & lung disease (SMOKING, not nicotine itself)","Cardiovascular strain","Gum disease (chewing tobacco)","Vaping: unknown long-term effects"],
     harm:26,harmNote:"Scored as 'tobacco' in Nutt 2010 — includes smoking harms, not nicotine alone",routes:[{nm:"Smoked (cigarette)",onset:"Seconds",dur:"30–60 min"},{nm:"Vaped",onset:"Seconds",dur:"30–60 min"},{nm:"Oral (pouch/gum)",onset:"5–15 min",dur:"30–60 min"},{nm:"Transdermal (patch)",onset:"1–2 hr",dur:"16–24 hr"}],
     dose:{threshold:"0.5 mg",light:"1–2 mg",common:"2–4 mg",strong:"4–8 mg",heavy:"8+ mg"},
-    lethal:{headline:"A teaspoon of vape juice can kill a child.",note:"The drug in cigarettes won't kill you from a single overdose. But concentrated liquid nicotine (vape refills) is extremely toxic if swallowed.",cmp:"spoon",sz:34,realworld:"One teaspoon of high-strength vape juice (36mg/ml) swallowed by a toddler can be fatal. This is the #1 poison control call for nicotine."},
+    lethal:{headline:"A teaspoon of vape juice can kill a child.",note:"The drug in cigarettes won't kill you from a single overdose. But concentrated liquid nicotine (vape refills) is extremely toxic if swallowed.",cmp:"spoon",sz:34,realworld:"One teaspoon of high-strength vape juice (36mg/ml) swallowed by a toddler can be fatal. This is the #1 poison control call for nicotine.",gable:{ed:"1 mg smoked",ld:"~50 mg",ratio:"50:1"}},
     _src:{
       harm:          {ref:"nutt2010", conf:"measured", note:"Nutt 2010: TOBACCO overall harm = 26. IMPORTANT: This score is for tobacco (including smoking harms), not nicotine alone. Nicotine-only products (pouches, patches) would score dramatically lower."},
       addictPct:     {ref:"lopez2011", conf:"derived", note:"Lopez-Quintero 2011: lifetime = 67.5%. The ~15.6% 10-year figure is read from survival curve (Figure 1), not a directly reported number in the paper's text."},
@@ -399,7 +399,7 @@ export const S = [
     longTerm:["Mild psychological dependence","Memory impairment (reversible)","Respiratory issues (smoking only)","May affect brain development under age 25"],
     harm:20,routes:[{nm:"Smoked / Vaped",onset:"Seconds",dur:"1–4 hr"},{nm:"Edibles",onset:"30 min – 2 hr",dur:"4–10 hr"}],
     dose:{threshold:"1 mg THC",light:"2–5 mg",common:"5–15 mg",strong:"15–30 mg",heavy:"30+ mg"},
-    lethal:{headline:"No human has ever died from a cannabis overdose. It is physically impossible.",note:"Even the most terrifying edible experience is not physically dangerous. No one has ever died from cannabis toxicity.",cmp:"bag",sz:60,realworld:"You would need to consume roughly 1,500 pounds of cannabis in 15 minutes. That's not a typo — fifteen hundred pounds."},
+    lethal:{headline:"No human has ever died from a cannabis overdose. It is physically impossible.",note:"Even the most terrifying edible experience is not physically dangerous. No one has ever died from cannabis toxicity.",cmp:"bag",sz:60,realworld:"You would need to consume roughly 1,500 pounds of cannabis in 15 minutes. That's not a typo — fifteen hundred pounds.",gable:{ed:"15 mg THC",ld:">15 g",ratio:">1,000:1",note:"†animal extrapolation"}},
     _src:{
       harm:          {ref:"nutt2010", conf:"measured", note:"Nutt 2010: cannabis overall harm = 20"},
       addictPct:     {ref:"lopez2011", conf:"derived", note:"Lopez-Quintero 2011: lifetime = 8.9%. 5.9% 10-year figure derived from survival curve."},
@@ -428,7 +428,7 @@ export const S = [
     longTerm:["BLADDER DAMAGE (chronic use — severe, irreversible)","Kidney damage","Psychological dependence","Cognitive impairment","Urinary tract issues — pain, frequency, blood"],
     harm:15,routes:[{nm:"Insufflated",onset:"5–15 min",dur:"45–90 min"},{nm:"IM injection",onset:"2–5 min",dur:"45–90 min"},{nm:"Oral",onset:"15–30 min",dur:"1–2 hr"}],
     dose:{threshold:"10 mg",light:"15–30 mg",common:"30–75 mg",strong:"75–150 mg",heavy:"150+ mg"},
-    lethal:{headline:"Very rarely lethal alone — almost every death involves choking on vomit or mixing with downers.",note:"Ketamine itself has a wide safety margin. The danger is becoming unconscious and choking, or combining with alcohol/opioids/GHB.",cmp:"line",sz:[50,8],realworld:"Dying from ketamine alone would require a very large amount. But a moderate dose of K mixed with a few drinks has killed people."},
+    lethal:{headline:"Very rarely lethal alone — almost every death involves choking on vomit or mixing with downers.",note:"Ketamine itself has a wide safety margin. The danger is becoming unconscious and choking, or combining with alcohol/opioids/GHB.",cmp:"line",sz:[50,8],realworld:"Dying from ketamine alone would require a very large amount. But a moderate dose of K mixed with a few drinks has killed people.",gable:{ed:"70 mg intranasal",ld:"~2.7 g",ratio:"38:1",note:"†animal extrapolation"}},
     _src:{
       harm:          {ref:"nutt2010", conf:"measured", note:"Nutt 2010: ketamine overall harm = 15"},
       addictPct:     {ref:null, conf:"estimated", note:"No large-scale epidemiological data. 6% estimated from UK clinical literature on ketamine dependence patterns."},
@@ -484,7 +484,7 @@ export const S = [
     longTerm:["Psychological dependence possible","Cognitive effects with heavy use","Olney's lesions debated"],
     harm:10,harmEstimated:true,routes:[{nm:"Oral",onset:"30–60 min",dur:"4–8 hr"}],
     dose:{threshold:"75 mg",light:"100–200 mg",common:"200–400 mg",strong:"400–700 mg",heavy:"700+ mg"},
-    lethal:{headline:"The DXM won't kill you — the Tylenol in the cough syrup will destroy your liver.",note:"Deaths are from acetaminophen (Tylenol) or antihistamines in the cough medicine, not from DXM itself. Products where DXM is the only active ingredient eliminate this risk.",cmp:"bottle",sz:[28,50],realworld:"A recreational dose of cough syrup that contains Tylenol can put you in liver failure. The label lists every active ingredient."},
+    lethal:{headline:"The DXM won't kill you — the Tylenol in the cough syrup will destroy your liver.",note:"Deaths are from acetaminophen (Tylenol) or antihistamines in the cough medicine, not from DXM itself. Products where DXM is the only active ingredient eliminate this risk.",cmp:"bottle",sz:[28,50],realworld:"A recreational dose of cough syrup that contains Tylenol can put you in liver failure. The label lists every active ingredient.",gable:{ed:"150 mg",ld:"~1.5 g",ratio:"10:1"}},
     _src:{
       harm:          {ref:null, conf:"estimated", note:"DXM not in Nutt 2010. Estimated at 10 based on moderate pharmacological risk profile and OTC availability. Butane scored 10 in Nutt for comparison."},
       addictPct:     {ref:null, conf:"estimated", note:"3% estimated from case report literature. No epidemiological data."},
@@ -512,7 +512,7 @@ export const S = [
     longTerm:["B12 depletion → NERVE DAMAGE (chronic use — tingling, numbness, paralysis)","Anemia","Cognitive impairment"],
     harm:6,routes:[{nm:"Inhaled (balloon)",onset:"Seconds",dur:"1–5 min"}],
     dose:{threshold:"1 charger",light:"1",common:"1–2",strong:"2–3",heavy:"3+"},
-    lethal:{headline:"The gas won't kill you — but a bag over your head will.",note:"N2O itself has a very wide safety margin. Every death is from cutting off oxygen supply (bags, masks trap gas and displace air) or from chronic B12 depletion.",cmp:"canister",sz:30,realworld:"Bags and masks trap the gas and cut off oxygen — that's how every suffocation death happens. Balloons allow normal breathing between hits. Falls while standing are the other main danger."},
+    lethal:{headline:"The gas won't kill you — but a bag over your head will.",note:"N2O itself has a very wide safety margin. Every death is from cutting off oxygen supply (bags, masks trap gas and displace air) or from chronic B12 depletion.",cmp:"canister",sz:30,realworld:"Bags and masks trap the gas and cut off oxygen — that's how every suffocation death happens. Balloons allow normal breathing between hits. Falls while standing are the other main danger.",gable:{ed:"3.5 L",ld:">525 L",ratio:">150:1"}},
     _src:{
       harm:          {ref:"ferreira2022", conf:"measured", note:"Ferreira et al. 2022 (Drug Science, Policy and Law): nitrous scored 6/100 in MCDA. Also rated least harmful drug overall in Crossin 2023 (NZ study)."},
       addictPct:     {ref:null, conf:"estimated", note:"2% estimated from clinical case reports. No epidemiological data."},
@@ -540,7 +540,7 @@ export const S = [
     longTerm:["Eye damage (maculopathy) with heavy use","Skin irritation","Headaches","No significant dependence"],
     harm:5,routes:[{nm:"Inhaled",onset:"Seconds",dur:"2–5 min"}],
     dose:{threshold:"1 sniff",light:"1–2 sniffs",common:"2–4 sniffs",strong:"4+",heavy:"—"},
-    lethal:{headline:"Safe to inhale. Swallowing the liquid or combining with Viagra/Cialis can be fatal.",note:"Swallowing poppers liquid is a medical emergency. Combining with ED medication (Viagra, Cialis, Levitra) causes a fatal blood pressure crash.",cmp:"canister",sz:30,realworld:"Inhaling from the bottle: wide safety margin. Swallowing the liquid: causes methemoglobinemia, a medical emergency. Combined with Viagra/Cialis: blood pressure can drop low enough to stop the heart."},
+    lethal:{headline:"Safe to inhale. Swallowing the liquid or combining with Viagra/Cialis can be fatal.",note:"Swallowing poppers liquid is a medical emergency. Combining with ED medication (Viagra, Cialis, Levitra) causes a fatal blood pressure crash.",cmp:"canister",sz:30,realworld:"Inhaling from the bottle: wide safety margin. Swallowing the liquid: causes methemoglobinemia, a medical emergency. Combined with Viagra/Cialis: blood pressure can drop low enough to stop the heart.",gable:{ed:"0.2 mL",ld:"~1.5 mL",ratio:"8:1"}},
     _src:{
       harm:          {ref:"ferreira2022", conf:"measured", note:"Ferreira et al. 2022: poppers scored 5/100 in MCDA (tied with mushrooms as least harmful)."},
       addictPct:     {ref:null, conf:"estimated", note:"Minimal addiction potential. Estimate based on pharmacology."},
@@ -567,7 +567,7 @@ export const S = [
     longTerm:["Liver cirrhosis","Brain damage","Cancer","Heart disease","Severe addiction","Withdrawal CAN KILL (seizures, DTs)"],
     harm:72,routes:[{nm:"Oral",onset:"15–45 min",dur:"1–5 hr"}],
     dose:{threshold:"1 drink",light:"1–2",common:"2–4",strong:"4–8",heavy:"8+"},
-    lethal:{headline:"15-20 drinks in a few hours can kill you. But choking on vomit kills at much less.",note:"Alcohol poisoning is lethal above ~0.35% BAC. But the most common cause of death is choking on vomit while passed out — and that can happen at much lower levels.",cmp:"bottle",sz:[28,50],realworld:"That's roughly a bottle of liquor chugged in an evening. But people die at half that amount if they pass out face-up and vomit. An unconscious person on their back who vomits will aspirate — on their side, they won't."},
+    lethal:{headline:"15-20 drinks in a few hours can kill you. But choking on vomit kills at much less.",note:"Alcohol poisoning is lethal above ~0.35% BAC. But the most common cause of death is choking on vomit while passed out — and that can happen at much lower levels.",cmp:"bottle",sz:[28,50],realworld:"That's roughly a bottle of liquor chugged in an evening. But people die at half that amount if they pass out face-up and vomit. An unconscious person on their back who vomits will aspirate — on their side, they won't.",gable:{ed:"33 g (~2 drinks)",ld:"~330 g",ratio:"10:1"}},
     _src:{
       harm:          {ref:"nutt2010", conf:"measured", note:"Nutt 2010: alcohol overall harm = 72 (highest of all 20 substances scored)"},
       addictPct:     {ref:"lopez2011", conf:"derived", note:"Lopez-Quintero 2011: lifetime = 22.7%. Wagner & Anthony 2002: 12-13% within a decade. 11% is approximately the 10-year estimate from survival analysis."},
@@ -596,7 +596,7 @@ export const S = [
     longTerm:["Severe physical dependence","Withdrawal WORSE than heroin (seizures, psychosis, death)","Sleep disruption","Memory issues"],
     harm:18,routes:[{nm:"Oral (measured liquid)",onset:"15–30 min",dur:"1.5–3 hr"}],
     dose:{threshold:"0.3 g",light:"0.5–1 g",common:"1–2.5 g",strong:"2.5–4 g",heavy:"4+ g (unconsciousness)"},
-    lethal:{headline:"The difference between a great time and unconsciousness is less than half a teaspoon.",note:"GHB has the narrowest dosing window of any recreational drug. Adding ANY alcohol makes it potentially fatal.",cmp:"spoon",sz:34,realworld:"4-5ml alone can knock you out (that's less than a teaspoon). Add just one drink of alcohol and 1-2ml can kill you. Pouring rather than measuring with a syringe is how most GHB overdoses happen."},
+    lethal:{headline:"The difference between a great time and unconsciousness is less than half a teaspoon.",note:"GHB has the narrowest dosing window of any recreational drug. Adding ANY alcohol makes it potentially fatal.",cmp:"spoon",sz:34,realworld:"4-5ml alone can knock you out (that's less than a teaspoon). Add just one drink of alcohol and 1-2ml can kill you. Pouring rather than measuring with a syringe is how most GHB overdoses happen.",gable:{ed:"1.4–3 g",ld:"~16 g",ratio:"8:1"}},
     _src:{
       harm:          {ref:"nutt2010", conf:"measured", note:"Nutt 2010: GHB overall harm = 18"},
       addictPct:     {ref:null, conf:"estimated", note:"12% estimated from European clinical case series. No population-level survival analysis."},
@@ -652,7 +652,7 @@ export const S = [
     longTerm:["Severe addiction (often within days)","Tolerance escalation","Vein damage/infections (IV)","Constipation","Social destruction","Withdrawal (excruciating but not fatal)"],
     harm:55,routes:[{nm:"Intravenous",onset:"Seconds",dur:"3–5 hr"},{nm:"Smoked",onset:"Seconds",dur:"3–5 hr"},{nm:"Insufflated",onset:"5–15 min",dur:"3–6 hr"},{nm:"Oral",onset:"15–45 min",dur:"4–6 hr"}],
     dose:{threshold:"~5 mg morph eq",light:"5–15 mg",common:"15–30 mg",strong:"30–60 mg",heavy:"60+ mg"},
-    lethal:{headline:"30mg of morphine — about two pills — can kill someone who doesn't use regularly.",note:"The gap between 'high' and 'stopped breathing' is terrifyingly small. If someone stops breathing: CALL 911 and give NARCAN immediately.",cmp:"pill",sz:22,realworld:"Two prescription morphine pills, or a single bag of street heroin, can be fatal if you don't have tolerance. And you can never be sure of street heroin potency."},
+    lethal:{headline:"30mg of morphine — about two pills — can kill someone who doesn't use regularly.",note:"The gap between 'high' and 'stopped breathing' is terrifyingly small. If someone stops breathing: CALL 911 and give NARCAN immediately.",cmp:"pill",sz:22,realworld:"Two prescription morphine pills, or a single bag of street heroin, can be fatal if you don't have tolerance. And you can never be sure of street heroin potency.",gable:{ed:"8 mg IV",ld:"~50 mg",ratio:"6:1"}},
     _src:{
       harm:          {ref:"nutt2010", conf:"measured", note:"Nutt 2010: heroin overall harm = 55"},
       addictPct:     {ref:"anthony1994", conf:"derived", note:"Anthony 1994: ~23% of heroin users develop dependence. 18% 10-year estimate."},
@@ -765,7 +765,7 @@ export const S = [
     longTerm:["Mild dependence","Withdrawal headaches","Sleep disruption","Anxiety"],
     harm:3,harmEstimated:true,routes:[{nm:"Oral",onset:"15–45 min",dur:"3–5 hr"}],
     dose:{threshold:"20 mg",light:"50–100 mg",common:"100–200 mg",strong:"200–400 mg",heavy:"400+ mg"},
-    lethal:{headline:"A single tablespoon of pure caffeine powder can kill you. You can't overdose on coffee.",note:"You'd need ~75-100 cups of coffee to reach a lethal dose. But pure caffeine powder is shockingly dangerous — deaths have occurred from a single scoop.",cmp:"spoon",sz:34,realworld:"One tablespoon of pure caffeine powder = roughly 75 espressos all at once. Several teenagers have died this way. Bulk caffeine powder is virtually impossible to dose safely without a milligram scale."},
+    lethal:{headline:"A single tablespoon of pure caffeine powder can kill you. You can't overdose on coffee.",note:"You'd need ~75-100 cups of coffee to reach a lethal dose. But pure caffeine powder is shockingly dangerous — deaths have occurred from a single scoop.",cmp:"spoon",sz:34,realworld:"One tablespoon of pure caffeine powder = roughly 75 espressos all at once. Several teenagers have died this way. Bulk caffeine powder is virtually impossible to dose safely without a milligram scale.",gable:{ed:"100 mg",ld:"~10 g",ratio:"100:1"}},
     _src:{
       harm:          {ref:null, conf:"estimated", note:"Caffeine not in Nutt 2010. Estimated at 3 based on very low harm profile from beverage consumption. Khat scored 9 in Nutt for rough reference."},
       addictPct:     {ref:null, conf:"estimated", note:"8% estimated from DSM-5 caffeine use disorder prevalence estimates. Not from survival analysis."},

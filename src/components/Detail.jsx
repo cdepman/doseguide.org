@@ -31,6 +31,28 @@ function LethalViz({ s }) {
 
 export default function Detail({ s }) {
   const c = CAT[s.cat];
+
+  // Simplified view for medications
+  if (s.isMedication) {
+    return <div>
+      {s.marginExplain && <div style={{ background: "rgba(148,163,184,0.08)", borderRadius: 10, padding: "12px 14px", marginBottom: 14, border: "1px solid rgba(148,163,184,0.2)" }}>
+        <h4 style={{ margin: "0 0 6px", fontSize: 12, color: "#94a3b8", fontFamily: "'DM Mono',monospace", textTransform: "uppercase", letterSpacing: "0.08em" }}>Why this matters</h4>
+        <p style={{ margin: 0, fontSize: 14, color: "#a09d97", lineHeight: 1.6 }}>{s.marginExplain}</p>
+      </div>}
+      {s.lethal.headline && <div style={{ background: "rgba(239,68,68,0.07)", borderRadius: 10, padding: "12px 14px", marginBottom: 14, border: "1px solid rgba(239,68,68,0.2)" }}>
+        <p style={{ margin: 0, fontSize: 15, color: "#ef4444", fontFamily: "'Instrument Serif',Georgia,serif", lineHeight: 1.5 }}>{s.lethal.headline}</p>
+        {s.lethal.note && <p style={{ margin: "8px 0 0", fontSize: 13, color: "#a09080", lineHeight: 1.5 }}>{s.lethal.note}</p>}
+      </div>}
+      {s.odRisk.length > 0 && <div style={{ marginBottom: 14 }}>
+        <h4 style={{ margin: "0 0 6px", fontSize: 12, color: "#6b6860", fontFamily: "'DM Mono',monospace", textTransform: "uppercase", letterSpacing: "0.08em" }}>Key dangers</h4>
+        <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>{s.odRisk.map(r => <span key={r} style={{ fontSize: 13, padding: "5px 10px", borderRadius: 6, background: "rgba(239,68,68,0.1)", color: "#e07070" }}>{r}</span>)}</div>
+      </div>}
+      <div style={{ background: "rgba(255,255,255,0.03)", borderRadius: 8, padding: "10px 14px", border: "1px solid rgba(255,255,255,0.06)" }}>
+        <p style={{ margin: 0, fontSize: 12, color: "#6b6860", fontFamily: "'DM Mono',monospace" }}>This is a prescribed medication, not a recreational substance. It's included because it has dangerous interactions with recreational drugs. Use the Interactions page to see specific risks.</p>
+      </div>
+    </div>;
+  }
+
   const lvls = [{ l: "Threshold", v: s.dose.threshold, c: "#4ade80" }, { l: "Light", v: s.dose.light, c: "#86efac" }, { l: "Common", v: s.dose.common, c: "#fbbf24" }, { l: "Strong", v: s.dose.strong, c: "#f97316" }, { l: "Heavy", v: s.dose.heavy, c: "#ef4444" }];
   const Sec = ({ title, children }) => <div style={{ marginBottom: 14 }}><h4 style={{ margin: "0 0 6px", fontSize: 12, color: "#6b6860", fontFamily: "'DM Mono',monospace", textTransform: "uppercase", letterSpacing: "0.08em" }}>{title}</h4>{children}</div>;
   const medWarnings = MED_WARNINGS.filter(w => w.affectedCats.includes(s.cat) || w.affectedIds.includes(s.id));

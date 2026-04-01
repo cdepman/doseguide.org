@@ -61,6 +61,14 @@ export const CITE = {
   vanamsterdam2024:"van Amsterdam et al. Cocaethylene: formation, toxicology, and clinical implications. J Clin Med 13(5):1475, 2024.",
   lukas2001:      "Lukas & Orozco. Ethanol increases plasma THC levels. Drug Alcohol Depend 64(2):143-149, 2001.",
   emmanouil2007:  "Emmanouil & Quock. Advances in understanding the actions of nitrous oxide. Anesth Prog 54(1):9-18, 2007.",
+  // ── MEDICATION SOURCES ──
+  gomes2017:       "Gomes et al. Gabapentin, opioids, and the risk of opioid-related death: a population-based nested case-control study. PLOS Medicine 14:e1002396, 2017.",
+  henry1998:       "Henry & Hill. Fatal interaction between ritonavir and MDMA. Lancet 352:1751-1752, 1998.",
+  bracchi2015:     "Bracchi et al. Increasing use of party drugs in people living with HIV on antiretrovirals. AIDS 29:1585-1592, 2015.",
+  cohen2021:       "Cohen et al. Concomitant drugs associated with increased mortality for MDMA users reported in a drug safety surveillance database. Sci Rep 11:5997, 2021.",
+  schmid2015:      "Schmid et al. Interactions between bupropion and MDMA in healthy subjects. J Pharmacol Exp Ther 353(1):102-111, 2015.",
+  cheitlin1999:    "Cheitlin et al. AHA/ACC expert consensus: use of sildenafil in patients with cardiovascular disease. Circulation 99:168-177, 1999.",
+  fda2019_gaba:    "FDA Drug Safety Communication: Serious breathing problems with gabapentin and pregabalin when used with CNS depressants. December 2019.",
 };
 
 // Confidence levels for estimated values
@@ -79,6 +87,7 @@ export const CAT = {
   cannabinoid:    { l: "Cannabinoid",     c: "#22c55e", b: "rgba(34,197,94,0.12)" },
   benzodiazepine: { l: "Benzodiazepine",  c: "#6366f1", b: "rgba(99,102,241,0.12)" },
   inhalant:       { l: "Inhalant",        c: "#78716c", b: "rgba(120,113,108,0.12)" },
+  medication:     { l: "Medication",     c: "#94a3b8", b: "rgba(148,163,184,0.12)" },
 };
 
 export const RL = {
@@ -791,9 +800,9 @@ export const S = [
   // ═══════════════════════════════════════════════════════════════════════════
   // SSRIs
   // ═══════════════════════════════════════════════════════════════════════════
-  {id:"ssri",n:"SSRIs",cat:"depressant",aka:["Prozac","Zoloft","Lexapro","Sertraline"],src:"synthetic",
+  {id:"ssri",n:"SSRIs",cat:"medication",aka:["Prozac","Zoloft","Lexapro","Sertraline"],src:"synthetic",
     desc:"Not recreational. Here because SSRIs dramatically change how other drugs work. Critical interaction profile.",
-    atDose:1,atDoseLabel:"Safe as prescribed",
+    isMedication:true,atDose:null,atDoseLabel:null,
     dangerRank:21,marginBest:null,marginWorst:null,marginLabel:"Not recreational — here for interaction awareness",
     marginExplain:"SSRIs themselves are not the danger. The danger is what they do to other drugs: they block MDMA from working (tempting people to dangerously re-dose), they reduce psychedelic effects, and they can cause fatal serotonin syndrome with tramadol, DXM, or MAOIs.",
     supplyRisk:1,pctAsExpected:100,supplyLabel:"100% — pharmaceutical",
@@ -816,9 +825,9 @@ export const S = [
   // ═══════════════════════════════════════════════════════════════════════════
   // MAOIs
   // ═══════════════════════════════════════════════════════════════════════════
-  {id:"maoi",n:"MAOIs",cat:"depressant",aka:["Nardil","Parnate","Harmaline","Syrian Rue"],src:"both",
+  {id:"maoi",n:"MAOIs",cat:"medication",aka:["Nardil","Parnate","Harmaline","Syrian Rue"],src:"both",
     desc:"Most interaction-dangerous drug class. MAOIs make dozens of substances AND certain foods lethal.",
-    atDose:2,atDoseLabel:"Safe as Rx (with dietary restrictions)",
+    isMedication:true,atDose:null,atDoseLabel:null,
     dangerRank:19,marginBest:null,marginWorst:null,marginLabel:"Not about dose — MAOIs make other things lethal",
     marginExplain:"The MAOI itself isn't what kills you. It's the interaction: MAOIs prevent your body from breaking down tyramine, serotonin, and various other substances. A normal dose of MDMA, a block of aged cheese, or a dose of cold medicine can become lethal.",
     supplyRisk:1,pctAsExpected:100,supplyLabel:"100% — pharmaceutical or identifiable plant",
@@ -837,6 +846,90 @@ export const S = [
       harm:          {ref:null, conf:"editorial", note:"Not scored in Nutt 2010 (not a recreational drug). Harm set to null — included for interaction awareness only."},
       addictPct:     {ref:null, conf:"editorial", note:"Clinical consensus."},
     }},
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // MEDICATIONS — not recreational, but critical for interaction awareness
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  {id:"gabapentin",n:"Gabapentin / Pregabalin",sn:"Gabapentin",cat:"medication",
+    aka:["Neurontin","Lyrica","Pregabalin","Gralise"],src:"synthetic",
+    desc:"Nerve pain and seizure medication. 7th most prescribed drug in the US. Combined with opioids, it increases overdose death risk by 50-98%. FDA issued a respiratory depression warning in 2019.",
+    isMedication:true,
+    atDose:null,atDoseLabel:null,dangerRank:null,
+    marginBest:null,marginWorst:null,marginLabel:null,
+    marginExplain:"Gabapentin potentiates opioid respiratory depression through a separate mechanism — it reduces CO2 responsiveness in the brainstem breathing center. Opioids also slow the gut, which increases gabapentin absorption, creating a pharmacokinetic feedback loop. 15-22% of people with opioid use disorder also misuse gabapentin.",
+    supplyRisk:null,pctAsExpected:null,supplyLabel:null,supplyExplain:null,
+    addict:null,addictLabel:null,addictPct:0,addictLife:0,addictSource:null,addictNote:null,
+    overwhelm:null,overwhelmLabel:null,
+    feels:[],odRisk:["Respiratory depression (with opioids/alcohol/benzos)","Sedation","Loss of consciousness"],longTerm:[],
+    harm:null,routes:[{nm:"Oral",onset:"1–2 hr",dur:"5–7 hr"}],
+    dose:{threshold:"Rx",light:"—",common:"300–600 mg",strong:"—",heavy:"—"},
+    lethal:{headline:"Gabapentin + opioids: FDA black box warning. 90% of gabapentin-involved overdose deaths also involved opioids.",note:"Gabapentin alone rarely kills. Combined with opioids, benzos, or alcohol, it dramatically increases respiratory depression risk. The FDA required a warning in 2019 after documenting cases of fatal respiratory depression.",cmp:null,sz:0,realworld:null},
+    _src:{harm:{ref:null,conf:"editorial",note:"Not a recreational substance. No MCDA score. Included for interaction data only."},margin:{ref:"gomes2017",conf:"derived",note:"Gomes et al. 2017 (PLOS Medicine): 49% increased risk of opioid-related death with gabapentin co-prescription. FDA 2019 warning: 49 cases respiratory depression, 12 deaths, 92% had CNS depressant co-use."}}},
+
+  {id:"antiretroviral",n:"HIV Antiretrovirals (ritonavir/cobicistat)",sn:"HIV ARVs",cat:"medication",
+    aka:["Ritonavir","Norvir","Cobicistat","Tybost","Kaletra","Stribild","Genvoya","Paxlovid"],src:"synthetic",
+    desc:"HIV protease inhibitor boosters. Also in Paxlovid (COVID treatment). Ritonavir and cobicistat are powerful CYP3A4/CYP2D6 inhibitors that can increase blood levels of MDMA, meth, and ketamine by 2-10x. There are documented deaths from normal recreational doses becoming lethal overdoses.",
+    isMedication:true,
+    atDose:null,atDoseLabel:null,dangerRank:null,
+    marginBest:null,marginWorst:null,marginLabel:null,
+    marginExplain:"Ritonavir blocks the liver enzymes (CYP3A4, CYP2D6) that break down many recreational drugs. A normal dose of MDMA or meth stays in your body 2-10x longer and reaches much higher blood levels. A 32-year-old man on ritonavir died after taking 2.5 MDMA pills — his blood levels matched someone who took 18 pills (Henry & Hill, Lancet 1998).",
+    supplyRisk:null,pctAsExpected:null,supplyLabel:null,supplyExplain:null,
+    addict:null,addictLabel:null,addictPct:0,addictLife:0,addictSource:null,addictNote:null,
+    overwhelm:null,overwhelmLabel:null,
+    feels:[],odRisk:["Massively increased blood levels of recreational drugs","Prolonged/intensified effects","Fatal overdose from normal doses"],longTerm:[],
+    harm:null,routes:[{nm:"Oral (daily)",onset:"N/A",dur:"Continuous"}],
+    dose:{threshold:"Rx",light:"—",common:"Varies",strong:"—",heavy:"—"},
+    lethal:{headline:"Normal recreational doses become lethal overdoses. Documented deaths with MDMA, meth, and GHB.",note:"If you take ritonavir or cobicistat (check your HIV meds), normal doses of MDMA, methamphetamine, ketamine, GHB, and benzodiazepines can kill you. Psilocybin may be a safer alternative as it uses different metabolic pathways.",cmp:null,sz:0,realworld:null},
+    _src:{harm:{ref:null,conf:"editorial",note:"Not recreational. Included for CYP interaction data. Key citation: Henry & Hill 1998 (Lancet), Bracchi et al. 2015 (AIDS 29:1585-1592)."}}},
+
+  {id:"bupropion",n:"Bupropion (Wellbutrin)",sn:"Wellbutrin",cat:"medication",
+    aka:["Wellbutrin","Zyban","Bupropion","Aplenzin"],src:"synthetic",
+    desc:"Antidepressant and smoking cessation aid. Unlike SSRIs, bupropion INTENSIFIES (not blunts) MDMA effects while also lowering seizure threshold and inhibiting CYP2D6. FAERS data: highest death rate of any antidepressant combined with MDMA.",
+    isMedication:true,
+    atDose:null,atDoseLabel:null,dangerRank:null,
+    marginBest:null,marginWorst:null,marginLabel:null,
+    marginExplain:"Bupropion is structurally related to cathinones (amphetamines). It inhibits dopamine and norepinephrine reuptake AND inhibits CYP2D6, which metabolizes MDMA. This means bupropion both adds its own stimulant effects AND prevents your body from clearing MDMA, producing higher blood levels of both drugs simultaneously. The seizure threshold is lowered by both drugs independently.",
+    supplyRisk:null,pctAsExpected:null,supplyLabel:null,supplyExplain:null,
+    addict:null,addictLabel:null,addictPct:0,addictLife:0,addictSource:null,addictNote:null,
+    overwhelm:null,overwhelmLabel:null,
+    feels:[],odRisk:["Seizures (threshold lowered)","Intensified stimulant effects","Cardiac events"],longTerm:[],
+    harm:null,routes:[{nm:"Oral (daily)",onset:"N/A",dur:"Continuous"}],
+    dose:{threshold:"Rx",light:"—",common:"150–300 mg/day",strong:"—",heavy:"—"},
+    lethal:{headline:"Highest death rate of any antidepressant combined with MDMA (OR 2.82 in FAERS data).",note:"If you switched from an SSRI to Wellbutrin, your recreational drug risk profile changed dramatically. SSRIs blunt MDMA. Wellbutrin intensifies it.",cmp:null,sz:0,realworld:null},
+    _src:{harm:{ref:"cohen2021",conf:"measured",note:"Cohen et al. 2021 (Scientific Reports): bupropion OR 2.82 for death with MDMA. Schmid et al. 2015 (J Pharmacol Exp Ther): bupropion increased MDMA plasma concentrations in healthy volunteers."}}},
+
+  {id:"pde5",n:"Viagra / Cialis (PDE5 Inhibitors)",sn:"Viagra/Cialis",cat:"medication",
+    aka:["Viagra","Cialis","Levitra","Sildenafil","Tadalafil","Vardenafil","ED meds"],src:"synthetic",
+    desc:"Erectile dysfunction medication. Combined with poppers (alkyl nitrites), blood pressure can drop to fatal levels. Both increase cyclic GMP — together they cause catastrophic vasodilation. Tadalafil (Cialis) has a 17.5-hour half-life.",
+    isMedication:true,
+    atDose:null,atDoseLabel:null,dangerRank:null,
+    marginBest:null,marginWorst:null,marginLabel:null,
+    marginExplain:"PDE5 inhibitors prevent the breakdown of cyclic GMP (cGMP). Poppers (NO donors) massively increase cGMP production. Together they create a cGMP flood that causes extreme vasodilation and fatal hypotension. This is an absolute pharmacological contraindication per Pfizer labeling and FDA guidance. Because tadalafil (Cialis) lasts 17+ hours, there is no safe window for popper use on the same day.",
+    supplyRisk:null,pctAsExpected:null,supplyLabel:null,supplyExplain:null,
+    addict:null,addictLabel:null,addictPct:0,addictLife:0,addictSource:null,addictNote:null,
+    overwhelm:null,overwhelmLabel:null,
+    feels:[],odRisk:["Fatal hypotension (with poppers)","Cardiac arrest","Dangerous blood pressure drop"],longTerm:[],
+    harm:null,routes:[{nm:"Oral",onset:"30–60 min",dur:"4–36 hr (varies)"}],
+    dose:{threshold:"Rx",light:"—",common:"Varies",strong:"—",heavy:"—"},
+    lethal:{headline:"Viagra/Cialis + poppers = potentially fatal blood pressure crash. Absolute contraindication.",note:"This is not a 'caution' — it is an absolute pharmacological contraindication documented by the AHA, FDA, and drug manufacturers. There have been deaths.",cmp:null,sz:0,realworld:null},
+    _src:{harm:{ref:"cheitlin1999",conf:"measured",note:"Cheitlin et al. 1999 (Circulation 99:168-177): AHA scientific statement. Kloner 2010 (Circulation 122:88-95): synergistic cGMP mechanism review."}}},
+
+  {id:"methadone_rx",n:"Methadone / Buprenorphine (MAT)",sn:"Methadone/Sub",cat:"medication",
+    aka:["Methadone","Suboxone","Buprenorphine","Subutex","MAT","OAT","Dolophine"],src:"synthetic",
+    desc:"Opioid maintenance/agonist therapy for addiction treatment. Combining with other opioids, benzos, alcohol, or sedatives is extremely dangerous. Methadone also prolongs QT interval, adding cardiac risk with stimulants.",
+    isMedication:true,
+    atDose:null,atDoseLabel:null,dangerRank:null,
+    marginBest:null,marginWorst:null,marginLabel:null,
+    marginExplain:"Methadone is a full opioid agonist with a very long half-life (24-36 hours) and QT-prolonging effects. Buprenorphine is a partial agonist with a ceiling effect on respiratory depression, making it safer but not risk-free. Both interact dangerously with other CNS depressants. Methadone + benzodiazepines account for a significant portion of methadone-related deaths.",
+    supplyRisk:null,pctAsExpected:null,supplyLabel:null,supplyExplain:null,
+    addict:null,addictLabel:null,addictPct:0,addictLife:0,addictSource:null,addictNote:null,
+    overwhelm:null,overwhelmLabel:null,
+    feels:[],odRisk:["Respiratory depression (with benzos/alcohol/other opioids)","QT prolongation (methadone + stimulants)","Precipitated withdrawal (buprenorphine + full agonists)"],longTerm:[],
+    harm:null,routes:[{nm:"Oral (daily)",onset:"Varies",dur:"24–36 hr (methadone)"}],
+    dose:{threshold:"Rx",light:"—",common:"Varies",strong:"—",heavy:"—"},
+    lethal:{headline:"On methadone: benzos, alcohol, and other opioids can stop your breathing. On Suboxone: using fentanyl on top risks respiratory depression.",note:"Methadone involved in ~23% of opioid deaths despite being only 1% of prescriptions. Buprenorphine has ceiling effect but is not risk-free with other depressants.",cmp:null,sz:0,realworld:null},
+    _src:{harm:{ref:null,conf:"editorial",note:"CDC: methadone involved in ~23% of opioid deaths despite being only 1% of prescriptions. Buprenorphine has ceiling effect but is not risk-free with other depressants."}}},
 ];
 
 // ── MEDICATION INTERACTION WARNINGS ──────────────────────────────────────────

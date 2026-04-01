@@ -82,13 +82,14 @@ export default function App() {
 
   const filtered = useMemo(() => {
     let list = S.filter(s => {
+      if (s.isMedication && view === "index") return false;
       const ms = !search || s.n.toLowerCase().includes(search.toLowerCase()) || s.aka.some(a => a.toLowerCase().includes(search.toLowerCase()));
       return ms && (!catF || s.cat === catF);
     });
     const sortObj = SORTS.find(x => x.id === sort);
     if (sortObj && sortObj.fn) list = [...list].sort(sortObj.fn);
     return list;
-  }, [search, catF, sort]);
+  }, [search, catF, sort, view]);
 
   const activeFilters = (catF ? 1 : 0) + (sort !== "default" ? 1 : 0);
   const activeCatLabel = catF ? CAT[catF].l : null;

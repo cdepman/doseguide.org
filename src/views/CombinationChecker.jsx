@@ -7,7 +7,7 @@ export default function CombinationChecker({ sel, toggle, setSel, filtered, sear
 
   return <div>
     <h2 style={{ fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 22, color: "#e8e6e3", fontWeight: 400, margin: "0 0 6px" }}>Combination Checker</h2>
-    <p style={{ fontSize: 14, color: "#6b6860", margin: "0 0 12px" }}>Select two or more substances to check if the combination is safe.</p>
+    <p style={{ fontSize: 14, color: "#6b6860", margin: "0 0 12px" }}>Select two or more substances or medications to check interactions.</p>
     <div style={{ background: "rgba(255,255,255,0.02)", borderRadius: 10, border: "1px solid rgba(255,255,255,0.06)", padding: 14, marginBottom: 16 }}>
       <input type="text" placeholder="Search to filter..." value={search} onChange={e => setSearch(e.target.value)} style={{ width: "100%", padding: "12px 14px", borderRadius: 8, border: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.03)", color: "#c7c4be", fontFamily: "'Source Serif 4',Georgia,serif", outline: "none", marginBottom: 8, boxSizing: "border-box" }} />
       <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 8 }}>
@@ -26,7 +26,7 @@ export default function CombinationChecker({ sel, toggle, setSel, filtered, sear
       </div>}
     </div>
     {sel.length < 2 && <div style={{ textAlign: "center", padding: "40px 0", color: "#444" }}>
-      <p style={{ fontSize: 15, fontFamily: "'Instrument Serif',Georgia,serif", color: "#555" }}>{sel.length === 0 ? "Select two or more substances above" : "Select at least one more substance"}</p>
+      <p style={{ fontSize: 15, fontFamily: "'Instrument Serif',Georgia,serif", color: "#555" }}>{sel.length === 0 ? "Select two or more substances or medications above" : "Select at least one more"}</p>
     </div>}
     <Combos selected={sel} />
     {selSubs.length > 0 && <div style={{ marginTop: 8 }}>{selSubs.map(s => { const c = CAT[s.cat]; return <div key={s.id} style={{ background: "rgba(255,255,255,0.02)", borderRadius: 12, border: "1px solid rgba(255,255,255,0.06)", padding: "16px", marginBottom: 12 }}>

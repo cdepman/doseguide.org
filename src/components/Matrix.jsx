@@ -37,17 +37,17 @@ export default function Matrix() {
 
   return <div style={{ background: "rgba(255,255,255,0.02)", borderRadius: 12, border: "1px solid rgba(255,255,255,0.06)", padding: "18px 14px" }} onClick={e => { if (e.target.tagName !== "TD" && e.target.tagName !== "TH") setSel(null); }}>
     <h3 style={{ margin: "0 0 4px", fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 20, color: "#e8e6e3", fontWeight: 400 }}>Full Combination Matrix</h3>
-    <div style={{ height: 88, marginBottom: 12, background: "#151517", borderRadius: 8, padding: "10px 14px", border: "1px solid rgba(255,255,255,0.06)", overflow: "hidden", boxSizing: "border-box" }}>
+    <div style={{ minHeight: 68, marginBottom: 12, background: "#151517", borderRadius: 8, padding: "10px 14px", border: "1px solid rgba(255,255,255,0.06)", boxSizing: "border-box" }}>
       {sel ? <div>
-        <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 3 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 3, flexWrap: "wrap" }}>
           <span style={{ fontSize: 18, color: sel.lv?.c || "#666" }}>{sel.lv?.i || "?"}</span>
           <span style={{ fontSize: 14, fontFamily: "'Instrument Serif',Georgia,serif" }}><span style={{ color: CAT[sel.a.cat].c }}>{sel.a.n}</span> <span style={{ color: "#555" }}>+</span> <span style={{ color: CAT[sel.b.cat].c }}>{sel.b.n}</span></span>
           <span style={{ fontSize: 11, color: sel.lv?.c || "#888", fontFamily: "'DM Mono',monospace" }}>{sel.lv?.l || "Unknown"}</span>
         </div>
-        <p style={{ margin: 0, fontSize: 11.5, color: "#8a8780", lineHeight: 1.4, overflow: "hidden", display: "-webkit-box", WebkitLineClamp: sel.mech ? 1 : 2, WebkitBoxOrient: "vertical" }}>{sel.lv?.d}</p>
-        {sel.mech && <p style={{ margin: "4px 0 0", fontSize: 11, color: "#a09888", lineHeight: 1.3, overflow: "hidden", display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical" }}><strong style={{ color: sel.lv?.c || "#888", fontFamily: "'DM Mono',monospace", fontSize: 9.5 }}>WHY: </strong>{sel.mech}</p>}
+        <p style={{ margin: 0, fontSize: 11.5, color: "#8a8780", lineHeight: 1.4 }}>{sel.lv?.d}</p>
+        {sel.mech && <p style={{ margin: "4px 0 0", fontSize: 11, color: "#a09888", lineHeight: 1.4 }}><strong style={{ color: sel.lv?.c || "#888", fontFamily: "'DM Mono',monospace", fontSize: 9.5 }}>WHY: </strong>{sel.mech}</p>}
       </div>
-      : <div style={{ display: "flex", alignItems: "center", height: "100%", color: "#333", fontSize: 12, fontFamily: "'DM Mono',monospace" }}>Tap any cell to see why that combination is rated the way it is.</div>}
+      : <div style={{ display: "flex", alignItems: "center", minHeight: 48, color: "#333", fontSize: 12, fontFamily: "'DM Mono',monospace" }}>Tap any cell to see why that combination is rated the way it is.</div>}
     </div>
     <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch", paddingBottom: 8 }}>
       <table style={{ borderCollapse: "separate", borderSpacing: 2, fontFamily: "'DM Mono',monospace" }}>

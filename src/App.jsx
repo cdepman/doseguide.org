@@ -1,4 +1,5 @@
 import { useState, useCallback, useMemo, useRef, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { S, CAT, parseDur } from "./data/substances";
 import SubstanceIndex from "./views/SubstanceIndex";
 import CombinationChecker from "./views/CombinationChecker";
@@ -54,6 +55,7 @@ export default function App() {
   const [expanded, setExpanded] = useState(null);
   const [filterOpen, setFilterOpen] = useState(false);
   const [pageKey, setPageKey] = useState(0);
+  const [aboutOpen, setAboutOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const scrollRef = useRef(null);
 
@@ -95,9 +97,12 @@ export default function App() {
           <img src="/logo.png" alt="DoseGuide" style={{ width: 46, height: 46, borderRadius: 10 }} />
           <div><h1 style={{ margin: 0, fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 20, color: "#e8e6e3", fontWeight: 400 }}>DoseGuide<span style={{ color: "#555", fontSize: 14 }}>.org</span></h1></div>
         </div>
-        <nav className="desktop-nav" style={{ display: "flex", gap: 2 }}>
-          {TABS.map(t => <button key={t.id} onClick={() => switchView(t.id)} style={{ padding: "8px 14px", borderRadius: 7, border: "none", cursor: "pointer", background: view === t.id ? "rgba(255,255,255,0.1)" : "transparent", color: view === t.id ? "#e8e6e3" : "#6b6860", fontFamily: "'DM Mono',monospace", fontSize: 13, minHeight: 36 }}>{t.label}</button>)}
-        </nav>
+        <div style={{ display: "flex", alignItems: "center", gap: 2 }}>
+          <nav className="desktop-nav" style={{ display: "flex", gap: 2 }}>
+            {TABS.map(t => <button key={t.id} onClick={() => switchView(t.id)} style={{ padding: "8px 14px", borderRadius: 7, border: "none", cursor: "pointer", background: view === t.id ? "rgba(255,255,255,0.1)" : "transparent", color: view === t.id ? "#e8e6e3" : "#6b6860", fontFamily: "'DM Mono',monospace", fontSize: 13, minHeight: 36 }}>{t.label}</button>)}
+          </nav>
+          <button onClick={() => setAboutOpen(true)} style={{ padding: "8px 12px", borderRadius: 7, border: "none", cursor: "pointer", background: "transparent", color: "#6b6860", fontFamily: "'DM Mono',monospace", fontSize: 13, minHeight: 36 }}>About</button>
+        </div>
       </div>
     </header>
 
@@ -182,6 +187,24 @@ export default function App() {
         <p style={{ fontSize: 12, color: "#3a3a3a", fontFamily: "'DM Mono',monospace" }}>Open source — <a href="https://github.com/cdepman/doseguide.org" target="_blank" rel="noopener noreferrer" style={{ color: "#555", textDecoration: "none", borderBottom: "1px solid #333" }}>contribute on GitHub</a></p>
       </footer>
     </main>
+
+    {/* ── ABOUT MODAL ── */}
+    {createPortal(<>
+      <div onClick={() => setAboutOpen(false)} style={{ position: "fixed", inset: 0, zIndex: 200, background: "rgba(0,0,0,0.6)", backdropFilter: "blur(4px)", WebkitBackdropFilter: "blur(4px)", opacity: aboutOpen ? 1 : 0, pointerEvents: aboutOpen ? "auto" : "none", transition: "opacity 0.3s ease" }} />
+      <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 210, background: "#1a1a1e", borderTopLeftRadius: 16, borderTopRightRadius: 16, maxHeight: "80vh", transform: aboutOpen ? "translateY(0)" : "translateY(100%)", transition: "transform 0.35s cubic-bezier(0.32, 0.72, 0, 1)", overflowY: "auto", WebkitOverflowScrolling: "touch", paddingBottom: "env(safe-area-inset-bottom, 0)" }}>
+        <div style={{ padding: "14px 20px 10px", display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+          <span style={{ fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 20, color: "#e8e6e3" }}>About DoseGuide</span>
+          <button onClick={() => setAboutOpen(false)} style={{ width: 36, height: 36, borderRadius: 18, border: "none", background: "rgba(255,255,255,0.06)", color: "#888", fontSize: 18, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>×</button>
+        </div>
+        <div style={{ padding: "16px 20px 28px" }}>
+          <p style={{ margin: "0 0 14px", fontSize: 15, color: "#a09d97", lineHeight: 1.7, fontFamily: "'Source Serif 4',Georgia,serif" }}>DoseGuide is an open-source harm reduction resource. It does not encourage drug use. It exists because people use drugs whether or not they have good information, and the evidence is clear that informed users have better outcomes.</p>
+          <p style={{ margin: "0 0 14px", fontSize: 15, color: "#a09d97", lineHeight: 1.7, fontFamily: "'Source Serif 4',Georgia,serif" }}>All data is sourced from peer-reviewed research, government agencies, and established harm reduction organizations including the Global Drug Survey, The Lancet, DanceSafe, and SAMHSA.</p>
+          <p style={{ margin: "0 0 14px", fontSize: 15, color: "#a09d97", lineHeight: 1.7, fontFamily: "'Source Serif 4',Georgia,serif" }}>This project is personal. My father, Dr. Mark Depman, spent a good part of his career as an emergency physician in Vermont working at the intersection of substance use and harm reduction. In 2025, the Vermont Association for Mental Health and Addiction Recovery established the Dr. Mark Depman Trailblazer Award in his honor. I grew up watching him advocate for his patients and insist that compassion and evidence, not stigma and punishment, save lives and heal communities.</p>
+          <p style={{ margin: "0 0 14px", fontSize: 15, color: "#c7c4be", lineHeight: 1.7, fontFamily: "'Source Serif 4',Georgia,serif" }}>DoseGuide is built in that spirit.</p>
+          <p style={{ margin: 0, fontSize: 14, color: "#8a8780", fontFamily: "'Instrument Serif',Georgia,serif" }}>— Charlie Depman</p>
+        </div>
+      </div>
+    </>, document.body)}
 
     {/* ── BOTTOM TAB BAR (mobile) ── */}
     <nav className="mobile-tab-bar" style={{ display: "none", position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 50, background: "#1e1e22", borderTop: "1px solid rgba(255,255,255,0.12)", paddingBottom: "env(safe-area-inset-bottom, 0)", justifyContent: "space-around" }}>

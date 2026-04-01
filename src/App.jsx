@@ -27,10 +27,14 @@ const CombosIcon = () => <svg width="20" height="20" viewBox="0 0 20 20" fill="n
 const RankingsIcon = () => <svg width="20" height="14" viewBox="0 0 20 14" fill="currentColor">
   <rect x="0" y="0" width="6" height="3" rx="1.5" opacity="0.4" /><rect x="0" y="5.5" width="12" height="3" rx="1.5" opacity="0.6" /><rect x="0" y="11" width="19" height="3" rx="1.5" />
 </svg>;
-const InteractionsIcon = () => <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5">
-  <circle cx="10" cy="10" r="2" fill="currentColor" stroke="none" />
-  <line x1="1" y1="10" x2="6" y2="10" /><polygon points="6,8 8,10 6,12" fill="currentColor" stroke="none" />
-  <line x1="19" y1="10" x2="14" y2="10" /><polygon points="14,8 12,10 14,12" fill="currentColor" stroke="none" />
+const InteractionsIcon = () => <svg width="24" height="20" viewBox="0 0 24 20" fill="none">
+  <defs>
+    <clipPath id="il"><circle cx="8.5" cy="10" r="7" /></clipPath>
+    <clipPath id="ir"><circle cx="15.5" cy="10" r="7" /></clipPath>
+  </defs>
+  <circle cx="8.5" cy="10" r="7" stroke="currentColor" strokeWidth="1.6" />
+  <circle cx="15.5" cy="10" r="7" stroke="currentColor" strokeWidth="1.6" />
+  <circle cx="15.5" cy="10" r="7" fill="currentColor" opacity="0.45" clipPath="url(#il)" />
 </svg>;
 
 const TABS = [

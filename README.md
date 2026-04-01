@@ -26,10 +26,15 @@ DoseGuide tries to be none of these. It's the information a smart, caring friend
 - **Drug combinations**: TripSit v4.0 interaction chart + mechanism explanations
 - **Addiction rates**: 5 with population-based survival analysis (Lopez-Quintero 2011 for nicotine, alcohol, cannabis, cocaine; Anthony 1994 for heroin). Hallucinogens from Anthony 1994 (~4.9% lifetime) and Stone 2007 (~3% within 24 months). Amphetamines from Anthony 1994. Ketamine from Barrios 2025 (GDS, convenience sample). MDMA, GHB, DXM, kratom, and 2C-B have **no population-based capture rates** — our numbers are editorial estimates clearly labeled as such.
 - **Supply purity**: Cocaine purity ~88% (DEA 2024, levamisole down to ~5%). MDMA from DrugsData (Sevigny & Thyssen 2024). Heroin from Maryland RAD (1.9% concordance). Ketamine from Italy GC/MS (78%). Others are editorial estimates.
-- **Safety margins**: Gable 2004 (Addiction) covers 20+ substances with lethal-to-effective dose ratios. Individual values derived from this and clinical toxicology literature.
+- **Safety margins**: Gable 2004 (Addiction) — lethal-to-effective dose ratios for 20 substances. Validated by Lachenmeier & Rehm 2015 (Scientific Reports) margin of exposure analysis.
 - **Dosage ranges**: PsychonautWiki
 - **Psychological risk**: Global Drug Survey 2019-2021
-- **Cocaine cardiac risk**: Mittleman 1999 (23.7-fold MI risk increase within 60 min of use)
+- **Cocaine cardiac risk**: Mittleman 1999 (Circulation) — 24x MI risk within 60 min of use
+- **Cocaine purity (updated)**: DEA CY2024 Annual Cocaine Report — levamisole now ~5% (was 87% in 2017), average purity 88%
+- **Tusi/pink cocaine**: Barbaro & Bouchard 2024 (J Medicinal Chemistry) — 94% ketamine, 0% 2C-B in 68 samples
+- **CYP2D6 metabolizer rates**: Bradford 2002 (Pharmacogenomics) — 5-10% Caucasian, ~1% East Asian
+- **Fentanyl lethal dose**: DEA + EUDA drug profile — 2mg estimated lethal dose for opioid-naive individuals
+- **Benzo+opioid deaths**: Jones & McAninch 2015 (Am J Prev Med) — benzo co-involvement rose from 18% to 31% of opioid deaths (2004-2011); since ~2017 stimulant-opioid deaths have surpassed in absolute numbers
 
 ## Sourcing transparency
 

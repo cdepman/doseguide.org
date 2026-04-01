@@ -305,7 +305,7 @@ export default function Charts() {
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-  return <div>
+  return <div style={{ maxWidth: 720 }}>
     {/* ── JUMP TABS ── */}
     <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 14, position: "sticky", top: 0, zIndex: 5, background: "#111113", padding: "8px 0 10px", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
       {SECTIONS.map(s => <button key={s.id} onClick={() => scrollTo(s.id)} style={{ padding: "7px 12px", borderRadius: 7, border: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.03)", color: "#8a8780", fontFamily: "'DM Mono',monospace", fontSize: 12, cursor: "pointer", minHeight: 34 }}>{s.label}</button>)}

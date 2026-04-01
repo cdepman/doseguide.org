@@ -118,7 +118,7 @@ function AddictionChart({ onInfo }) {
       const w10 = Math.min((s.addictPct / max) * 100, 100);
       const wLife = Math.min((s.addictLife / max) * 100, 100);
       const col = addictColor(s.addictPct);
-      const est = s.addictEstimated;
+      const est = s._src?.addictPct?.conf === "estimated" || s._src?.addictPct?.conf === "editorial";
       return <div key={s.id} style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
         <span style={{ width: 70, fontSize: 12, color: CAT[s.cat].c, fontFamily: "'DM Mono',monospace", textAlign: "right", flexShrink: 0 }}>{(s.sn || s.n)}</span>
         <div style={{ flex: 1, height: 20, borderRadius: 6, background: "rgba(255,255,255,0.03)", position: "relative", overflow: "hidden" }}>
@@ -192,7 +192,7 @@ function HarmChart({ onInfo }) {
       const v = s.harm;
       const w = Math.min((v / max) * 100, 100);
       const col = v > 50 ? "#ef4444" : v > 30 ? "#f97316" : v > 15 ? "#f59e0b" : "#22c55e";
-      const est = s.harmEstimated;
+      const est = s.harmEstimated || s._src?.harm?.conf === "estimated";
       return <div key={s.id} style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
         <span style={{ width: 70, fontSize: 12, color: CAT[s.cat].c, fontFamily: "'DM Mono',monospace", textAlign: "right", flexShrink: 0 }}>{(s.sn || s.n)}</span>
         <div style={{ flex: 1, height: 16, borderRadius: 5, background: "rgba(255,255,255,0.04)", overflow: "hidden" }}>

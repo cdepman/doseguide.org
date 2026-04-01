@@ -22,16 +22,35 @@ DoseGuide tries to be none of these. It's the information a smart, caring friend
 
 ## Data sources
 
-Every number in this tool is traceable to a specific source:
-
-- **Safety margins**: Gable 2006, MAPS clinical trials, Medscape toxicology, British Journal of Anaesthesia, PsychonautWiki
+- **Harm scores** (14 of 26 substances): Nutt, King & Phillips (The Lancet, 2010) — multicriteria decision analysis. The remaining 12 are estimates, marked with `conf:"estimated"` in the data.
 - **Drug combinations**: TripSit v4.0 interaction chart + mechanism explanations
-- **Harm scores**: Nutt, King & Phillips (The Lancet, 2010) — multicriteria decision analysis
-- **Addiction rates**: Lopez-Quintero et al. 2011 (NESARC, n=43,093), Anthony 1994 (NCS, n=8,098)
-- **Supply purity**: Substance UVic (Canada), NZ Drug Foundation, DrugsData, Maryland RAD, Italy GC/MS study
-- **Psychological risk**: Global Drug Survey 2019-2021, Barrett CEQ, MAPS adverse event data
+- **Addiction rates** (5 directly measured, 21 estimated): Lopez-Quintero et al. 2011 (NESARC, n=43,093) for nicotine, alcohol, cannabis, cocaine. Anthony 1994 (NCS, n=8,098) for amphetamines, heroin. Others are estimates from clinical literature.
+- **Supply purity** (6 with specific studies, 20 estimated): DrugsData, Maryland RAD, Italy GC/MS study, UVic Canada, NZ Drug Foundation. Others are editorial estimates based on product identifiability.
+- **Safety margins**: Gable 2006 framework. Individual values are derived from clinical toxicology literature; most lack single-paper citations.
+- **Dosage ranges**: PsychonautWiki
+- **Psychological risk**: Global Drug Survey 2019-2021
 
-See the [Sources page](https://doseguide.org) in the app for full citations.
+## Sourcing transparency
+
+Every substance in `src/data/substances.js` has a `_src` object with per-field citations:
+
+```js
+_src: {
+  harm:          { ref: "nutt2010", conf: "measured", note: "..." },
+  addictPct:     { ref: "lopez2011", conf: "derived", note: "..." },
+  pctAsExpected: { ref: "maryland_rad", conf: "measured", note: "..." },
+  margin:        { ref: "gable2006", conf: "derived", note: "..." },
+}
+```
+
+Confidence levels:
+
+- **measured** — directly from a cited study with this specific number
+- **derived** — calculated/extracted from a cited study (e.g., reading a survival curve)
+- **estimated** — extrapolated from related data or clinical consensus
+- **editorial** — reasonable expert opinion without empirical backing
+
+Citation keys map to the `CITE` table at the top of `substances.js` and to full references on the Sources page.
 
 ## Setup
 

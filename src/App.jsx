@@ -105,7 +105,10 @@ export default function App() {
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 2 }}>
           <nav className="desktop-nav" style={{ display: "flex", gap: 2 }}>
-            {TABS.map(t => <button key={t.id} onClick={() => switchView(t.id)} style={{ padding: "8px 14px", borderRadius: 7, border: "none", cursor: "pointer", background: view === t.id ? "rgba(255,255,255,0.1)" : "transparent", color: view === t.id ? "#e8e6e3" : "#6b6860", fontFamily: "'DM Mono',monospace", fontSize: 13, minHeight: 36 }}>{t.label}</button>)}
+            {TABS.map(t => <button key={t.id} onClick={() => switchView(t.id)} style={{ padding: "8px 14px", borderRadius: 7, border: "none", cursor: "pointer", background: view === t.id ? "rgba(255,255,255,0.1)" : "transparent", color: view === t.id ? "#e8e6e3" : "#6b6860", fontFamily: "'DM Mono',monospace", fontSize: 13, minHeight: 36, display: "flex", alignItems: "center", gap: 6 }}>
+              <span style={{ display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, width: 18, height: 18 }}>{t.iconSvg ? <t.iconSvg /> : t.icon}</span>
+              {t.label}
+            </button>)}
           </nav>
           <button onClick={() => setAboutOpen(true)} style={{ padding: "8px 12px", borderRadius: 7, border: "none", cursor: "pointer", background: "transparent", color: "#6b6860", fontFamily: "'DM Mono',monospace", fontSize: 13, minHeight: 36 }}>About</button>
         </div>

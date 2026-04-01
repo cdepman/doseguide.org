@@ -123,7 +123,7 @@ export const S = [
     odRisk:["Extreme psychological distress","No lethal overdose death recorded"],
     longTerm:["HPPD (rare — persistent visual disturbances)","Can surface latent psychosis","No organ damage","No dependence"],
     harm:7,routes:[{nm:"Oral / Sublingual",onset:"30–90 min",dur:"8–14 hr"}],
-    dose:{threshold:"15 µg",light:"25–75 µg",common:"75–150 µg",strong:"150–300 µg",heavy:"300+ µg"},
+    dose:{threshold:"15–25 µg",light:"25–75 µg",common:"75–150 µg",strong:"150–300 µg",heavy:"300+ µg",note:"Threshold varies by individual — some feel effects at 15 µg (PsychonautWiki), others not until 25 µg (Erowid). Sensitivity differences are real and meaningful for microdosing."},
     lethal:{headline:"Nobody has ever died from taking too much LSD.",note:"No confirmed death from LSD toxicity alone. Even massive accidental doses have been survived.",cmp:"bag",sz:60,realworld:"There is no realistic amount you could fit on blotter paper that would kill you. People have accidentally taken thousands of doses and survived.",gable:{ed:"100 µg",ld:"~100 mg",ratio:"1,000:1",note:"†animal extrapolation"}},
     // ── PER-FIELD SOURCING ──
     _src:{
@@ -441,7 +441,7 @@ export const S = [
     odRisk:["Aspiration (choking on vomit)","Respiratory depression (with other downers)","Loss of consciousness"],
     longTerm:["BLADDER DAMAGE (chronic use — severe, irreversible)","Kidney damage","Psychological dependence","Cognitive impairment","Urinary tract issues — pain, frequency, blood"],
     harm:15,routes:[{nm:"Insufflated",onset:"5–15 min",dur:"45–90 min"},{nm:"IM injection",onset:"2–5 min",dur:"45–90 min"},{nm:"Oral",onset:"15–30 min",dur:"1–2 hr"}],
-    dose:{threshold:"10 mg",light:"15–30 mg",common:"30–75 mg",strong:"75–150 mg",heavy:"150+ mg"},
+    dose:{threshold:"10 mg",light:"15–30 mg",common:"30–75 mg",strong:"75–150 mg",heavy:"150+ mg",note:"Doses above are for insufflated. IM is roughly 2/3 the insufflated dose (IM common: 25–50 mg, K-hole: 75–100 mg). Oral requires ~3x the insufflated dose due to low bioavailability."},
     lethal:{headline:"Very rarely lethal alone — almost every death involves choking on vomit or mixing with downers.",note:"Ketamine itself has a wide safety margin. The danger is becoming unconscious and choking, or combining with alcohol/opioids/GHB.",cmp:"line",sz:[50,8],realworld:"Dying from ketamine alone would require a very large amount. But a moderate dose of K mixed with a few drinks has killed people.",gable:{ed:"70 mg intranasal",ld:"~2.7 g",ratio:"38:1",note:"†animal extrapolation"}},
     _src:{
       harm:          {ref:"nutt2010", conf:"measured", note:"Nutt 2010: ketamine overall harm = 15"},
@@ -628,7 +628,7 @@ export const S = [
     dangerRank:13,marginBest:30,marginWorst:1,marginLabel:"Very wide ALONE — almost none with opioids or alcohol",
     marginExplain:"Benzos alone have a genuinely large safety margin — some clinical reports describe survival after 30x+ normal doses (e.g. flurazepam). BUT: add any opioid and the margin drops to ~1x. Benzos + opioids is one of the most dangerous poly-drug combinations — 92.7% of benzo-involved deaths also involve opioids (CDC 2020). Since ~2017, stimulant-opioid deaths have surged past benzo-opioid in absolute numbers.",
     supplyRisk:5,pctAsExpected:60,supplyLabel:"~60% from pharmacy; street pills extremely dangerous",
-    supplyExplain:"Pharmacy benzos: 100% safe. Street 'Xanax bars': frequently contain fentanyl or novel benzos. One of the primary vectors for fentanyl poisoning.",
+    supplyExplain:"Pharmacy benzos: 100% safe. Street 'Xanax bars': frequently contain fentanyl or novel benzos (bromazolam rose from 4% to 73% of novel benzos by 2023). Pressed pills have wildly unpredictable dosing — bromazolam content ranges from 0.09 mg to 5.4 mg in tested samples, a 60x variance. One of the primary vectors for fentanyl poisoning.",
     addict:4,addictLabel:"Highly addictive",addictPct:9.2,addictLife:18,
     addictSource:"Anthony 1994: ~9.2% for 'sedatives' category (DSM-III-R, includes non-benzo sedatives). Blanco et al. 2018 (NSDUH n=102,000): only 1.5% of all benzo users developed BUD — but among chronic clinical users, rates are 40-82%.",
     addictNote:"Physical dependence can develop in 2-4 weeks of daily use. Prescribed users often don't realize they're dependent until they try to stop. Withdrawal can cause seizures and death. The 9.2% rate is from a broad 'sedatives' category; clinical dependence rates for daily users are far higher.",

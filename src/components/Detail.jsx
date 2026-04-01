@@ -44,11 +44,14 @@ export default function Detail({ s }) {
       {s.marginExplain && <p style={{ margin: "0 0 4px", fontSize: 13, color: "#7a7670", lineHeight: 1.5 }}>{s.marginExplain}</p>}
       {s.supplyRisk >= 3 && <p style={{ margin: "4px 0 0", fontSize: 13, color: "#d4a040", background: "rgba(245,158,11,0.06)", padding: "8px 10px", borderRadius: 6 }}>⚠ {s.supplyExplain}</p>}
     </div>}
-    <Sec title="How much">{lvls.map((l, i) => <div key={l.l} style={{ display: "flex", alignItems: "center", gap: 7, marginBottom: 5 }}>
-      <span style={{ width: 65, fontSize: 12, color: l.c, fontFamily: "'DM Mono',monospace", textAlign: "right", flexShrink: 0 }}>{l.l}</span>
-      <div style={{ flex: 1, height: 6, borderRadius: 3, background: "rgba(255,255,255,0.04)", overflow: "hidden" }}><div style={{ width: `${20 + i * 20}%`, height: "100%", borderRadius: 3, background: `linear-gradient(90deg,${l.c}44,${l.c})` }} /></div>
-      <span style={{ fontSize: 13, color: "#c7c4be", fontFamily: "'DM Mono',monospace", minWidth: 70 }}>{l.v}</span>
-    </div>)}</Sec>
+    <Sec title="How much"><>
+      {lvls.map((l, i) => <div key={l.l} style={{ display: "flex", alignItems: "center", gap: 7, marginBottom: 5 }}>
+        <span style={{ width: 65, fontSize: 12, color: l.c, fontFamily: "'DM Mono',monospace", textAlign: "right", flexShrink: 0 }}>{l.l}</span>
+        <div style={{ flex: 1, height: 6, borderRadius: 3, background: "rgba(255,255,255,0.04)", overflow: "hidden" }}><div style={{ width: `${20 + i * 20}%`, height: "100%", borderRadius: 3, background: `linear-gradient(90deg,${l.c}44,${l.c})` }} /></div>
+        <span style={{ fontSize: 13, color: "#c7c4be", fontFamily: "'DM Mono',monospace", minWidth: 70 }}>{l.v}</span>
+      </div>)}
+      {s.dose.note && <p style={{ margin: "6px 0 0", fontSize: 12, color: "#6b6860", lineHeight: 1.5, fontFamily: "'DM Mono',monospace" }}>{s.dose.note}</p>}
+    </></Sec>
     <LethalViz s={s} />
     <Sec title="What it feels like"><div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>{s.feels.map(f => <span key={f} style={{ fontSize: 13, padding: "5px 10px", borderRadius: 6, background: "rgba(34,197,94,0.08)", color: "#5ab87a" }}>{f}</span>)}</div></Sec>
     <Sec title="What happens if you take too much"><div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>{s.odRisk.map(r => <span key={r} style={{ fontSize: 13, padding: "5px 10px", borderRadius: 6, background: "rgba(239,68,68,0.1)", color: "#e07070" }}>{r}</span>)}</div></Sec>

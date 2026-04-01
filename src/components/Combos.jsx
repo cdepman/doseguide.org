@@ -10,7 +10,9 @@ export default function Combos({ selected }) {
       pairs.push({ a, b, risk: cr(selected[i], selected[j]), mech: getMech(selected[i], selected[j]) });
     }
   const ord = ["synergy", "low_risk", "decrease", "caution", "unsafe", "dangerous"];
-  const worst = pairs.reduce((w, p) => p.risk && ord.indexOf(p.risk) > ord.indexOf(w) ? p.risk : w, "synergy");
+  const hasUnknown = pairs.some(p => !p.risk);
+  const knownWorst = pairs.reduce((w, p) => p.risk && ord.indexOf(p.risk) > ord.indexOf(w) ? p.risk : w, "synergy");
+  const worst = hasUnknown && ord.indexOf(knownWorst) < ord.indexOf("caution") ? "caution" : knownWorst;
   const wl = RL[worst];
 
   const subs = selected.map(id => S.find(x => x.id === id)).filter(Boolean);

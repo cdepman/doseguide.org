@@ -2,7 +2,15 @@
 
 **Evidence-based harm reduction. Not medical advice.**
 
-DoseGuide is a free, open-source tool that provides honest, sourced safety information about recreational substances. It exists because people use drugs whether or not they have good information — and having good information saves lives.
+DoseGuide is an open-source harm reduction resource. It does not encourage drug use. It exists because people use drugs whether or not they have good information, and the evidence is clear that informed users have better outcomes.
+
+All data is sourced from peer-reviewed research, government agencies, and established harm reduction organizations including the Global Drug Survey, The Lancet, DanceSafe, and SAMHSA.
+
+This project is personal. My father, Dr. Mark Depman, spent a good part of his career as an emergency physician in Vermont working at the intersection of substance use and harm reduction. In 2025, the Vermont Association for Mental Health and Addiction Recovery established the [Dr. Mark Depman Trailblazer Award](https://vermontbiz.com/news/2025/february/18/vamhar-presents-inaugural-dr-mark-depman-trailblazer-award-recovery-day-2025) in his honor. I grew up watching him advocate for his patients and insist that compassion and evidence, not stigma and punishment, save lives and heal communities.
+
+DoseGuide is built in that spirit.
+
+— Charlie Depman
 
 ## Why this exists
 

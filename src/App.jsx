@@ -188,7 +188,6 @@ export default function App() {
 
       <footer style={{ borderTop: "1px solid rgba(255,255,255,0.04)", padding: "16px", textAlign: "center" }}>
         <p style={{ fontSize: 12, color: "#666", maxWidth: 660, margin: "0 auto 5px", lineHeight: 1.5 }}>Overdose: <strong style={{ color: "#aaa" }}>Call 911 + Narcan</strong> · Struggling: <strong style={{ color: "#aaa" }}>SAMHSA 1-800-662-4357</strong></p>
-        <p style={{ fontSize: 12, color: "#3a3a3a", fontFamily: "'DM Mono',monospace", marginBottom: 4 }}>Data: TripSit · Nutt et al. 2010 · NHTSA · DrugsData · DanceSafe · PsychonautWiki</p>
         <p style={{ fontSize: 12, color: "#3a3a3a", fontFamily: "'DM Mono',monospace" }}>Open source — <a href="https://github.com/cdepman/doseguide.org" target="_blank" rel="noopener noreferrer" style={{ color: "#555", textDecoration: "none", borderBottom: "1px solid #333" }}>contribute on GitHub</a></p>
       </footer>
     </main>

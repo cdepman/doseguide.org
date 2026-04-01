@@ -9,9 +9,9 @@ DoseGuide is a free, open-source tool that provides honest, sourced safety infor
 Every year, tens of thousands of people die from drug overdoses that could have been prevented with better information. Not "don't do drugs" information — that doesn't work. Practical information:
 
 - **How much is too much?** Not the LD50 from a textbook, but the real-world margin between a normal dose and danger — and what shifts that margin (your health, your environment, what else you took).
-- **Is it what you think it is?** Only 12% of "heroin" samples actually contain heroin. 26% of "MDMA" contains something else. Knowing this — and testing — saves lives.
-- **What happens if you mix them?** The #1 cause of overdose death is polydrug combinations. Benzos + opioids. Alcohol + GHB. MDMA + MAOIs. These combinations kill people who thought they were being careful.
-- **How likely are you to get hooked?** Not a 1-5 scale — the actual percentage from epidemiological research. 16% for nicotine within 10 years. 0.5% for LSD. These numbers matter.
+- **Is it what you think it is?** Only 1.9% of US "heroin" samples actually contain heroin (Maryland RAD 2021-2024). 26% of "MDMA" contains something else (DrugsData). Knowing this — and testing — saves lives.
+- **What happens if you mix them?** Polydrug combinations are a leading cause of overdose death. Benzos + opioids. Stimulants + opioids. Alcohol + GHB. MDMA + MAOIs. These combinations kill people who thought they were being careful.
+- **How likely are you to get hooked?** Not a 1-5 scale — the actual percentage from epidemiological research where available. 67.5% lifetime for nicotine (Lopez-Quintero 2011). ~3% within 24 months for hallucinogens (Stone 2007). Where no population data exists, we say so explicitly.
 
 Most drug information online is either:
 - **Prohibitionist** — "all drugs are equally bad, just say no" (useless if someone has already decided to use)
@@ -22,13 +22,14 @@ DoseGuide tries to be none of these. It's the information a smart, caring friend
 
 ## Data sources
 
-- **Harm scores** (14 of 26 substances): Nutt, King & Phillips (The Lancet, 2010) — multicriteria decision analysis. The remaining 12 are estimates, marked with `conf:"estimated"` in the data.
+- **Harm scores**: 14 substances from Nutt 2010 (Lancet MCDA). 4 more from subsequent MCDA studies: fentanyl=90 (Broman 2025), nitrous=6 (Ferreira 2022), DMT=5 (Broman 2025), poppers=5 (Ferreira 2022). The remaining 7 (tramadol, kratom, DXM, 2C-x, PCP, mescaline, caffeine) are DoseGuide estimates, marked with dashed bars in the charts and `conf:"estimated"` in the data.
 - **Drug combinations**: TripSit v4.0 interaction chart + mechanism explanations
-- **Addiction rates** (5 directly measured, 21 estimated): Lopez-Quintero et al. 2011 (NESARC, n=43,093) for nicotine, alcohol, cannabis, cocaine. Anthony 1994 (NCS, n=8,098) for amphetamines, heroin. Others are estimates from clinical literature.
-- **Supply purity** (6 with specific studies, 20 estimated): DrugsData, Maryland RAD, Italy GC/MS study, UVic Canada, NZ Drug Foundation. Others are editorial estimates based on product identifiability.
-- **Safety margins**: Gable 2006 framework. Individual values are derived from clinical toxicology literature; most lack single-paper citations.
+- **Addiction rates**: 5 with population-based survival analysis (Lopez-Quintero 2011 for nicotine, alcohol, cannabis, cocaine; Anthony 1994 for heroin). Hallucinogens from Anthony 1994 (~4.9% lifetime) and Stone 2007 (~3% within 24 months). Amphetamines from Anthony 1994. Ketamine from Barrios 2025 (GDS, convenience sample). MDMA, GHB, DXM, kratom, and 2C-B have **no population-based capture rates** — our numbers are editorial estimates clearly labeled as such.
+- **Supply purity**: Cocaine purity ~88% (DEA 2024, levamisole down to ~5%). MDMA from DrugsData (Sevigny & Thyssen 2024). Heroin from Maryland RAD (1.9% concordance). Ketamine from Italy GC/MS (78%). Others are editorial estimates.
+- **Safety margins**: Gable 2004 (Addiction) covers 20+ substances with lethal-to-effective dose ratios. Individual values derived from this and clinical toxicology literature.
 - **Dosage ranges**: PsychonautWiki
 - **Psychological risk**: Global Drug Survey 2019-2021
+- **Cocaine cardiac risk**: Mittleman 1999 (23.7-fold MI risk increase within 60 min of use)
 
 ## Sourcing transparency
 
@@ -87,7 +88,8 @@ src/
 │   ├── SafetyDots.jsx               # Safety indicator dots on cards
 │   ├── Detail.jsx                   # Expanded substance detail + lethal dose viz
 │   ├── Combos.jsx                   # Pairwise combo results + poly warnings
-│   ├── Matrix.jsx                   # Full interaction matrix grid
+│   ├── Matrix.jsx                   # Full interaction matrix grid (desktop)
+│   ├── InteractionsMobile.jsx       # Mobile interactions lookup (single-substance)
 │   └── Charts.jsx                   # All ranking charts (safety, harm, addiction, supply)
 └── views/
     ├── SubstanceIndex.jsx           # Substance directory with expand/collapse cards

@@ -38,12 +38,17 @@ const InteractionsIcon = () => <svg width="24" height="20" viewBox="0 0 24 20" f
   <circle cx="15.5" cy="10" r="7" fill="currentColor" opacity="0.45" clipPath="url(#il)" />
 </svg>;
 
+const SourcesIcon = () => <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+  <path d="M4 19.5A2.5 2.5 0 016.5 17H20" /><path d="M4 4.5A2.5 2.5 0 016.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15z" />
+  <line x1="9" y1="7" x2="16" y2="7" /><line x1="9" y1="11" x2="14" y2="11" />
+</svg>;
+
 const TABS = [
   { id: "index", label: "Home", icon: "◎" },
   { id: "interactions", label: "Interactions", iconSvg: InteractionsIcon },
   { id: "combos", label: "Combos", iconSvg: CombosIcon },
   { id: "rankings", label: "Rankings", iconSvg: RankingsIcon },
-  { id: "sources", label: "Sources", icon: "◈" },
+  { id: "sources", label: "Sources", iconSvg: SourcesIcon },
 ];
 
 export default function App() {
@@ -109,7 +114,7 @@ export default function App() {
     {/* ── DISCLAIMER ── */}
     <div style={{ flexShrink: 0, maxWidth: 1200, margin: "0 auto", width: "100%", padding: "6px 16px" }}>
       <div style={{ background: "rgba(245,158,11,0.06)", border: "1px solid rgba(245,158,11,0.15)", borderRadius: 7, padding: "7px 12px", fontSize: 12, color: "#a09070", lineHeight: 1.5 }}>
-        <strong style={{ color: "#c4a050" }}>Harm reduction — not medical advice.</strong> <span className="desktop-only">Data: TripSit, Nutt et al., NHTSA, DrugsData, DanceSafe. </span><strong>Always test your substances.</strong>
+        <strong style={{ color: "#c4a050" }}>Harm reduction — not medical advice.</strong> <span className="desktop-only">Data: TripSit, Nutt et al., NHTSA, DrugsData, DanceSafe. </span><strong>Substance testing saves lives.</strong>
       </div>
     </div>
 
@@ -199,7 +204,7 @@ export default function App() {
         <div style={{ padding: "16px 20px 28px" }}>
           <p style={{ margin: "0 0 14px", fontSize: 15, color: "#a09d97", lineHeight: 1.7, fontFamily: "'Source Serif 4',Georgia,serif" }}>DoseGuide is an open-source harm reduction resource. It does not encourage drug use. It exists because people use drugs whether or not they have good information, and the evidence is clear that informed users have better outcomes.</p>
           <p style={{ margin: "0 0 14px", fontSize: 15, color: "#a09d97", lineHeight: 1.7, fontFamily: "'Source Serif 4',Georgia,serif" }}>All data is sourced from peer-reviewed research, government agencies, and established harm reduction organizations including the Global Drug Survey, The Lancet, DanceSafe, and SAMHSA.</p>
-          <p style={{ margin: "0 0 14px", fontSize: 15, color: "#a09d97", lineHeight: 1.7, fontFamily: "'Source Serif 4',Georgia,serif" }}>This project is personal. My father, Dr. Mark Depman, spent a good part of his career as an emergency physician in Vermont working at the intersection of substance use and harm reduction. In 2025, the Vermont Association for Mental Health and Addiction Recovery established the Dr. Mark Depman Trailblazer Award in his honor. I grew up watching him advocate for his patients and insist that compassion and evidence, not stigma and punishment, save lives and heal communities.</p>
+          <p style={{ margin: "0 0 14px", fontSize: 15, color: "#a09d97", lineHeight: 1.7, fontFamily: "'Source Serif 4',Georgia,serif" }}>This project is personal. My father, Dr. Mark Depman, spent a good part of his career as an emergency physician in Vermont working at the intersection of substance use and harm reduction. In 2025, the Vermont Association for Mental Health and Addiction Recovery established the <a href="https://vermontbiz.com/news/2025/february/18/vamhar-presents-inaugural-dr-mark-depman-trailblazer-award-recovery-day-2025" target="_blank" rel="noopener noreferrer" style={{ color: "#c7c4be", textDecoration: "none", borderBottom: "1px solid rgba(255,255,255,0.25)" }}>Dr. Mark Depman Trailblazer Award</a> in his honor. I grew up watching him advocate for his patients and insist that compassion and evidence, not stigma and punishment, save lives and heal communities.</p>
           <p style={{ margin: "0 0 14px", fontSize: 15, color: "#c7c4be", lineHeight: 1.7, fontFamily: "'Source Serif 4',Georgia,serif" }}>DoseGuide is built in that spirit.</p>
           <p style={{ margin: 0, fontSize: 14, color: "#8a8780", fontFamily: "'Instrument Serif',Georgia,serif" }}>— Charlie Depman</p>
         </div>

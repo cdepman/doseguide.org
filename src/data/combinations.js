@@ -56,7 +56,7 @@ const MECH = {
   "tramadol+maoi": "Serotonin syndrome — potentially fatal. Tramadol acts as an SNRI; MAOIs prevent serotonin breakdown.",
   "tramadol+ssri": "Serotonin syndrome risk. Both increase serotonin through different mechanisms. Many doctors prescribe both without realizing the risk.",
   "tramadol+kratom": "Both opioid agonists. Additive respiratory depression plus tramadol's seizure and serotonin risks.",
-  "maoi+ssri": "Fatal serotonin syndrome. Both increase serotonin but through completely different mechanisms. Must wait 2-5 weeks between switching.",
+  "maoi+ssri": "Fatal serotonin syndrome. Both increase serotonin but through completely different mechanisms. Safe transition requires 2-5 weeks of washout between switching.",
   "benzodiazepine+tramadol": "Respiratory depression plus seizure risk. Tramadol lowers seizure threshold while benzos can mask warning signs.",
   "benzodiazepine+kratom": "Both CNS depressants. Risk of oversedation, respiratory depression, aspiration.",
   "ketamine+ghb": "Both cause loss of consciousness. Extreme aspiration risk — choking on vomit while unable to protect airway.",

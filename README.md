@@ -22,19 +22,51 @@ DoseGuide tries to be none of these. It's the information a smart, caring friend
 
 ## Data sources
 
-- **Harm scores**: 14 substances from Nutt 2010 (Lancet MCDA). 4 more from subsequent MCDA studies: fentanyl=90 (Broman 2025), nitrous=6 (Ferreira 2022), DMT=5 (Broman 2025), poppers=5 (Ferreira 2022). The remaining 7 (tramadol, kratom, DXM, 2C-x, PCP, mescaline, caffeine) are DoseGuide estimates, marked with dashed bars in the charts and `conf:"estimated"` in the data.
-- **Drug combinations**: TripSit v4.0 interaction chart + mechanism explanations
-- **Addiction rates**: 5 with population-based survival analysis (Lopez-Quintero 2011 for nicotine, alcohol, cannabis, cocaine; Anthony 1994 for heroin). Hallucinogens from Anthony 1994 (~4.9% lifetime) and Stone 2007 (~3% within 24 months). Amphetamines from Anthony 1994. Ketamine from Barrios 2025 (GDS, convenience sample). MDMA, GHB, DXM, kratom, and 2C-B have **no population-based capture rates** — our numbers are editorial estimates clearly labeled as such.
-- **Supply purity**: Cocaine purity ~88% (DEA 2024, levamisole down to ~5%). MDMA from DrugsData (Sevigny & Thyssen 2024). Heroin from Maryland RAD (1.9% concordance). Ketamine from Italy GC/MS (78%). Others are editorial estimates.
-- **Safety margins**: Gable 2004 (Addiction) — lethal-to-effective dose ratios for 20 substances. Validated by Lachenmeier & Rehm 2015 (Scientific Reports) margin of exposure analysis.
+The full list of 30+ sources with links is on the [Sources page](https://doseguide.org/sources). Every quantitative claim has a per-field citation in the source code (see [Sourcing transparency](#sourcing-transparency) below).
+
+### Harm scores (MCDA)
+- 14 substances from **Nutt, King & Phillips 2010** (Lancet, 20 drugs, 16 criteria, expert panel)
+- 4 from subsequent MCDA studies: fentanyl=90 (**Broman et al. 2025**, Harm Reduction Journal, 19 drugs, 18 criteria, 17 US experts), nitrous=6 and poppers=5 (**Ferreira et al. 2022**, Drug Science Policy & Law), DMT=5 (Broman 2025)
+- 7 remaining (tramadol, kratom, DXM, 2C-x, PCP, mescaline, caffeine) are DoseGuide estimates, marked with dashed bars in charts
+
+### Drug interactions
+- Base data from **TripSit v4.0** combination chart
+- **DoseGuide corrections from peer-reviewed literature**: cocaine+opioids upgraded to Dangerous (**CDC SUDORS 2023**: 47% of overdose deaths involve both), all stimulant+opioid combos upgraded (unmasking mechanism, **Friedman & Shover 2023**), MDMA+SSRIs changed to Decrease (**Liechti et al. 2000**, Neuropsychopharmacology), kratom interactions added (**Olsen et al. 2019**, MMWR), GHB+stimulant temporal mismatch added (**Liechti 2006**)
+- 18 mechanism explanations cite specific papers (Boyer & Shannon 2005, Mittleman 1999, van Amsterdam 2024, Emmanouil & Quock 2007, Lukas & Orozco 2001, etc.)
+
+### Addiction rates
+- 5 with population-based survival analysis: **Lopez-Quintero et al. 2011** (NESARC n=43,093) for nicotine, alcohol, cannabis, cocaine; **Anthony et al. 1994** (NCS n=8,098) for heroin
+- Hallucinogens: **Anthony 1994** (~4.9% lifetime) and **Stone et al. 2007** (NHSDA n=114,241, ~3% within 24 months)
+- Amphetamines: **Anthony 1994** + **Wagner & Anthony 2002**
+- Ketamine: **Barrios et al. 2025** (GDS 2018, n=130,761, convenience sample)
+- Benzos: **Blanco et al. 2018** (NSDUH n=102,000) + **Anthony 1994** sedatives category
+- Caffeine: **Sweeney et al. 2020** (n=1,006, DSM-5 criteria)
+- MDMA, GHB, DXM, kratom, 2C-B have **no population-based capture rates** — numbers are editorial estimates clearly labeled as such
+
+### Supply purity
+- Cocaine: **DEA CY2024 Annual Cocaine Report** (~88% purity, levamisole down to ~5%)
+- MDMA: **DrugsData/Sevigny & Thyssen 2024** (74% MDMA-only, 25 years of data)
+- Heroin: **Maryland RAD 2021-2024** (1.9% concordance in US)
+- Ketamine, LSD, amphetamine, cocaine: **Fregonese et al. 2021** (Italy GC/MS)
+- Fentanyl contamination: **Lim et al. 2024** (Lancet, 11.9M NFLIS samples, 2.7% nationally)
+- Tusi/pink cocaine: **Barbaro & Bouchard 2024** (94% ketamine, 0% 2C-B)
+- Others are editorial estimates based on product identifiability
+
+### Safety margins & lethal doses
+- **Gable 2004** (Addiction) — lethal-to-effective dose ratios for 20 substances (heroin 6:1 through cannabis >1,000:1)
+- Validated by **Lachenmeier & Rehm 2015** (Scientific Reports, margin of exposure analysis)
+- Displayed in Lethal Dose Ratio chart and substance detail drawers
+
+### Other sources
 - **Dosage ranges**: PsychonautWiki
 - **Psychological risk**: Global Drug Survey 2019-2021
-- **Cocaine cardiac risk**: Mittleman 1999 (Circulation) — 24x MI risk within 60 min of use
-- **Cocaine purity (updated)**: DEA CY2024 Annual Cocaine Report — levamisole now ~5% (was 87% in 2017), average purity 88%
-- **Tusi/pink cocaine**: Barbaro & Bouchard 2024 (J Medicinal Chemistry) — 94% ketamine, 0% 2C-B in 68 samples
-- **CYP2D6 metabolizer rates**: Bradford 2002 (Pharmacogenomics) — 5-10% Caucasian, ~1% East Asian
-- **Fentanyl lethal dose**: DEA + EUDA drug profile — 2mg estimated lethal dose for opioid-naive individuals
-- **Benzo+opioid deaths**: Jones & McAninch 2015 (Am J Prev Med) — benzo co-involvement rose from 18% to 31% of opioid deaths (2004-2011); since ~2017 stimulant-opioid deaths have surpassed in absolute numbers
+- **Cocaine cardiac risk**: **Mittleman et al. 1999** (Circulation) — 24x MI risk within 60 min
+- **CYP2D6 metabolizer rates**: **Bradford 2002** (Pharmacogenomics) — 5-10% Caucasian, ~1% East Asian
+- **Fentanyl lethal dose**: DEA + EUDA drug profile — 2mg for opioid-naive individuals
+- **Benzo+opioid deaths**: **Jones & McAninch 2015** (Am J Prev Med); since ~2017 stimulant-opioid deaths surpassed in absolute numbers
+- **Xylazine crisis**: **Kariisa et al. 2023** (MMWR) — 20-fold increase 2015-2020
+- **Cocaethylene**: **van Amsterdam et al. 2024** (J Clin Med) — 18-25x sudden death risk vs cocaine alone
+- **Kratom deaths**: **Olsen et al. 2019** (MMWR) — only 4.6% of 152 kratom-positive deaths had kratom as sole substance
 
 ## Sourcing transparency
 

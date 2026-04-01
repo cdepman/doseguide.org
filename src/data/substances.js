@@ -47,6 +47,18 @@ export const CITE = {
   barrios2025:    "Barrios et al. Ketamine use in a large global sample. J Psychopharmacol 39(1), 2025. GDS 2018 n=130,761.",
   dijkstra2021:   "Dijkstra et al. GHB use disorder: a systematic review. Int J Drug Policy 94:103230, 2021.",
   lim2024:        "Lim et al. Fentanyl co-occurrence in stimulant samples. Lancet Regional Health Americas, 2024. 11.9M NFLIS samples.",
+  // ── INTERACTION/COMBINATION SOURCES ──
+  liechti2000:    "Liechti et al. Acute psychological effects of MDMA after pretreatment with citalopram. Neuropsychopharmacology 22:513-521, 2000.",
+  liechti2006:    "Liechti et al. GHB and MDMA co-use. Pharmacology 77(1):9-15, 2006.",
+  boyer2005:      "Boyer & Shannon. The serotonin syndrome. NEJM 352(11):1112-1120, 2005.",
+  olsen2019:      "Olsen et al. Notes from the field: unintentional drug overdose deaths with kratom. MMWR 68(14):326-327, 2019. 152 kratom-positive deaths.",
+  eudaley2023:    "Eudaley et al. Kratom and serotonin syndrome. J Pharmacy Practice, 2023. DOI: 10.1177/08971900221116009.",
+  spencer2023:    "Spencer et al. Drug overdose deaths involving stimulants. NCHS Data Brief No. 474, 2023.",
+  kariisa2023:    "Kariisa et al. Xylazine-involved overdose deaths. MMWR 72(26):721-727, 2023.",
+  friedman2023:   "Friedman & Shover. Charting the fourth wave: stimulant co-involvement. Addiction 118(12):2477-2485, 2023.",
+  vanamsterdam2024:"van Amsterdam et al. Cocaethylene: formation, toxicology, and clinical implications. J Clin Med 13(5):1475, 2024.",
+  lukas2001:      "Lukas & Orozco. Ethanol increases plasma THC levels. Drug Alcohol Depend 64(2):143-149, 2001.",
+  emmanouil2007:  "Emmanouil & Quock. Advances in understanding the actions of nitrous oxide. Anesth Prog 54(1):9-18, 2007.",
 };
 
 // Confidence levels for estimated values

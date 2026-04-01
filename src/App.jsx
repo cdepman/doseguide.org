@@ -127,7 +127,7 @@ export default function App() {
                 <div style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: 12, padding: 16, marginBottom: 12 }}>
                   {/* Category */}
                   <div style={{ marginBottom: 14 }}>
-                    <h4 style={{ fontSize: 11, color: "#6b6860", fontFamily: "'DM Mono',monospace", marginBottom: 8, textTransform: "uppercase", letterSpacing: "0.05em" }}>Category</h4>
+                    <h4 style={{ fontSize: 11, color: "#6b6860", fontFamily: "'DM Mono',monospace", marginBottom: 8, textTransform: "uppercase", letterSpacing: "0.05em" }}>Filter</h4>
                     <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
                       <button onClick={() => setCatF(null)} style={{ padding: "10px 16px", borderRadius: 8, border: "1px solid", cursor: "pointer", fontSize: 13, fontFamily: "'DM Mono',monospace", background: !catF ? "rgba(255,255,255,0.1)" : "transparent", borderColor: !catF ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.06)", color: !catF ? "#e8e6e3" : "#555", minHeight: 44 }}>All</button>
                       {Object.entries(CAT).map(([k, v]) => <button key={k} onClick={() => setCatF(catF === k ? null : k)} style={{ padding: "10px 16px", borderRadius: 8, border: "1px solid", cursor: "pointer", fontSize: 13, fontFamily: "'DM Mono',monospace", background: catF === k ? v.b : "transparent", borderColor: catF === k ? v.c + "40" : "rgba(255,255,255,0.06)", color: catF === k ? v.c : "#555", minHeight: 44 }}>{v.l}</button>)}

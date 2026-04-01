@@ -147,7 +147,7 @@ function SupplyChart({ onInfo }) {
   const safe = S.filter(s => s.pctAsExpected != null && s.pctAsExpected >= 96).sort((a, b) => a.pctAsExpected - b.pctAsExpected);
 
   return <div style={{ background: "rgba(255,255,255,0.02)", borderRadius: 12, border: "1px solid rgba(255,255,255,0.06)", padding: 20, marginBottom: 18 }}>
-    <h3 style={{ margin: "0 0 2px", fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 18, color: "#e8e6e3", fontWeight: 400 }}>Is It What You Think? <span style={{ fontSize: 12, color: "#6b6860", fontFamily: "'DM Mono',monospace" }}>(% tests as expected)</span></h3>
+    <h3 style={{ margin: "0 0 2px", fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 18, color: "#e8e6e3", fontWeight: 400 }}>How Pure Is It? <span style={{ fontSize: 12, color: "#6b6860", fontFamily: "'DM Mono',monospace" }}>(% tests as expected)</span></h3>
     <p style={{ margin: "0 0 10px", fontSize: 12, color: "#6b6860" }}>Data from drug checking services in US, Canada, NZ, and Europe.</p>
 
     {risky.map(s => {

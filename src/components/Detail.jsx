@@ -1,4 +1,4 @@
-import { CAT } from "../data/substances";
+import { CAT, SRC_LABELS } from "../data/substances";
 
 function LethalViz({ s }) {
   if (!s.lethal.cmp) return null;
@@ -40,5 +40,6 @@ export default function Detail({ s }) {
     <Sec title="What happens if you take too much"><div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>{s.odRisk.map(r => <span key={r} style={{ fontSize: 13, padding: "5px 10px", borderRadius: 6, background: "rgba(239,68,68,0.1)", color: "#e07070" }}>{r}</span>)}</div></Sec>
     <Sec title="What happens if you keep using it"><div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>{s.longTerm.map(l => <span key={l} style={{ fontSize: 13, padding: "5px 10px", borderRadius: 6, background: "rgba(99,102,241,0.08)", color: "#8b8fd0" }}>{l}</span>)}</div></Sec>
     <Sec title="Also called"><div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>{s.aka.map(a => <span key={a} style={{ fontSize: 13, padding: "5px 10px", borderRadius: 6, background: "rgba(255,255,255,0.04)", color: "#8a8780" }}>{a}</span>)}</div></Sec>
+    <Sec title="Source"><span style={{ fontSize: 13, padding: "5px 10px", borderRadius: 6, background: "rgba(255,255,255,0.04)", color: "#8a8780" }}>{SRC_LABELS[s.src]}</span></Sec>
   </div>;
 }

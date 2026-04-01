@@ -1,4 +1,4 @@
-import { CAT, SRC_ICONS } from "../data/substances";
+import { CAT } from "../data/substances";
 import SafetyDots from "../components/SafetyDots";
 import Detail from "../components/Detail";
 
@@ -11,9 +11,9 @@ export default function SubstanceIndex({ filtered, expanded, setExpanded }) {
         return <div key={s.id} style={{ background: "rgba(255,255,255,0.025)", borderRadius: 12, border: `1px solid ${isExp ? c.c + "40" : "rgba(255,255,255,0.06)"}`, overflow: "hidden", transition: "border-color 0.3s" }}>
           <div onClick={() => setExpanded(isExp ? null : s.id)} style={{ padding: "14px 16px", cursor: "pointer", minHeight: 48 }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                <span style={{ fontSize: 14 }}>{SRC_ICONS[s.src]}</span>
+              <div>
                 <span style={{ fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 19, color: "#e8e6e3" }}>{s.n}</span>
+                {s.aka.length > 0 && <div style={{ fontSize: 12, color: "#6b6860", fontFamily: "'DM Mono',monospace", marginTop: 2 }}>{s.aka.join(" · ")}</div>}
               </div>
               <div style={{ display: "flex", gap: 5, alignItems: "center" }}>
                 <span style={{ fontSize: 12, padding: "4px 10px", borderRadius: 16, background: c.b, color: c.c, fontFamily: "'DM Mono',monospace" }}>{c.l}</span>

@@ -11,11 +11,11 @@ export const CAT = {
 };
 
 export const RL = {
-  synergy: { l: "Low Risk · Synergistic", c: "#22c55e", i: "✦", d: "Effects complement each other. Use lower doses of each." },
+  synergy: { l: "Low Risk · Synergistic", c: "#22c55e", i: "✦", d: "Effects complement each other and are amplified." },
   low_risk: { l: "Low Risk · No Synergy", c: "#60a5fa", i: "◉", d: "No significant interaction." },
-  decrease: { l: "Low Risk · Decreased Effect", c: "#818cf8", i: "▽", d: "One reduces the other. May tempt re-dosing — don't." },
-  caution: { l: "Caution", c: "#f59e0b", i: "⚠", d: "Unpredictable. Cut doses. Sober sitter." },
-  unsafe: { l: "Unsafe", c: "#f97316", i: "⛔", d: "Significant harm risk. Strongly avoid." },
+  decrease: { l: "Low Risk · Decreased Effect", c: "#818cf8", i: "▽", d: "One reduces the other's effects. This can lead to unintentional re-dosing." },
+  caution: { l: "Caution", c: "#f59e0b", i: "⚠", d: "Unpredictable interactions possible." },
+  unsafe: { l: "Unsafe", c: "#f97316", i: "⛔", d: "Significant risk of serious physical harm." },
   dangerous: { l: "Dangerous", c: "#ef4444", i: "✕", d: "Can kill. Respiratory arrest, serotonin syndrome, seizures, or cardiac arrest." },
 };
 

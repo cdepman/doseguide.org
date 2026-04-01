@@ -50,9 +50,13 @@ export default function Sources() {
         </div>
       </div>;
     })}
-    <div style={{ background: "rgba(245,158,11,0.06)", border: "1px solid rgba(245,158,11,0.15)", borderRadius: 8, padding: 14, marginTop: 16 }}>
+    <div style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: 8, padding: 14, marginTop: 16 }}>
+      <h3 style={{ margin: "0 0 6px", fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 16, color: "#e8e6e3", fontWeight: 400 }}>Per-number sourcing</h3>
+      <p style={{ margin: 0, fontSize: 12.5, color: "#a09d97", lineHeight: 1.6 }}>Every quantitative claim on this site — harm scores, addiction rates, safety margins, purity percentages — has a per-field citation in the source code. Each number is tagged with its source study, a confidence level (<span style={{ fontFamily: "'DM Mono',monospace", color: "#4ade80" }}>measured</span>, <span style={{ fontFamily: "'DM Mono',monospace", color: "#60a5fa" }}>derived</span>, <span style={{ fontFamily: "'DM Mono',monospace", color: "#f59e0b" }}>estimated</span>, or <span style={{ fontFamily: "'DM Mono',monospace", color: "#f97316" }}>editorial</span>), and a note explaining how the number was obtained. Tap the <span style={{ fontFamily: "'DM Mono',monospace", background: "rgba(255,255,255,0.06)", padding: "2px 6px", borderRadius: 4 }}>?</span> buttons in the Rankings charts to see sourcing for individual numbers.</p>
+    </div>
+    <div style={{ background: "rgba(245,158,11,0.06)", border: "1px solid rgba(245,158,11,0.15)", borderRadius: 8, padding: 14, marginTop: 10 }}>
       <h3 style={{ margin: "0 0 6px", fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 16, color: "#c4a050", fontWeight: 400 }}>A note on data quality</h3>
-      <p style={{ margin: 0, fontSize: 12.5, color: "#a09070", lineHeight: 1.6 }}>No single source is perfect. We cross-reference multiple sources and err on the side of caution — when sources disagree, we use the more conservative estimate. If you find an error, please let us know.</p>
+      <p style={{ margin: 0, fontSize: 12.5, color: "#a09070", lineHeight: 1.6 }}>No single source is perfect. We cross-reference multiple sources and err on the side of caution — when sources disagree, we use the more conservative estimate. If you find an error, please <a href="https://github.com/cdepman/doseguide.org/issues" target="_blank" rel="noopener noreferrer" style={{ color: "#c4a050", textDecoration: "none", borderBottom: "1px solid rgba(196,160,80,0.3)" }}>open an issue on GitHub</a>.</p>
     </div>
   </div>;
 }

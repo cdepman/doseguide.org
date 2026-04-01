@@ -1,6 +1,24 @@
 import { useState, useRef, useCallback } from "react";
 import { createPortal } from "react-dom";
-import { S, CAT } from "../data/substances";
+import { S, CAT, CITE } from "../data/substances";
+
+const CONF_COLORS = { measured: "#4ade80", derived: "#60a5fa", estimated: "#f59e0b", editorial: "#f97316" };
+const CONF_LABELS = { measured: "Measured", derived: "Derived", estimated: "Estimated", editorial: "Editorial" };
+
+function SrcBadge({ src }) {
+  if (!src) return null;
+  const col = CONF_COLORS[src.conf] || "#555";
+  return <div style={{ marginTop: 10, padding: "8px 10px", background: "rgba(255,255,255,0.02)", borderRadius: 6, border: "1px solid rgba(255,255,255,0.04)" }}>
+    <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
+      <span style={{ fontSize: 10, padding: "2px 6px", borderRadius: 4, background: col + "18", color: col, fontFamily: "'DM Mono',monospace", fontWeight: 600 }}>{CONF_LABELS[src.conf] || src.conf}</span>
+      {src.ref && CITE[src.ref] && <span style={{ fontSize: 10, color: "#555", fontFamily: "'DM Mono',monospace", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{src.ref}</span>}
+    </div>
+    <p style={{ margin: 0, fontSize: 11, color: "#6b6860", lineHeight: 1.5, fontFamily: "'DM Mono',monospace" }}>{src.note}</p>
+  </div>;
+}
+
+// Map chart field names to _src keys
+const SRC_KEYS = { margin: "margin", harm: "harm", addict: "addictPct", supply: "pctAsExpected" };
 
 // Fixed info panel — uses portal-style fixed positioning
 function InfoPanel({ substance, field, open, onClose }) {
@@ -14,6 +32,8 @@ function InfoPanel({ substance, field, open, onClose }) {
   };
   const info = notes[field];
   if (!info) return null;
+  const srcKey = SRC_KEYS[field];
+  const src = srcKey && substance._src?.[srcKey];
 
   return createPortal(<>
     <div onClick={onClose} style={{ position: "fixed", inset: 0, zIndex: 200, background: "rgba(0,0,0,0.6)", backdropFilter: "blur(4px)", WebkitBackdropFilter: "blur(4px)", opacity: open ? 1 : 0, pointerEvents: open ? "auto" : "none", transition: "opacity 0.3s ease" }} />
@@ -35,7 +55,7 @@ function InfoPanel({ substance, field, open, onClose }) {
           <p style={{ margin: "4px 0 0", fontSize: 10, color: "#555", fontFamily: "'DM Mono',monospace" }}>Gable 2004 · healthy, non-tolerant, 70 kg adult{substance.lethal.gable.note ? ` · ${substance.lethal.gable.note}` : ""}</p>
         </div>}
         <p style={{ margin: 0, fontSize: 14, color: "#a09d97", lineHeight: 1.6 }}>{info.text}</p>
-        {field === "addict" && substance.addictSource && <p style={{ margin: "10px 0 0", fontSize: 11, color: "#555", fontFamily: "'DM Mono',monospace" }}>Source: {substance.addictSource}</p>}
+        <SrcBadge src={src} />
       </div>
     </div>
   </>, document.body);

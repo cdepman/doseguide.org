@@ -114,7 +114,7 @@ export default function App() {
     {/* ── DISCLAIMER ── */}
     <div style={{ flexShrink: 0, maxWidth: 1200, margin: "0 auto", width: "100%", padding: "6px 16px" }}>
       <div style={{ background: "rgba(245,158,11,0.06)", border: "1px solid rgba(245,158,11,0.15)", borderRadius: 7, padding: "7px 12px", fontSize: 12, color: "#a09070", lineHeight: 1.5 }}>
-        <strong style={{ color: "#c4a050" }}>Harm reduction — not medical advice.</strong> <span className="desktop-only">Data: TripSit, Nutt et al., NHTSA, DrugsData, DanceSafe. </span><strong>Substance testing saves lives.</strong>
+        <strong style={{ color: "#c4a050" }}>Harm reduction, not medical advice.</strong> <span className="desktop-only"></span><strong>Substance testing saves lives.</strong>
       </div>
     </div>
 

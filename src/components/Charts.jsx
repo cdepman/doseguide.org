@@ -26,7 +26,7 @@ function InfoPanel({ substance, field, open, onClose }) {
   if (!substance) return null;
   const c = CAT[substance.cat];
   const notes = {
-    margin: { title: "Room for Error", text: substance.marginExplain },
+    margin: { title: "Single-Dose Danger", text: substance.marginExplain },
     harm: { title: "Total Damage", text: substance.desc },
     addict: { title: "Addiction Risk", text: substance.addictNote },
     supply: { title: "Supply Purity", text: substance.supplyExplain },
@@ -83,8 +83,8 @@ function RangeChart({ onInfo }) {
   const safe = S.filter(s => !s.isMedication && s.dangerRank >= 99);
 
   return <div style={{ background: "rgba(255,255,255,0.02)", borderRadius: 12, border: "1px solid rgba(255,255,255,0.06)", padding: 20, marginBottom: 18 }}>
-    <h3 style={{ margin: "0 0 2px", fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 18, color: "#e8e6e3", fontWeight: 400 }}>Room For Error <span style={{ fontSize: 12, color: "#6b6860", fontFamily: "'DM Mono',monospace" }}>(normal doses before danger)</span></h3>
-    <p style={{ margin: "0 0 6px", fontSize: 12, color: "#6b6860" }}>Solid = worst case, faded = best case.</p>
+    <h3 style={{ margin: "0 0 2px", fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 18, color: "#e8e6e3", fontWeight: 400 }}>Single-Dose Danger <span style={{ fontSize: 12, color: "#6b6860", fontFamily: "'DM Mono',monospace" }}>(how many normal doses before physical danger)</span></h3>
+    <p style={{ margin: "0 0 6px", fontSize: 12, color: "#6b6860" }}>Solid = worst-case scenario, faded = best-case scenario.</p>
     <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 10, fontSize: 12, fontFamily: "'DM Mono',monospace", color: "#555" }}>
       <span><span style={{ color: "#ef4444" }}>●</span> &lt;3x</span>
       <span><span style={{ color: "#f59e0b" }}>●</span> 3-5x</span>
@@ -264,7 +264,7 @@ function LethalChart({ onInfo }) {
     {items.map(s => {
       const g = s.lethal.gable;
       const v = ratioNum(g.ratio);
-      const w = Math.min((Math.log10(Math.max(v, 1)) / maxLog) * 100, 100);
+      const w = Math.max(Math.min((Math.log10(Math.max(v, 1.1)) / maxLog) * 100, 100), 3);
       const col = ratioColor(v);
       const hasNote = g.note;
       return <div key={s.id} style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
@@ -287,11 +287,11 @@ function LethalChart({ onInfo }) {
 }
 
 const SECTIONS = [
-  { id: "safety", label: "Safety Margin" },
   { id: "lethal", label: "Lethal Dose" },
-  { id: "harm", label: "Total Harm" },
   { id: "addiction", label: "Addiction" },
   { id: "supply", label: "Purity" },
+  { id: "harm", label: "Total Harm" },
+  { id: "safety", label: "Single-Dose Risk" },
 ];
 
 export default function Charts() {
@@ -312,11 +312,11 @@ export default function Charts() {
       {SECTIONS.map(s => <button key={s.id} onClick={() => scrollTo(s.id)} style={{ padding: "7px 12px", borderRadius: 7, border: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.03)", color: "#8a8780", fontFamily: "'DM Mono',monospace", fontSize: 12, cursor: "pointer", minHeight: 34 }}>{s.label}</button>)}
     </div>
 
-    <div ref={setRef("safety")} style={{ scrollMarginTop: 80 }}><RangeChart onInfo={openInfo} /></div>
     <div ref={setRef("lethal")} style={{ scrollMarginTop: 80 }}><LethalChart onInfo={openInfo} /></div>
-    <div ref={setRef("harm")} style={{ scrollMarginTop: 80 }}><HarmChart onInfo={openInfo} /></div>
     <div ref={setRef("addiction")} style={{ scrollMarginTop: 80 }}><AddictionChart onInfo={openInfo} /></div>
     <div ref={setRef("supply")} style={{ scrollMarginTop: 80 }}><SupplyChart onInfo={openInfo} /></div>
+    <div ref={setRef("harm")} style={{ scrollMarginTop: 80 }}><HarmChart onInfo={openInfo} /></div>
+    <div ref={setRef("safety")} style={{ scrollMarginTop: 80 }}><RangeChart onInfo={openInfo} /></div>
     <InfoPanel substance={panel.substance} field={panel.field} open={!!panel.substance} onClose={closeInfo} />
   </div>;
 }

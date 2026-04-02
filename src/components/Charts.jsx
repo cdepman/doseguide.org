@@ -8,10 +8,11 @@ const CONF_LABELS = { measured: "Measured", derived: "Derived", estimated: "Esti
 function SrcBadge({ src }) {
   if (!src) return null;
   const col = CONF_COLORS[src.conf] || "#555";
+  const refs = src.ref ? (Array.isArray(src.ref) ? src.ref : [src.ref]).filter(r => r && CITE[r]) : [];
   return <div style={{ marginTop: 10, padding: "8px 10px", background: "rgba(255,255,255,0.02)", borderRadius: 6, border: "1px solid rgba(255,255,255,0.04)" }}>
-    <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
+    <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4, flexWrap: "wrap" }}>
       <span style={{ fontSize: 10, padding: "2px 6px", borderRadius: 4, background: col + "18", color: col, fontFamily: "'DM Mono',monospace", fontWeight: 600 }}>{CONF_LABELS[src.conf] || src.conf}</span>
-      {src.ref && CITE[src.ref] && <span style={{ fontSize: 10, color: "#555", fontFamily: "'DM Mono',monospace", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{src.ref}</span>}
+      {refs.map(r => <span key={r} style={{ fontSize: 10, color: "#555", fontFamily: "'DM Mono',monospace" }}>{r}</span>)}
     </div>
     <p style={{ margin: 0, fontSize: 11, color: "#6b6860", lineHeight: 1.5, fontFamily: "'DM Mono',monospace" }}>{src.note}</p>
   </div>;
@@ -128,16 +129,16 @@ function RangeChart({ onInfo }) {
 }
 
 function addictColor(pct) {
-  if (pct >= 15) return "#ef4444";
-  if (pct >= 10) return "#f97316";
-  if (pct >= 5) return "#f59e0b";
-  if (pct >= 2) return "#60a5fa";
+  if (pct >= 40) return "#ef4444";
+  if (pct >= 20) return "#f97316";
+  if (pct >= 10) return "#f59e0b";
+  if (pct >= 3) return "#60a5fa";
   return "#22c55e";
 }
 
 function AddictionChart({ onInfo }) {
-  const items = S.filter(s => s.addictPct > 0).sort((a, b) => b.addictPct - a.addictPct);
-  const max = 25;
+  const items = S.filter(s => s.addictPct > 0 && !s.isMedication).sort((a, b) => b.addictPct - a.addictPct);
+  const max = 75;
 
   return <div style={{ background: "rgba(255,255,255,0.02)", borderRadius: 12, border: "1px solid rgba(255,255,255,0.06)", padding: 20, marginBottom: 18 }}>
     <h3 style={{ margin: "0 0 2px", fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 18, color: "#e8e6e3", fontWeight: 400 }}>How Addictive? <span style={{ fontSize: 12, color: "#6b6860", fontFamily: "'DM Mono',monospace" }}>(estimated likelihood of dependence)</span></h3>
@@ -156,7 +157,7 @@ function AddictionChart({ onInfo }) {
             : <div style={{ position: "absolute", left: 0, width: `${w10}%`, height: "100%", borderRadius: 5, background: `linear-gradient(90deg, ${col}88, ${col})` }} />
           }
         </div>
-        <span style={{ fontSize: 12, color: "#a09d97", fontFamily: "'DM Mono',monospace", minWidth: 28, textAlign: "right" }}>{s.addictPct}%{est ? "*" : ""}</span>
+        <span style={{ fontSize: 12, color: "#a09d97", fontFamily: "'DM Mono',monospace", minWidth: 36, textAlign: "right" }}>{s.addictPrefix || ""}{s.addictPct}%{est ? "*" : ""}</span>
         <Dot onClick={() => onInfo(s, "addict")} />
       </div>;
     })}

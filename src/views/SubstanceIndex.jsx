@@ -7,7 +7,7 @@ export default function SubstanceIndex({ filtered, expanded, setExpanded }) {
     <h2 style={{ fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 22, color: "#e8e6e3", fontWeight: 400, margin: "0 0 12px" }}>Substance Directory</h2>
     <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
       {filtered.map(s => { const c = CAT[s.cat]; const isExp = expanded === s.id;
-        const addCol = s.addictPct >= 15 ? "#ef4444" : s.addictPct >= 10 ? "#f97316" : s.addictPct >= 5 ? "#f59e0b" : s.addictPct >= 2 ? "#60a5fa" : "#22c55e";
+        const addCol = s.addictPct >= 40 ? "#ef4444" : s.addictPct >= 20 ? "#f97316" : s.addictPct >= 10 ? "#f59e0b" : s.addictPct >= 3 ? "#60a5fa" : "#22c55e";
         return <div key={s.id} style={{ background: "rgba(255,255,255,0.025)", borderRadius: 12, border: `1px solid ${isExp ? c.c + "40" : "rgba(255,255,255,0.06)"}`, overflow: "hidden", transition: "border-color 0.3s" }}>
           <div onClick={() => setExpanded(isExp ? null : s.id)} style={{ padding: "14px 16px", cursor: "pointer", minHeight: 48 }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
@@ -33,9 +33,9 @@ export default function SubstanceIndex({ filtered, expanded, setExpanded }) {
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: 8 }} title={s.addictNote}>
               <div style={{ width: 60, height: 6, borderRadius: 3, background: "rgba(255,255,255,0.06)", overflow: "hidden", flexShrink: 0 }}>
-                <div style={{ width: `${Math.min((s.addictPct / 20) * 100, 100)}%`, height: "100%", borderRadius: 3, background: addCol }} />
+                <div style={{ width: `${Math.min((s.addictPct / 70) * 100, 100)}%`, height: "100%", borderRadius: 3, background: addCol }} />
               </div>
-              <span style={{ fontSize: 12, color: addCol, fontFamily: "'DM Mono',monospace" }}>{s.addictPct}%</span>
+              <span style={{ fontSize: 12, color: addCol, fontFamily: "'DM Mono',monospace" }}>{s.addictPrefix || ""}{s.addictPct}%</span>
               <span style={{ fontSize: 12, color: "#6b6860", fontFamily: "'DM Mono',monospace" }}>addiction risk · {s.addictLabel.toLowerCase()}</span>
             </div>
           </div>

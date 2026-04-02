@@ -218,7 +218,7 @@ export const S = [
   // ═══════════════════════════════════════════════════════════════════════════
   // MESCALINE
   // ═══════════════════════════════════════════════════════════════════════════
-  {id:"mescaline",n:"Mescaline",cat:"psychedelic",aka:["Peyote","San Pedro"],src:"natural",
+  {id:"mescaline",n:"Mescaline",cat:"psychedelic",aka:["Peyote","San Pedro", "Wachuma"],src:"natural",
     desc:"Natural cactus psychedelic. Long duration, wide safety margin.",
     blurb:"Used by indigenous peoples of the Americas for at least 5,700 years, making it one of the oldest known psychedelics. Notably gentle, grounded character compared to LSD or mushrooms, but one of the longest-lasting psychedelics. Active doses are large (200-400mg), and nausea during onset is nearly universal.",
     atDose:1,atDoseLabel:"Safe",

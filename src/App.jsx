@@ -7,6 +7,7 @@ import Charts from "./components/Charts";
 import Matrix from "./components/Matrix";
 import InteractionsMobile from "./components/InteractionsMobile";
 import Sources from "./views/Sources";
+import { SearchInput, CategoryFilter, pillStyle } from "./components/SubstanceFilter";
 import CrisisFooter from "./components/CrisisFooter";
 
 const SORTS = [
@@ -44,8 +45,12 @@ const SourcesIcon = () => <svg viewBox="0 0 24 24" width="22" height="22" fill="
   <line x1="9" y1="7" x2="16" y2="7" /><line x1="9" y1="11" x2="14" y2="11" />
 </svg>;
 
+const HomeIcon = () => <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5">
+  <circle cx="10" cy="10" r="7.5" /><circle cx="10" cy="10" r="3" /><circle cx="10" cy="10" r="1" fill="currentColor" stroke="none" />
+</svg>;
+
 const TABS = [
-  { id: "index", label: "Home", icon: "◎" },
+  { id: "index", label: "Home", iconSvg: HomeIcon },
   { id: "interactions", label: "Interactions", iconSvg: InteractionsIcon },
   { id: "combos", label: "Combos", iconSvg: CombosIcon },
   { id: "rankings", label: "Rankings", iconSvg: RankingsIcon },
@@ -107,7 +112,7 @@ export default function App() {
         <div style={{ display: "flex", alignItems: "center", gap: 2 }}>
           <nav className="desktop-nav" style={{ display: "flex", gap: 2 }}>
             {TABS.map(t => <button key={t.id} onClick={() => switchView(t.id)} style={{ padding: "8px 14px", borderRadius: 7, border: "none", cursor: "pointer", background: view === t.id ? "rgba(255,255,255,0.1)" : "transparent", color: view === t.id ? "#e8e6e3" : "#6b6860", fontFamily: "'DM Mono',monospace", fontSize: 13, minHeight: 36, display: "flex", alignItems: "center", gap: 6 }}>
-              <span style={{ display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, width: 18, height: 18 }}>{t.iconSvg ? <t.iconSvg /> : t.icon}</span>
+              <span style={{ display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, width: 18, height: 18, lineHeight: 1 }}>{t.iconSvg ? <t.iconSvg /> : t.icon}</span>
               {t.label}
             </button>)}
           </nav>
@@ -130,7 +135,7 @@ export default function App() {
 
           {view === "index" && <>
             {/* Search */}
-            <input type="text" placeholder="Search name or street name..." value={search} onChange={e => setSearch(e.target.value)} style={{ width: "100%", padding: "12px 14px", borderRadius: 10, border: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.03)", color: "#c7c4be", fontFamily: "'Source Serif 4',Georgia,serif", outline: "none", marginBottom: 8, boxSizing: "border-box" }} />
+            <SearchInput value={search} onChange={setSearch} placeholder="Search name or street name..." />
 
             {/* Filter & Sort toggle button */}
             <button onClick={() => setFilterOpen(!filterOpen)} style={{
@@ -160,16 +165,13 @@ export default function App() {
                   {/* Category */}
                   <div style={{ marginBottom: 14 }}>
                     <h4 style={{ fontSize: 11, color: "#6b6860", fontFamily: "'DM Mono',monospace", marginBottom: 8, textTransform: "uppercase", letterSpacing: "0.05em" }}>Filter</h4>
-                    <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-                      <button onClick={() => setCatF(null)} style={{ padding: "10px 16px", borderRadius: 8, border: "1px solid", cursor: "pointer", fontSize: 13, fontFamily: "'DM Mono',monospace", background: !catF ? "rgba(255,255,255,0.1)" : "transparent", borderColor: !catF ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.06)", color: !catF ? "#e8e6e3" : "#555", minHeight: 44 }}>All</button>
-                      {Object.entries(CAT).map(([k, v]) => <button key={k} onClick={() => setCatF(catF === k ? null : k)} style={{ padding: "10px 16px", borderRadius: 8, border: "1px solid", cursor: "pointer", fontSize: 13, fontFamily: "'DM Mono',monospace", background: catF === k ? v.b : "transparent", borderColor: catF === k ? v.c + "40" : "rgba(255,255,255,0.06)", color: catF === k ? v.c : "#555", minHeight: 44 }}>{v.l}</button>)}
-                    </div>
+                    <CategoryFilter catF={catF} setCatF={setCatF} />
                   </div>
                   {/* Sort */}
                   <div>
                     <h4 style={{ fontSize: 11, color: "#6b6860", fontFamily: "'DM Mono',monospace", marginBottom: 8, textTransform: "uppercase", letterSpacing: "0.05em" }}>Sort by</h4>
                     <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-                      {SORTS.map(s => <button key={s.id} onClick={() => setSort(s.id)} style={{ padding: "10px 16px", borderRadius: 8, border: "1px solid", cursor: "pointer", fontSize: 13, fontFamily: "'DM Mono',monospace", background: sort === s.id ? "rgba(255,255,255,0.1)" : "transparent", borderColor: sort === s.id ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.06)", color: sort === s.id ? "#e8e6e3" : "#555", minHeight: 44 }}>{s.label}</button>)}
+                      {SORTS.map(s => <button key={s.id} onClick={() => setSort(s.id)} style={pillStyle(sort === s.id, null)}>{s.label}</button>)}
                     </div>
                   </div>
                   {/* Clear / Done */}

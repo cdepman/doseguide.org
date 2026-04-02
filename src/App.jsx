@@ -228,21 +228,70 @@ export default function App() {
       </footer>
     </main>
 
-    {/* ── ABOUT MODAL ── */}
-    {createPortal(<>
-      <div onClick={() => setAboutOpen(false)} style={{ position: "fixed", inset: 0, zIndex: 200, background: "rgba(0,0,0,0.6)", backdropFilter: "blur(4px)", WebkitBackdropFilter: "blur(4px)", opacity: aboutOpen ? 1 : 0, pointerEvents: aboutOpen ? "auto" : "none", transition: "opacity 0.3s ease" }} />
-      <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 210, background: "#1a1a1e", borderTopLeftRadius: 16, borderTopRightRadius: 16, maxHeight: "80vh", transform: aboutOpen ? "translateY(0)" : "translateY(100%)", transition: "transform 0.35s cubic-bezier(0.32, 0.72, 0, 1)", overflowY: "auto", WebkitOverflowScrolling: "touch", paddingBottom: "env(safe-area-inset-bottom, 0)" }}>
-        <div style={{ padding: "14px 20px 10px", display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-          <span style={{ fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 20, color: "#e8e6e3" }}>About DoseGuide</span>
-          <button onClick={() => setAboutOpen(false)} style={{ width: 36, height: 36, borderRadius: 18, border: "none", background: "rgba(255,255,255,0.06)", color: "#888", fontSize: 18, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>×</button>
+    {/* ── ABOUT PANEL ── */}
+    {aboutOpen && createPortal(<>
+      <div onClick={() => setAboutOpen(false)} style={{ position: "fixed", inset: 0, zIndex: 200, background: "rgba(0,0,0,0.5)", backdropFilter: "blur(4px)", WebkitBackdropFilter: "blur(4px)", animation: "fadeIn 0.2s ease" }} />
+      <div style={{ position: "fixed", top: 0, right: 0, bottom: 0, width: "min(520px, 94vw)", zIndex: 210, background: "#1a1a1e", borderLeft: "1px solid rgba(255,255,255,0.08)", overflowY: "auto", WebkitOverflowScrolling: "touch", animation: "slideIn 0.25s ease-out", padding: "20px 20px calc(80px + env(safe-area-inset-bottom, 0))" }}>
+
+        {/* Header */}
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
+          <span style={{ fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 24, color: "#e8e6e3" }}>About DoseGuide</span>
+          <button onClick={() => setAboutOpen(false)} style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 8, padding: "6px 12px", color: "#888", fontSize: 13, cursor: "pointer", fontFamily: "'DM Mono',monospace" }}>Close</button>
         </div>
-        <div style={{ padding: "16px 20px 28px" }}>
+
+        {/* About */}
+        <div style={{ marginBottom: 28 }}>
           <p style={{ margin: "0 0 14px", fontSize: 15, color: "#a09d97", lineHeight: 1.7, fontFamily: "'Source Serif 4',Georgia,serif" }}>DoseGuide is an open-source harm reduction resource. It does not encourage drug use. It exists because people use drugs whether or not they have good information, and the evidence is clear that informed users have better outcomes.</p>
           <p style={{ margin: "0 0 14px", fontSize: 15, color: "#a09d97", lineHeight: 1.7, fontFamily: "'Source Serif 4',Georgia,serif" }}>All data is sourced from peer-reviewed research, government agencies, and established harm reduction organizations including the Global Drug Survey, The Lancet, DanceSafe, and SAMHSA.</p>
           <p style={{ margin: "0 0 14px", fontSize: 15, color: "#a09d97", lineHeight: 1.7, fontFamily: "'Source Serif 4',Georgia,serif" }}>This project is personal. My father, Dr. Mark Depman, spent a good part of his career as an emergency physician in Vermont working at the intersection of substance use and harm reduction. In 2025, the Vermont Association for Mental Health and Addiction Recovery established the <a href="https://vermontbiz.com/news/2025/february/18/vamhar-presents-inaugural-dr-mark-depman-trailblazer-award-recovery-day-2025" target="_blank" rel="noopener noreferrer" style={{ color: "#c7c4be", textDecoration: "none", borderBottom: "1px solid rgba(255,255,255,0.25)" }}>Dr. Mark Depman Trailblazer Award</a> in his honor. I grew up watching him advocate for his patients and insist that compassion and evidence, not stigma and punishment, save lives and heal communities.</p>
           <p style={{ margin: "0 0 14px", fontSize: 15, color: "#c7c4be", lineHeight: 1.7, fontFamily: "'Source Serif 4',Georgia,serif" }}>DoseGuide is built in that spirit.</p>
           <p style={{ margin: 0, fontSize: 14, color: "#8a8780", fontFamily: "'Instrument Serif',Georgia,serif" }}>— Charlie Depman</p>
         </div>
+
+        {/* Divider */}
+        <div style={{ height: 1, background: "rgba(255,255,255,0.06)", marginBottom: 24 }} />
+
+        {/* Contributing */}
+        <h3 style={{ fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 20, color: "#e8e6e3", fontWeight: 400, margin: "0 0 12px" }}>Contribute</h3>
+
+        <p style={{ margin: "0 0 14px", fontSize: 14, color: "#a09d97", lineHeight: 1.6 }}>The most valuable contributions are data corrections. If you see something wrong — a safety rating, an addiction percentage, a combination rating — we want to know. You don't need to write code.</p>
+
+        <div style={{ background: "rgba(255,255,255,0.03)", borderRadius: 10, border: "1px solid rgba(255,255,255,0.06)", padding: 14, marginBottom: 14 }}>
+          <h4 style={{ margin: "0 0 8px", fontSize: 13, color: "#c7c4be", fontFamily: "'DM Mono',monospace" }}>Report a data issue</h4>
+          <div style={{ fontSize: 13, color: "#8a8780", lineHeight: 1.6 }}>
+            <p style={{ margin: "0 0 4px" }}>1. Go to GitHub Issues</p>
+            <p style={{ margin: "0 0 4px" }}>2. Tell us which substance and what's wrong</p>
+            <p style={{ margin: "0 0 4px" }}>3. Include a source (study, dataset, or article)</p>
+            <p style={{ margin: 0 }}>We don't change data based on opinions — we need evidence.</p>
+          </div>
+        </div>
+
+        <div style={{ background: "rgba(255,255,255,0.03)", borderRadius: 10, border: "1px solid rgba(255,255,255,0.06)", padding: 14, marginBottom: 14 }}>
+          <h4 style={{ margin: "0 0 8px", fontSize: 13, color: "#c7c4be", fontFamily: "'DM Mono',monospace" }}>What we need help with</h4>
+          <div style={{ fontSize: 13, color: "#8a8780", lineHeight: 1.7 }}>
+            <p style={{ margin: "0 0 3px" }}>Data verification and corrections</p>
+            <p style={{ margin: "0 0 3px" }}>New substance profiles with sourced data</p>
+            <p style={{ margin: "0 0 3px" }}>Combination mechanism explanations</p>
+            <p style={{ margin: "0 0 3px" }}>Mobile testing and accessibility</p>
+            <p style={{ margin: 0 }}>Translations into other languages</p>
+          </div>
+        </div>
+
+        <div style={{ background: "rgba(255,255,255,0.03)", borderRadius: 10, border: "1px solid rgba(255,255,255,0.06)", padding: 14, marginBottom: 14 }}>
+          <h4 style={{ margin: "0 0 8px", fontSize: 13, color: "#c7c4be", fontFamily: "'DM Mono',monospace" }}>Data standards</h4>
+          <div style={{ fontSize: 13, color: "#8a8780", lineHeight: 1.7 }}>
+            <p style={{ margin: "0 0 3px" }}><strong style={{ color: "#a09d97" }}>Sourced</strong> — every number traces to a published study or established organization</p>
+            <p style={{ margin: "0 0 3px" }}><strong style={{ color: "#a09d97" }}>Conservative</strong> — when sources disagree, we use the safer estimate</p>
+            <p style={{ margin: "0 0 3px" }}><strong style={{ color: "#a09d97" }}>Honest</strong> — we say "unknown" rather than guess</p>
+            <p style={{ margin: 0 }}><strong style={{ color: "#a09d97" }}>Plain language</strong> — no jargon</p>
+          </div>
+        </div>
+
+        <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 16 }}>
+          <a href="https://github.com/cdepman/doseguide.org/issues" target="_blank" rel="noopener noreferrer" style={{ flex: 1, minWidth: 140, padding: "12px 16px", borderRadius: 10, background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", color: "#c7c4be", fontSize: 13, fontFamily: "'DM Mono',monospace", textDecoration: "none", textAlign: "center" }}>Report an issue</a>
+          <a href="https://github.com/cdepman/doseguide.org" target="_blank" rel="noopener noreferrer" style={{ flex: 1, minWidth: 140, padding: "12px 16px", borderRadius: 10, background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", color: "#c7c4be", fontSize: 13, fontFamily: "'DM Mono',monospace", textDecoration: "none", textAlign: "center" }}>View source code</a>
+        </div>
+
       </div>
     </>, document.body)}
 

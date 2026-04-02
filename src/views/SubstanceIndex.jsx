@@ -58,11 +58,11 @@ export default function SubstanceIndex({ filtered, openPanel }) {
 
           {/* Stat pills */}
           <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-            {s.harm != null && <Pill color={harmColor(s.harm)} text={`harm: ${s.harm}`} />}
-            {s.addictPct > 0 && <Pill color={addictColor(s.addictPct)} text={`${s.addictPrefix || ""}${s.addictPct}% addictive`} />}
-            {s.marginLabel && <Pill
-              color={s.dangerRank >= 99 ? "#22c55e" : s.marginWorst <= 2 ? "#ef4444" : s.marginWorst <= 5 ? "#f59e0b" : "#60a5fa"}
-              text={s.marginLabel.length > 40 ? s.marginLabel.substring(0, 40) + "…" : s.marginLabel}
+            {s.harm != null && <Pill color={harmColor(s.harm)} text={s.harm >= 50 ? "Very high harm" : s.harm >= 25 ? "High harm" : s.harm >= 10 ? "Moderate harm" : "Low harm"} />}
+            {s.addictPct > 0 && <Pill color={addictColor(s.addictPct)} text={s.addictLabel} />}
+            {s.dangerRank != null && <Pill
+              color={s.dangerRank >= 99 ? "#22c55e" : s.marginWorst != null && s.marginWorst <= 2 ? "#ef4444" : s.marginWorst != null && s.marginWorst <= 5 ? "#f59e0b" : "#60a5fa"}
+              text={s.dangerRank >= 99 ? "No known lethal dose" : s.marginWorst != null && s.marginWorst <= 2 ? "Very narrow safety margin" : s.marginWorst != null && s.marginWorst <= 5 ? "Moderate safety margin" : "Wide safety margin"}
             />}
           </div>
         </div>;

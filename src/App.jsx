@@ -25,6 +25,20 @@ const SORTS = [
   { id: "shortest", label: "Shortest lasting ↓", fn: (a, b) => parseDur(a) - parseDur(b) },
 ];
 
+function InteractionsView() {
+  const [showMatrix, setShowMatrix] = useState(false);
+  return <div>
+    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
+      {!showMatrix && <div />}
+      {showMatrix && <h3 style={{ margin: 0, fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 20, color: "#e8e6e3", fontWeight: 400 }}>Full Matrix</h3>}
+      <button onClick={() => setShowMatrix(!showMatrix)} style={{ padding: "6px 12px", borderRadius: 7, border: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.03)", color: "#8a8780", fontFamily: "'DM Mono',monospace", fontSize: 12, cursor: "pointer" }}>
+        {showMatrix ? "← Substance lookup" : "View full matrix"}
+      </button>
+    </div>
+    {showMatrix ? <Matrix /> : <InteractionsMobile />}
+  </div>;
+}
+
 const CombosIcon = () => <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5">
   <circle cx="10" cy="5" r="3.5" /><rect x="2" y="12" width="6" height="6" rx="1" /><polygon points="16,11 20,19 12,19" />
 </svg>;
@@ -203,7 +217,7 @@ export default function App() {
 
           {view === "combos" && <CombinationChecker sel={sel} toggle={toggle} setSel={setSel} filtered={filtered} search={search} setSearch={setSearch} catF={catF} setCatF={setCatF} />}
           {view === "rankings" && <Charts />}
-          {view === "interactions" && (isMobile ? <InteractionsMobile /> : <Matrix />)}
+          {view === "interactions" && <InteractionsView />}
           {view === "sources" && <Sources />}
         </div>
       </div>

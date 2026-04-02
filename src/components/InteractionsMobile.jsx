@@ -4,6 +4,16 @@ import { cr, getMech } from "../data/combinations";
 
 const GROUPS_ORDER = ["dangerous", "unsafe", "caution", "decrease", "low_risk", "synergy"];
 
+// Approximate global prevalence ranking for dropdown ordering
+const PREVALENCE_ORDER = {
+  caffeine: 1, alcohol: 2, nicotine: 3, cannabis: 4,
+  cocaine: 5, mdma: 6, amphetamines: 7, ketamine: 8,
+  lsd: 9, mushrooms: 10, benzodiazepine: 11, opioids: 12,
+  methamphetamine: 13, nitrous: 14, ghb: 15, kratom: 16,
+  poppers: 17, dxm: 18, tramadol: 19, fentanyl: 20,
+  "2cx": 21, dmt: 22, mescaline: 23, pcp: 24,
+};
+
 function getClassWarnings(s) {
   const warnings = [];
   if (["depressant", "opioid", "benzodiazepine"].includes(s.cat) || s.id === "ghb" || s.id === "kratom") {
@@ -61,8 +71,13 @@ export default function InteractionsMobile() {
         backgroundRepeat: "no-repeat", backgroundPosition: "right 14px center",
       }}
     >
-      <option value="" style={{ background: "#1a1a1e" }}>Select a substance</option>
-      {S.map(s => <option key={s.id} value={s.id} style={{ background: "#1a1a1e" }}>{s.n}</option>)}
+      <option value="" style={{ background: "#1a1a1e" }}>Select a substance or medication</option>
+      <optgroup label="Medications" style={{ background: "#1a1a1e" }}>
+        {S.filter(s => s.isMedication).map(s => <option key={s.id} value={s.id} style={{ background: "#1a1a1e" }}>{s.n}</option>)}
+      </optgroup>
+      <optgroup label="Substances (by prevalence)" style={{ background: "#1a1a1e" }}>
+        {S.filter(s => !s.isMedication).sort((a, b) => (PREVALENCE_ORDER[a.id] ?? 99) - (PREVALENCE_ORDER[b.id] ?? 99)).map(s => <option key={s.id} value={s.id} style={{ background: "#1a1a1e" }}>{s.n}</option>)}
+      </optgroup>
     </select>
 
     {/* Empty state */}

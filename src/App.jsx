@@ -59,7 +59,9 @@ const TABS = [
 
 export default function App() {
   const [sel, setSel] = useState([]);
-  const [view, setView] = useState("index");
+  const validViews = ["index", "interactions", "combos", "rankings", "sources"];
+  const hashView = window.location.hash.slice(1);
+  const [view, setView] = useState(validViews.includes(hashView) ? hashView : "index");
   const [search, setSearch] = useState("");
   const [catF, setCatF] = useState(null);
   const [sort, setSort] = useState("default");
@@ -81,9 +83,20 @@ export default function App() {
   const switchView = useCallback(v => {
     if (v === view) return;
     setView(v);
+    window.location.hash = v === "index" ? "" : v;
     setPageKey(k => k + 1);
     scrollRef.current?.scrollTo(0, 0);
   }, [view]);
+
+  useEffect(() => {
+    const onHash = () => {
+      const h = window.location.hash.slice(1);
+      if (validViews.includes(h)) switchView(h);
+      else if (!h) switchView("index");
+    };
+    window.addEventListener("hashchange", onHash);
+    return () => window.removeEventListener("hashchange", onHash);
+  }, [switchView]);
 
   const filtered = useMemo(() => {
     let list = S.filter(s => {

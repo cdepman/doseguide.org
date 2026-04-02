@@ -30,7 +30,7 @@ DoseGuide tries to be none of these. It's the information a smart, caring friend
 
 ## Data sources
 
-The full list of 30+ sources with links is on the [Sources page](https://doseguide.org/sources). Every quantitative claim has a per-field citation in the source code (see [Sourcing transparency](#sourcing-transparency) below).
+The full list of 30+ sources with links is on the [Sources page](https://doseguide.org/#sources). Every quantitative claim has a per-field citation in the source code (see [Sourcing transparency](#sourcing-transparency) below).
 
 ### Harm scores (MCDA)
 - 14 substances from **Nutt, King & Phillips 2010** (Lancet, 20 drugs, 16 criteria, expert panel)

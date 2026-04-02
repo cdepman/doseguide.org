@@ -52,9 +52,9 @@ const HomeIcon = () => <svg width="20" height="20" viewBox="0 0 20 20" fill="non
 
 const TABS = [
   { id: "index", label: "Home", iconSvg: HomeIcon },
-  { id: "interactions", label: "Interactions", iconSvg: InteractionsIcon },
-  { id: "combos", label: "Combos", iconSvg: CombosIcon },
   { id: "rankings", label: "Rankings", iconSvg: RankingsIcon },
+  { id: "combos", label: "Combos", iconSvg: CombosIcon },
+  { id: "interactions", label: "Interactions", iconSvg: InteractionsIcon },
   { id: "sources", label: "Sources", iconSvg: SourcesIcon },
 ];
 

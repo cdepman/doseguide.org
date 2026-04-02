@@ -4,6 +4,23 @@ import { cr, getMech } from "../data/combinations";
 
 const GROUPS_ORDER = ["dangerous", "unsafe", "caution", "decrease", "low_risk", "synergy"];
 
+function getClassWarnings(s) {
+  const warnings = [];
+  if (["depressant", "opioid", "benzodiazepine"].includes(s.cat) || s.id === "ghb" || s.id === "kratom") {
+    warnings.push({ color: "#ef4444", text: `${s.sn || s.n} slows breathing. Combining with other depressants (alcohol, benzos, opioids, GHB) multiplies respiratory depression risk — this is the #1 cause of overdose death.` });
+  }
+  if (s.cat === "stimulant") {
+    warnings.push({ color: "#f97316", text: `${s.sn || s.n} stresses the cardiovascular system. Combining with other stimulants stacks heart strain — increased risk of heart attack, stroke, and arrhythmia.` });
+  }
+  if (["mdma", "dxm", "tramadol", "ssri", "maoi"].includes(s.id)) {
+    warnings.push({ color: "#f97316", text: `${s.sn || s.n} affects serotonin. Combining with other serotonergic substances (MDMA, DXM, tramadol, SSRIs, MAOIs) risks serotonin syndrome — muscle rigidity, high fever, seizures.` });
+  }
+  if (s.cat === "stimulant" || s.id === "mdma") {
+    warnings.push({ color: "#f59e0b", text: "Stimulants can mask depressant sedation. When the stimulant wears off first, the full depressant load hits at once." });
+  }
+  return warnings;
+}
+
 export default function InteractionsMobile() {
   const [selected, setSelected] = useState("");
 
@@ -24,6 +41,7 @@ export default function InteractionsMobile() {
   }, [selected]);
 
   const selSub = S.find(s => s.id === selected);
+  const classWarnings = selSub ? getClassWarnings(selSub) : [];
 
   return <div>
     <h3 style={{ margin: "0 0 14px", fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 20, color: "#e8e6e3", fontWeight: 400 }}>Interactions</h3>
@@ -52,6 +70,13 @@ export default function InteractionsMobile() {
 
     {/* No data state */}
     {selected && groups.length === 0 && <p style={{ color: "#555", fontSize: 14, textAlign: "center", padding: "40px 20px", fontFamily: "'DM Mono',monospace" }}>No interaction data available for {selSub?.n}. Treat all unknown combinations with caution.</p>}
+
+    {/* Class warnings */}
+    {classWarnings.length > 0 && <div style={{ marginBottom: 14 }}>
+      {classWarnings.map((w, i) => <div key={i} style={{ background: w.color + "0a", border: `1px solid ${w.color}30`, borderRadius: 8, padding: "10px 14px", marginBottom: 6 }}>
+        <p style={{ margin: 0, fontSize: 12.5, color: "#a09890", lineHeight: 1.5 }}>{w.text}</p>
+      </div>)}
+    </div>}
 
     {/* Grouped results */}
     {groups.map(g => <div key={g.level} style={{ marginBottom: 18 }}>

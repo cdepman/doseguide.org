@@ -10,7 +10,7 @@ This project is personal. My father, Dr. Mark Depman, spent a good part of his c
 
 DoseGuide is built in that spirit.
 
-— Charlie Depman
+— Charlie
 
 ## Why this exists
 

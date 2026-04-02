@@ -52,15 +52,6 @@ export default function Matrix() {
     <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch", paddingBottom: 8 }}>
       <table style={{ borderCollapse: "separate", borderSpacing: 2, fontFamily: "'DM Mono',monospace" }}>
         <thead>
-          {/* Category labels across columns */}
-          <tr>
-            <th style={{ width: 80, minWidth: 80 }} />
-            {colGroups.map(g => <th key={g.catKey} colSpan={g.count} style={{ padding: "2px 0 4px", textAlign: "center" }}>
-              <div style={{ fontSize: 8.5, color: g.cat.c, fontFamily: "'DM Mono',monospace", letterSpacing: "0.05em", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{g.cat.l}</div>
-              <div style={{ height: 2, borderRadius: 1, background: g.cat.c, opacity: 0.4, marginTop: 2 }} />
-            </th>)}
-          </tr>
-          {/* Substance names */}
           <tr>
             <th style={{ width: 80, minWidth: 80 }} />
             {flat.map(s => <th key={s.id} style={{ color: CAT[s.cat].c, padding: "3px 1px", writingMode: "vertical-rl", textOrientation: "mixed", height: 80, fontSize: 10, fontWeight: 500, whiteSpace: "nowrap" }}>{(s.sn || s.n)}</th>)}

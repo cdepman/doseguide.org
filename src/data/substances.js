@@ -81,6 +81,19 @@ export const CITE = {
   kruegel2016:    "Kruegel et al. Synthetic and receptor signaling explorations of the mitragyna alkaloids. J Am Chem Soc 138(21):6754-6764, 2016.",
   nsduh2023_halluc:"Elsey et al. Associations between individual hallucinogens and hallucinogen misuse among US adults. J Psychopharmacol 37(9):918-928, 2023. PMC10462802.",
   johnson2018:    "Johnson et al. The abuse potential of medical psilocybin according to the 8 factors of the CSA. Neuropharmacology 142:143-166, 2018.",
+  zanger2013:     "Zanger & Schwab. Cytochrome P450 enzymes in drug metabolism. Pharmacol Ther 138(1):103-141, 2013.",
+  bailey2013:     "Bailey et al. Grapefruit-medication interactions: forbidden fruit or avoidable consequences? CMAJ 185(4):309-316, 2013.",
+  peltoniemi2016: "Peltoniemi et al. Ketamine: a review of clinical pharmacokinetics. Basic Clin Pharmacol Toxicol 118(3):238-248, 2016.",
+  greenblatt2006: "Greenblatt et al. Clinical pharmacokinetics of alprazolam. Clin Pharmacokinet 80(1):33-41, 2006.",
+  olkkola1999:    "Olkkola et al. Ritonavir's role in reducing fentanyl clearance. Anesthesiology 91(3):681-685, 1999.",
+  dinisoliveira2017:"Dinis-Oliveira. Metabolism of psilocybin and psilocin. Drug Metab Rev 49(1):84-91, 2017.",
+  manevski2010:   "Manevski et al. Glucuronidation of psilocin by human UDP-glucuronosyltransferases. Drug Metab Dispos 38(3):386-395, 2010.",
+  thomann2024:    "Thomann et al. In vitro and in vivo metabolism of psilocin. Front Pharmacol 15:1391689, 2024.",
+  luethi2020:     "Luethi & Liechti. Designer drugs: mechanism of action and adverse effects. Pharmacol Rev 72(4):714-769, 2020.",
+  grond2004:      "Grond & Sablotzki. Clinical pharmacology of tramadol. Clin Pharmacokin 43(13):879-923, 2004.",
+  antoniou2005:   "Antoniou & Tseng. Interactions between antiretrovirals and antineoplastic drug therapy. Clin Pharmacokinet 44(2):111-145, 2005.",
+  harrington1999: "Harrington et al. Life-threatening interactions between HIV-1 protease inhibitors and illicit drugs. Arch Intern Med 159:2221-2224, 1999.",
+  riba2003:       "Riba et al. Metabolism of N,N-dimethyltryptamine in humans. Drug Metab Dispos 31(8):1024-1031, 2003.",
 };
 
 // Confidence levels for estimated values
@@ -943,6 +956,30 @@ export const S = [
     dose:{threshold:"Rx",light:"—",common:"Varies",strong:"—",heavy:"—"},
     lethal:{headline:"On methadone: benzos, alcohol, and other opioids can stop your breathing. On Suboxone: using fentanyl on top risks respiratory depression.",note:"Methadone involved in ~23% of opioid deaths despite being only 1% of prescriptions. Buprenorphine has ceiling effect but is not risk-free with other depressants.",cmp:null,sz:0,realworld:null},
     _src:{harm:{ref:null,conf:"editorial",note:"CDC: methadone involved in ~23% of opioid deaths despite being only 1% of prescriptions. Buprenorphine has ceiling effect but is not risk-free with other depressants."}}},
+
+  {id:"cyp_inhibitor",n:"CYP Inhibitor Meds (cancer, antifungal, antibiotic)",sn:"CYP Inhibitors",cat:"medication",
+    aka:["Imatinib","Gleevec","Idelalisib","Zydelig","Ceritinib","Zykadia","Ribociclib","Kisqali","Voriconazole","Posaconazole","Ketoconazole","Itraconazole","Clarithromycin","Erythromycin","grapefruit warning","CYP3A4 inhibitor","CYP2D6 inhibitor"],
+    src:"synthetic",
+    blurb:"Many cancer drugs, antifungals, and some antibiotics block the same liver enzymes (CYP3A4, CYP2D6) that clear recreational substances from your body. The easiest way to know if your medication does this: if it has a grapefruit warning on the label, the same enzyme interaction applies to MDMA, methamphetamine, ketamine, and most benzodiazepines.",
+    desc:"CYP3A4 and CYP2D6 are liver enzymes responsible for clearing most recreational drugs. Strong inhibitors — including targeted cancer therapies, azole antifungals, and macrolide antibiotics — slow clearance dramatically. A normal recreational dose stays in your blood 2-10x longer at higher concentrations.",
+    isMedication:true,
+    atDose:null,atDoseLabel:null,dangerRank:null,
+    marginBest:null,marginWorst:null,marginLabel:null,
+    marginExplain:"Your liver uses CYP enzymes like an assembly line to break down drugs. CYP3A4 alone handles roughly 50% of all medications. When a CYP inhibitor occupies the enzyme, other drugs queue up and accumulate in your blood. For recreational drugs with narrow safety margins (fentanyl, GHB, MDMA), even a 2x increase in blood levels can be the difference between a normal experience and a fatal overdose. Strong inhibitors (itraconazole, idelalisib) can increase substrate levels 5-10x, moderate inhibitors (imatinib, erythromycin) typically 2-4x.",
+    supplyRisk:null,pctAsExpected:null,supplyLabel:null,supplyExplain:null,
+    addict:null,addictLabel:null,addictPct:0,addictLife:0,addictNote:null,
+    overwhelm:null,overwhelmLabel:null,
+    feels:[],
+    odRisk:["Massively increased blood levels of recreational drugs","Prolonged and intensified effects","Fatal overdose from previously tolerated doses"],
+    longTerm:[],
+    harm:null,
+    routes:[{nm:"Oral (daily)",onset:"N/A",dur:"Continuous"}],
+    dose:{threshold:"Rx",light:"—",common:"Varies by medication",strong:"—",heavy:"—"},
+    lethal:{headline:"If your medication label says avoid grapefruit, it interacts with MDMA, meth, ketamine, GHB, and most benzos through the same mechanism.",note:"The grapefruit warning exists because grapefruit inhibits CYP3A4 via furanocoumarins (Bailey et al. 2013). Any drug with this warning is metabolized by CYP3A4 — and so are most recreational substances. Psilocybin mushrooms are a notable exception: they bypass CYP enzymes and are primarily cleared by glucuronidation.",cmp:null,sz:0,realworld:null},
+    _src:{
+      harm:{ref:null,conf:"editorial",note:"Not a recreational substance. Included for CYP interaction data."},
+      desc:{ref:"zanger2013",conf:"measured",note:"CYP3A4 handles ~50% of medications: Zanger & Schwab 2013. Individual drug classifications from FDA prescribing information."},
+    }},
 ];
 
 // ── MEDICATION INTERACTION WARNINGS ──────────────────────────────────────────

@@ -131,6 +131,7 @@ export const S = [
   // ═══════════════════════════════════════════════════════════════════════════
   {id:"lsd",n:"LSD",cat:"psychedelic",aka:["Acid","Lucy","Tabs","Blotter"],src:"semi-synthetic",
     desc:"Classical psychedelic. One of the safest substances by every measure.",
+    blurb:"First synthesized by Albert Hofmann at Sandoz Laboratories in 1938; its psychoactive properties were discovered accidentally in 1943. Extremely potent — active in microgram doses, far below what's visible to the eye. Rarely adulterated on blotter; NBOMe compounds are the main substitution risk and are bitter-tasting, unlike LSD.",
     atDose:1,atDoseLabel:"Very safe at normal doses",
     dangerRank:99,marginBest:null,marginWorst:null,marginLabel:"No known physical danger at any dose",
     marginExplain:"There is no documented case of physical death from LSD alone. Clinical studies have administered massive accidental doses (thousands of µg) without physical harm. The only real risk is psychological overwhelm — a terrifying experience, not a medical one. At ~3-5x a normal dose, the experience becomes extremely intense but your body is fine.",
@@ -162,6 +163,7 @@ export const S = [
   // ═══════════════════════════════════════════════════════════════════════════
   {id:"mushrooms",n:"Psilocybin Mushrooms",sn:"Mushrooms",cat:"psychedelic",aka:["Shrooms","Magic Mushrooms","Caps"],src:"natural",
     desc:"Among the safest psychoactives known. Identifiable whole mushrooms.",
+    blurb:"Used ceremonially in Mesoamerica for at least 2,000 years; the active compound was isolated by Albert Hofmann in 1958. Among the safest psychoactives known — no lethal dose has been established in humans. Whole mushrooms are almost never adulterated, and tea preparation produces a faster onset with shorter effects than eating them.",
     atDose:1,atDoseLabel:"Very safe",
     dangerRank:99,marginBest:null,marginWorst:null,marginLabel:"No known physical danger at any dose",
     marginExplain:"No documented death from psilocybin toxicity. You'd need to eat roughly 4 pounds of dried mushrooms. Your stomach would reject them long before that. Like LSD, the risk is psychological intensity, not physical harm.",
@@ -190,6 +192,7 @@ export const S = [
   // ═══════════════════════════════════════════════════════════════════════════
   {id:"dmt",n:"DMT",cat:"psychedelic",aka:["Dimitri","Spirit Molecule","Ayahuasca"],src:"natural",
     desc:"Extremely potent, very short when smoked. Overwhelming but physically safe.",
+    blurb:"Found in hundreds of plant species and used for millennia in Amazonian ayahuasca traditions. The most intense psychedelic experience available — complete reality replacement when smoked. Produced endogenously in the human body in trace amounts, though its natural function is unknown.",
     atDose:1,atDoseLabel:"Safe",
     dangerRank:99,marginBest:null,marginWorst:null,marginLabel:"No known physical danger — self-limiting",
     marginExplain:"Smoked DMT is self-limiting — the experience becomes so intense that taking more is impossible. No documented death from DMT toxicity alone. Ayahuasca (oral + MAOI) carries additional interaction risks but the DMT itself has an enormous physical margin.",
@@ -217,6 +220,7 @@ export const S = [
   // ═══════════════════════════════════════════════════════════════════════════
   {id:"mescaline",n:"Mescaline",cat:"psychedelic",aka:["Peyote","San Pedro"],src:"natural",
     desc:"Natural cactus psychedelic. Long duration, wide safety margin.",
+    blurb:"Used by indigenous peoples of the Americas for at least 5,700 years, making it one of the oldest known psychedelics. Notably gentle, grounded character compared to LSD or mushrooms, but one of the longest-lasting psychedelics. Active doses are large (200-400mg), and nausea during onset is nearly universal.",
     atDose:1,atDoseLabel:"Safe",
     dangerRank:99,marginBest:null,marginWorst:null,marginLabel:"No known physical danger at realistic doses",
     marginExplain:"The severe nausea from cactus material prevents overconsumption. No documented deaths from mescaline alone. The experience becomes very intense at 2-3x a normal dose, but your body handles it fine.",
@@ -244,6 +248,7 @@ export const S = [
   // ═══════════════════════════════════════════════════════════════════════════
   {id:"2cx",n:"2C-x (2C-B, 2C-E, 2C-I)",sn:"2C-x",cat:"psychedelic",aka:["Nexus","Bees","Tusi","Pink cocaine"],src:"synthetic",
     desc:"Phenethylamine psychedelic family. Very dose-sensitive — small increases cause big jumps. 'Tusi/pink cocaine' sold as 2C-B usually isn't.",
+    blurb:"Synthesized by Alexander Shulgin in 1974 and documented in his book PiHKAL. Unusually steep dose-response curve — 2mg more can dramatically change the experience. Combines mild visual effects with tactile and empathogenic warmth at lower doses, shifting to intense psychedelia above 25mg.",
     atDose:2,atDoseLabel:"Safe if dosed carefully",
     dangerRank:10,marginBest:4,marginWorst:2,marginLabel:"Some room, but effects jump sharply with small increases",
     marginExplain:"2C-B is not particularly toxic at recreational doses, but the dose-response curve is unusually steep. The difference between 15mg and 30mg is not 'twice as strong' — it's a qualitatively different experience. Vasoconstriction becomes concerning above 40-50mg. The difference between a strong and dangerous dose can be 5mg — a milligram scale is the only way to measure accurately.",
@@ -271,6 +276,7 @@ export const S = [
   // ═══════════════════════════════════════════════════════════════════════════
   {id:"mdma",n:"MDMA",cat:"empathogen",aka:["Ecstasy","Molly","E","X","Mandy"],src:"synthetic",
     desc:"The drug itself is moderately safe. Real dangers: overheating, water intoxication, and what's actually in the pill.",
+    blurb:"First synthesized at Merck in 1912 as a pharmaceutical intermediate; its psychoactive properties went unnoticed until Alexander Shulgin resynthesized it in 1976. Works by reversing serotonin, dopamine, and norepinephrine transporters, and inactivates the liver enzyme (CYP2D6) that clears it, so redosing produces disproportionately higher blood levels. Serotonin depletion after use causes a characteristic low mood 2-4 days later.",
     atDose:2,atDoseLabel:"Moderately safe",
     dangerRank:5,marginBest:4,marginWorst:1.5,marginLabel:"Moderate room in good conditions, almost none in bad conditions",
     marginExplain:"Clinical trials (MAPS Phase 2/3) safely administer 120mg + 60mg booster (180mg total) to screened healthy adults. Most recreational use at 100-150mg is well-tolerated. But in a hot, crowded environment without water breaks, danger starts around 200mg. IMPORTANT: MDMA inactivates the liver enzyme (CYP2D6) that metabolizes it — so a second dose doesn't just add to the first, it hits harder because your body can't clear it as fast (de la Torre et al. 2004). This is why redosing is more dangerous than the initial dose. Risk multipliers: heat, dehydration, re-dosing, and pre-existing heart conditions.",
@@ -298,6 +304,7 @@ export const S = [
   // ═══════════════════════════════════════════════════════════════════════════
   {id:"cocaine",n:"Cocaine",cat:"stimulant",aka:["Coke","Snow","Blow","Crack"],src:"natural",
     desc:"Short duration drives compulsive re-dosing. Street supply heavily cut and increasingly fentanyl-contaminated.",
+    blurb:"Derived from coca leaves, which have been chewed in the Andes for at least 5,000 years; the alkaloid was first isolated in 1860. Blocks dopamine, serotonin, and norepinephrine reuptake. Combined with alcohol, the liver creates cocaethylene — a unique compound more cardiotoxic than either drug alone.",
     atDose:3,atDoseLabel:"Cardiac risk at any dose",
     dangerRank:7,marginBest:5,marginWorst:1,marginLabel:"Moderate for most people, but unpredictable heart risk for some",
     marginExplain:"Most people tolerate a few lines (100-300mg total) without incident. The honest risk: cocaine triggers a 24-fold increase in heart attack risk in the hour after use (Mittleman 1999, Circulation). The risk rises steeply with dose, re-dosing over hours, combining with alcohol (creates cocaethylene), and any pre-existing heart condition — even undiagnosed ones.",
@@ -326,6 +333,7 @@ export const S = [
   // ═══════════════════════════════════════════════════════════════════════════
   {id:"amphetamines",n:"Amphetamine",sn:"Amfeta",cat:"stimulant",aka:["Speed","Adderall","Dexedrine","Vyvanse"],src:"synthetic",
     desc:"Medical ADHD stimulant. Pharmaceutical versions consistent; street speed is not.",
+    blurb:"First synthesized in 1887; marketed as Benzedrine inhalers in the 1930s and used extensively by all sides in World War II. Release dopamine and norepinephrine, with extended-release formulations lasting significantly longer than instant-release. Therapeutic doses are well-studied; cardiovascular risk scales with dose and frequency.",
     atDose:2,atDoseLabel:"Safe at prescribed doses",
     dangerRank:15,marginBest:5,marginWorst:3,marginLabel:"Moderate room with pharmaceutical pills",
     marginExplain:"Prescribed Adderall at 20-30mg is well-tolerated. Clinical toxicity typically appears around 100-150mg+ (3-5x a normal dose): racing heart, dangerously elevated blood pressure, risk of stroke. Street speed has unknown purity, so the effective margin is smaller. Tolerance builds but cardiovascular strain persists.",
@@ -354,6 +362,7 @@ export const S = [
   // ═══════════════════════════════════════════════════════════════════════════
   {id:"methamphetamine",n:"Methamphetamine",sn:"Meth",cat:"stimulant",aka:["Meth","Crystal","Ice","Tina","Glass"],src:"synthetic",
     desc:"Extremely potent, long-acting, addictive, neurotoxic. Duration can exceed 24 hours.",
+    blurb:"First crystallized by Japanese chemist Akira Ogata in 1919; used extensively by Axis and Allied militaries in WWII under brand names like Pervitin. Produces intense dopamine release that is directly neurotoxic at high doses. Street purity is typically high (~88%), meaning the danger is the drug itself, not adulterants.",
     atDose:4,atDoseLabel:"Harmful even at typical doses",
     dangerRank:6,marginBest:4,marginWorst:2,marginLabel:"Some room for a single dose, but binge use erases it",
     marginExplain:"A single dose of 15-30mg in a non-tolerant person is intense but not typically dangerous. Physical danger (hyperthermia, cardiac events, psychosis) usually appears at 60-120mg+. BUT: meth's extreme duration (24+ hours) drives compulsive re-dosing, and cumulative dose over a binge is where most deaths occur.",
@@ -382,6 +391,7 @@ export const S = [
   // ═══════════════════════════════════════════════════════════════════════════
   {id:"nicotine",n:"Nicotine",cat:"stimulant",aka:["Cigarettes","Vape","Tobacco","Snus","Juul","Zyn"],src:"natural",
     desc:"The most addictive commonly used substance. The drug itself is less harmful than the delivery method — smoking kills, nicotine pouches don't (much).",
+    blurb:"Tobacco has been used by indigenous peoples of the Americas for thousands of years in ceremonial and medicinal contexts. Acetylcholine receptor agonist and one of the most addictive substances known — approximately 68% of users eventually develop dependence. The harm score of 26 reflects smoked tobacco specifically; nicotine alone (patches, gum, vaping) is far less harmful than combustion.",
     atDose:2,atDoseLabel:"Low acute toxicity",
     dangerRank:16,marginBest:20,marginWorst:3,marginLabel:"Very wide from smoking, dangerous from concentrated liquid",
     marginExplain:"You'd need to smoke dozens of cigarettes back-to-back to approach nicotine toxicity — nausea stops you. But concentrated vape juice (36-50mg/ml) is a serious poison risk if swallowed, especially for children. A teaspoon of high-strength liquid can be fatal for a toddler.",
@@ -410,6 +420,7 @@ export const S = [
   // ═══════════════════════════════════════════════════════════════════════════
   {id:"cannabis",n:"Cannabis",cat:"cannabinoid",aka:["Marijuana","Weed","THC","Pot","Edibles"],src:"natural",
     desc:"No human has ever died from cannabis toxicity. Edibles need extra patience — onset is slow.",
+    blurb:"One of the oldest cultivated plants — evidence of use dates to at least 3000 BCE in Central Asia. Acts on the endocannabinoid system (CB1/CB2 receptors), producing relaxation, altered perception, and appetite stimulation. Alcohol increases THC blood levels by approximately 60%, explaining why the combination hits harder than either alone.",
     atDose:1,atDoseLabel:"Very safe",
     dangerRank:99,marginBest:null,marginWorst:null,marginLabel:"No known physical danger at any dose",
     marginExplain:"No human has ever died from cannabis toxicity. The ratio is over 1,000:1. Edibles can cause extreme anxiety and psychological distress that feels like an emergency — but the body is completely fine. The experience ends on its own.",
@@ -438,6 +449,7 @@ export const S = [
   // ═══════════════════════════════════════════════════════════════════════════
   {id:"ketamine",n:"Ketamine",cat:"dissociative",aka:["K","Special K","Ket","Vitamin K"],src:"synthetic",
     desc:"Safe margin alone, but lethal mixed with downers. Regular use destroys your bladder.",
+    blurb:"Synthesized in 1962 at Parke-Davis as a safer alternative to PCP for anesthesia. Blocks NMDA receptors, producing a dose-dependent spectrum from mild dissociation to complete K-hole immersion. Now FDA-approved as esketamine (Spravato) for treatment-resistant depression; tolerance builds quickly and chronic heavy use causes bladder damage.",
     atDose:2,atDoseLabel:"Safe at normal doses",
     dangerRank:14,marginBest:8,marginWorst:2,marginLabel:"Good room alone, almost none mixed with alcohol or opioids",
     marginExplain:"Ketamine is used medically as an anesthetic at doses 5-10x a recreational bump — so the drug itself has a decent margin. The real danger alone is choking on vomit if you lose consciousness at high doses (~4-5x). But mixing with alcohol, opioids, or GHB drops the margin dramatically.",
@@ -465,6 +477,7 @@ export const S = [
   // ═══════════════════════════════════════════════════════════════════════════
   {id:"pcp",n:"PCP",cat:"dissociative",aka:["Angel Dust","Wet","Sherm","Dust"],src:"synthetic",
     desc:"Powerful dissociative that can cause extreme agitation, violence, and psychosis. Unpredictable reactions.",
+    blurb:"Developed as a surgical anesthetic in the 1950s and quickly withdrawn due to severe dissociative and psychotic side effects in patients. Unlike ketamine, PCP activates dopamine systems, contributing to both its addiction potential and psychosis risk. Effects are unpredictable and dose-dependent, ranging from euphoria to violent agitation to complete anesthesia.",
     atDose:4,atDoseLabel:"Dangerous — unpredictable",
     dangerRank:4,marginBest:3,marginWorst:1,marginLabel:"Unpredictable — some people have severe reactions at normal doses",
     marginExplain:"PCP's danger isn't primarily overdose toxicity — it's unpredictable behavioral effects. At 5-10mg (2-3x a normal dose), agitation, psychosis, and violent behavior become likely. Deaths are often from trauma during intoxication rather than direct toxicity. The margin depends heavily on the individual.",
@@ -492,6 +505,7 @@ export const S = [
   // ═══════════════════════════════════════════════════════════════════════════
   {id:"dxm",n:"DXM",cat:"dissociative",aka:["Dextromethorphan","Robo","Robotripping"],src:"synthetic",
     desc:"Biggest danger: OTHER ingredients in the cough medicine. Products with acetaminophen cause fatal liver failure at recreational DXM doses.",
+    blurb:"Developed in the 1950s as a non-addictive replacement for codeine in cough suppressants. Effects are described in four dose-dependent plateaus, from mild stimulation to full dissociation. Many OTC formulations contain acetaminophen, guaifenesin, or antihistamines that are toxic at recreational DXM doses.",
     atDose:2,atDoseLabel:"Safe if pure DXM only",
     dangerRank:9,marginBest:5,marginWorst:1,marginLabel:"Decent for pure DXM, deadly if the product contains Tylenol",
     marginExplain:"DXM itself has a moderate margin. But many cough medicines contain acetaminophen (Tylenol), and a recreational DXM dose of that syrup delivers a liver-destroying dose of acetaminophen. Also: ~5-10% of European/Caucasian people are CYP2D6 poor metabolizers (~1% East Asian, ~2% African American) — for them, a normal dose hits 3-5x harder. Only DXM-only products avoid this risk.",
@@ -519,6 +533,7 @@ export const S = [
   // ═══════════════════════════════════════════════════════════════════════════
   {id:"nitrous",n:"Nitrous Oxide",sn:"Nitrous",cat:"dissociative",aka:["Laughing Gas","N2O","Whippets","Nangs"],src:"synthetic",
     desc:"Safe drug, dangerous delivery. Deaths from suffocation, not the substance itself.",
+    blurb:"Discovered by Joseph Priestley in 1772; recreational laughing gas parties were popular in the early 1800s before its medical applications were recognized. The fastest onset and offset of any recreational substance. Triggers endogenous opioid peptide release in the brainstem, which is why it's synergistically dangerous with exogenous opioids.",
     atDose:1,atDoseLabel:"Very safe",
     dangerRank:17,marginBest:null,marginWorst:null,marginLabel:"Danger is the delivery method, not the amount",
     marginExplain:"Each individual balloon is self-limiting. The gas has an enormous safety margin per use. Deaths are from: suffocation (bags or masks trap the gas and cut off oxygen — balloons do not), falls while standing, and chronic B12 depletion from daily heavy use over weeks or months causing nerve damage.",
@@ -546,6 +561,7 @@ export const S = [
   // ═══════════════════════════════════════════════════════════════════════════
   {id:"poppers",n:"Poppers (Alkyl Nitrites)",sn:"Poppers",cat:"inhalant",aka:["Amyl Nitrite","Rush","Jungle Juice","Room Odorizer"],src:"synthetic",
     desc:"Vasodilator inhalant. Brief rush and muscle relaxation. Combined with Viagra/Cialis or any PDE5 inhibitor, blood pressure drops to fatal levels.",
+    blurb:"Amyl nitrite was first synthesized in 1844 and originally used medically for angina; recreational use became widespread in the 1970s. Inhaled alkyl nitrites that cause brief vasodilation, head rush, and smooth muscle relaxation. Combined with PDE5 inhibitors (Viagra/Cialis), both increase cyclic GMP, causing potentially fatal blood pressure collapse — an absolute pharmacological contraindication.",
     atDose:2,atDoseLabel:"Safe at normal use",
     dangerRank:18,marginBest:null,marginWorst:null,marginLabel:"Danger is swallowing or drug interactions, not inhaling",
     marginExplain:"Inhaling poppers has a wide margin — the effects are brief and self-limiting. The dangers: swallowing the liquid causes methemoglobinemia (a medical emergency), combining with Viagra/Cialis/Levitra causes a fatal blood pressure crash, and pre-existing heart conditions increase risk.",
@@ -573,6 +589,7 @@ export const S = [
   // ═══════════════════════════════════════════════════════════════════════════
   {id:"alcohol",n:"Alcohol",cat:"depressant",aka:["Ethanol","Booze","Beer","Wine","Liquor"],src:"natural",
     desc:"Highest overall harm score of ANY substance. Legal status ≠ safety.",
+    blurb:"The oldest known psychoactive substance — evidence of intentional fermentation dates to approximately 7000 BCE in China. The highest-harm substance in any multi-criteria analysis (Nutt 2010: 72/100), reflecting both individual and societal damage. Involved in more drug interaction deaths than any other substance because it potentiates nearly every depressant.",
     atDose:3,atDoseLabel:"Harmful even moderately",
     dangerRank:8,marginBest:5,marginWorst:2,marginLabel:"Moderate room for poisoning, but choking on vomit kills at lower amounts",
     marginExplain:"Acute alcohol poisoning (BAC >0.35%) requires roughly 15-20 drinks in a few hours for a 150lb person. But the most common alcohol death is aspiration — choking on vomit while unconscious — which can happen at 8-10 drinks. The recovery position (on the side) keeps the airway clear.",
@@ -601,6 +618,7 @@ export const S = [
   // ═══════════════════════════════════════════════════════════════════════════
   {id:"ghb",n:"GHB",cat:"depressant",aka:["G","Liquid Ecstasy","GBL","1,4-BD","Fantasy"],src:"synthetic",
     desc:"Great at right dose, deadly 0.5g later. Narrowest dosing window of any recreational drug.",
+    blurb:"Synthesized in 1960 by French researcher Henri Laborit during research on GABA neurotransmission. One of the steepest dose-response curves of any recreational substance — the difference between a recreational dose and a fatal dose can be less than 2x. Combined with any other depressant, individually survivable doses become lethal.",
     atDose:2,atDoseLabel:"Safe IF precisely dosed",
     dangerRank:2,marginBest:2.5,marginWorst:1.5,marginLabel:"Very narrow — less than a teaspoon between comfortable and unconscious",
     marginExplain:"A comfortable dose is 1-2.5g. At 4-5g most people lose consciousness. That's only 2-2.5x, and the difference is less than a teaspoon of liquid. With any alcohol, the margin shrinks to about 1.5x. Volumetric dosing with a syringe is the only reliable way to measure — pouring is how most GHB overdoses happen.",
@@ -628,6 +646,7 @@ export const S = [
   // ═══════════════════════════════════════════════════════════════════════════
   {id:"benzodiazepine",n:"Benzodiazepines",sn:"Benzos",cat:"benzodiazepine",aka:["Benzos","Xanax","Valium","Klonopin","Ativan"],src:"synthetic",
     desc:"Safe alone. Combined with opioids or alcohol: one of the deadliest drug combos in existence.",
+    blurb:"The first benzodiazepine (chlordiazepoxide/Librium) was discovered accidentally by Leo Sternbach in 1955. GABA-A receptor modulators that are relatively safe alone but extremely dangerous combined with opioids, alcohol, or GHB. Physical dependence develops within 2-4 weeks of daily use, and withdrawal can cause seizures.",
     atDose:2,atDoseLabel:"Safe alone",
     dangerRank:13,marginBest:30,marginWorst:1,marginLabel:"Very wide ALONE — almost none with opioids or alcohol",
     marginExplain:"Benzos alone have a genuinely large safety margin — some clinical reports describe survival after 30x+ normal doses (e.g. flurazepam). BUT: add any opioid and the margin drops to ~1x. Benzos + opioids is one of the most dangerous poly-drug combinations — 92.7% of benzo-involved deaths also involve opioids (CDC 2020). Since ~2017, stimulant-opioid deaths have surged past benzo-opioid in absolute numbers.",
@@ -655,6 +674,7 @@ export const S = [
   // ═══════════════════════════════════════════════════════════════════════════
   {id:"opioids",n:"Opioids (Heroin)",sn:"Opioids",cat:"opioid",aka:["Heroin","Morphine","H","Smack","Dope","Codeine"],src:"both",
     desc:"Narrowest safety margin of common drugs. #1 overdose killer. In most US markets, 'heroin' IS fentanyl now.",
+    blurb:"Heroin was synthesized in 1874 and marketed by Bayer in 1898 as a non-addictive morphine substitute. Mu-opioid receptor agonist that produces profound pain relief and euphoria. In most US markets, samples sold as heroin now contain primarily fentanyl — only ~2% test as expected heroin.",
     atDose:4,atDoseLabel:"Dangerous",
     dangerRank:3,marginBest:3,marginWorst:1,marginLabel:"Small margin even with known doses, unknown with street supply",
     marginExplain:"With pharmaceutical opioids of known potency: respiratory depression typically starts at ~2-3x a standard dose. With street heroin — which in most US markets is actually fentanyl — the potency is completely unknown. The effective margin from street supply is essentially unknowable.",
@@ -683,6 +703,7 @@ export const S = [
   // ═══════════════════════════════════════════════════════════════════════════
   {id:"fentanyl",n:"Fentanyl",cat:"opioid",aka:["Fent","Blues","Pressed pills","China White"],src:"synthetic",
     desc:"50-100x morphine potency. Lethal dose invisible to naked eye. Primary overdose crisis driver. Found in pills, powder, cocaine, meth, and counterfeit prescriptions.",
+    blurb:"Synthesized in 1960 by Paul Janssen and originally used exclusively in surgical anesthesia. Approximately 50-100x more potent than morphine, with an active dose measured in micrograms. Now detected as a contaminant in cocaine, methamphetamine, pressed pills, and counterfeit prescriptions across most US drug markets.",
     atDose:5,atDoseLabel:"LETHAL at street doses",
     dangerRank:1,marginBest:20,marginWorst:1,marginLabel:"Wide in medical settings, essentially zero from street supply",
     marginExplain:"Pharmaceutical fentanyl (patches, lozenges) in medical settings has a known dose and is administered with monitoring — the margin is meaningful. But street fentanyl in pressed pills or powder has completely random distribution. Two pills from the same batch can contain 0.1mg and 5mg. From street supply, the effective margin is 1x — every dose is a guess.",
@@ -710,6 +731,7 @@ export const S = [
   // ═══════════════════════════════════════════════════════════════════════════
   {id:"tramadol",n:"Tramadol",cat:"opioid",aka:["Ultram","Tramal"],src:"synthetic",
     desc:"Atypical opioid. Uniquely causes seizures AND serotonin syndrome — double danger most opioids don't have.",
+    blurb:"Developed in 1962 by the German pharmaceutical company Grünenthal. An atypical opioid that also inhibits serotonin and norepinephrine reuptake, creating interaction risks that pure opioids don't have. Lowers seizure threshold — seizures occur even at prescribed doses — and is uniquely dangerous with other serotonergic drugs due to serotonin syndrome risk.",
     atDose:2,atDoseLabel:"Safe at low Rx doses",
     dangerRank:11,marginBest:6,marginWorst:2,marginLabel:"Moderate alone, less with antidepressants",
     marginExplain:"From tramadol alone: seizure risk climbs above 400mg (~4-6x a 75-100mg dose). But tramadol also acts on serotonin, so combined with SSRIs, the margin for serotonin syndrome is much smaller — potentially 2x or less. The interaction between tramadol and antidepressants is a common source of emergency visits.",
@@ -737,6 +759,7 @@ export const S = [
   // ═══════════════════════════════════════════════════════════════════════════
   {id:"kratom",n:"Kratom",cat:"opioid",aka:["Mitragynine","Ketum","Biak"],src:"natural",
     desc:"Plant-based. Low doses stimulating, high doses sedating. Under-researched but increasingly popular.",
+    blurb:"Derived from the leaves of Mitragyna speciosa, used for centuries in Southeast Asia by laborers and in traditional medicine. Partial mu-opioid agonist with dose-dependent effects — stimulating at low doses, sedating at high doses. Only 5% of kratom-positive overdose deaths had kratom as the sole substance; fatality risk increases when combined with other depressants.",
     atDose:2,atDoseLabel:"Likely safe at low doses",
     dangerRank:12,marginBest:5,marginWorst:2,marginLabel:"Moderate alone, narrower with other opioids",
     marginExplain:"Kratom alone at 3-5g is generally well-tolerated. Serious nausea and sedation appear around 15-20g (3-5x). Deaths from kratom alone are very rare. But kratom acts on opioid receptors — combining with other opioids narrows the margin significantly.",
@@ -764,6 +787,7 @@ export const S = [
   // ═══════════════════════════════════════════════════════════════════════════
   {id:"caffeine",n:"Caffeine",cat:"stimulant",aka:["Coffee","Tea","Energy drinks","Pre-workout"],src:"natural",
     desc:"Safe from beverages. Pure caffeine powder is surprisingly deadly — a tablespoon can kill.",
+    blurb:"Consumed for over a millennium — coffee cultivation traces to 9th-century Ethiopia, tea to ancient China. The world's most widely consumed psychoactive substance, acting as an adenosine receptor antagonist. Physical dependence develops quickly, with withdrawal headaches beginning 12-24 hours after the last dose.",
     atDose:1,atDoseLabel:"Very safe (beverages)",
     dangerRank:20,marginBest:50,marginWorst:5,marginLabel:"Huge from drinks, surprisingly narrow from pure powder",
     marginExplain:"From coffee or energy drinks: you'd need 75-100 cups to reach a lethal dose. From caffeine pills (200mg): about 50 pills, still a very wide margin. But from pure caffeine powder: a tablespoon (~10,000mg) is lethal. Several teenagers have died from measuring errors with bulk caffeine powder.",
@@ -791,6 +815,7 @@ export const S = [
   // ═══════════════════════════════════════════════════════════════════════════
   {id:"ssri",n:"SSRIs",cat:"medication",aka:["Prozac","Zoloft","Lexapro","Sertraline"],src:"synthetic",
     desc:"Not recreational. Here because SSRIs dramatically change how other drugs work. Critical interaction profile.",
+    blurb:"Fluoxetine (Prozac), the first widely prescribed SSRI, was approved in 1987 and transformed psychiatric treatment. The most prescribed antidepressant class, blocking serotonin reuptake. They block MDMA's primary mechanism, reducing its effects by 30-80%, which often leads to compensatory redosing at dangerous amounts.",
     isMedication:true,atDose:null,atDoseLabel:null,
     dangerRank:21,marginBest:null,marginWorst:null,marginLabel:"Not recreational — here for interaction awareness",
     marginExplain:"SSRIs themselves are not the danger. The danger is what they do to other drugs: they block MDMA from working (tempting people to dangerously re-dose), they reduce psychedelic effects, and they can cause fatal serotonin syndrome with tramadol, DXM, or MAOIs.",
@@ -815,6 +840,7 @@ export const S = [
   // ═══════════════════════════════════════════════════════════════════════════
   {id:"maoi",n:"MAOIs",cat:"medication",aka:["Nardil","Parnate","Harmaline","Syrian Rue"],src:"both",
     desc:"Most interaction-dangerous drug class. MAOIs make dozens of substances AND certain foods lethal.",
+    blurb:"The first MAOI (iproniazid) was discovered in the 1950s when a tuberculosis drug was noticed to produce euphoria in patients. Monoamine oxidase inhibitors prevent the breakdown of serotonin, dopamine, and norepinephrine. Create the most dangerous drug interactions of any medication class — combining with serotonin releasers or tyramine-rich foods can cause fatal serotonin syndrome or hypertensive crisis.",
     isMedication:true,atDose:null,atDoseLabel:null,
     dangerRank:19,marginBest:null,marginWorst:null,marginLabel:"Not about dose — MAOIs make other things lethal",
     marginExplain:"The MAOI itself isn't what kills you. It's the interaction: MAOIs prevent your body from breaking down tyramine, serotonin, and various other substances. A normal dose of MDMA, a block of aged cheese, or a dose of cold medicine can become lethal.",

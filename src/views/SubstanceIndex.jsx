@@ -1,48 +1,69 @@
 import { CAT } from "../data/substances";
-import SafetyDots from "../components/SafetyDots";
-import Detail from "../components/Detail";
 
-export default function SubstanceIndex({ filtered, expanded, setExpanded }) {
+function Pill({ color, text }) {
+  return <span style={{
+    fontSize: 10, padding: "2px 8px", borderRadius: 20,
+    background: `${color}12`, color: color,
+    fontFamily: "'DM Mono',monospace",
+    border: `1px solid ${color}25`,
+  }}>{text}</span>;
+}
+
+function harmColor(v) {
+  if (v > 50) return "#ef4444";
+  if (v > 25) return "#f97316";
+  if (v > 10) return "#f59e0b";
+  return "#22c55e";
+}
+
+function addictColor(v) {
+  if (v >= 40) return "#ef4444";
+  if (v >= 20) return "#f97316";
+  if (v >= 10) return "#f59e0b";
+  if (v >= 3) return "#60a5fa";
+  return "#22c55e";
+}
+
+export default function SubstanceIndex({ filtered, openPanel }) {
   return <div>
     <h2 style={{ fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 22, color: "#e8e6e3", fontWeight: 400, margin: "0 0 12px" }}>Substance Directory</h2>
-    <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-      {filtered.map(s => { const c = CAT[s.cat]; const isExp = expanded === s.id;
-        const addCol = s.addictPct >= 40 ? "#ef4444" : s.addictPct >= 20 ? "#f97316" : s.addictPct >= 10 ? "#f59e0b" : s.addictPct >= 3 ? "#60a5fa" : "#22c55e";
-        return <div key={s.id} style={{ background: "rgba(255,255,255,0.025)", borderRadius: 12, border: `1px solid ${isExp ? c.c + "40" : "rgba(255,255,255,0.06)"}`, overflow: "hidden", transition: "border-color 0.3s" }}>
-          <div onClick={() => setExpanded(isExp ? null : s.id)} style={{ padding: "14px 16px", cursor: "pointer", minHeight: 48 }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
-              <div>
-                <span style={{ fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 19, color: "#e8e6e3" }}>{s.n}</span>
-                {s.aka.length > 0 && <div style={{ fontSize: 12, color: "#6b6860", fontFamily: "'DM Mono',monospace", marginTop: 2 }}>{s.aka.join(" · ")}</div>}
+    <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+      {filtered.map(s => { const c = CAT[s.cat];
+        return <div
+          key={s.id}
+          onClick={() => openPanel(s.id)}
+          style={{
+            background: "rgba(255,255,255,0.03)",
+            border: "1px solid rgba(255,255,255,0.06)",
+            borderRadius: 12, padding: "14px 16px",
+            cursor: "pointer", transition: "border-color 0.15s",
+          }}
+          onMouseEnter={e => e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)"}
+          onMouseLeave={e => e.currentTarget.style.borderColor = "rgba(255,255,255,0.06)"}
+        >
+          {/* Name + category + arrow */}
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+            <div style={{ flex: 1 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+                <h3 style={{ margin: 0, fontSize: 20, fontFamily: "'Instrument Serif',Georgia,serif", color: "#e8e6e1", fontWeight: 400 }}>{s.n}</h3>
+                <span style={{ fontSize: 10, padding: "2px 7px", borderRadius: 5, background: c.b, color: c.c, fontFamily: "'DM Mono',monospace", whiteSpace: "nowrap" }}>{c.l}</span>
               </div>
-              <div style={{ display: "flex", gap: 5, alignItems: "center" }}>
-                <span style={{ fontSize: 12, padding: "4px 10px", borderRadius: 16, background: c.b, color: c.c, fontFamily: "'DM Mono',monospace" }}>{c.l}</span>
-                <span style={{ color: "#555", fontSize: 13, transition: "transform 0.3s", transform: isExp ? "rotate(180deg)" : "rotate(0deg)", display: "inline-block" }}>▼</span>
-              </div>
+              {s.aka.length > 0 && <p style={{ margin: "2px 0 0", fontSize: 11, color: "#555", fontFamily: "'DM Mono',monospace" }}>{s.aka.slice(0, 4).join(" · ")}</p>}
             </div>
-            <p style={{ margin: "0 0 10px", fontSize: 14, color: "#8a8780", lineHeight: 1.55 }}>{s.desc}</p>
-            <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 10 }}>
-              {s.routes.map(r => <span key={r.nm} style={{ fontSize: 13, padding: "6px 10px", borderRadius: 8, background: "rgba(255,255,255,0.04)", color: "#8a8780", fontFamily: "'DM Mono',monospace" }}>{r.nm} · <span style={{ color: "#5a8a70" }}>🚀 {r.onset}</span> · <span style={{ color: "#6878a0" }}>⏳ {r.dur}</span></span>)}
-            </div>
-            <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 10 }}>
-              {s.feels.slice(0, 4).map(f => <span key={f} style={{ fontSize: 13, padding: "5px 10px", borderRadius: 6, background: "rgba(34,197,94,0.08)", color: "#5ab87a" }}>{f}</span>)}
-              {s.odRisk.slice(0, 1).map(r => <span key={r} style={{ fontSize: 13, padding: "5px 10px", borderRadius: 6, background: "rgba(239,68,68,0.08)", color: "#e07070" }}>{r.length > 35 ? r.substring(0, 35) + "…" : r}</span>)}
-            </div>
-            <div style={{ marginBottom: 10 }}>
-              <SafetyDots s={s} />
-            </div>
-            <div style={{ display: "flex", alignItems: "center", gap: 8 }} title={s.addictNote}>
-              <div style={{ width: 60, height: 6, borderRadius: 3, background: "rgba(255,255,255,0.06)", overflow: "hidden", flexShrink: 0 }}>
-                <div style={{ width: `${Math.min((s.addictPct / 70) * 100, 100)}%`, height: "100%", borderRadius: 3, background: addCol }} />
-              </div>
-              <span style={{ fontSize: 12, color: addCol, fontFamily: "'DM Mono',monospace" }}>{s.addictPrefix || ""}{s.addictPct}%</span>
-              <span style={{ fontSize: 12, color: "#6b6860", fontFamily: "'DM Mono',monospace" }}>addiction risk · {s.addictLabel.toLowerCase()}</span>
-            </div>
+            <span style={{ width: 36, height: 36, borderRadius: 8, background: "rgba(255,255,255,0.04)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 2, color: "#555", fontSize: 28, lineHeight: 1, fontWeight: 300, paddingBottom: 3 }}>›</span>
           </div>
-          <div style={{ display: "grid", gridTemplateRows: isExp ? "1fr" : "0fr", transition: "grid-template-rows 0.35s ease" }}>
-            <div style={{ overflow: "hidden" }}>
-              <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", padding: "16px" }}><Detail s={s} /></div>
-            </div>
+
+          {/* Blurb */}
+          <p style={{ margin: "8px 0 10px", fontSize: 13, color: "#8a8780", lineHeight: 1.5 }}>{s.blurb || s.desc}</p>
+
+          {/* Stat pills */}
+          <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+            {s.harm != null && <Pill color={harmColor(s.harm)} text={`harm: ${s.harm}`} />}
+            {s.addictPct > 0 && <Pill color={addictColor(s.addictPct)} text={`${s.addictPrefix || ""}${s.addictPct}% addictive`} />}
+            {s.marginLabel && <Pill
+              color={s.dangerRank >= 99 ? "#22c55e" : s.marginWorst <= 2 ? "#ef4444" : s.marginWorst <= 5 ? "#f59e0b" : "#60a5fa"}
+              text={s.marginLabel.length > 40 ? s.marginLabel.substring(0, 40) + "…" : s.marginLabel}
+            />}
           </div>
         </div>;
       })}

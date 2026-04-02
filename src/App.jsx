@@ -9,6 +9,7 @@ import InteractionsMobile from "./components/InteractionsMobile";
 import Sources from "./views/Sources";
 import { SearchInput, CategoryFilter, pillStyle } from "./components/SubstanceFilter";
 import CrisisFooter from "./components/CrisisFooter";
+import SubstancePanel from "./components/SubstancePanel";
 
 const SORTS = [
   { id: "default", label: "Default", fn: null },
@@ -66,6 +67,7 @@ export default function App() {
   const [catF, setCatF] = useState(null);
   const [sort, setSort] = useState("default");
   const [expanded, setExpanded] = useState(null);
+  const [panelId, setPanelId] = useState(null);
   const [filterOpen, setFilterOpen] = useState(false);
   const [pageKey, setPageKey] = useState(0);
   const [aboutOpen, setAboutOpen] = useState(false);
@@ -196,7 +198,7 @@ export default function App() {
               </div>
             </div>
 
-            <SubstanceIndex filtered={filtered} expanded={expanded} setExpanded={setExpanded} />
+            <SubstanceIndex filtered={filtered} openPanel={setPanelId} />
           </>}
 
           {view === "combos" && <CombinationChecker sel={sel} toggle={toggle} setSel={setSel} filtered={filtered} search={search} setSearch={setSearch} catF={catF} setCatF={setCatF} />}
@@ -229,6 +231,8 @@ export default function App() {
         </div>
       </div>
     </>, document.body)}
+
+    {panelId && <SubstancePanel substanceId={panelId} onClose={() => setPanelId(null)} />}
 
     <CrisisFooter />
 

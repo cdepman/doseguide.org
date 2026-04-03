@@ -2,11 +2,11 @@ import { useState, useRef, useCallback } from "react";
 import SwipePanel from "./SwipePanel";
 
 const SECTIONS = [
-  { id: "overdose", label: "Overdose" },
-  { id: "panic", label: "Panic / Bad Trip" },
-  { id: "serotonin", label: "Serotonin Syndrome" },
-  { id: "overheating", label: "Overheating" },
-  { id: "helplines", label: "Helplines" },
+  { id: "overdose", label: "💉 Overdose" },
+  { id: "panic", label: "🤯 Panic / Bad Trip" },
+  { id: "serotonin", label: "⚡️ Serotonin Syndrome" },
+  { id: "overheating", label: "🥵 Overheating" },
+  { id: "helplines", label: "📲 Helplines" },
 ];
 
 export default function CrisisFooter() {

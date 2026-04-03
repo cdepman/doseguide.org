@@ -1,27 +1,11 @@
 import { useState } from "react";
+import SwipeDrawer from "./SwipeDrawer";
 
 export default function CrisisFooter() {
   const [open, setOpen] = useState(false);
 
   return <>
-    {/* Expanded crisis panel */}
-    {open && <div style={{
-      position: "fixed", inset: 0, zIndex: 80,
-      background: "rgba(0,0,0,0.7)", backdropFilter: "blur(6px)",
-      WebkitBackdropFilter: "blur(6px)",
-    }} onClick={() => setOpen(false)} />}
-
-    {open && <div style={{
-      position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 85,
-      background: "#1a1a1e", borderTopLeftRadius: 16, borderTopRightRadius: 16,
-      maxHeight: "80vh", overflowY: "auto", WebkitOverflowScrolling: "touch",
-      paddingBottom: "calc(16px + env(safe-area-inset-bottom, 0))",
-    }}>
-      {/* Drag handle */}
-      <div style={{ padding: "12px 0 8px", display: "flex", justifyContent: "center" }}>
-        <div style={{ width: 40, height: 4, borderRadius: 2, background: "rgba(255,255,255,0.15)" }} />
-      </div>
-
+    <SwipeDrawer open={open} onClose={() => setOpen(false)}>
       <div style={{ padding: "0 20px 20px" }}>
         {/* OVERDOSE */}
         <div style={{
@@ -117,7 +101,7 @@ export default function CrisisFooter() {
           </div>
         </div>
       </div>
-    </div>}
+    </SwipeDrawer>
 
     {/* ── PERSISTENT CRISIS BAR ── */}
     <div

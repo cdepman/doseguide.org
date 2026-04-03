@@ -1,6 +1,7 @@
 import { useState, useRef, useCallback } from "react";
 import { createPortal } from "react-dom";
 import { S, CAT, CITE } from "../data/substances";
+import SwipeDrawer from "./SwipeDrawer";
 
 const CONF_COLORS = { measured: "#4ade80", derived: "#60a5fa", estimated: "#f59e0b", editorial: "#f97316" };
 const CONF_LABELS = { measured: "Measured", derived: "Derived", estimated: "Estimated", editorial: "Editorial" };
@@ -19,7 +20,7 @@ function SrcBadge({ src }) {
 }
 
 // Map chart field names to _src keys
-const SRC_KEYS = { margin: "margin", harm: "harm", addict: "addictPct", supply: "pctAsExpected" };
+const SRC_KEYS = { margin: "margin", lethal: "margin", harm: "harm", addict: "addictPct", supply: "pctAsExpected" };
 
 // Fixed info panel — uses portal-style fixed positioning
 function InfoPanel({ substance, field, open, onClose }) {
@@ -27,6 +28,7 @@ function InfoPanel({ substance, field, open, onClose }) {
   const c = CAT[substance.cat];
   const notes = {
     margin: { title: "Single-Dose Danger", text: substance.marginExplain },
+    lethal: { title: "Lethal Dose", text: substance.lethal?.note || substance.marginExplain },
     harm: { title: "Total Damage", text: substance.desc },
     addict: { title: "Addiction Risk", text: substance.addictNote },
     supply: { title: "Supply Purity", text: substance.supplyExplain },
@@ -36,30 +38,27 @@ function InfoPanel({ substance, field, open, onClose }) {
   const srcKey = SRC_KEYS[field];
   const src = srcKey && substance._src?.[srcKey];
 
-  return createPortal(<>
-    <div onClick={onClose} style={{ position: "fixed", inset: 0, zIndex: 200, background: "rgba(0,0,0,0.6)", backdropFilter: "blur(4px)", WebkitBackdropFilter: "blur(4px)", opacity: open ? 1 : 0, pointerEvents: open ? "auto" : "none", transition: "opacity 0.3s ease" }} />
-    <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 210, background: "#1a1a1e", borderTopLeftRadius: 16, borderTopRightRadius: 16, maxHeight: "60vh", transform: open ? "translateY(0)" : "translateY(100%)", transition: "transform 0.35s cubic-bezier(0.32, 0.72, 0, 1)", overflowY: "auto", WebkitOverflowScrolling: "touch", paddingBottom: "env(safe-area-inset-bottom, 0)" }}>
-      <div style={{ padding: "14px 20px 10px", display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-        <div>
-          <span style={{ fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 18, color: c.c }}>{substance.n}</span>
-          <span style={{ fontSize: 12, color: "#6b6860", fontFamily: "'DM Mono',monospace", marginLeft: 8 }}>{info.title}</span>
-        </div>
-        <button onClick={onClose} style={{ width: 36, height: 36, borderRadius: 18, border: "none", background: "rgba(255,255,255,0.06)", color: "#888", fontSize: 18, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>×</button>
+  return <SwipeDrawer open={open} onClose={onClose}>
+    <div style={{ padding: "4px 20px 10px", display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+      <div>
+        <span style={{ fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 18, color: c.c }}>{substance.n}</span>
+        <span style={{ fontSize: 12, color: "#6b6860", fontFamily: "'DM Mono',monospace", marginLeft: 8 }}>{info.title}</span>
       </div>
-      <div style={{ padding: "14px 20px 24px" }}>
-        {field === "margin" && substance.lethal?.gable && <div style={{ marginBottom: 12, padding: "10px 12px", background: "rgba(255,255,255,0.03)", borderRadius: 8, border: "1px solid rgba(255,255,255,0.05)" }}>
-          <div style={{ display: "flex", gap: 16, fontSize: 13, fontFamily: "'DM Mono',monospace", color: "#6b6860", flexWrap: "wrap" }}>
-            <span>effective <span style={{ color: "#4ade80" }}>{substance.lethal.gable.ed}</span></span>
-            <span>lethal <span style={{ color: "#ef4444" }}>{substance.lethal.gable.ld}</span></span>
-            <span>ratio <span style={{ color: "#c7c4be" }}>{substance.lethal.gable.ratio}</span></span>
-          </div>
-          <p style={{ margin: "4px 0 0", fontSize: 10, color: "#555", fontFamily: "'DM Mono',monospace" }}>Gable 2004 · healthy, non-tolerant, 70 kg adult{substance.lethal.gable.note ? ` · ${substance.lethal.gable.note}` : ""}</p>
-        </div>}
-        <p style={{ margin: 0, fontSize: 14, color: "#a09d97", lineHeight: 1.6 }}>{info.text}</p>
-        <SrcBadge src={src} />
-      </div>
+      <button onClick={onClose} style={{ width: 36, height: 36, borderRadius: 18, border: "none", background: "rgba(255,255,255,0.06)", color: "#888", fontSize: 18, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>×</button>
     </div>
-  </>, document.body);
+    <div style={{ padding: "14px 20px 24px" }}>
+      {(field === "margin" || field === "lethal") && substance.lethal?.gable && <div style={{ marginBottom: 12, padding: "10px 12px", background: "rgba(255,255,255,0.03)", borderRadius: 8, border: "1px solid rgba(255,255,255,0.05)" }}>
+        <div style={{ display: "flex", gap: 16, fontSize: 13, fontFamily: "'DM Mono',monospace", color: "#6b6860", flexWrap: "wrap" }}>
+          <span>effective <span style={{ color: "#4ade80" }}>{substance.lethal.gable.ed}</span></span>
+          <span>lethal <span style={{ color: "#ef4444" }}>{substance.lethal.gable.ld}</span></span>
+          <span>ratio <span style={{ color: "#c7c4be" }}>{substance.lethal.gable.ratio}</span></span>
+        </div>
+        <p style={{ margin: "4px 0 0", fontSize: 10, color: "#555", fontFamily: "'DM Mono',monospace" }}>Gable 2004 · healthy, non-tolerant, 70 kg adult{substance.lethal.gable.note ? ` · ${substance.lethal.gable.note}` : ""}</p>
+      </div>}
+      <p style={{ margin: 0, fontSize: 14, color: "#a09d97", lineHeight: 1.6 }}>{info.text}</p>
+      <SrcBadge src={src} />
+    </div>
+  </SwipeDrawer>;
 }
 
 // Tiny info dot at end of row
@@ -273,7 +272,7 @@ function LethalChart({ onInfo }) {
           <div style={{ width: `${w}%`, height: "100%", borderRadius: 5, background: `linear-gradient(90deg, ${col}44, ${col})` }} />
         </div>
         <span style={{ fontSize: 11, color: col, fontFamily: "'DM Mono',monospace", minWidth: 52, textAlign: "right", whiteSpace: "nowrap" }}>{g.ratio}{hasNote ? "†" : ""}</span>
-        <Dot onClick={() => onInfo(s, "margin")} />
+        <Dot onClick={() => onInfo(s, "lethal")} />
       </div>;
     })}
     <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginTop: 8, fontSize: 11, fontFamily: "'DM Mono',monospace", color: "#555" }}>

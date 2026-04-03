@@ -145,7 +145,7 @@ export default function App() {
               {t.label}
             </button>)}
           </nav>
-          <button onClick={() => setAboutOpen(true)} style={{ padding: "8px 12px", borderRadius: 7, border: "none", cursor: "pointer", background: "transparent", color: "#6b6860", fontFamily: "'DM Mono',monospace", fontSize: 13, minHeight: 36 }}>About</button>
+          <button onClick={() => setAboutOpen(true)} style={{ padding: "8px 12px", borderRadius: 7, border: "none", cursor: "pointer", background: "transparent", color: "#6b6860", fontFamily: "'DM Mono',monospace", fontSize: 13, minHeight: 36, display: "flex", alignItems: "center", gap: 4 }}><span style={{ fontSize: 12 }}>♥</span> About</button>
         </div>
       </div>
     </header>
@@ -259,7 +259,7 @@ export default function App() {
         <div style={{ background: "rgba(255,255,255,0.03)", borderRadius: 10, border: "1px solid rgba(255,255,255,0.06)", padding: 14, marginBottom: 14 }}>
           <h4 style={{ margin: "0 0 8px", fontSize: 13, color: "#c7c4be", fontFamily: "'DM Mono',monospace" }}>Report a data issue</h4>
           <div style={{ fontSize: 13, color: "#8a8780", lineHeight: 1.6 }}>
-            <p style={{ margin: "0 0 4px" }}>1. Go to GitHub Issues</p>
+            <p style={{ margin: "0 0 4px" }}>1. Go to <a href="https://github.com/cdepman/doseguide.org/issues" target="_blank" rel="noopener noreferrer" style={{ color: "#60a5fa", textDecoration: "none", borderBottom: "1px solid rgba(96,165,250,0.3)" }}>GitHub Issues</a></p>
             <p style={{ margin: "0 0 4px" }}>2. Tell us which substance and what's wrong</p>
             <p style={{ margin: "0 0 4px" }}>3. Include a source (study, dataset, or article)</p>
             <p style={{ margin: 0 }}>We don't change data based on opinions — we need evidence.</p>

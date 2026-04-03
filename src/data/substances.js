@@ -144,7 +144,7 @@ export const S = [
   // LSD
   // ═══════════════════════════════════════════════════════════════════════════
   {id:"lsd",n:"LSD",cat:"psychedelic",aka:["Acid","Lucy","Tabs","Blotter"],src:"semi-synthetic",
-    desc:"Classical psychedelic. One of the safest substances by every measure.",
+    desc:"Classical psychedelic. Among the lowest physical risk of any psychoactive substance.",
     blurb:"First synthesized by Albert Hofmann at Sandoz Laboratories in 1938; its psychoactive properties were discovered accidentally in 1943. Extremely potent — active in microgram doses, far below what's visible to the eye. Rarely adulterated on blotter; NBOMe compounds are the main substitution risk and are bitter-tasting, unlike LSD.",
     atDose:1,atDoseLabel:"Very safe at normal doses",
     dangerRank:99,marginBest:null,marginWorst:null,marginLabel:"No known physical danger at any dose",
@@ -546,7 +546,7 @@ export const S = [
   // NITROUS OXIDE
   // ═══════════════════════════════════════════════════════════════════════════
   {id:"nitrous",n:"Nitrous Oxide",sn:"Nitrous",cat:"dissociative",aka:["Laughing Gas","N2O","Whippets","Nangs"],src:"synthetic",
-    desc:"Safe drug, dangerous delivery. Deaths from suffocation, not the substance itself.",
+    desc:"Relatively safe substance, dangerous delivery method. Deaths are from suffocation, not the gas itself.",
     blurb:"Discovered by Joseph Priestley in 1772; recreational laughing gas parties were popular in the early 1800s before its medical applications were recognized. The fastest onset and offset of any recreational substance. Triggers endogenous opioid peptide release in the brainstem, which is why it's synergistically dangerous with exogenous opioids.",
     atDose:1,atDoseLabel:"Very safe",
     dangerRank:17,marginBest:null,marginWorst:null,marginLabel:"Danger is the delivery method, not the amount",

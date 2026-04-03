@@ -10,6 +10,7 @@ import Sources from "./views/Sources";
 import { SearchInput, CategoryFilter, pillStyle } from "./components/SubstanceFilter";
 import CrisisFooter from "./components/CrisisFooter";
 import SubstancePanel from "./components/SubstancePanel";
+import SwipePanel from "./components/SwipePanel";
 
 const SORTS = [
   { id: "default", label: "Default", fn: null },
@@ -158,7 +159,7 @@ export default function App() {
     </div>
 
     {/* ── SCROLLABLE MAIN ── */}
-    <main ref={scrollRef} className="scroll-main" style={{ flex: 1, overflow: "auto", paddingBottom: "calc(110px + env(safe-area-inset-bottom, 0px))" }}>
+    <main ref={scrollRef} className="scroll-main" style={{ flex: 1, overflow: "auto", paddingBottom: "calc(70px + env(safe-area-inset-bottom, 0px))" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "14px 16px" }}>
         <div key={pageKey} className="page-enter">
 
@@ -229,9 +230,7 @@ export default function App() {
     </main>
 
     {/* ── ABOUT PANEL ── */}
-    {aboutOpen && createPortal(<>
-      <div onClick={() => setAboutOpen(false)} style={{ position: "fixed", inset: 0, zIndex: 200, background: "rgba(0,0,0,0.5)", backdropFilter: "blur(4px)", WebkitBackdropFilter: "blur(4px)", animation: "fadeIn 0.2s ease" }} />
-      <div style={{ position: "fixed", top: 0, right: 0, bottom: 0, width: "min(520px, 94vw)", zIndex: 210, background: "#1a1a1e", borderLeft: "1px solid rgba(255,255,255,0.08)", overflowY: "auto", WebkitOverflowScrolling: "touch", animation: "slideIn 0.25s ease-out", padding: "20px 20px calc(80px + env(safe-area-inset-bottom, 0))" }}>
+    <SwipePanel open={aboutOpen} onClose={() => setAboutOpen(false)}>
 
         {/* Header */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
@@ -292,8 +291,7 @@ export default function App() {
           <a href="https://github.com/cdepman/doseguide.org" target="_blank" rel="noopener noreferrer" style={{ flex: 1, minWidth: 140, padding: "12px 16px", borderRadius: 10, background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", color: "#c7c4be", fontSize: 13, fontFamily: "'DM Mono',monospace", textDecoration: "none", textAlign: "center" }}>View source code</a>
         </div>
 
-      </div>
-    </>, document.body)}
+    </SwipePanel>
 
     {panelId && <SubstancePanel substanceId={panelId} onClose={() => setPanelId(null)} />}
 
@@ -316,7 +314,7 @@ export default function App() {
       }
       @media (min-width: 769px) {
         .mobile-tab-bar { display: none !important; }
-        .crisis-bar { bottom: 0px !important; }
+        .crisis-fab { bottom: 24px !important; }
       }
     `}</style>
   </div>;

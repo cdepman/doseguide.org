@@ -103,26 +103,45 @@ export default function CrisisFooter() {
       </div>
     </SwipeDrawer>
 
-    {/* ── PERSISTENT CRISIS BAR ── */}
+    {/* ── FLOATING CRISIS BUTTON ── */}
     <div
       onClick={() => setOpen(!open)}
-      className="crisis-bar"
+      className="crisis-fab"
+      role="button"
+      aria-label={open ? "Close emergency help" : "Emergency help"}
+      tabIndex={0}
+      onKeyDown={e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setOpen(!open); }}}
       style={{
         position: "fixed",
-        bottom: "calc(64px + env(safe-area-inset-bottom, 0px))",
-        left: 0, right: 0, zIndex: 45,
-        background: open ? "#2a1a1a" : "#1e1e22",
-        borderTop: "1px solid rgba(239,68,68,0.2)",
-        padding: "10px 16px",
-        display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
+        bottom: "calc(74px + env(safe-area-inset-bottom, 0px))",
+        right: 16, zIndex: 45,
+        width: 66, height: 66, borderRadius: 33,
+        background: open ? "#ef4444" : "#333338",
+        border: open ? "2px solid rgba(239,68,68,0.5)" : "2px solid rgba(255,255,255,0.15)",
+        display: "flex", flexDirection: "column",
+        alignItems: "center", justifyContent: "center",
         cursor: "pointer",
         WebkitTapHighlightColor: "transparent",
-        transition: "background 0.2s",
+        boxShadow: open ? "0 0 20px rgba(239,68,68,0.3)" : "0 4px 12px rgba(0,0,0,0.4)",
+        transition: "all 0.2s ease",
       }}
     >
-      <span style={{ fontSize: 13, fontFamily: "'DM Mono',monospace", color: open ? "#ef4444" : "#888", transition: "color 0.2s" }}>
-        {open ? "Close" : "Someone needs help"}
-      </span>
+      {open
+        ? <span style={{ fontSize: 20, lineHeight: 1, color: "#fff" }}>✕</span>
+        : <>
+          <svg width="28" height="28" viewBox="0 0 64 64" style={{ flexShrink: 0 }}>
+            {/* White ring sections */}
+            <path d="M39.69,7.17A26.05,26.05,0,0,1,56.83,24.31l-9.68,2.6A16.03,16.03,0,0,0,37.09,16.85Z" fill="#fff"/>
+            <path d="M24.31,56.83A26.05,26.05,0,0,1,7.17,39.69l9.68-2.6A16.03,16.03,0,0,0,26.91,47.15Z" fill="#fff"/>
+            <path d="M7.17,24.31A26.05,26.05,0,0,1,24.31,7.17l2.6,9.68A16.03,16.03,0,0,0,16.85,26.91Z" fill="#fff"/>
+            <path d="M56.83,39.69A26.05,26.05,0,0,1,39.69,56.83l-2.6-9.68A16.03,16.03,0,0,0,47.15,37.09Z" fill="#fff"/>
+            {/* Red strap sections + outer frame + inner circle (the structural outline) */}
+            <path d="M61.48,26.38a3.05,3.05,0,0,0-1.34-1.96l-.14-.06V13a9.01,9.01,0,0,0-9-9H39.64l-.06-.14a3.05,3.05,0,0,0-1.96-1.34,30.78,30.78,0,0,0-11.24,0,3.05,3.05,0,0,0-1.96,1.34l-.06.14H13a9.01,9.01,0,0,0-9,9V24.36l-.14.06a3.05,3.05,0,0,0-1.34,1.96,30.63,30.63,0,0,0,0,11.24,3.05,3.05,0,0,0,1.34,1.96l.14.07V51a9.01,9.01,0,0,0,9,9H24.36l.06.14a3.05,3.05,0,0,0,1.96,1.34,30.63,30.63,0,0,0,11.24,0,3.05,3.05,0,0,0,1.96-1.34l.06-.14H51a9.01,9.01,0,0,0,9-9V39.65l.14-.07a3.05,3.05,0,0,0,1.34-1.96,30.63,30.63,0,0,0,0-11.24Z" fill="none" stroke="#ef4444" strokeWidth="2"/>
+            <circle cx="32" cy="32" r="12" fill="none" stroke="#ef4444" strokeWidth="2"/>
+          </svg>
+          <span style={{ fontSize: 12, fontFamily: "'DM Mono',monospace", color: "#ccc", marginTop: 3, fontWeight: 600 }}>Help</span>
+        </>
+      }
     </div>
   </>;
 }

@@ -1,4 +1,4 @@
-import { CAT, SRC_LABELS, MED_WARNINGS } from "../data/substances";
+import { S, CAT, SRC_LABELS, MED_WARNINGS } from "../data/substances";
 
 function LethalViz({ s }) {
   if (!s.lethal.cmp) return null;
@@ -29,7 +29,7 @@ function LethalViz({ s }) {
   </div>;
 }
 
-export default function Detail({ s }) {
+export default function Detail({ s, onNavigate }) {
   const c = CAT[s.cat];
 
   // Simplified view for medications
@@ -74,6 +74,20 @@ export default function Detail({ s }) {
       </div>)}
       {s.dose.note && <p style={{ margin: "6px 0 0", fontSize: 16, color: "#6b6860", lineHeight: 1.5, fontFamily: "'DM Mono',monospace" }}>{s.dose.note}</p>}
     </></Sec>
+    {s.chem && <Sec title="Chemistry"><div style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: 10, padding: "12px 14px" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 6, flexWrap: "wrap", gap: 4 }}>
+        <span style={{ fontSize: 13, color: c.c, fontFamily: "'DM Mono',monospace", textTransform: "uppercase", letterSpacing: "0.08em", fontWeight: 600 }}>{s.chem.family}</span>
+        <span style={{ fontSize: 13, color: "#6b6860", fontFamily: "'DM Mono',monospace" }}>{s.chem.scaffold}</span>
+      </div>
+      <p style={{ margin: "0 0 8px", fontSize: 16, color: "#8a8780", lineHeight: 1.5 }}>{s.chem.note}</p>
+      {s.chem.bridge && <div style={{ background: "rgba(239,159,39,0.06)", border: "1px solid rgba(239,159,39,0.15)", borderRadius: 8, padding: "8px 10px", marginBottom: 8 }}>
+        <p style={{ margin: 0, fontSize: 16, color: "#c0a060", lineHeight: 1.5 }}><span style={{ fontWeight: 600, color: "#EF9F27" }}>Cross-family bridge:</span> {s.chem.bridge.reason}</p>
+      </div>}
+      {s.chem.relatives.length > 0 && <div style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" }}>
+        <span style={{ fontSize: 13, color: "#555", fontFamily: "'DM Mono',monospace" }}>Related:</span>
+        {s.chem.relatives.map(rid => { const rel = S.find(x => x.id === rid); if (!rel) return null; const rc = CAT[rel.cat]; return <span key={rid} onClick={e => { e.stopPropagation(); onNavigate?.(rid); }} style={{ fontSize: 14, padding: "3px 8px", borderRadius: 6, cursor: onNavigate ? "pointer" : "default", background: rc.b, color: rc.c, fontFamily: "'DM Mono',monospace", border: `1px solid ${rc.c}25` }}>{rel.sn || rel.n}</span>; })}
+      </div>}
+    </div></Sec>}
     {s.lethal.cmp && <Sec title="Lethality"><LethalViz s={s} /></Sec>}
     <Sec title="What it feels like"><div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>{s.feels.map(f => <span key={f} style={{ fontSize: 16, padding: "5px 10px", borderRadius: 6, background: "rgba(34,197,94,0.08)", color: "#5ab87a" }}>{f}</span>)}</div></Sec>
     <Sec title="What happens if you take too much"><div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>{s.odRisk.map(r => <span key={r} style={{ fontSize: 16, padding: "5px 10px", borderRadius: 6, background: "rgba(239,68,68,0.1)", color: "#e07070" }}>{r}</span>)}</div></Sec>

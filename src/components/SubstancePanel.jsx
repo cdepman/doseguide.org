@@ -2,7 +2,7 @@ import Detail from "./Detail";
 import SwipePanel from "./SwipePanel";
 import { S, CAT } from "../data/substances";
 
-export default function SubstancePanel({ substanceId, onClose }) {
+export default function SubstancePanel({ substanceId, onClose, onNavigate }) {
   const s = S.find(x => x.id === substanceId);
   if (!s) return null;
   const c = CAT[s.cat];
@@ -50,6 +50,6 @@ export default function SubstancePanel({ substanceId, onClose }) {
     </div>
 
     {/* Full detail */}
-    <Detail s={s} />
+    <Detail s={s} onNavigate={onNavigate} />
   </SwipePanel>;
 }

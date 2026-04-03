@@ -293,7 +293,7 @@ export default function App() {
 
     </SwipePanel>
 
-    {panelId && <SubstancePanel substanceId={panelId} onClose={() => setPanelId(null)} />}
+    {panelId && <SubstancePanel substanceId={panelId} onClose={() => setPanelId(null)} onNavigate={setPanelId} />}
 
     <CrisisFooter />
 

@@ -19,21 +19,18 @@ export default function CrisisFooter() {
   };
 
   return <>
-    <SwipePanel open={open} onClose={() => setOpen(false)}>
-
-      {/* Header */}
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 }}>
+    <SwipePanel open={open} onClose={() => setOpen(false)} header={<>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
         <h2 style={{ margin: 0, fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 24, color: "#ef4444", fontWeight: 400 }}>Emergency Help</h2>
         <button onClick={() => setOpen(false)} style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 8, padding: "6px 12px", color: "#888", fontSize: 13, cursor: "pointer", fontFamily: "'DM Mono',monospace" }}>Close</button>
       </div>
-
-      {/* Jump tabs */}
-      <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 18, position: "sticky", top: 0, zIndex: 5, background: "#1a1a1e", padding: "8px 0 10px", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+      <div style={{ display: "flex", gap: 6, flexWrap: "wrap", padding: "8px 0 12px", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
         {SECTIONS.map(s => <button key={s.id} onClick={() => scrollTo(s.id)} style={{ padding: "7px 12px", borderRadius: 7, border: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.03)", color: "#8a8780", fontFamily: "'DM Mono',monospace", fontSize: 13, cursor: "pointer", minHeight: 34 }}>{s.label}</button>)}
       </div>
+    </>}>
 
       {/* OVERDOSE */}
-      <div ref={setRef("overdose")} style={{ scrollMarginTop: 80, marginBottom: 20 }}>
+      <div ref={setRef("overdose")} style={{ scrollMarginTop: 16, marginBottom: 20, paddingTop: 14 }}>
         <div style={{
           background: "rgba(239,68,68,0.1)", border: "1.5px solid rgba(239,68,68,0.3)",
           borderRadius: 12, padding: "16px",
@@ -56,7 +53,7 @@ export default function CrisisFooter() {
       </div>
 
       {/* PANIC / BAD TRIP */}
-      <div ref={setRef("panic")} style={{ scrollMarginTop: 80, marginBottom: 20 }}>
+      <div ref={setRef("panic")} style={{ scrollMarginTop: 16, marginBottom: 20 }}>
         <div style={{
           background: "rgba(245,158,11,0.08)", border: "1.5px solid rgba(245,158,11,0.25)",
           borderRadius: 12, padding: "16px",
@@ -76,7 +73,7 @@ export default function CrisisFooter() {
       </div>
 
       {/* SEROTONIN SYNDROME */}
-      <div ref={setRef("serotonin")} style={{ scrollMarginTop: 80, marginBottom: 20 }}>
+      <div ref={setRef("serotonin")} style={{ scrollMarginTop: 16, marginBottom: 20 }}>
         <div style={{
           background: "rgba(249,115,22,0.08)", border: "1.5px solid rgba(249,115,22,0.25)",
           borderRadius: 12, padding: "16px",
@@ -97,7 +94,7 @@ export default function CrisisFooter() {
       </div>
 
       {/* OVERHEATING */}
-      <div ref={setRef("overheating")} style={{ scrollMarginTop: 80, marginBottom: 20 }}>
+      <div ref={setRef("overheating")} style={{ scrollMarginTop: 16, marginBottom: 20 }}>
         <div style={{
           background: "rgba(239,68,68,0.06)", border: "1.5px solid rgba(239,68,68,0.2)",
           borderRadius: 12, padding: "16px",
@@ -116,7 +113,7 @@ export default function CrisisFooter() {
       </div>
 
       {/* HELPLINES */}
-      <div ref={setRef("helplines")} style={{ scrollMarginTop: 80, marginBottom: 20 }}>
+      <div ref={setRef("helplines")} style={{ scrollMarginTop: 16, marginBottom: 20 }}>
         <div style={{
           background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)",
           borderRadius: 12, padding: "16px",

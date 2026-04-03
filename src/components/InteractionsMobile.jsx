@@ -81,15 +81,15 @@ export default function InteractionsMobile() {
     </select>
 
     {/* Empty state */}
-    {!selected && <p style={{ color: "#555", fontSize: 14, textAlign: "center", padding: "40px 20px", fontFamily: "'DM Mono',monospace" }}>Select a substance to see how it interacts with everything else</p>}
+    {!selected && <p style={{ color: "#555", fontSize: 16, textAlign: "center", padding: "40px 20px", fontFamily: "'DM Mono',monospace" }}>Select a substance to see how it interacts with everything else</p>}
 
     {/* No data state */}
-    {selected && groups.length === 0 && <p style={{ color: "#555", fontSize: 14, textAlign: "center", padding: "40px 20px", fontFamily: "'DM Mono',monospace" }}>No interaction data available for {selSub?.n}. Treat all unknown combinations with caution.</p>}
+    {selected && groups.length === 0 && <p style={{ color: "#555", fontSize: 16, textAlign: "center", padding: "40px 20px", fontFamily: "'DM Mono',monospace" }}>No interaction data available for {selSub?.n}. Treat all unknown combinations with caution.</p>}
 
     {/* Class warnings */}
     {classWarnings.length > 0 && <div style={{ marginBottom: 14 }}>
       {classWarnings.map((w, i) => <div key={i} style={{ background: w.color + "0a", border: `1px solid ${w.color}30`, borderRadius: 8, padding: "10px 14px", marginBottom: 6 }}>
-        <p style={{ margin: 0, fontSize: 12.5, color: "#a09890", lineHeight: 1.5 }}>{w.text}</p>
+        <p style={{ margin: 0, fontSize: 16, color: "#a09890", lineHeight: 1.5 }}>{w.text}</p>
       </div>)}
     </div>}
 
@@ -98,7 +98,7 @@ export default function InteractionsMobile() {
       {/* Section header */}
       <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8, padding: "0 2px" }}>
         <span style={{ fontSize: 15, color: g.c }}>{g.i}</span>
-        <span style={{ fontSize: 12, color: g.c, fontFamily: "'DM Mono',monospace", fontWeight: 600 }}>{g.l}</span>
+        <span style={{ fontSize: 13, color: g.c, fontFamily: "'DM Mono',monospace", fontWeight: 600 }}>{g.l}</span>
         <div style={{ flex: 1, height: 1, background: g.c + "30" }} />
       </div>
 
@@ -110,9 +110,9 @@ export default function InteractionsMobile() {
         }}>
           <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
             <span style={{ fontSize: 13, color: g.c }}>{g.i}</span>
-            <span style={{ fontSize: 15, fontFamily: "'Instrument Serif',Georgia,serif", color: CAT[sub.cat].c }}>{sub.n}</span>
+            <span style={{ fontSize: 16, fontFamily: "'Instrument Serif',Georgia,serif", color: CAT[sub.cat].c }}>{sub.n}</span>
           </div>
-          <p style={{ margin: "4px 0 0", fontSize: 12.5, color: "#8a8780", lineHeight: 1.5 }}>
+          <p style={{ margin: "4px 0 0", fontSize: 16, color: "#8a8780", lineHeight: 1.5 }}>
             {mech || g.d}
           </p>
         </div>)}

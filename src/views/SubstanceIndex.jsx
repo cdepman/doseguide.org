@@ -2,7 +2,7 @@ import { CAT } from "../data/substances";
 
 function Pill({ color, text }) {
   return <span style={{
-    fontSize: 10, padding: "2px 8px", borderRadius: 20,
+    fontSize: 14, padding: "2px 8px", borderRadius: 20,
     background: `${color}12`, color: color,
     fontFamily: "'DM Mono',monospace",
     border: `1px solid ${color}25`,
@@ -46,15 +46,15 @@ export default function SubstanceIndex({ filtered, openPanel }) {
             <div style={{ flex: 1 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
                 <h3 style={{ margin: 0, fontSize: 20, fontFamily: "'Instrument Serif',Georgia,serif", color: "#e8e6e1", fontWeight: 400 }}>{s.n}</h3>
-                <span style={{ fontSize: 10, padding: "2px 7px", borderRadius: 5, background: c.b, color: c.c, fontFamily: "'DM Mono',monospace", whiteSpace: "nowrap" }}>{c.l}</span>
+                <span style={{ fontSize: 12, padding: "2px 7px", borderRadius: 5, background: c.b, color: c.c, fontFamily: "'DM Mono',monospace", whiteSpace: "nowrap" }}>{c.l}</span>
               </div>
-              {s.aka.length > 0 && <p style={{ margin: "2px 0 0", fontSize: 11, color: "#555", fontFamily: "'DM Mono',monospace" }}>{s.aka.slice(0, 4).join(" · ")}</p>}
+              {s.aka.length > 0 && <p style={{ margin: "2px 0 0", fontSize: 14, color: "#555", fontFamily: "'DM Mono',monospace" }}>{s.aka.slice(0, 4).join(" · ")}</p>}
             </div>
             <span style={{ width: 36, height: 36, borderRadius: 8, background: "rgba(255,255,255,0.04)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 2, color: "#555", fontSize: 28, lineHeight: 1, fontWeight: 300, paddingBottom: 3 }}>›</span>
           </div>
 
           {/* Blurb */}
-          <p style={{ margin: "8px 0 10px", fontSize: 13, color: "#8a8780", lineHeight: 1.5 }}>{s.blurb || s.desc}</p>
+          <p style={{ margin: "8px 0 10px", fontSize: 16, color: "#8a8780", lineHeight: 1.5 }}>{s.blurb || s.desc}</p>
 
           {/* Stat pills */}
           <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>

@@ -95,11 +95,11 @@ export default function SubstancePanel({ substanceId, onClose }) {
           }}>{s.n}</h2>
           <div style={{ display: "flex", alignItems: "center", gap: 6, marginTop: 4 }}>
             <span style={{
-              fontSize: 11, padding: "2px 7px", borderRadius: 5,
+              fontSize: 12, padding: "2px 7px", borderRadius: 5,
               background: c.b, color: c.c,
               fontFamily: "'DM Mono',monospace",
             }}>{c.l}</span>
-            {s.aka.length > 0 && <span style={{ fontSize: 11, color: "#555", fontFamily: "'DM Mono',monospace" }}>{s.aka.slice(0, 3).join(" · ")}</span>}
+            {s.aka.length > 0 && <span style={{ fontSize: 13, color: "#555", fontFamily: "'DM Mono',monospace" }}>{s.aka.slice(0, 3).join(" · ")}</span>}
           </div>
         </div>
         <button
@@ -116,11 +116,11 @@ export default function SubstancePanel({ substanceId, onClose }) {
       </div>
 
       {/* Description */}
-      <p style={{ margin: "0 0 14px", fontSize: 14, color: "#a09d97", lineHeight: 1.6 }}>{s.blurb || s.desc}</p>
+      <p style={{ margin: "0 0 14px", fontSize: 16, color: "#a09d97", lineHeight: 1.6 }}>{s.blurb || s.desc}</p>
 
       {/* Routes */}
       <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 14 }}>
-        {s.routes.map(r => <span key={r.nm} style={{ fontSize: 12, padding: "5px 10px", borderRadius: 8, background: "rgba(255,255,255,0.04)", color: "#8a8780", fontFamily: "'DM Mono',monospace" }}>{r.nm} · <span style={{ color: "#5a8a70" }}>🚀 {r.onset}</span> · <span style={{ color: "#6878a0" }}>⏳ {r.dur}</span></span>)}
+        {s.routes.map(r => <span key={r.nm} style={{ fontSize: 15, padding: "5px 10px", borderRadius: 8, background: "rgba(255,255,255,0.04)", color: "#8a8780", fontFamily: "'DM Mono',monospace" }}>{r.nm} · <span style={{ color: "#5a8a70" }}>🚀 {r.onset}</span> · <span style={{ color: "#6878a0" }}>⏳ {r.dur}</span></span>)}
       </div>
 
       {/* Full detail */}

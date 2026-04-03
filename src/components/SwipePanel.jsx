@@ -1,37 +1,45 @@
 import { useState, useRef, useCallback } from "react";
 import { createPortal } from "react-dom";
 
+const DEAD_ZONE = 15; // pixels before committing to a direction
+
 export default function SwipePanel({ open, onClose, width = "min(520px, 94vw)", children }) {
   const [dragX, setDragX] = useState(0);
-  const [dragging, setDragging] = useState(false);
+  const [swiping, setSwiping] = useState(false);
   const startX = useRef(0);
   const startY = useRef(0);
-  const isHorizontal = useRef(null);
+  const direction = useRef(null); // null | "horizontal" | "vertical"
 
   const onTouchStart = useCallback(e => {
     startX.current = e.touches[0].clientX;
     startY.current = e.touches[0].clientY;
-    isHorizontal.current = null;
-    setDragging(true);
+    direction.current = null;
   }, []);
 
   const onTouchMove = useCallback(e => {
-    if (!dragging) return;
     const dx = e.touches[0].clientX - startX.current;
     const dy = e.touches[0].clientY - startY.current;
-    if (isHorizontal.current === null) {
-      isHorizontal.current = Math.abs(dx) > Math.abs(dy);
+
+    // Haven't committed to a direction yet
+    if (direction.current === null) {
+      if (Math.abs(dx) < DEAD_ZONE && Math.abs(dy) < DEAD_ZONE) return; // still in dead zone
+      direction.current = Math.abs(dx) > Math.abs(dy) && dx > 0 ? "horizontal" : "vertical";
     }
-    if (!isHorizontal.current) return;
+
+    // Vertical scroll — don't interfere at all
+    if (direction.current === "vertical") return;
+
+    // Horizontal swipe to close
+    setSwiping(true);
     setDragX(Math.max(0, dx));
-  }, [dragging]);
+  }, []);
 
   const onTouchEnd = useCallback(() => {
-    setDragging(false);
-    if (dragX > 100) onClose();
+    if (swiping && dragX > 100) onClose();
+    setSwiping(false);
     setDragX(0);
-    isHorizontal.current = null;
-  }, [dragX, onClose]);
+    direction.current = null;
+  }, [swiping, dragX, onClose]);
 
   if (!open) return null;
 
@@ -55,11 +63,11 @@ export default function SwipePanel({ open, onClose, width = "min(520px, 94vw)", 
         zIndex: 210,
         background: "#1a1a1e",
         borderLeft: "1px solid rgba(255,255,255,0.08)",
-        overflowY: dragging && isHorizontal.current ? "hidden" : "auto",
+        overflowY: swiping ? "hidden" : "auto",
         WebkitOverflowScrolling: "touch",
-        animation: dragging ? "none" : "slideIn 0.25s ease-out",
+        animation: swiping ? "none" : "slideIn 0.25s ease-out",
         transform: `translateX(${dragX}px)`,
-        transition: dragging ? "none" : "transform 0.3s ease",
+        transition: swiping ? "none" : "transform 0.3s ease",
         padding: "20px 20px calc(80px + env(safe-area-inset-bottom, 0))",
       }}
     >

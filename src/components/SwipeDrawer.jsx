@@ -7,28 +7,32 @@ export default function SwipeDrawer({ open, onClose, children }) {
   const [dragY, setDragY] = useState(0);
   const [swiping, setSwiping] = useState(false);
   const [entered, setEntered] = useState(false);
-
-  // Reset animation state when drawer reopens
-  useEffect(() => {
-    if (open) setEntered(false);
-  }, [open]);
   const startY = useRef(0);
   const startX = useRef(0);
   const direction = useRef(null);
+  const startedInHandle = useRef(false);
   const handleRef = useRef(null);
+
+  useEffect(() => {
+    if (open) setEntered(false);
+  }, [open]);
 
   const onTouchStart = useCallback(e => {
     startY.current = e.touches[0].clientY;
     startX.current = e.touches[0].clientX;
     direction.current = null;
+    // Check once: did touch start in the handle zone?
+    const handle = handleRef.current;
+    if (handle) {
+      const rect = handle.getBoundingClientRect();
+      startedInHandle.current = e.touches[0].clientY >= rect.top && e.touches[0].clientY <= rect.bottom + 20;
+    } else {
+      startedInHandle.current = false;
+    }
   }, []);
 
   const onTouchMove = useCallback(e => {
-    // Only allow swipe-down from the handle area (first 50px)
-    const handle = handleRef.current;
-    if (!handle) return;
-    const handleRect = handle.getBoundingClientRect();
-    if (startY.current < handleRect.top || startY.current > handleRect.bottom + 10) return;
+    if (!startedInHandle.current) return;
 
     const dy = e.touches[0].clientY - startY.current;
     const dx = e.touches[0].clientX - startX.current;
@@ -50,6 +54,7 @@ export default function SwipeDrawer({ open, onClose, children }) {
     setSwiping(false);
     setDragY(0);
     direction.current = null;
+    startedInHandle.current = false;
   }, [swiping, dragY, onClose]);
 
   const onAnimationEnd = useCallback(() => setEntered(true), []);
@@ -85,7 +90,7 @@ export default function SwipeDrawer({ open, onClose, children }) {
       }}
     >
       {/* Drag handle */}
-      <div ref={handleRef} style={{ padding: "10px 0 4px", display: "flex", justifyContent: "center", cursor: "grab", touchAction: "none" }}>
+      <div ref={handleRef} style={{ padding: "12px 0 6px", display: "flex", justifyContent: "center", cursor: "grab", touchAction: "none" }}>
         <div style={{ width: 36, height: 4, borderRadius: 2, background: "rgba(255,255,255,0.15)" }} />
       </div>
       {children}

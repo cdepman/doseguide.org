@@ -144,23 +144,49 @@ src/
 
 ## Contributing
 
-This project exists to save lives. Contributions are welcome.
+This project exists to save lives. Contributions are welcome — especially from people with lived experience, pharmacology knowledge, or harm reduction expertise. **You don't need to know how to code.**
 
-### What we need most
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the full guide.
 
-- **Data corrections** — If a number is wrong, outdated, or missing context, please fix it. Every claim should be traceable to a source. Open an issue or PR with the correction and the source.
-- **New substances** — Add substances to `src/data/substances.js` following the existing format. Every field needs a source.
-- **New drug checking data** — Supply purity numbers get outdated fast. If you have access to recent drug checking data, please contribute it.
-- **Mobile UX improvements** — This is a mobile-first app used by people in loud, dark, stressful environments. Readability and speed matter more than aesthetics.
-- **Translations** — Harm reduction information should be available in every language.
+### Report a data issue (no code required)
 
-### How to contribute
+If you see a number that's wrong, outdated, or missing context:
+
+1. Go to [github.com/cdepman/doseguide.org/issues](https://github.com/cdepman/doseguide.org/issues)
+2. Click **New Issue**
+3. Tell us:
+   - **Which substance?** — e.g., "MDMA"
+   - **What's wrong?** — e.g., "The addiction rate seems too high"
+   - **What should it be?** — e.g., "Closer to X% based on..."
+   - **Source** — a link to a study, article, or dataset. We don't change data based on opinions — we need evidence.
+4. Submit. That's it. We'll review and update.
+
+### Suggest a new substance
+
+1. Go to [Issues → New Issue](https://github.com/cdepman/doseguide.org/issues/new)
+2. Include the substance name, common street names, why it should be added (how widely used?), and any data sources you can point to
+
+### Report a bug or UI issue
+
+1. Go to [Issues → New Issue](https://github.com/cdepman/doseguide.org/issues/new)
+2. Describe what's broken and include a screenshot if possible
+
+### Code contributions
 
 1. Fork the repo
 2. Create a branch (`git checkout -b fix/cocaine-margin-data`)
-3. Make your changes
+3. Make your changes and test locally (`npm run dev`)
 4. Open a PR with a clear description of what changed and why
-5. Include sources for any data changes
+5. Include sources for any data changes — every number must be traceable
+
+### What we need help with
+
+- **Data verification** — every number should trace to a peer-reviewed source or established harm reduction organization
+- **New substance profiles** — with sourced data following the existing format
+- **Combination mechanism explanations** — the "WHY" behind dangerous interactions
+- **Drug checking data** — supply purity numbers get outdated fast
+- **Mobile testing and accessibility** — screen reader support, color contrast, keyboard navigation
+- **Translations** — harm reduction information should be available in every language
 
 ### What we won't accept
 
@@ -168,6 +194,7 @@ This project exists to save lives. Contributions are welcome.
 - Changes that make substances appear safer than evidence supports
 - Commercial features, tracking, or advertising
 - Content that promotes drug use rather than reducing harm
+- Unsourced data changes
 
 ## Deployment
 

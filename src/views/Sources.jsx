@@ -53,6 +53,12 @@ const SECTIONS = [
     { name: "SAMHSA — National Survey on Drug Use and Health", url: "https://www.samhsa.gov/data/nsduh", type: "Government", desc: "Prevalence data and national trends in substance use. The most comprehensive annual survey of drug use in the United States." },
     { name: "Global Drug Survey (GDS) — Annual Reports 2019-2021 + Psychedelics Study 2020", url: "https://www.globaldrugsurvey.com/", type: "Community", desc: "The world's largest annual drug survey (85,000+ respondents in GDS2019). The GDS2020 psychedelics self-treatment study (n=3,364) found 22.5% of people self-treating with LSD or psilocybin reported negative psychological effects (note: combined both substances in a self-treatment context, not general recreational use).", link2: "https://www.globaldrugsurvey.com/wp-content/uploads/2021/01/GDS2020-Executive-Summary.pdf", link2label: "GDS 2020 Executive Summary" },
   ]},
+  { id: "crisis", label: "Crisis Resources", sources: [
+    { name: "Never Use Alone — National Overdose Response Hotline", url: "https://neverusealone.com/", type: "Community", desc: "Peer-operated phone line (1-800-484-3731). Caller provides location; operator stays on the line during substance use and contacts 911 if the caller becomes unresponsive. Available 24/7." },
+    { name: "Fireside Project — Psychedelic Peer Support Line", url: "https://firesideproject.org/", type: "Community", desc: "Free, confidential psychedelic peer support by phone and text. Call or text 62-FIRESIDE (623-473-7433), daily 11am-11pm PT. Published research: 65.9% of callers de-escalated from distress (Pleet et al. 2023, Psychedelic Medicine)." },
+    { name: "CDC MMWR — Xylazine-involved fentanyl overdose deaths (2023)", url: "https://www.cdc.gov/mmwr/volumes/72/wr/mm7226a4.htm", type: "Government", desc: "Kariisa et al. 2023. Xylazine-involved overdose deaths increased nearly 20-fold from 2015 to 2020. Xylazine deepens fentanyl respiratory depression through non-opioid pathways not reversed by naloxone." },
+    { name: "NIDA — Xylazine Research Topics", url: "https://nida.nih.gov/research-topics/xylazine", type: "Government", desc: "NIDA overview of xylazine as an emerging adulterant in the illicit drug supply. Covers mechanism, naloxone limitations, and skin wound complications." },
+  ]},
 ];
 
 const TYPE_COLORS = {

@@ -40,7 +40,7 @@ export default function CrisisFooter() {
             <p style={{ margin: 0 }}><strong style={{ color: "#ef4444" }}>5.</strong> Give a <strong>second Narcan dose</strong> after 2-3 minutes if no response. Stay until help arrives.</p>
           </div>
           <p style={{ margin: "10px 0 0", fontSize: 12, color: "#888", fontFamily: "'DM Mono',monospace" }}>
-            Narcan only reverses opioids. If xylazine or other sedatives are involved, they may stay unconscious — keep breathing for them.
+            Narcan only reverses opioids. Street fentanyl now commonly contains xylazine or medetomidine (veterinary sedatives) that Narcan does NOT reverse. Give Narcan anyway — it reverses the opioid component. But the person may not wake up fully. Keep breathing for them until paramedics arrive.
           </p>
         </div>
 
@@ -108,8 +108,10 @@ export default function CrisisFooter() {
             Helplines
           </h3>
           <div style={{ fontSize: 13, color: "#8a8780", lineHeight: 1.8, fontFamily: "'DM Mono',monospace" }}>
-            <p style={{ margin: "0 0 4px" }}><strong style={{ color: "#c7c4be" }}>Emergency:</strong> <a href="tel:911" style={{ color: "#ef4444", textDecoration: "none" }}>911</a></p>
-            <p style={{ margin: "0 0 4px" }}><strong style={{ color: "#c7c4be" }}>SAMHSA:</strong> <a href="tel:18006624357" style={{ color: "#60a5fa", textDecoration: "none" }}>1-800-662-4357</a> (free, confidential, 24/7)</p>
+            <p style={{ margin: "0 0 4px" }}><strong style={{ color: "#ef4444" }}>Emergency:</strong> <a href="tel:911" style={{ color: "#ef4444", textDecoration: "none" }}>911</a></p>
+            <p style={{ margin: "0 0 4px" }}><strong style={{ color: "#c7c4be" }}>Never Use Alone:</strong> <a href="tel:18004843731" style={{ color: "#60a5fa", textDecoration: "none" }}>1-800-484-3731</a> <span style={{ color: "#555", fontSize: 11 }}>— stays on the line while you use</span></p>
+            <p style={{ margin: "0 0 4px" }}><strong style={{ color: "#c7c4be" }}>Fireside Project:</strong> <a href="tel:6234737433" style={{ color: "#60a5fa", textDecoration: "none" }}>62-FIRESIDE (623-473-7433)</a> <span style={{ color: "#555", fontSize: 11 }}>— psychedelic peer support, 11am-11pm PT</span></p>
+            <p style={{ margin: "0 0 4px" }}><strong style={{ color: "#c7c4be" }}>SAMHSA:</strong> <a href="tel:18006624357" style={{ color: "#60a5fa", textDecoration: "none" }}>1-800-662-4357</a> <span style={{ color: "#555", fontSize: 11 }}>— free, confidential, 24/7</span></p>
             <p style={{ margin: "0 0 4px" }}><strong style={{ color: "#c7c4be" }}>Crisis Text:</strong> Text <strong>HOME</strong> to <strong>741741</strong></p>
             <p style={{ margin: 0 }}><strong style={{ color: "#c7c4be" }}>Poison Control:</strong> <a href="tel:18002221222" style={{ color: "#60a5fa", textDecoration: "none" }}>1-800-222-1222</a></p>
           </div>

@@ -150,9 +150,9 @@ export default function App() {
         </div>
 
         {/* Mobile hamburger */}
-        <button className="mobile-hamburger" onClick={() => setMenuOpen(!menuOpen)} style={{ display: "none", width: 44, height: 44, borderRadius: 10, border: "none", cursor: "pointer", background: menuOpen ? "rgba(255,255,255,0.1)" : "transparent", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 5, padding: 0 }}>
-          <div style={{ width: 22, height: 2, borderRadius: 1, background: menuOpen ? "#e8e6e3" : "#888", transition: "all 0.2s", transform: menuOpen ? "rotate(45deg) translateY(3.5px)" : "none" }} />
-          <div style={{ width: 22, height: 2, borderRadius: 1, background: menuOpen ? "#e8e6e3" : "#888", transition: "all 0.2s", transform: menuOpen ? "rotate(-45deg) translateY(-3.5px)" : "none" }} />
+        <button className="mobile-hamburger" onClick={() => setMenuOpen(!menuOpen)} style={{ display: "none", width: 44, height: 44, borderRadius: 10, border: "none", cursor: "pointer", background: menuOpen ? "rgba(255,255,255,0.1)" : "transparent", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: menuOpen ? 0 : 5, padding: 0, position: "relative" }}>
+          <div style={{ width: 22, height: 2, borderRadius: 1, background: menuOpen ? "#e8e6e3" : "#888", transition: "all 0.25s", position: menuOpen ? "absolute" : "relative", transform: menuOpen ? "rotate(45deg)" : "none" }} />
+          <div style={{ width: 22, height: 2, borderRadius: 1, background: menuOpen ? "#e8e6e3" : "#888", transition: "all 0.25s", position: menuOpen ? "absolute" : "relative", transform: menuOpen ? "rotate(-45deg)" : "none" }} />
         </button>
         {/* ── MOBILE DROPDOWN MENU ── */}
         {menuOpen && <>

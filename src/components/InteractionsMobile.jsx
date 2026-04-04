@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import { S, CAT, RL } from "../data/substances";
-import { cr, getMech } from "../data/combinations";
+import { cr, getMech, getCoSrc } from "../data/combinations";
+import { CITE } from "../data/substances";
 
 const GROUPS_ORDER = ["dangerous", "unsafe", "caution", "decrease", "low_risk", "synergy"];
 
@@ -33,12 +34,13 @@ function getClassWarnings(s) {
 
 export default function InteractionsMobile() {
   const [selected, setSelected] = useState("");
+  const [srcOpen, setSrcOpen] = useState(null); // track which card's source is expanded
 
   const groups = useMemo(() => {
     if (!selected) return [];
     const interactions = S
       .filter(s => s.id !== selected)
-      .map(s => ({ substance: s, risk: cr(selected, s.id), mech: getMech(selected, s.id) }))
+      .map(s => ({ substance: s, risk: cr(selected, s.id), mech: getMech(selected, s.id), coSrc: getCoSrc(selected, s.id) }))
       .filter(x => x.risk);
 
     return GROUPS_ORDER
@@ -104,18 +106,32 @@ export default function InteractionsMobile() {
 
       {/* Items */}
       <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-        {g.items.map(({ substance: sub, mech }) => <div key={sub.id} style={{
+        {g.items.map(({ substance: sub, mech, coSrc }) => { const isOpen = srcOpen === sub.id; const srcLabel = coSrc.src === "dg_corrected" ? "DoseGuide correction" : coSrc.src === "dg_added" ? "DoseGuide addition" : "TripSit v4.0"; const refStr = coSrc.ref && coSrc.ref !== "tripsit" ? CITE[coSrc.ref]?.split(".")[0] || coSrc.ref : null; return <div key={sub.id} style={{
           background: "rgba(255,255,255,0.025)", borderRadius: 8,
           border: `1px solid ${g.c}18`, padding: "10px 12px",
         }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-            <span style={{ fontSize: 13, color: g.c }}>{g.i}</span>
-            <span style={{ fontSize: 16, fontFamily: "'Instrument Serif',Georgia,serif", color: CAT[sub.cat].c }}>{sub.n}</span>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+              <span style={{ fontSize: 13, color: g.c }}>{g.i}</span>
+              <span style={{ fontSize: 16, fontFamily: "'Instrument Serif',Georgia,serif", color: CAT[sub.cat].c }}>{sub.n}</span>
+            </div>
+            <div onClick={e => { e.stopPropagation(); setSrcOpen(isOpen ? null : sub.id); }} style={{ width: 26, height: 26, borderRadius: 13, border: `1px solid ${isOpen ? g.c + "50" : "rgba(138,135,128,0.25)"}`, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", background: isOpen ? g.c + "12" : "transparent", flexShrink: 0, transition: "all 0.15s" }}>
+              <span style={{ fontSize: 12, color: isOpen ? g.c : "#6b6860", fontWeight: 500 }}>i</span>
+            </div>
           </div>
           <p style={{ margin: "4px 0 0", fontSize: 16, color: "#8a8780", lineHeight: 1.5 }}>
             {mech || g.d}
           </p>
-        </div>)}
+          {isOpen && <div style={{ marginTop: 8, padding: "8px 10px", background: g.c + "08", border: `1px solid ${g.c}20`, borderRadius: 6 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={g.c} strokeWidth="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M4 4.5A2.5 2.5 0 016.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15z"/></svg>
+              <span style={{ fontSize: 12, color: g.c, fontFamily: "'DM Mono',monospace", fontWeight: 600 }}>SOURCE</span>
+            </div>
+            <p style={{ margin: 0, fontSize: 14, color: "#9a9590", lineHeight: 1.5 }}>
+              <span style={{ color: g.c }}>{srcLabel}</span>{refStr ? ` · ${refStr}` : ""}{coSrc.note ? ` · ${coSrc.note}` : ""}
+            </p>
+          </div>}
+        </div>; })}
       </div>
     </div>)}
   </div>;

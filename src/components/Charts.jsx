@@ -27,7 +27,7 @@ function InfoPanel({ substance, field, open, onClose }) {
   if (!substance) return null;
   const c = CAT[substance.cat];
   const notes = {
-    margin: { title: "Single-Dose Danger", text: substance.marginExplain },
+    margin: { title: "Risk Margin", text: substance.marginExplain },
     lethal: { title: "Lethal Dose", text: substance.lethal?.note || substance.marginExplain },
     harm: { title: "Total Damage", text: substance.desc },
     addict: { title: "Addiction Risk", text: substance.addictNote },
@@ -67,40 +67,37 @@ function Dot({ onClick }) {
 }
 
 function marginColor(v) {
-  if (v >= 10) return "#22c55e";
-  if (v >= 5) return "#60a5fa";
-  if (v >= 3) return "#f59e0b";
+  if (v >= 8) return "#22c55e";
+  if (v >= 4) return "#60a5fa";
+  if (v >= 2) return "#f59e0b";
   return "#ef4444";
 }
 
-function RangeChart({ onInfo }) {
-  const max = 50;
-  const toP = v => Math.min((Math.log10(Math.max(v, 1)) / Math.log10(max)) * 100, 100);
+function RiskMarginChart({ onInfo }) {
+  const toP = v => Math.max(Math.min((Math.log10(Math.max(v, 1)) / Math.log10(50)) * 100, 100), 3);
 
-  const ranged = S.filter(s => !s.isMedication && s.dangerRank != null && s.dangerRank < 99 && s.marginBest != null).sort((a, b) => a.dangerRank - b.dangerRank);
-  const contextual = S.filter(s => !s.isMedication && s.dangerRank != null && s.dangerRank < 99 && s.marginBest == null).sort((a, b) => a.dangerRank - b.dangerRank);
+  const main = S.filter(s => !s.isMedication && s.dangerRank != null && s.dangerRank < 99 && s.marginWorst != null).sort((a, b) => a.marginWorst - b.marginWorst);
+  const contextual = S.filter(s => !s.isMedication && s.dangerRank != null && s.dangerRank < 99 && s.marginWorst == null).sort((a, b) => a.dangerRank - b.dangerRank);
   const safe = S.filter(s => !s.isMedication && s.dangerRank >= 99);
 
   return <div style={{ background: "rgba(255,255,255,0.02)", borderRadius: 12, border: "1px solid rgba(255,255,255,0.06)", padding: 20, marginBottom: 18 }}>
-    <h3 style={{ margin: "0 0 2px", fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 18, color: "#e8e6e3", fontWeight: 400 }}>Single-Dose Danger <span style={{ fontSize: 12, color: "#6b6860", fontFamily: "'DM Mono',monospace" }}>(how many normal doses before physical danger)</span></h3>
-    <p style={{ margin: "0 0 6px", fontSize: 12, color: "#6b6860" }}>Solid = worst-case scenario, faded = best-case scenario.</p>
+    <h3 style={{ margin: "0 0 2px", fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 18, color: "#e8e6e3", fontWeight: 400 }}>Risk Margin <span style={{ fontSize: 12, color: "#6b6860", fontFamily: "'DM Mono',monospace" }}>(worst-case doses before physical danger)</span></h3>
+    <p style={{ margin: "0 0 6px", fontSize: 12, color: "#6b6860" }}>Worst case: mixing, unknown supply, preexisting conditions.</p>
     <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 10, fontSize: 12, fontFamily: "'DM Mono',monospace", color: "#555" }}>
-      <span><span style={{ color: "#ef4444" }}>●</span> &lt;3x</span>
-      <span><span style={{ color: "#f59e0b" }}>●</span> 3-5x</span>
-      <span><span style={{ color: "#60a5fa" }}>●</span> 5-10x</span>
-      <span><span style={{ color: "#22c55e" }}>●</span> 10x+</span>
+      <span><span style={{ color: "#ef4444" }}>●</span> &lt;2x</span>
+      <span><span style={{ color: "#f59e0b" }}>●</span> 2–4x</span>
+      <span><span style={{ color: "#60a5fa" }}>●</span> 4–8x</span>
+      <span><span style={{ color: "#22c55e" }}>●</span> 8x+</span>
     </div>
 
-    {ranged.map(s => {
-      const wWorst = toP(s.marginWorst); const wBest = toP(s.marginBest);
-      const colWorst = marginColor(s.marginWorst); const colBest = marginColor(s.marginBest);
+    {main.map(s => {
+      const col = marginColor(s.marginWorst);
       return <div key={s.id} style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
         <span style={{ width: 70, fontSize: 12, color: CAT[s.cat].c, fontFamily: "'DM Mono',monospace", textAlign: "right", flexShrink: 0 }}>{(s.sn || s.n)}</span>
-        <div style={{ flex: 1, height: 20, borderRadius: 6, background: "rgba(255,255,255,0.03)", position: "relative", overflow: "hidden" }}>
-          <div style={{ position: "absolute", left: 0, width: `${wBest}%`, height: "100%", borderRadius: 5, background: `linear-gradient(90deg, ${colWorst}30, ${colBest}40)` }} />
-          <div style={{ position: "absolute", left: 0, width: `${Math.max(wWorst, 2)}%`, height: "100%", borderRadius: 5, background: `linear-gradient(90deg, ${colWorst}aa, ${colWorst})` }} />
+        <div style={{ flex: 1, height: 20, borderRadius: 6, background: "rgba(255,255,255,0.03)", overflow: "hidden" }}>
+          <div style={{ width: `${toP(s.marginWorst)}%`, height: "100%", borderRadius: 5, background: `linear-gradient(90deg, ${col}44, ${col})` }} />
         </div>
-        <span style={{ fontSize: 12, color: "#a09d97", fontFamily: "'DM Mono',monospace", minWidth: 40, textAlign: "right", whiteSpace: "nowrap" }}>{s.marginWorst}x–{s.marginBest}x</span>
+        <span style={{ fontSize: 12, color: col, fontFamily: "'DM Mono',monospace", minWidth: 28, textAlign: "right" }}>{s.marginWorst}x</span>
         <Dot onClick={() => onInfo(s, "margin")} />
       </div>;
     })}
@@ -110,7 +107,7 @@ function RangeChart({ onInfo }) {
       {contextual.map(s => <div key={s.id} style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
         <span style={{ width: 70, fontSize: 12, color: CAT[s.cat].c, fontFamily: "'DM Mono',monospace", textAlign: "right", flexShrink: 0 }}>{(s.sn || s.n)}</span>
         <div style={{ flex: 1, height: 16, borderRadius: 5, overflow: "hidden" }}><div style={{ width: "100%", height: "100%", borderRadius: 4, background: "linear-gradient(90deg, #60a5fa22, #60a5fa55)" }} /></div>
-        <span style={{ fontSize: 12, color: "#60a5fa", fontFamily: "'DM Mono',monospace", minWidth: 40, textAlign: "right", whiteSpace: "nowrap" }}>note</span>
+        <span style={{ fontSize: 12, color: "#60a5fa", fontFamily: "'DM Mono',monospace", minWidth: 28, textAlign: "right", whiteSpace: "nowrap" }}>note</span>
         <Dot onClick={() => onInfo(s, "margin")} />
       </div>)}
     </>}
@@ -120,7 +117,7 @@ function RangeChart({ onInfo }) {
       {safe.map(s => <div key={s.id} style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
         <span style={{ width: 70, fontSize: 12, color: CAT[s.cat].c, fontFamily: "'DM Mono',monospace", textAlign: "right", flexShrink: 0 }}>{(s.sn || s.n)}</span>
         <div style={{ flex: 1, height: 16, borderRadius: 5, overflow: "hidden" }}><div style={{ width: "100%", height: "100%", borderRadius: 4, background: "linear-gradient(90deg, #22c55e55, #22c55e)" }} /></div>
-        <span style={{ fontSize: 12, color: "#4ade80", fontFamily: "'DM Mono',monospace", minWidth: 40, textAlign: "right", whiteSpace: "nowrap" }}>safe</span>
+        <span style={{ fontSize: 12, color: "#4ade80", fontFamily: "'DM Mono',monospace", minWidth: 28, textAlign: "right", whiteSpace: "nowrap" }}>safe</span>
         <Dot onClick={() => onInfo(s, "margin")} />
       </div>)}
     </>}
@@ -290,7 +287,7 @@ const SECTIONS = [
   { id: "addiction", label: "Addiction" },
   { id: "supply", label: "Purity" },
   { id: "harm", label: "Total Harm" },
-  { id: "safety", label: "Single-Dose Risk" },
+  { id: "safety", label: "Risk Margin" },
 ];
 
 export default function Charts() {
@@ -315,7 +312,7 @@ export default function Charts() {
     <div ref={setRef("addiction")} style={{ scrollMarginTop: 80 }}><AddictionChart onInfo={openInfo} /></div>
     <div ref={setRef("supply")} style={{ scrollMarginTop: 80 }}><SupplyChart onInfo={openInfo} /></div>
     <div ref={setRef("harm")} style={{ scrollMarginTop: 80 }}><HarmChart onInfo={openInfo} /></div>
-    <div ref={setRef("safety")} style={{ scrollMarginTop: 80 }}><RangeChart onInfo={openInfo} /></div>
+    <div ref={setRef("safety")} style={{ scrollMarginTop: 80 }}><RiskMarginChart onInfo={openInfo} /></div>
     <InfoPanel substance={panel.substance} field={panel.field} open={!!panel.substance} onClose={closeInfo} />
   </div>;
 }

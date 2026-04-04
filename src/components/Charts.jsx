@@ -63,7 +63,7 @@ function InfoPanel({ substance, field, open, onClose }) {
 
 // Tiny info dot at end of row
 function Dot({ onClick }) {
-  return <span onClick={e => { e.stopPropagation(); onClick(); }} style={{ width: 28, height: 28, borderRadius: 14, background: "rgba(255,255,255,0.04)", color: "#555", fontSize: 12, cursor: "pointer", display: "inline-flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontFamily: "'DM Mono',monospace" }}>?</span>;
+  return <span role="button" tabIndex={0} aria-label="More info" onClick={e => { e.stopPropagation(); onClick(); }} onKeyDown={e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); e.stopPropagation(); onClick(); }}} style={{ width: 28, height: 28, borderRadius: 14, background: "rgba(255,255,255,0.04)", color: "#555", fontSize: 12, cursor: "pointer", display: "inline-flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontFamily: "'DM Mono',monospace" }}>?</span>;
 }
 
 function marginColor(v) {

@@ -21,7 +21,7 @@ export default function CombinationChecker({ sel, toggle, setSel, filtered, sear
       </div>
       {sel.length >= 1 && <div style={{ display: "flex", gap: 6, alignItems: "center", marginTop: 10, paddingTop: 10, borderTop: "1px solid rgba(255,255,255,0.05)", flexWrap: "wrap" }}>
         <span style={{ fontSize: 12, color: "#555", fontFamily: "'DM Mono',monospace" }}>Selected:</span>
-        {selSubs.map(s => <span key={s.id} onClick={() => toggle(s.id)} style={{ padding: "8px 12px", borderRadius: 8, cursor: "pointer", fontSize: 13, background: CAT[s.cat].b, color: CAT[s.cat].c, fontFamily: "'DM Mono',monospace", minHeight: 36, display: "inline-flex", alignItems: "center" }}>{s.n} ×</span>)}
+        {selSubs.map(s => <span key={s.id} role="button" tabIndex={0} onClick={() => toggle(s.id)} onKeyDown={e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(s.id); }}} style={{ padding: "8px 12px", borderRadius: 8, cursor: "pointer", fontSize: 13, background: CAT[s.cat].b, color: CAT[s.cat].c, fontFamily: "'DM Mono',monospace", minHeight: 36, display: "inline-flex", alignItems: "center" }}>{s.n} ×</span>)}
         <button onClick={() => setSel([])} style={{ padding: "8px 14px", borderRadius: 8, cursor: "pointer", fontSize: 12, background: "transparent", border: "1px solid rgba(255,255,255,0.08)", color: "#666", fontFamily: "'DM Mono',monospace", marginLeft: "auto", minHeight: 36 }}>Clear all</button>
       </div>}
     </div>

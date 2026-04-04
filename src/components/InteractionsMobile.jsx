@@ -115,7 +115,7 @@ export default function InteractionsMobile() {
               <span style={{ fontSize: 13, color: g.c }}>{g.i}</span>
               <span style={{ fontSize: 16, fontFamily: "'Instrument Serif',Georgia,serif", color: CAT[sub.cat].c }}>{sub.n}</span>
             </div>
-            <div onClick={e => { e.stopPropagation(); setSrcOpen(isOpen ? null : sub.id); }} style={{ width: 26, height: 26, borderRadius: 13, border: `1px solid ${isOpen ? g.c + "50" : "rgba(138,135,128,0.25)"}`, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", background: isOpen ? g.c + "12" : "transparent", flexShrink: 0, transition: "all 0.15s" }}>
+            <div role="button" tabIndex={0} aria-label="View source" onClick={e => { e.stopPropagation(); setSrcOpen(isOpen ? null : sub.id); }} onKeyDown={e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); e.stopPropagation(); setSrcOpen(isOpen ? null : sub.id); }}} style={{ width: 26, height: 26, borderRadius: 13, border: `1px solid ${isOpen ? g.c + "50" : "rgba(138,135,128,0.25)"}`, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", background: isOpen ? g.c + "12" : "transparent", flexShrink: 0, transition: "all 0.15s" }}>
               <span style={{ fontSize: 12, color: isOpen ? g.c : "#6b6860", fontWeight: 500 }}>i</span>
             </div>
           </div>

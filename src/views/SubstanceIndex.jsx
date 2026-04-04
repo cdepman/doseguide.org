@@ -31,7 +31,9 @@ export default function SubstanceIndex({ filtered, openPanel }) {
       {filtered.map(s => { const c = CAT[s.cat];
         return <div
           key={s.id}
+          role="button" tabIndex={0}
           onClick={() => openPanel(s.id)}
+          onKeyDown={e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openPanel(s.id); }}}
           style={{
             background: "rgba(255,255,255,0.03)",
             border: "1px solid rgba(255,255,255,0.06)",

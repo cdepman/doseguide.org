@@ -136,7 +136,7 @@ export default function App() {
     {/* ── TOP BAR ── */}
     <header style={{ borderBottom: "1px solid rgba(255,255,255,0.06)", padding: "10px 16px", paddingTop: "max(10px, env(safe-area-inset-top))", flexShrink: 0, background: "#111113", zIndex: 10, position: "relative" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8 }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 8, cursor: "pointer", minHeight: 44 }} onClick={() => switchView("index")}>
+        <div role="button" tabIndex={0} style={{ display: "flex", alignItems: "center", gap: 8, cursor: "pointer", minHeight: 44 }} onClick={() => switchView("index")} onKeyDown={e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); switchView("index"); }}}>
           <img src="/logo.svg" alt="OpenSubstance" style={{ width: 46, height: 46, borderRadius: 10 }} />
           <div><h1 style={{ margin: 0, fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 20, color: "#e8e6e3", fontWeight: 400 }}>OpenSubstance<span style={{ color: "#555", fontSize: 14 }}>.org</span></h1></div>
         </div>

@@ -116,7 +116,12 @@ npm run build
 
 # Preview production build
 npm run preview
+
+# Validate data integrity (run before deploying)
+npm run validate
 ```
+
+The `validate` script checks for duplicate combination keys, missing source citations, orphaned CITE references, invalid substance IDs in the combination map, and broken chemistry relative links. Run it after any data changes to catch regressions before they ship.
 
 Requires Node.js 18+. Built with React 19 + Vite.
 

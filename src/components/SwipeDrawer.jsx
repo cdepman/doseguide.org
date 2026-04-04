@@ -12,10 +12,20 @@ export default function SwipeDrawer({ open, onClose, children }) {
   const direction = useRef(null);
   const startedInHandle = useRef(false);
   const handleRef = useRef(null);
+  const drawerRef = useRef(null);
 
   useEffect(() => {
     if (open) setEntered(false);
   }, [open]);
+
+  // Escape to close + focus drawer on open
+  useEffect(() => {
+    if (!open) return;
+    const onEsc = e => { if (e.key === "Escape") onClose(); };
+    document.addEventListener("keydown", onEsc);
+    drawerRef.current?.focus();
+    return () => document.removeEventListener("keydown", onEsc);
+  }, [open, onClose]);
 
   const onTouchStart = useCallback(e => {
     startY.current = e.touches[0].clientY;
@@ -72,6 +82,10 @@ export default function SwipeDrawer({ open, onClose, children }) {
       }}
     />
     <div
+      ref={drawerRef}
+      role="dialog"
+      aria-modal="true"
+      tabIndex={-1}
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
@@ -80,6 +94,7 @@ export default function SwipeDrawer({ open, onClose, children }) {
         position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 210,
         background: "#1a1a1e",
         borderTopLeftRadius: 16, borderTopRightRadius: 16,
+        outline: "none",
         maxHeight: "70vh",
         transform: `translateY(${dragY}px)`,
         transition: swiping ? "none" : "transform 0.3s ease",

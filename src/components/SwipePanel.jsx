@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { createPortal } from "react-dom";
 
 const DEAD_ZONE = 15;
@@ -10,6 +10,16 @@ export default function SwipePanel({ open, onClose, width = "min(520px, 94vw)", 
   const startX = useRef(0);
   const startY = useRef(0);
   const direction = useRef(null);
+  const panelRef = useRef(null);
+
+  // Escape to close + focus panel on open
+  useEffect(() => {
+    if (!open) return;
+    const onEsc = e => { if (e.key === "Escape") onClose(); };
+    document.addEventListener("keydown", onEsc);
+    panelRef.current?.focus();
+    return () => document.removeEventListener("keydown", onEsc);
+  }, [open, onClose]);
 
   const onTouchStart = useCallback(e => {
     startX.current = e.touches[0].clientX;
@@ -54,6 +64,10 @@ export default function SwipePanel({ open, onClose, width = "min(520px, 94vw)", 
       }}
     />
     <div
+      ref={panelRef}
+      role="dialog"
+      aria-modal="true"
+      tabIndex={-1}
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
@@ -61,6 +75,7 @@ export default function SwipePanel({ open, onClose, width = "min(520px, 94vw)", 
       style={{
         position: "fixed", top: 0, right: 0, bottom: 0,
         width,
+        outline: "none",
         zIndex: 210,
         background: "#1a1a1e",
         borderLeft: "1px solid rgba(255,255,255,0.08)",

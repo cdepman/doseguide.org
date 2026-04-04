@@ -42,10 +42,10 @@ export default function SubstancePanel({ substanceId, onClose, onNavigate }) {
     </div>
 
     {/* Description */}
-    <p style={{ margin: "0 0 14px", fontSize: 16, color: "#a09d97", lineHeight: 1.6 }}>{s.blurb || s.desc}</p>
+    <p style={{ margin: "0 0 18px", fontSize: 16, color: "#a09d97", lineHeight: 1.6 }}>{s.blurb || s.desc}</p>
 
     {/* Routes */}
-    <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 14 }}>
+    <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 22 }}>
       {s.routes.map(r => <span key={r.nm} style={{ fontSize: 15, padding: "5px 10px", borderRadius: 8, background: "rgba(255,255,255,0.04)", color: "#8a8780", fontFamily: "'DM Mono',monospace" }}>{r.nm} · <span style={{ color: "#5a8a70" }}>🚀 {r.onset}</span> · <span style={{ color: "#6878a0" }}>⏳ {r.dur}</span></span>)}
     </div>
 

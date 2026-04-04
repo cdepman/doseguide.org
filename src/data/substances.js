@@ -151,8 +151,8 @@ export const S = [
   // LSD
   // ═══════════════════════════════════════════════════════════════════════════
   {id:"lsd",n:"LSD",cat:"psychedelic",aka:["Acid","Lucy","Tabs","Blotter"],src:"semi-synthetic",
-    desc:"Classical psychedelic. Among the lowest physical risk of any psychoactive substance.",
-    blurb:"First synthesized by Albert Hofmann at Sandoz Laboratories in 1938; its psychoactive properties were discovered accidentally in 1943. Extremely potent — active in microgram doses, far below what's visible to the eye. Rarely adulterated on blotter; NBOMe compounds are the main substitution risk and are bitter-tasting, unlike LSD.",
+    desc:"Lysergic acid diethylamide. Classical psychedelic with among the lowest physical risk of any psychoactive substance.",
+    blurb:"Lysergic acid diethylamide — first synthesized by Albert Hofmann at Sandoz Laboratories in 1938; its psychoactive properties were discovered accidentally in 1943. Extremely potent — active in microgram doses, far below what's visible to the eye. Rarely adulterated on blotter; NBOMe compounds are the main substitution risk and are bitter-tasting, unlike LSD.",
     chem:{family:"Tryptamine",scaffold:"Ergoline (rigid tetracyclic tryptamine)",relatives:["mushrooms","dmt"],bridge:null,note:"The tryptamine core is locked into a rigid four-ring system (ergoline). This rigidity makes LSD ~100x more potent than psilocin — it fits the 5-HT2A receptor like a key that won't let go."},
     atDose:1,atDoseLabel:"Very safe at normal doses",
     dangerRank:99,marginBest:null,marginWorst:null,marginLabel:"No known physical danger at any dose",
@@ -214,8 +214,8 @@ export const S = [
   // DMT
   // ═══════════════════════════════════════════════════════════════════════════
   {id:"dmt",n:"DMT",cat:"psychedelic",aka:["Dimitri","Spirit Molecule","Ayahuasca"],src:"natural",
-    desc:"Extremely potent, very short when smoked. Overwhelming but physically safe.",
-    blurb:"Found in hundreds of plant species and used for millennia in Amazonian ayahuasca traditions. The most intense psychedelic experience available — complete reality replacement when smoked. Produced endogenously in the human body in trace amounts, though its natural function is unknown.",
+    desc:"N,N-Dimethyltryptamine. Extremely potent, very short when smoked. Overwhelming but physically safe.",
+    blurb:"N,N-Dimethyltryptamine — found in hundreds of plant species and used for millennia in Amazonian ayahuasca traditions. The most intense psychedelic experience available — complete reality replacement when smoked. Produced endogenously in the human body in trace amounts, though its natural function is unknown.",
     chem:{family:"Tryptamine",scaffold:"N,N-dimethyltryptamine",relatives:["mushrooms","lsd"],bridge:null,note:"The simplest psychedelic tryptamine — just a dimethyl group on the amine nitrogen. Psilocin is DMT with a hydroxyl group. LSD is DMT's core locked into a rigid ring system. DMT is the common ancestor."},
     atDose:1,atDoseLabel:"Safe",
     dangerRank:99,marginBest:null,marginWorst:null,marginLabel:"No known physical danger — self-limiting",
@@ -301,8 +301,8 @@ export const S = [
   // MDMA
   // ═══════════════════════════════════════════════════════════════════════════
   {id:"mdma",n:"MDMA",cat:"empathogen",aka:["Ecstasy","Molly","E","X","Mandy"],src:"synthetic",
-    desc:"The drug itself is moderately safe. Real dangers: overheating, water intoxication, and what's actually in the pill.",
-    blurb:"First synthesized at Merck in 1912 as a pharmaceutical intermediate; its psychoactive properties went unnoticed until Alexander Shulgin resynthesized it in 1976. Works by reversing serotonin, dopamine, and norepinephrine transporters, and inactivates the liver enzyme (CYP2D6) that clears it, so redosing produces disproportionately higher blood levels. Serotonin depletion after use causes a characteristic low mood 2-4 days later.",
+    desc:"3,4-Methylenedioxymethamphetamine. Moderately safe alone — real dangers are overheating, water intoxication, and what's actually in the pill.",
+    blurb:"3,4-Methylenedioxymethamphetamine — first synthesized at Merck in 1912 as a pharmaceutical intermediate; its psychoactive properties went unnoticed until Alexander Shulgin resynthesized it in 1976. Works by reversing serotonin, dopamine, and norepinephrine transporters, and inactivates the liver enzyme (CYP2D6) that clears it, so redosing produces disproportionately higher blood levels. Serotonin depletion after use causes a characteristic low mood 2-4 days later.",
     chem:{family:"Phenethylamine",scaffold:"Ring-substituted amphetamine (methylenedioxy)",relatives:["amphetamines","mescaline","2cx"],bridge:{to:"Tryptamine-like effects",reason:"Structurally an amphetamine, but the methylenedioxy ring gives it potent serotonergic properties — producing empathogenic and mildly psychedelic effects more similar to tryptamines than to stimulants"},note:"Sits at the exact crossroads of stimulants and psychedelics. The methylenedioxy group is the reason it floods serotonin rather than just dopamine and norepinephrine."},
     atDose:2,atDoseLabel:"Moderately safe",
     dangerRank:5,marginBest:4,marginWorst:1.5,marginLabel:"Moderate room in good conditions, almost none in bad conditions",
@@ -509,8 +509,8 @@ export const S = [
   // PCP
   // ═══════════════════════════════════════════════════════════════════════════
   {id:"pcp",n:"PCP",cat:"dissociative",aka:["Angel Dust","Wet","Sherm","Dust"],src:"synthetic",
-    desc:"Powerful dissociative that can cause extreme agitation, violence, and psychosis. Unpredictable reactions.",
-    blurb:"Developed as a surgical anesthetic in the 1950s and quickly withdrawn due to severe dissociative and psychotic side effects in patients. Unlike ketamine, PCP activates dopamine systems, contributing to both its addiction potential and psychosis risk. Effects are unpredictable and dose-dependent, ranging from euphoria to violent agitation to complete anesthesia.",
+    desc:"Phencyclidine. Powerful dissociative that can cause extreme agitation, violence, and psychosis. Unpredictable reactions.",
+    blurb:"Phencyclidine — developed as a surgical anesthetic in the 1950s and quickly withdrawn due to severe dissociative and psychotic side effects in patients. Unlike ketamine, PCP activates dopamine systems, contributing to both its addiction potential and psychosis risk. Effects are unpredictable and dose-dependent, ranging from euphoria to violent agitation to complete anesthesia.",
     chem:{family:"Arylcyclohexylamine",scaffold:"1-(1-phenylcyclohexyl)piperidine",relatives:["ketamine"],bridge:null,note:"The original arylcyclohexylamine. Same core scaffold as ketamine but with a piperidine ring — making it more lipophilic, longer-lasting, and a dopamine reuptake inhibitor (which ketamine is not). The dopamine activity explains its addiction potential and psychosis risk."},
     atDose:4,atDoseLabel:"Dangerous — unpredictable",
     dangerRank:4,marginBest:3,marginWorst:1,marginLabel:"Unpredictable — some people have severe reactions at normal doses",
@@ -538,8 +538,8 @@ export const S = [
   // DXM
   // ═══════════════════════════════════════════════════════════════════════════
   {id:"dxm",n:"DXM",cat:"dissociative",aka:["Dextromethorphan","Robo","Robotripping"],src:"synthetic",
-    desc:"Biggest danger: OTHER ingredients in the cough medicine. Products with acetaminophen cause fatal liver failure at recreational DXM doses.",
-    blurb:"Developed in the 1950s as a non-addictive replacement for codeine in cough suppressants. Effects are described in four dose-dependent plateaus, from mild stimulation to full dissociation. Many OTC formulations contain acetaminophen, guaifenesin, or antihistamines that are toxic at recreational DXM doses.",
+    desc:"Dextromethorphan. Biggest danger: OTHER ingredients in the cough medicine. Products with acetaminophen cause fatal liver failure at recreational DXM doses.",
+    blurb:"Dextromethorphan — developed in the 1950s as a non-addictive replacement for codeine in cough suppressants. Effects are described in four dose-dependent plateaus, from mild stimulation to full dissociation. Many OTC formulations contain acetaminophen, guaifenesin, or antihistamines that are toxic at recreational DXM doses.",
     chem:{family:"Morphinan",scaffold:"Dextro-rotary morphinan",relatives:["opioids"],bridge:{to:"Dissociative",reason:"Has the exact same pentacyclic morphinan skeleton as codeine and heroin, but the mirror-image (dextro) isomer blocks NMDA receptors instead of activating opioid receptors — a dissociative hiding in an opioid's body"},note:"The only substance on this site where the chemical family and the effect category are completely different. The levo-rotary isomer (levorphanol) is a potent opioid analgesic. Chirality completely changes what it does."},
     atDose:2,atDoseLabel:"Safe if pure DXM only",
     dangerRank:9,marginBest:5,marginWorst:1,marginLabel:"Decent for pure DXM, deadly if the product contains Tylenol",
@@ -655,8 +655,8 @@ export const S = [
   // GHB
   // ═══════════════════════════════════════════════════════════════════════════
   {id:"ghb",n:"GHB",cat:"depressant",aka:["G","Liquid Ecstasy","GBL","1,4-BD","Fantasy"],src:"synthetic",
-    desc:"Great at right dose, deadly 0.5g later. Narrowest dosing window of any recreational drug.",
-    blurb:"Synthesized in 1960 by French researcher Henri Laborit during research on GABA neurotransmission. One of the steepest dose-response curves of any recreational substance — the difference between a recreational dose and a fatal dose can be less than 2x. Combined with any other depressant, individually survivable doses become lethal.",
+    desc:"Gamma-hydroxybutyrate. Great at right dose, deadly 0.5g later. Narrowest dosing window of any recreational drug.",
+    blurb:"Gamma-hydroxybutyrate — synthesized in 1960 by French researcher Henri Laborit during research on GABA neurotransmission. One of the steepest dose-response curves of any recreational substance — the difference between a recreational dose and a fatal dose can be less than 2x. Combined with any other depressant, individually survivable doses become lethal.",
     chem:{family:"Short-chain fatty acid",scaffold:"4-hydroxybutanoic acid",relatives:[],bridge:null,note:"A simple 4-carbon molecule that is also an endogenous neurotransmitter — your brain produces it naturally in small amounts. Acts on dedicated GHB receptors and GABA-B receptors. Structurally unrelated to other GABAergics."},
     atDose:2,atDoseLabel:"Safe IF precisely dosed",
     dangerRank:2,marginBest:2.5,marginWorst:1.5,marginLabel:"Very narrow — less than a teaspoon between comfortable and unconscious",
@@ -860,8 +860,8 @@ export const S = [
   // SSRIs
   // ═══════════════════════════════════════════════════════════════════════════
   {id:"ssri",n:"SSRIs",cat:"medication",aka:["Prozac","Zoloft","Lexapro","Sertraline"],src:"synthetic",
-    desc:"Not recreational. Here because SSRIs dramatically change how other drugs work. Critical interaction profile.",
-    blurb:"Fluoxetine (Prozac), the first widely prescribed SSRI, was approved in 1987 and transformed psychiatric treatment. The most prescribed antidepressant class, blocking serotonin reuptake. They block MDMA's primary mechanism, reducing its effects by 30-80%, which often leads to compensatory redosing at dangerous amounts.",
+    desc:"Selective serotonin reuptake inhibitors. Not recreational — included because SSRIs dramatically change how other drugs work. Critical interaction profile.",
+    blurb:"Selective serotonin reuptake inhibitors — fluoxetine (Prozac), the first widely prescribed SSRI, was approved in 1987 and transformed psychiatric treatment. The most prescribed antidepressant class, blocking serotonin reuptake. They block MDMA's primary mechanism, reducing its effects by 30-80%, which often leads to compensatory redosing at dangerous amounts.",
     chem:null,
     isMedication:true,atDose:null,atDoseLabel:null,
     dangerRank:21,marginBest:null,marginWorst:null,marginLabel:"Not recreational — here for interaction awareness",
@@ -886,8 +886,8 @@ export const S = [
   // MAOIs
   // ═══════════════════════════════════════════════════════════════════════════
   {id:"maoi",n:"MAOIs",cat:"medication",aka:["Nardil","Parnate","Harmaline","Syrian Rue"],src:"both",
-    desc:"Most interaction-dangerous drug class. MAOIs make dozens of substances AND certain foods lethal.",
-    blurb:"The first MAOI (iproniazid) was discovered in the 1950s when a tuberculosis drug was noticed to produce euphoria in patients. Monoamine oxidase inhibitors prevent the breakdown of serotonin, dopamine, and norepinephrine. Create the most dangerous drug interactions of any medication class — combining with serotonin releasers or tyramine-rich foods can cause fatal serotonin syndrome or hypertensive crisis.",
+    desc:"Monoamine oxidase inhibitors. Most interaction-dangerous drug class. MAOIs make dozens of substances AND certain foods lethal.",
+    blurb:"Monoamine oxidase inhibitors — the first (iproniazid) was discovered in the 1950s when a tuberculosis drug was noticed to produce euphoria in patients. Monoamine oxidase inhibitors prevent the breakdown of serotonin, dopamine, and norepinephrine. Create the most dangerous drug interactions of any medication class — combining with serotonin releasers or tyramine-rich foods can cause fatal serotonin syndrome or hypertensive crisis.",
     chem:null,
     isMedication:true,atDose:null,atDoseLabel:null,
     dangerRank:19,marginBest:null,marginWorst:null,marginLabel:"Not about dose — MAOIs make other things lethal",

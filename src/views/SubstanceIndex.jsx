@@ -35,7 +35,7 @@ export default function SubstanceIndex({ filtered, openPanel }) {
           style={{
             background: "rgba(255,255,255,0.03)",
             border: "1px solid rgba(255,255,255,0.06)",
-            borderRadius: 12, padding: "14px 16px",
+            borderRadius: 12, padding: "24px 16px",
             cursor: "pointer", transition: "border-color 0.15s",
           }}
           onMouseEnter={e => e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)"}

@@ -9,16 +9,14 @@ function LethalViz({ s }) {
   const col = bad ? "#ef4444" : med ? "#f97316" : "#f59e0b";
   const sz = typeof s.lethal.sz === "number" ? { w: s.lethal.sz, h: s.lethal.sz } : { w: s.lethal.sz[0], h: s.lethal.sz[1] };
   return <div style={{ background: bad ? "rgba(239,68,68,0.07)" : safe ? "rgba(34,197,94,0.05)" : "rgba(0,0,0,0.2)", borderRadius: 10, padding: 14, border: `1px solid ${bad ? "rgba(239,68,68,0.25)" : safe ? "rgba(34,197,94,0.15)" : "rgba(255,255,255,0.06)"}`, marginBottom: 12 }}>
-    <p style={{ margin: "0 0 10px", fontSize: 16, fontFamily: "'Instrument Serif',Georgia,serif", color: bad ? "#ef4444" : safe ? "#4ade80" : "#e8e6e3", fontWeight: 400, lineHeight: 1.4 }}>{s.lethal.headline}</p>
-    <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 10 }}>
-      <div style={{ width: 64, height: 64, borderRadius: 6, background: "rgba(255,255,255,0.02)", display: "flex", alignItems: "center", justifyContent: "center", border: "1px dashed rgba(255,255,255,0.08)", flexShrink: 0, position: "relative" }}>
+    <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+      <div style={{ width: 56, height: 56, borderRadius: 6, background: "rgba(255,255,255,0.02)", display: "flex", alignItems: "center", justifyContent: "center", border: "1px dashed rgba(255,255,255,0.08)", flexShrink: 0, position: "relative" }}>
         <div style={{ width: sz.w, height: sz.h, borderRadius: s.lethal.cmp === "grain" ? "50%" : 3, background: safe ? "#22c55e" : col, opacity: 0.85, boxShadow: bad ? `0 0 12px ${col}88` : "none" }} />
         {s.lethal.cmp === "grain" && <div style={{ position: "absolute", bottom: 1, fontSize: 9, color: "#888", fontFamily: "'DM Mono',monospace" }}>← actual size</div>}
       </div>
-      <p style={{ margin: 0, fontSize: 16, color: "#a09d97", lineHeight: 1.5, fontFamily: "'Source Serif 4',Georgia,serif" }}>{s.lethal.realworld}</p>
+      <p style={{ margin: 0, fontSize: 16, fontFamily: "'Instrument Serif',Georgia,serif", color: bad ? "#ef4444" : safe ? "#4ade80" : "#e8e6e3", fontWeight: 400, lineHeight: 1.4 }}>{s.lethal.headline}</p>
     </div>
-    <p style={{ margin: 0, fontSize: 16, color: "#6b6860", lineHeight: 1.5, borderTop: "1px solid rgba(255,255,255,0.04)", paddingTop: 8 }}>{s.lethal.note}</p>
-    {s.lethal.gable && <div style={{ marginTop: 8, padding: "8px 10px", background: "rgba(255,255,255,0.02)", borderRadius: 6, border: "1px solid rgba(255,255,255,0.04)" }}>
+    {s.lethal.gable && <div style={{ marginTop: 10, padding: "8px 10px", background: "rgba(255,255,255,0.02)", borderRadius: 6, border: "1px solid rgba(255,255,255,0.04)" }}>
       <div style={{ display: "flex", gap: 12, flexWrap: "wrap", fontSize: 16, fontFamily: "'DM Mono',monospace", color: "#6b6860" }}>
         <span>effective <span style={{ color: "#4ade80" }}>{s.lethal.gable.ed}</span></span>
         <span>lethal <span style={{ color: "#ef4444" }}>{s.lethal.gable.ld}</span></span>
@@ -45,7 +43,7 @@ export default function Detail({ s, onNavigate }) {
       </div>}
       {s.odRisk.length > 0 && <div style={{ marginBottom: 14 }}>
         <h4 style={{ margin: "0 0 6px", fontSize: 12, color: "#6b6860", fontFamily: "'DM Mono',monospace", textTransform: "uppercase", letterSpacing: "0.08em" }}>Key dangers</h4>
-        <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>{s.odRisk.map(r => <span key={r} style={{ fontSize: 16, padding: "5px 10px", borderRadius: 6, background: "rgba(239,68,68,0.1)", color: "#e07070" }}>{r}</span>)}</div>
+        <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>{s.odRisk.map(r => <span key={r} style={{ fontSize: 16, padding: "6px 12px", borderRadius: 8, background: "rgba(239,68,68,0.1)", color: "#e07070" }}>{r}</span>)}</div>
       </div>}
       <div style={{ background: "rgba(255,255,255,0.03)", borderRadius: 8, padding: "10px 14px", border: "1px solid rgba(255,255,255,0.06)" }}>
         <p style={{ margin: 0, fontSize: 16, color: "#6b6860", fontFamily: "'DM Mono',monospace" }}>This is a prescribed medication, not a recreational substance. It's included because it has dangerous interactions with recreational drugs. Use the Interactions page to see specific risks.</p>
@@ -54,17 +52,17 @@ export default function Detail({ s, onNavigate }) {
   }
 
   const lvls = [{ l: "Threshold", v: s.dose.threshold, c: "#4ade80" }, { l: "Light", v: s.dose.light, c: "#86efac" }, { l: "Common", v: s.dose.common, c: "#fbbf24" }, { l: "Strong", v: s.dose.strong, c: "#f97316" }, { l: "Heavy", v: s.dose.heavy, c: "#ef4444" }];
-  const Sec = ({ title, children }) => <div style={{ marginBottom: 14 }}><h4 style={{ margin: "0 0 6px", fontSize: 13, color: "#6b6860", fontFamily: "'DM Mono',monospace", textTransform: "uppercase", letterSpacing: "0.08em" }}>{title}</h4>{children}</div>;
+  const Sec = ({ title, children }) => <div style={{ marginBottom: 24 }}><h4 style={{ margin: "0 0 10px", fontSize: 13, color: "#6b6860", fontFamily: "'DM Mono',monospace", textTransform: "uppercase", letterSpacing: "0.08em" }}>{title}</h4>{children}</div>;
   const medWarnings = MED_WARNINGS.filter(w => w.affectedCats.includes(s.cat) || w.affectedIds.includes(s.id));
   return <div>
-    {medWarnings.map(w => <div key={w.id} style={{ background: "rgba(239,68,68,0.08)", border: "1.5px solid rgba(239,68,68,0.35)", borderRadius: 10, padding: "12px 14px", marginBottom: 14 }}>
+    {medWarnings.map(w => <div key={w.id} style={{ background: "rgba(239,68,68,0.08)", border: "1.5px solid rgba(239,68,68,0.35)", borderRadius: 10, padding: "14px 16px", marginBottom: 20 }}>
       <div style={{ fontSize: 14, fontWeight: 700, color: w.color, fontFamily: "'DM Mono',monospace", marginBottom: 6 }}>{w.title}</div>
       <p style={{ margin: 0, fontSize: 16, color: "#c08080", lineHeight: 1.6 }}>{w.text}</p>
       <p style={{ margin: "8px 0 0", fontSize: 12, color: "#555", fontFamily: "'DM Mono',monospace" }}>Source: {w.source}</p>
     </div>)}
     {s.supplyRisk >= 3 && <Sec title="Supply & purity"><p style={{ margin: 0, fontSize: 16, color: "#d4a040", background: "rgba(245,158,11,0.06)", padding: "8px 10px", borderRadius: 6, lineHeight: 1.5 }}>{s.supplyExplain}</p></Sec>}
     <Sec title="How much"><>
-      {lvls.map((l, i) => <div key={l.l} style={{ display: "flex", alignItems: "center", gap: 7, marginBottom: 5 }}>
+      {lvls.map((l, i) => <div key={l.l} style={{ display: "flex", alignItems: "center", gap: 7, marginBottom: 8 }}>
         <span style={{ width: 65, fontSize: 13, color: l.c, fontFamily: "'DM Mono',monospace", textAlign: "right", flexShrink: 0 }}>{l.l}</span>
         <div style={{ flex: 1, height: 6, borderRadius: 3, background: "rgba(255,255,255,0.04)", overflow: "hidden" }}><div style={{ width: `${20 + i * 20}%`, height: "100%", borderRadius: 3, background: `linear-gradient(90deg,${l.c}44,${l.c})` }} /></div>
         <span style={{ fontSize: 16, color: "#c7c4be", fontFamily: "'DM Mono',monospace", minWidth: 70 }}>{l.v}</span>
@@ -76,7 +74,7 @@ export default function Detail({ s, onNavigate }) {
         <span style={{ fontSize: 13, color: c.c, fontFamily: "'DM Mono',monospace", textTransform: "uppercase", letterSpacing: "0.08em", fontWeight: 600 }}>{s.chem.family}</span>
         <span style={{ fontSize: 13, color: "#6b6860", fontFamily: "'DM Mono',monospace" }}>{s.chem.scaffold}</span>
       </div>
-      <p style={{ margin: "0 0 8px", fontSize: 16, color: "#8a8780", lineHeight: 1.5 }}>{s.chem.note}</p>
+      <p style={{ margin: "0 0 12px", fontSize: 16, color: "#8a8780", lineHeight: 1.6 }}>{s.chem.note}</p>
       {s.chem.bridge && <div style={{ background: "rgba(239,159,39,0.06)", border: "1px solid rgba(239,159,39,0.15)", borderRadius: 8, padding: "8px 10px", marginBottom: 8 }}>
         <p style={{ margin: 0, fontSize: 16, color: "#c0a060", lineHeight: 1.5 }}><span style={{ fontWeight: 600, color: "#EF9F27" }}>Cross-family bridge:</span> {s.chem.bridge.reason}</p>
       </div>}
@@ -85,11 +83,11 @@ export default function Detail({ s, onNavigate }) {
         {s.chem.relatives.map(rid => { const rel = S.find(x => x.id === rid); if (!rel) return null; const rc = CAT[rel.cat]; return <span key={rid} onClick={e => { e.stopPropagation(); onNavigate?.(rid); }} style={{ fontSize: 14, padding: "3px 8px", borderRadius: 6, cursor: onNavigate ? "pointer" : "default", background: rc.b, color: rc.c, fontFamily: "'DM Mono',monospace", border: `1px solid ${rc.c}25` }}>{rel.sn || rel.n}</span>; })}
       </div>}
     </div></Sec>}
-    {(s.lethal.cmp || s.marginExplain) && <Sec title="Lethality">{s.marginExplain && <p style={{ margin: "0 0 10px", fontSize: 16, color: "#8a8780", lineHeight: 1.5 }}>{s.marginExplain}</p>}<LethalViz s={s} /></Sec>}
-    <Sec title="What it feels like"><div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>{s.feels.map(f => <span key={f} style={{ fontSize: 16, padding: "5px 10px", borderRadius: 6, background: "rgba(34,197,94,0.08)", color: "#5ab87a" }}>{f}</span>)}</div></Sec>
-    <Sec title="What happens if you take too much"><div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>{s.odRisk.map(r => <span key={r} style={{ fontSize: 16, padding: "5px 10px", borderRadius: 6, background: "rgba(239,68,68,0.1)", color: "#e07070" }}>{r}</span>)}</div></Sec>
-    <Sec title="What happens if you keep using it"><div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>{s.longTerm.map(l => <span key={l} style={{ fontSize: 16, padding: "5px 10px", borderRadius: 6, background: "rgba(99,102,241,0.08)", color: "#8b8fd0" }}>{l}</span>)}</div></Sec>
-    <Sec title="Also called"><div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>{s.aka.map(a => <span key={a} style={{ fontSize: 16, padding: "5px 10px", borderRadius: 6, background: "rgba(255,255,255,0.04)", color: "#8a8780" }}>{a}</span>)}</div></Sec>
-    <Sec title="Source"><span style={{ fontSize: 16, padding: "5px 10px", borderRadius: 6, background: "rgba(255,255,255,0.04)", color: "#8a8780" }}>{SRC_LABELS[s.src]}</span></Sec>
+    {(s.lethal.cmp || s.marginExplain) && <Sec title="Lethality">{s.marginExplain && <p style={{ margin: "0 0 16px", fontSize: 16, color: "#8a8780", lineHeight: 1.6 }}>{s.marginExplain}</p>}<LethalViz s={s} /></Sec>}
+    <Sec title="What it feels like"><div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>{s.feels.map(f => <span key={f} style={{ fontSize: 16, padding: "6px 12px", borderRadius: 8, background: "rgba(34,197,94,0.08)", color: "#5ab87a" }}>{f}</span>)}</div></Sec>
+    <Sec title="What happens if you take too much"><div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>{s.odRisk.map(r => <span key={r} style={{ fontSize: 16, padding: "6px 12px", borderRadius: 8, background: "rgba(239,68,68,0.1)", color: "#e07070" }}>{r}</span>)}</div></Sec>
+    <Sec title="What happens if you keep using it"><div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>{s.longTerm.map(l => <span key={l} style={{ fontSize: 16, padding: "6px 12px", borderRadius: 8, background: "rgba(99,102,241,0.08)", color: "#8b8fd0" }}>{l}</span>)}</div></Sec>
+    <Sec title="Also called"><div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>{s.aka.map(a => <span key={a} style={{ fontSize: 16, padding: "6px 12px", borderRadius: 8, background: "rgba(255,255,255,0.04)", color: "#8a8780" }}>{a}</span>)}</div></Sec>
+    <Sec title="Source"><span style={{ fontSize: 16, padding: "6px 12px", borderRadius: 8, background: "rgba(255,255,255,0.04)", color: "#8a8780" }}>{SRC_LABELS[s.src]}</span></Sec>
   </div>;
 }

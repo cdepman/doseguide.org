@@ -1,4 +1,4 @@
-# Contributing to DoseGuide.org
+# Contributing to OpenSubstance.org
 
 Thank you for helping make drug safety information more accurate. This project relies on community contributions — especially from people with lived experience, pharmacology knowledge, and harm reduction expertise.
 
@@ -65,7 +65,7 @@ npm run dev
 
 ## Data standards
 
-All data in DoseGuide must meet these standards:
+All data in OpenSubstance must meet these standards:
 
 - **Sourced**: every number traces to a published study, government dataset, or established harm reduction organization (DanceSafe, DrugsData, TripSit, PsychonautWiki, etc.)
 - **Conservative**: when sources disagree, we use the safer estimate

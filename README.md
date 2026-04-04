@@ -1,14 +1,14 @@
-# DoseGuide.org
+# OpenSubstance.org
 
 **Evidence-based harm reduction. Not medical advice.**
 
-DoseGuide is an open-source harm reduction resource. It does not encourage drug use. It exists because people use drugs whether or not they have good information, and the evidence is clear that informed users have better outcomes.
+OpenSubstance is an open-source harm reduction resource. It does not encourage drug use. It exists because people use drugs whether or not they have good information, and the evidence is clear that informed users have better outcomes.
 
 All data is sourced from peer-reviewed research, government agencies, and established harm reduction organizations including the Global Drug Survey, The Lancet, DanceSafe, and SAMHSA.
 
 This project is personal. My father, Dr. Mark Depman, spent a good part of his career as an emergency physician in Vermont working at the intersection of substance use and harm reduction. In 2025, the Vermont Association for Mental Health and Addiction Recovery established the [Dr. Mark Depman Trailblazer Award](https://vermontbiz.com/news/2025/february/18/vamhar-presents-inaugural-dr-mark-depman-trailblazer-award-recovery-day-2025) in his honor. I grew up watching him advocate for his patients and insist that compassion and evidence, not stigma and punishment, save lives and heal communities.
 
-DoseGuide is built in that spirit.
+OpenSubstance is built in that spirit.
 
 — Charlie
 
@@ -26,20 +26,20 @@ Most drug information online is either:
 - **Pro-drug** — minimizes risks to seem cool (dangerous)
 - **Clinical** — accurate but unreadable for the person who needs it at 2am
 
-DoseGuide tries to be none of these. It's the information a smart, caring friend with a pharmacology degree would give you.
+OpenSubstance tries to be none of these. It's the information a smart, caring friend with a pharmacology degree would give you.
 
 ## Data sources
 
-The full list of 30+ sources with links is on the [Sources page](https://doseguide.org/#sources). Every quantitative claim has a per-field citation in the source code (see [Sourcing transparency](#sourcing-transparency) below).
+The full list of 30+ sources with links is on the [Sources page](https://opensubstance.org/#sources). Every quantitative claim has a per-field citation in the source code (see [Sourcing transparency](#sourcing-transparency) below).
 
 ### Harm scores (MCDA)
 - 14 substances from **Nutt, King & Phillips 2010** (Lancet, 20 drugs, 16 criteria, expert panel)
 - 4 from subsequent MCDA studies: fentanyl=90 (**Broman et al. 2025**, Harm Reduction Journal, 19 drugs, 18 criteria, 17 US experts), nitrous=6 and poppers=5 (**Ferreira et al. 2022**, Drug Science Policy & Law), DMT=5 (Broman 2025)
-- 7 remaining (tramadol, kratom, DXM, 2C-x, PCP, mescaline, caffeine) are DoseGuide estimates, marked with dashed bars in charts
+- 7 remaining (tramadol, kratom, DXM, 2C-x, PCP, mescaline, caffeine) are OpenSubstance estimates, marked with dashed bars in charts
 
 ### Drug interactions
 - Base data from **TripSit v4.0** combination chart
-- **DoseGuide corrections from peer-reviewed literature**: cocaine+opioids upgraded to Dangerous (**CDC SUDORS 2023**: 47% of overdose deaths involve both), all stimulant+opioid combos upgraded (unmasking mechanism, **Friedman & Shover 2023**), MDMA+SSRIs changed to Decrease (**Liechti et al. 2000**, Neuropsychopharmacology), kratom interactions added (**Olsen et al. 2019**, MMWR), GHB+stimulant temporal mismatch added (**Liechti 2006**)
+- **OpenSubstance corrections from peer-reviewed literature**: cocaine+opioids upgraded to Dangerous (**CDC SUDORS 2023**: 47% of overdose deaths involve both), all stimulant+opioid combos upgraded (unmasking mechanism, **Friedman & Shover 2023**), MDMA+SSRIs changed to Decrease (**Liechti et al. 2000**, Neuropsychopharmacology), kratom interactions added (**Olsen et al. 2019**, MMWR), GHB+stimulant temporal mismatch added (**Liechti 2006**)
 - 18 mechanism explanations cite specific papers (Boyer & Shannon 2005, Mittleman 1999, van Amsterdam 2024, Emmanouil & Quock 2007, Lukas & Orozco 2001, etc.)
 
 ### Addiction rates

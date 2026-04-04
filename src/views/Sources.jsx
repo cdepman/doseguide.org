@@ -2,7 +2,7 @@ import { useRef, useCallback } from "react";
 
 const SECTIONS = [
   { id: "harm", label: "Harm Scores", sources: [
-    { name: "Nutt, King & Phillips — \"Drug harms in the UK\" (The Lancet, 2010)", url: "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(10)61462-6/fulltext", type: "Peer-reviewed", desc: "Harm scores for 14 of our substances come directly from this landmark MCDA. Four more (fentanyl, nitrous, DMT, poppers) now have MCDA scores from subsequent studies (Broman 2025, Ferreira 2022). The remaining substances (tramadol, kratom, DXM, 2C-x, PCP, mescaline, caffeine) are DoseGuide estimates marked with dashed bars. Note: nicotine is scored as 'tobacco' (26) — includes smoking harms, not nicotine alone." },
+    { name: "Nutt, King & Phillips — \"Drug harms in the UK\" (The Lancet, 2010)", url: "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(10)61462-6/fulltext", type: "Peer-reviewed", desc: "Harm scores for 14 of our substances come directly from this landmark MCDA. Four more (fentanyl, nitrous, DMT, poppers) now have MCDA scores from subsequent studies (Broman 2025, Ferreira 2022). The remaining substances (tramadol, kratom, DXM, 2C-x, PCP, mescaline, caffeine) are OpenSubstance estimates marked with dashed bars. Note: nicotine is scored as 'tobacco' (26) — includes smoking harms, not nicotine alone." },
     { name: "Broman et al. — \"US drug policy does not align with experts' rankings\" (Harm Reduction Journal, 2025)", url: "https://doi.org/10.1186/s12954-025-01390-x", type: "Peer-reviewed", desc: "US expert MCDA scoring 19 drugs. Fentanyl scored highest at 90/100. Also scored DMT/ayahuasca (5), providing the first MCDA data for these substances. Used for our fentanyl and DMT harm scores." },
     { name: "Ferreira et al. — \"Drug harms: an international Delphi study\" (Drug Science, Policy and Law, 2022)", url: "https://doi.org/10.1177/20503245221127301", type: "Peer-reviewed", desc: "International Delphi MCDA study scoring additional substances not in Nutt 2010, including nitrous oxide (6/100) and poppers (5/100). Used for our nitrous and poppers harm scores." },
   ]},
@@ -78,7 +78,7 @@ export default function Sources() {
 
   return <div style={{ maxWidth: 760 }}>
     <h2 style={{ fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 22, color: "#e8e6e3", fontWeight: 400, marginBottom: 4 }}>Data Sources</h2>
-    <p style={{ fontSize: 13, color: "#8a8780", lineHeight: 1.6, marginBottom: 14 }}>DoseGuide cites primary sources wherever possible. Fields are annotated with confidence tiers: measured (direct from peer-reviewed data), derived (calculated from primary sources), estimated (informed approximation), or editorial (team judgment).</p>
+    <p style={{ fontSize: 13, color: "#8a8780", lineHeight: 1.6, marginBottom: 14 }}>OpenSubstance cites primary sources wherever possible. Fields are annotated with confidence tiers: measured (direct from peer-reviewed data), derived (calculated from primary sources), estimated (informed approximation), or editorial (team judgment).</p>
 
     {/* Jump tabs */}
     <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 18, position: "sticky", top: 0, zIndex: 5, background: "#111113", padding: "8px 0 10px", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>

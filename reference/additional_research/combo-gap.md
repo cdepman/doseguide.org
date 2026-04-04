@@ -2,7 +2,7 @@
 
 ## Problem
 
-DoseGuide's substance data has a rigorous per-field sourcing system (`_src` objects with `ref`, `conf`, `note`), but the combination/interaction data in `combinations.js` has no equivalent. The ~350+ ratings in the `CO` map and ~50+ mechanism explanations in the `MECH` map vary widely in evidence quality, yet they all look identical to users. For a harm reduction resource where accuracy is life-or-death, this is the single biggest transparency gap in the project.
+OpenSubstance's substance data has a rigorous per-field sourcing system (`_src` objects with `ref`, `conf`, `note`), but the combination/interaction data in `combinations.js` has no equivalent. The ~350+ ratings in the `CO` map and ~50+ mechanism explanations in the `MECH` map vary widely in evidence quality, yet they all look identical to users. For a harm reduction resource where accuracy is life-or-death, this is the single biggest transparency gap in the project.
 
 ### What's at stake
 
@@ -47,8 +47,8 @@ A user checking whether it's safe to combine GHB + amphetamines sees a "Caution"
 
 **Gap 1: No per-rating sourcing on the CO map.** The ~350+ combination ratings have zero per-entry attribution. There is no way to distinguish:
 - A rating directly from TripSit v4.0, unmodified
-- A rating DoseGuide corrected with a peer-reviewed citation
-- A rating DoseGuide added that didn't exist in TripSit (e.g., medication combos)
+- A rating OpenSubstance corrected with a peer-reviewed citation
+- A rating OpenSubstance added that didn't exist in TripSit (e.g., medication combos)
 
 For substance data, you have `_src.harm.ref = "nutt2010"` with `conf = "measured"`. For combination data, `cocaine+opioids: "dangerous"` is just a string — no ref, no confidence level, no note.
 
@@ -86,8 +86,8 @@ Create a parallel export in `combinations.js` that provides sourcing metadata fo
 ```js
 // Source and confidence for each CO rating
 // src: "tripsit" = TripSit v4.0 unmodified
-//      "dg_corrected" = DoseGuide changed from TripSit with citation
-//      "dg_added" = DoseGuide original (not in TripSit)
+//      "dg_corrected" = OpenSubstance changed from TripSit with citation
+//      "dg_added" = OpenSubstance original (not in TripSit)
 // ref: CITE key for the supporting evidence (null = community consensus only)
 // note: brief justification (optional, for corrected/added entries)
 
@@ -212,7 +212,7 @@ Can kill. Respiratory arrest, serotonin syndrome, seizures, or cardiac arrest.
 
 WHY: Both suppress breathing. Combined effect is multiplicative, not additive...
 
-📎 Source: DoseGuide correction from TripSit · CDC SUDORS 2023
+📎 Source: OpenSubstance correction from TripSit · CDC SUDORS 2023
 ```
 
 vs.
@@ -230,13 +230,13 @@ Implementation: In `Combos.jsx`, `InteractionsMobile.jsx`, and `Matrix.jsx`, aft
 
 Add a paragraph to the Interactions section of `Sources.jsx` that breaks down the numbers:
 
-> "DoseGuide tracks X combination ratings across Y substances. Z ratings come directly from TripSit v4.0 (community). N ratings have been corrected or added by DoseGuide using peer-reviewed literature. M mechanism explanations cite specific studies."
+> "OpenSubstance tracks X combination ratings across Y substances. Z ratings come directly from TripSit v4.0 (community). N ratings have been corrected or added by OpenSubstance using peer-reviewed literature. M mechanism explanations cite specific studies."
 
 This is a static count you can compute at build time or hardcode.
 
 #### Tier 3: Filterable transparency on the Matrix view
 
-On the full interaction matrix (`Matrix.jsx`), add a toggle: "Highlight DoseGuide corrections." When on, cells that DoseGuide has corrected from TripSit get a subtle border or glow, and cells that are DoseGuide additions (medications, etc.) get a different indicator. This lets a pharmacology reviewer quickly scan for editorial decisions.
+On the full interaction matrix (`Matrix.jsx`), add a toggle: "Highlight OpenSubstance corrections." When on, cells that OpenSubstance has corrected from TripSit get a subtle border or glow, and cells that are OpenSubstance additions (medications, etc.) get a different indicator. This lets a pharmacology reviewer quickly scan for editorial decisions.
 
 **Effort estimate for all three tiers:** Tier 1 is ~1-2 hours. Tier 2 is ~30 minutes. Tier 3 is ~2-3 hours.
 
@@ -305,7 +305,7 @@ When adding a mechanism explanation:
 
 ## Out of scope (but worth noting)
 
-**TripSit v4.0 itself is not peer-reviewed.** The bulk of the CO map inherits from a community wiki. This is the reality of drug combination data — there simply aren't randomized controlled trials for most two-drug recreational combinations. TripSit is the best available community-curated dataset, it's widely used by harm reduction organizations, and it's conservative by default. The goal of this spec is not to replace TripSit but to be transparent about what comes from TripSit vs. what DoseGuide has independently verified.
+**TripSit v4.0 itself is not peer-reviewed.** The bulk of the CO map inherits from a community wiki. This is the reality of drug combination data — there simply aren't randomized controlled trials for most two-drug recreational combinations. TripSit is the best available community-curated dataset, it's widely used by harm reduction organizations, and it's conservative by default. The goal of this spec is not to replace TripSit but to be transparent about what comes from TripSit vs. what OpenSubstance has independently verified.
 
 **Missing combinations.** The CO map has `null` (no data) for some pairs. This is handled well in the UI with "Absence ≠ safety" messaging. No action needed.
 
@@ -319,7 +319,7 @@ After implementation:
 
 1. Every combination rating in the CO map can be traced to either TripSit v4.0 or a specific peer-reviewed source via CO_SRC.
 2. Every MECH entry that makes a pharmacological claim includes at least one inline citation.
-3. Users can see, directly in the combo results UI, whether a rating comes from TripSit or from DoseGuide's peer-reviewed corrections.
+3. Users can see, directly in the combo results UI, whether a rating comes from TripSit or from OpenSubstance's peer-reviewed corrections.
 4. The "synergy" and "decrease" categories have mechanism notes for the most commonly checked pairs.
 5. CLAUDE.md documents the sourcing rules so future contributions maintain the standard.
 6. Every new CITE key appears in all three places (CITE table, Sources page, README).

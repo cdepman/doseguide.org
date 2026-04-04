@@ -137,8 +137,8 @@ export default function App() {
     <header style={{ borderBottom: "1px solid rgba(255,255,255,0.06)", padding: "10px 16px", paddingTop: "max(10px, env(safe-area-inset-top))", flexShrink: 0, background: "#111113", zIndex: 10, position: "relative" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 8, cursor: "pointer", minHeight: 44 }} onClick={() => switchView("index")}>
-          <img src="/logo.svg" alt="DoseGuide" style={{ width: 46, height: 46, borderRadius: 10 }} />
-          <div><h1 style={{ margin: 0, fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 20, color: "#e8e6e3", fontWeight: 400 }}>DoseGuide<span style={{ color: "#555", fontSize: 14 }}>.org</span></h1></div>
+          <img src="/logo.svg" alt="OpenSubstance" style={{ width: 46, height: 46, borderRadius: 10 }} />
+          <div><h1 style={{ margin: 0, fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 20, color: "#e8e6e3", fontWeight: 400 }}>OpenSubstance<span style={{ color: "#555", fontSize: 14 }}>.org</span></h1></div>
         </div>
         {/* Hamburger menu button */}
         <button onClick={() => setMenuOpen(!menuOpen)} style={{ width: 44, height: 44, borderRadius: 10, border: "none", cursor: "pointer", background: menuOpen ? "rgba(255,255,255,0.1)" : "transparent", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 5, padding: 0 }}>
@@ -249,16 +249,16 @@ export default function App() {
 
         {/* Header */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
-          <span style={{ fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 24, color: "#e8e6e3" }}>About DoseGuide</span>
+          <span style={{ fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 24, color: "#e8e6e3" }}>About OpenSubstance</span>
           <button onClick={() => setAboutOpen(false)} style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 8, padding: "6px 12px", color: "#888", fontSize: 13, cursor: "pointer", fontFamily: "'DM Mono',monospace" }}>Close</button>
         </div>
 
         {/* About */}
         <div style={{ marginBottom: 28 }}>
-          <p style={{ margin: "0 0 14px", fontSize: 15, color: "#a09d97", lineHeight: 1.7, fontFamily: "'Source Serif 4',Georgia,serif" }}>DoseGuide is an open-source harm reduction resource. It does not encourage drug use. It exists because people use drugs whether or not they have good information, and the evidence is clear that informed users have better outcomes.</p>
+          <p style={{ margin: "0 0 14px", fontSize: 15, color: "#a09d97", lineHeight: 1.7, fontFamily: "'Source Serif 4',Georgia,serif" }}>OpenSubstance is an open-source harm reduction resource. It does not encourage drug use. It exists because people use drugs whether or not they have good information, and the evidence is clear that informed users have better outcomes.</p>
           <p style={{ margin: "0 0 14px", fontSize: 15, color: "#a09d97", lineHeight: 1.7, fontFamily: "'Source Serif 4',Georgia,serif" }}>All data is sourced from peer-reviewed research, government agencies, and established harm reduction organizations including the Global Drug Survey, The Lancet, DanceSafe, and SAMHSA.</p>
           <p style={{ margin: "0 0 14px", fontSize: 15, color: "#a09d97", lineHeight: 1.7, fontFamily: "'Source Serif 4',Georgia,serif" }}>This project is personal. My father, Dr. Mark Depman, spent a good part of his career as an emergency physician in Vermont working at the intersection of substance use and harm reduction. In 2025, the Vermont Association for Mental Health and Addiction Recovery established the <a href="https://vermontbiz.com/news/2025/february/18/vamhar-presents-inaugural-dr-mark-depman-trailblazer-award-recovery-day-2025" target="_blank" rel="noopener noreferrer" style={{ color: "#c7c4be", textDecoration: "none", borderBottom: "1px solid rgba(255,255,255,0.25)" }}>Dr. Mark Depman Trailblazer Award</a> in his honor. I grew up watching him advocate for his patients and insist that compassion and evidence, not stigma and punishment, save lives and heal communities.</p>
-          <p style={{ margin: "0 0 14px", fontSize: 15, color: "#c7c4be", lineHeight: 1.7, fontFamily: "'Source Serif 4',Georgia,serif" }}>DoseGuide is built in that spirit.</p>
+          <p style={{ margin: "0 0 14px", fontSize: 15, color: "#c7c4be", lineHeight: 1.7, fontFamily: "'Source Serif 4',Georgia,serif" }}>OpenSubstance is built in that spirit.</p>
           <p style={{ margin: 0, fontSize: 14, color: "#8a8780", fontFamily: "'Instrument Serif',Georgia,serif" }}>— Charlie Depman</p>
         </div>
 

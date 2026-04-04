@@ -1,4 +1,4 @@
-// TripSit v4.0 base + DoseGuide corrections from peer-reviewed literature
+// TripSit v4.0 base + OpenSubstance corrections from peer-reviewed literature
 // Key changes from TripSit: cocaine+opioids upgraded to "dangerous" (CDC SUDORS 2023),
 // stimulant+opioid combos upgraded to "dangerous" (unmasking mechanism),
 // MDMA+SSRIs changed to "decrease" (SSRIs block MDMA, Liechti 2000),
@@ -203,8 +203,8 @@ export function getMech(a, b) {
 
 // ── PER-RATING SOURCE METADATA ──────────────────────────────────────────────
 // src: "tripsit" = TripSit v4.0 unmodified
-//      "dg_corrected" = DoseGuide changed from TripSit with citation
-//      "dg_added" = DoseGuide original (not in TripSit)
+//      "dg_corrected" = OpenSubstance changed from TripSit with citation
+//      "dg_added" = OpenSubstance original (not in TripSit)
 export const CO_SRC = {
   "cocaine+opioids":       {src:"dg_corrected",ref:"cdc_sudors",note:"TripSit: caution. Upgraded: 79% of cocaine deaths co-involve opioids."},
   "cocaine+fentanyl":      {src:"dg_corrected",ref:"cdc_sudors",note:"TripSit: unsafe. Upgraded."},

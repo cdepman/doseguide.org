@@ -212,7 +212,7 @@ function HarmChart({ onInfo }) {
 
   return <div style={{ background: "rgba(255,255,255,0.02)", borderRadius: 12, border: "1px solid rgba(255,255,255,0.06)", padding: 20, marginBottom: 18 }}>
     <h3 style={{ margin: "0 0 2px", fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 18, color: "#e8e6e3", fontWeight: 400 }}>Total Damage <span style={{ fontSize: 12, color: "#6b6860", fontFamily: "'DM Mono',monospace" }}>(to you + to society)</span></h3>
-    <p style={{ margin: "0 0 10px", fontSize: 12, color: "#6b6860" }}>Solid bars: Nutt et al. (Lancet 2010) — 20 substances scored by expert panel. Dashed bars: estimated by DoseGuide based on clinical literature.</p>
+    <p style={{ margin: "0 0 10px", fontSize: 12, color: "#6b6860" }}>Solid bars: Nutt et al. (Lancet 2010) — 20 substances scored by expert panel. Dashed bars: estimated by OpenSubstance based on clinical literature.</p>
     {items.map(s => {
       const v = s.harm;
       const w = Math.min((v / max) * 100, 100);

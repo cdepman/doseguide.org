@@ -1,7 +1,7 @@
-# DoseGuide.org — Claude Code Instructions
+# OpenSubstance.org — Claude Code Instructions
 
 ## Project Overview
-DoseGuide is an open-source harm reduction resource. Accuracy and transparency are the highest priorities. Every quantitative claim must be traceable to a source.
+OpenSubstance is an open-source harm reduction resource. Accuracy and transparency are the highest priorities. Every quantitative claim must be traceable to a source.
 
 ## Critical Rules
 
@@ -29,11 +29,11 @@ When adding or changing a number, always update the corresponding `_src` entry.
 - Fentanyl from Broman 2025 (Harm Reduction Journal)
 - Nitrous and poppers from Ferreira 2022
 - DMT from Broman 2025
-- Remaining 7 are DoseGuide estimates marked with `harmEstimated:true`
+- Remaining 7 are OpenSubstance estimates marked with `harmEstimated:true`
 
 ### Interaction Data
 - Base from TripSit v4.0
-- DoseGuide has corrected several ratings with peer-reviewed citations
+- OpenSubstance has corrected several ratings with peer-reviewed citations
 - Every CO entry has a corresponding CO_SRC entry tracking provenance:
   - `src` — "tripsit" | "dg_corrected" | "dg_added"
   - `ref` — CITE key for supporting evidence

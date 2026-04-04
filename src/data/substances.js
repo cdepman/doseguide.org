@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// DoseGuide.org — Substance Data
+// OpenSubstance.org — Substance Data
 // Every number should be traceable. Fields marked [E] are estimates.
 // See CITE keys below and _src per substance for per-field attribution.
 // ─────────────────────────────────────────────────────────────────────────────

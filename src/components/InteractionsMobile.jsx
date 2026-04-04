@@ -106,7 +106,7 @@ export default function InteractionsMobile() {
 
       {/* Items */}
       <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-        {g.items.map(({ substance: sub, mech, coSrc }) => { const isOpen = srcOpen === sub.id; const srcLabel = coSrc.src === "dg_corrected" ? "DoseGuide correction" : coSrc.src === "dg_added" ? "DoseGuide addition" : "TripSit v4.0"; const refStr = coSrc.ref && coSrc.ref !== "tripsit" ? CITE[coSrc.ref]?.split(".")[0] || coSrc.ref : null; return <div key={sub.id} style={{
+        {g.items.map(({ substance: sub, mech, coSrc }) => { const isOpen = srcOpen === sub.id; const srcLabel = coSrc.src === "dg_corrected" ? "OpenSubstance correction" : coSrc.src === "dg_added" ? "OpenSubstance addition" : "TripSit v4.0"; const refStr = coSrc.ref && coSrc.ref !== "tripsit" ? CITE[coSrc.ref]?.split(".")[0] || coSrc.ref : null; return <div key={sub.id} style={{
           background: "rgba(255,255,255,0.025)", borderRadius: 8,
           border: `1px solid ${g.c}18`, padding: "10px 12px",
         }}>

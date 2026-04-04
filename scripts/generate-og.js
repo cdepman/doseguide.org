@@ -23,7 +23,7 @@ async function generate() {
   const blockH = 250;
   const topY = (H - blockH) / 2;
 
-  // Title — "DoseGuide" + ".org"
+  // Title — "OpenSubstance" + ".org"
   const titleX = 80 + logoSize + 20;
   const titleY = topY + 90;
 
@@ -33,8 +33,8 @@ async function generate() {
   ctx.drawImage(logo, logoX, logoY, logoSize, logoSize);
   ctx.fillStyle = '#e8e6e3';
   ctx.font = 'bold 72px Georgia, serif';
-  const titleW = ctx.measureText('DoseGuide').width;
-  ctx.fillText('DoseGuide', titleX, titleY);
+  const titleW = ctx.measureText('OpenSubstance').width;
+  ctx.fillText('OpenSubstance', titleX, titleY);
 
   ctx.fillStyle = '#555';
   ctx.font = 'bold 50px Georgia, serif';

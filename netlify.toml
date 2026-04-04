@@ -2,6 +2,20 @@
   command = "npm run build"
   publish = "dist"
 
+# Redirect old domain to new (add doseguide.org as domain alias in Netlify dashboard)
+[[redirects]]
+  from = "https://doseguide.org/*"
+  to = "https://opensubstance.org/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.doseguide.org/*"
+  to = "https://opensubstance.org/:splat"
+  status = 301
+  force = true
+
+# SPA catch-all (must be last)
 [[redirects]]
   from = "/*"
   to = "/index.html"

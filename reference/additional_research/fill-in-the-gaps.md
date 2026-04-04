@@ -1,4 +1,4 @@
-# Sourcing gaps for DoseGuide.org: citable data and citations
+# Sourcing gaps for OpenSubstance.org: citable data and citations
 
 **This report provides paper-level citations with exact figures for each of the five sourcing categories identified.** The most critical finding across all categories: several substances (MDMA, GHB, DXM, kratom) lack true population-based dependence transition probabilities, and the commonly cited "1 in 50,000 cocaine cardiac event" figure cannot be verified in peer-reviewed literature. Below is a substance-by-substance breakdown with every recoverable number and its full citation.
 

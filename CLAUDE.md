@@ -34,8 +34,17 @@ When adding or changing a number, always update the corresponding `_src` entry.
 ### Interaction Data
 - Base from TripSit v4.0
 - DoseGuide has corrected several ratings with peer-reviewed citations
-- When changing a rating, add the mechanism explanation to the MECH map in `combinations.js` with inline citation
-- Comment block at top of `combinations.js` documents all corrections from TripSit base
+- Every CO entry has a corresponding CO_SRC entry tracking provenance:
+  - `src` — "tripsit" | "dg_corrected" | "dg_added"
+  - `ref` — CITE key for supporting evidence
+  - `note` — justification for corrections and additions
+- When adding or changing a combination rating:
+  1. Update the CO map entry
+  2. Add/update the CO_SRC entry with ref and note
+  3. Add/update the MECH entry with an inline citation (Author Year)
+  4. Add any new CITE keys to the CITE table, Sources page, and README
+- Every MECH entry that makes a pharmacological claim must cite at least one source
+- Well-established pharmacology can cite a review article; novel claims need primary research
 
 ### MED_WARNINGS System
 Medication warnings (like lithium + psychedelics) are in the `MED_WARNINGS` export in `substances.js` and rendered in `Detail.jsx`. Use this for non-recreational medications that have critical interactions with recreational substances.

@@ -95,6 +95,13 @@ export const CITE = {
   antoniou2005:   "Antoniou & Tseng. Interactions between antiretrovirals and antineoplastic drug therapy. Clin Pharmacokinet 44(2):111-145, 2005.",
   harrington1999: "Harrington et al. Life-threatening interactions between HIV-1 protease inhibitors and illicit drugs. Arch Intern Med 159:2221-2224, 1999.",
   riba2003:       "Riba et al. Metabolism of N,N-dimethyltryptamine in humans. Drug Metab Dispos 31(8):1024-1031, 2003.",
+  // ── COMBO SOURCING GAP FILLS ──
+  white1999:      "White & Irvine. Mechanisms of fatal opioid overdose. Addiction 94(7):961-972, 1999.",
+  ryan2015:       "Ryan & Isbister. Tramadol overdose causes seizures and respiratory depression but serotonin toxicity appears unlikely. Clin Toxicol 53(6):545-550, 2015.",
+  schep2012:      "Schep et al. The clinical toxicology of ketamine. Clin Toxicol 50(4):225-236, 2012.",
+  bonson1996:     "Bonson & Murphy. Alterations in responses to LSD in humans associated with chronic administration of tricyclics, MAOIs, or lithium. Behav Brain Res 73:229-233, 1996.",
+  fda2016_benzo:  "FDA Drug Safety Communication: FDA warns about serious risks and death when combining opioid pain or cough medicines with benzodiazepines. August 2016.",
+  cdc_sudors:     "CDC SUDORS. State Unintentional Drug Overdose Reporting System. 47% of 2023 deaths involved both opioids and stimulants.",
 };
 
 // Confidence levels for estimated values

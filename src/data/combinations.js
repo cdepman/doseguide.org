@@ -18,42 +18,42 @@ export function cr(a, b) {
 // CDC SUDORS/MMWR (overdose death data), Olsen 2019 (kratom deaths),
 // van Amsterdam 2024 (cocaethylene), Emmanouil & Quock 2007 (N2O opioid pathways)
 const MECH = {
-  "alcohol+ghb": "Both enhance GABA. Combined sedation causes respiratory arrest. Even one drink with G can knock you out.",
-  "alcohol+opioids": "Both slow breathing. The #1 accidental drug death combination. Even moderate drinking with opioids is dangerous.",
-  "alcohol+fentanyl": "Both suppress breathing. Combined effect is multiplicative, not additive. Tiny amounts of fentanyl + alcohol = death.",
-  "alcohol+benzodiazepine": "Both act on GABA receptors. Together they suppress breathing far more than either alone. A common cause of accidental death.",
-  "alcohol+tramadol": "Respiratory depression plus seizure risk. Tramadol lowers seizure threshold; alcohol does too.",
-  "alcohol+ketamine": "Both cause loss of consciousness and vomiting. High aspiration (choking on vomit) risk.",
+  "alcohol+ghb": "Both enhance GABA-A and GABA-B receptors. Combined sedation causes respiratory arrest — GHB's steep dose-response curve makes this especially unpredictable (Busardò & Jones 2015). Even one drink with G can knock you out.",
+  "alcohol+opioids": "Both suppress breathing through different mechanisms. Alcohol potentiates GABA-A; opioids suppress brainstem respiratory drive. One of the most common causes of accidental drug death (Jones & McAninch 2015). Even moderate drinking with opioids is dangerous.",
+  "alcohol+fentanyl": "Both suppress breathing. Combined effect is multiplicative, not additive — fentanyl's near-zero safety margin means any amount of alcohol can tip the balance (White & Irvine 1999). Tiny amounts of fentanyl + alcohol = death.",
+  "alcohol+benzodiazepine": "Both act on GABA-A receptors. Together they suppress breathing far more than either alone (FDA 2016 black box warning). A common cause of accidental death (Jones & McAninch 2015).",
+  "alcohol+tramadol": "Respiratory depression plus seizure risk. Tramadol lowers seizure threshold dose-dependently (Ryan & Isbister 2015); alcohol does too. Combined seizure and respiratory depression risk.",
+  "alcohol+ketamine": "Both cause loss of consciousness and vomiting. High aspiration (choking on vomit) risk. Ketamine suppresses airway reflexes while alcohol causes emesis (Schep et al. 2012).",
   "alcohol+cocaine": "Your liver creates cocaethylene — a unique compound more cardiotoxic than either drug alone. Also masks alcohol's warning signs of overdose.",
   "alcohol+caffeine": "Caffeine masks how drunk you are, leading to drinking far more than your body can handle. Doesn't make you less impaired.",
   "alcohol+kratom": "Both are CNS depressants at higher doses. Increased sedation, nausea, respiratory depression.",
-  "ghb+opioids": "Both suppress GABA and breathing. Combined effect is synergistic — doses that would be survivable alone become lethal together.",
-  "ghb+fentanyl": "Two of the most respiratory-depressing substances combined. Fatal at very low doses of each.",
-  "ghb+benzodiazepine": "Triple GABA hit. Profound sedation, respiratory arrest. Even small doses of each can be fatal together.",
+  "ghb+opioids": "Both suppress breathing — GHB via GABA-B agonism, opioids via brainstem respiratory center suppression. Combined effect is synergistic, not additive — doses survivable alone become lethal together (Busardò & Jones 2015).",
+  "ghb+fentanyl": "Two of the most respiratory-depressing substances combined. GHB's steep dose-response curve (Busardò & Jones 2015) meets fentanyl's near-zero safety margin. Fatal at very low doses of each.",
+  "ghb+benzodiazepine": "Triple GABA hit — GHB agonizes GABA-B, benzos potentiate GABA-A, and both cause sedation through different receptor subtypes (Busardò & Jones 2015). Profound sedation, respiratory arrest. Even small doses of each can be fatal together.",
   "ghb+tramadol": "Respiratory depression compounded. Both lower consciousness and breathing rate.",
   "ghb+kratom": "Both cause respiratory depression and sedation. Risk of aspiration while unconscious.",
   "opioids+benzodiazepine": "One of the most dangerous drug combinations. Both suppress breathing through different mechanisms — effects are multiplicative. 92.7% of benzodiazepine-involved deaths also involve opioids (CDC 2020). Since ~2017, stimulant-opioid deaths have surpassed benzo-opioid in absolute numbers, but benzos remain the highest-risk pharmacological co-ingestant with opioids for respiratory depression.",
   "opioids+fentanyl": "Stacking opioids. Street 'heroin' already contains fentanyl — adding more opioids on top is how most overdoses happen.",
-  "opioids+tramadol": "Stacking opioids. Additive respiratory depression plus tramadol's seizure risk.",
+  "opioids+tramadol": "Stacking opioids. Additive respiratory depression plus tramadol's dose-dependent seizure risk (Ryan & Isbister 2015). Tramadol also inhibits serotonin reuptake, adding serotonin syndrome risk with serotonergic opioids.",
   "opioids+kratom": "Both act on mu-opioid receptors. Additive respiratory depression.",
-  "opioids+maoi": "MAOIs dramatically potentiate opioid effects. Normal doses become lethal. Unpredictable interaction.",
-  "fentanyl+benzodiazepine": "Fentanyl already has almost no safety margin — adding any benzo removes what little margin exists. One of the most common combinations found in overdose deaths.",
+  "opioids+maoi": "MAOIs dramatically potentiate opioid effects — particularly serotonergic opioids like tramadol and fentanyl (Boyer & Shannon 2005). Normal doses become lethal. Unpredictable interaction.",
+  "fentanyl+benzodiazepine": "Fentanyl already has almost no safety margin — adding any benzo removes what little margin exists. Benzodiazepine co-involvement in opioid overdose deaths rose from 18% to 31% between 2004 and 2011 (Jones & McAninch 2015). Since ~2017, stimulant-opioid deaths surpassed benzo-opioid in absolute numbers.",
   "fentanyl+tramadol": "Stacking opioids plus serotonin risk. Tramadol + fentanyl = respiratory arrest.",
   "fentanyl+kratom": "Both opioid agonists. Additive respiratory depression with fentanyl's razor-thin margin.",
   "fentanyl+maoi": "MAOIs potentiate fentanyl to an unpredictable degree. Potentially lethal at any dose.",
-  "mdma+amphetamines": "Both release serotonin and dopamine. Risk of serotonin syndrome, hyperthermia, and cardiac events from combined stimulation.",
+  "mdma+amphetamines": "Both release serotonin and dopamine via monoamine transporter reversal. Risk of serotonin syndrome (Boyer & Shannon 2005), hyperthermia, and cardiac events from combined stimulation.",
   "mdma+methamphetamine": "Extreme serotonin and dopamine release. High risk of serotonin syndrome, heart failure, and fatal hyperthermia.",
-  "mdma+dxm": "Both are serotonergic. High serotonin syndrome risk — this can be fatal. Symptoms: rigid muscles, high fever, seizures.",
+  "mdma+dxm": "Both are serotonergic — MDMA releases serotonin, DXM inhibits its reuptake. High serotonin syndrome risk (Boyer & Shannon 2005). Symptoms: rigid muscles, high fever, seizures.",
   "mdma+ghb": "MDMA raises body temperature while GHB sedates. Risk of overheating while unable to cool down, plus respiratory depression.",
-  "mdma+maoi": "LETHAL serotonin syndrome. MAOIs prevent serotonin breakdown while MDMA floods it. One of the most dangerous drug combinations possible.",
+  "mdma+maoi": "Serotonin syndrome — potentially fatal. MAOIs prevent serotonin breakdown while MDMA floods the synapse via transporter reversal (Boyer & Shannon 2005). One of the most dangerous drug combinations possible.",
   "mdma+tramadol": "Both serotonergic. High risk of serotonin syndrome. Tramadol also lowers seizure threshold.",
   "mdma+fentanyl": "Fentanyl contamination of MDMA pills is a leading cause of unexpected death. Different mechanism — respiratory depression kills before you know it's not MDMA.",
   "mdma+cocaine": "Cocaethylene formation, extreme cardiovascular strain, increased neurotoxicity. Cocaine blocks MDMA's effects, tempting re-dosing.",
   "mdma+poppers": "Both cause vasodilation and heart rate changes. Risk of dangerous blood pressure drop and cardiac arrhythmia.",
-  "cocaine+poppers": "Both affect cardiovascular system in opposing ways. Risk of fatal cardiac arrhythmia and severe blood pressure instability.",
+  "cocaine+poppers": "Cocaine causes vasoconstriction; poppers cause vasodilation via nitric oxide release. Opposing cardiovascular effects create severe blood pressure instability and arrhythmia risk (Cheitlin 1999).",
   "cocaine+maoi": "MAOIs prevent dopamine and norepinephrine breakdown. Cocaine's effects become massively potentiated. Fatal hypertensive crisis.",
   "cocaine+fentanyl": "Fentanyl contamination of cocaine is a major cause of unexpected death, especially in eastern US. You can't see, taste, or smell fentanyl in cocaine.",
-  "cocaine+amphetamines": "Stacking stimulants. Extreme cardiovascular strain — heart attack, stroke, and arrhythmia risk compounds.",
+  "cocaine+amphetamines": "Stacking stimulants. Extreme cardiovascular strain — cocaine triggers a 24-fold MI risk increase (Mittleman 1999), and adding amphetamine compounds this. Heart attack, stroke, and arrhythmia risk.",
   "cocaine+methamphetamine": "Extreme stimulant stacking. Severe risk of stroke, heart attack, and hyperthermia.",
   "amphetamines+maoi": "MAOIs prevent amphetamine breakdown. Normal doses become massively potentiated. Fatal hypertensive crisis and hyperthermia.",
   "methamphetamine+maoi": "MAOIs prevent meth breakdown. Extremely dangerous potentiation. Fatal hypertensive crisis.",
@@ -184,8 +184,55 @@ const MECH = {
   "cyp_inhibitor+lsd": "LOW RISK despite being a CYP substrate. LSD is metabolized by CYP3A4 and CYP2D6, so CYP inhibitors could increase blood levels. However, LSD's therapeutic index is >1000:1 — even a significant increase stays far below any dangerous physical threshold. The experience may be more intense or longer-lasting, but the physical safety margin remains enormous.",
   "cyp_inhibitor+antiretroviral": "Stacking CYP inhibitors. If you take both a cancer drug/antifungal AND an HIV medication containing ritonavir or cobicistat, the CYP3A4 inhibition compounds. This affects recreational drugs, the cancer treatment, and the HIV medication simultaneously (Antoniou & Tseng 2005).",
   "cyp_inhibitor+methadone_rx": "Methadone uses multiple metabolic pathways (CYP3A4, CYP2B6, CYP2C9), so it's less affected than fentanyl or MDMA. However, strong CYP3A4 inhibitors can still increase methadone levels enough to prolong QT interval and increase sedation.",
+  // ── SYNERGY MECHANISMS ──
+  "lsd+ketamine": "Both alter perception through different mechanisms — LSD via 5-HT2A agonism, ketamine via NMDA antagonism. The combination is more immersive than either alone. Physical risk is low, but psychological intensity is extreme and dose-dependent.",
+  "mushrooms+nitrous": "N₂O dramatically intensifies the psychedelic peak for 30-60 seconds. The experience can be overwhelming and disorienting. Physical risk is low — the main danger is falling or losing awareness during the brief but intense dissociation.",
+  "lsd+mushrooms": "Combining classical serotonergic psychedelics produces cross-potentiation at 5-HT2A receptors. More intense than higher doses of either alone. Not physically dangerous, but psychological overwhelm risk is high.",
+  "dmt+cannabis": "Cannabis extends and intensifies DMT's effects, likely via cannabinoid modulation of serotonergic signaling. THC can increase anxiety during the experience.",
+  "mushrooms+ketamine": "Serotonergic + NMDA antagonism. Deeply immersive combination. No significant physiological interaction, but combined dissociation makes navigation and communication very difficult.",
+  // ── DECREASE MECHANISMS ──
+  "lsd+ssri": "SSRIs dampen or block LSD's effects by occupying 5-HT2A receptor sites. This often leads to re-dosing, which is risky if the SSRI is discontinued later — full psychedelic effects return at what was previously a 'non-working' dose (Bonson & Murphy 1996).",
+  "mushrooms+ssri": "Same mechanism as SSRIs + LSD — serotonin reuptake inhibition reduces psilocin's ability to activate 5-HT2A. Dose escalation while on SSRIs is common but creates risk if SSRIs are stopped.",
+  "alcohol+lsd": "Alcohol dulls psychedelic effects, which can lead to drinking more than intended. The combination isn't physically dangerous, but alcohol impairs judgment in an already judgment-altering state.",
+  "benzodiazepine+lsd": "Benzodiazepines are commonly used to reduce intensity of difficult psychedelic experiences — they reduce anxiety and overall intensity. This is a known harm reduction technique, not a recreational combination.",
 };
 
 export function getMech(a, b) {
   return MECH[[a, b].sort().join("+")] || MECH[a + "+" + b] || MECH[b + "+" + a] || null;
+}
+
+// ── PER-RATING SOURCE METADATA ──────────────────────────────────────────────
+// src: "tripsit" = TripSit v4.0 unmodified
+//      "dg_corrected" = DoseGuide changed from TripSit with citation
+//      "dg_added" = DoseGuide original (not in TripSit)
+export const CO_SRC = {
+  "cocaine+opioids":       {src:"dg_corrected",ref:"cdc_sudors",note:"TripSit: caution. Upgraded: 79% of cocaine deaths co-involve opioids."},
+  "cocaine+fentanyl":      {src:"dg_corrected",ref:"cdc_sudors",note:"TripSit: unsafe. Upgraded."},
+  "amphetamines+opioids":  {src:"dg_corrected",ref:"friedman2023",note:"TripSit: caution. Upgraded: stimulant unmasking."},
+  "amphetamines+fentanyl": {src:"dg_corrected",ref:"friedman2023",note:"TripSit: caution. Upgraded."},
+  "fentanyl+methamphetamine":{src:"dg_corrected",ref:"friedman2023",note:"TripSit: caution. Upgraded: goofball unmasking."},
+  "methamphetamine+opioids":{src:"dg_corrected",ref:"friedman2023",note:"TripSit: caution. Upgraded."},
+  "mdma+ssri":             {src:"dg_corrected",ref:"liechti2000",note:"TripSit: caution. Changed to decrease: SSRIs block MDMA."},
+  "mdma+fentanyl":         {src:"dg_corrected",ref:null,note:"TripSit: caution. Upgraded: serotonergic opioid + releaser."},
+  "kratom+ssri":           {src:"dg_added",ref:"eudaley2023",note:"CYP inhibition + serotonergic activity."},
+  "kratom+benzodiazepine": {src:"dg_added",ref:"olsen2019",note:"22.4% of kratom deaths involved benzos."},
+  "ghb+amphetamines":      {src:"dg_added",ref:"liechti2006",note:"Temporal mismatch."},
+  "ghb+methamphetamine":   {src:"dg_added",ref:"liechti2006",note:"Same mechanism."},
+  "ghb+cocaine":           {src:"dg_added",ref:"liechti2006",note:"Cocaine masks GHB sedation."},
+  "gabapentin+opioids":    {src:"dg_added",ref:"gomes2017",note:"FDA 2019 black box."},
+  "gabapentin+fentanyl":   {src:"dg_added",ref:"fda2019_gaba",note:"Leading combo in OD deaths."},
+  "antiretroviral+mdma":   {src:"dg_added",ref:"henry1998",note:"Fatal interaction documented."},
+  "antiretroviral+methamphetamine":{src:"dg_added",ref:"bracchi2015",note:"Fatal cases."},
+  "antiretroviral+fentanyl":{src:"dg_added",ref:"olkkola1999",note:"CYP3A4 inhibition."},
+  "bupropion+mdma":        {src:"dg_added",ref:"cohen2021",note:"Highest MDMA death OR (2.82)."},
+  "pde5+poppers":          {src:"dg_added",ref:"cheitlin1999",note:"AHA absolute contraindication."},
+  "cyp_inhibitor+mdma":    {src:"dg_added",ref:"henry1998",note:"Class-level CYP inhibition."},
+  "cyp_inhibitor+fentanyl":{src:"dg_added",ref:"olkkola1999",note:"CYP3A4 clearance."},
+  "cyp_inhibitor+mushrooms":{src:"dg_added",ref:"dinisoliveira2017",note:"Psilocybin bypasses CYP."},
+};
+
+export function getCoSrc(a, b) {
+  const key = [a, b].sort().join("+");
+  return CO_SRC[key] || CO_SRC[a + "+" + b] || CO_SRC[b + "+" + a]
+    || {src:"tripsit",ref:"tripsit",note:null};
 }

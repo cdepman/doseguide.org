@@ -140,16 +140,24 @@ export default function App() {
           <img src="/logo.svg" alt="OpenSubstance" style={{ width: 46, height: 46, borderRadius: 10 }} />
           <div><h1 style={{ margin: 0, fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 20, color: "#e8e6e3", fontWeight: 400 }}>OpenSubstance<span style={{ color: "#555", fontSize: 14 }}>.org</span></h1></div>
         </div>
-        {/* Hamburger menu button */}
-        <button onClick={() => setMenuOpen(!menuOpen)} style={{ width: 44, height: 44, borderRadius: 10, border: "none", cursor: "pointer", background: menuOpen ? "rgba(255,255,255,0.1)" : "transparent", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 5, padding: 0 }}>
+        {/* Desktop nav */}
+        <div className="desktop-nav" style={{ display: "flex", alignItems: "center", gap: 2 }}>
+          {TABS.map(t => <button key={t.id} onClick={() => switchView(t.id)} style={{ padding: "8px 14px", borderRadius: 7, border: "none", cursor: "pointer", background: view === t.id ? "rgba(255,255,255,0.1)" : "transparent", color: view === t.id ? "#e8e6e3" : "#6b6860", fontFamily: "'DM Mono',monospace", fontSize: 13, minHeight: 36, display: "flex", alignItems: "center", gap: 6 }}>
+            <span style={{ display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, width: 18, height: 18, lineHeight: 1 }}>{t.iconSvg ? <t.iconSvg /> : t.icon}</span>
+            {t.label}
+          </button>)}
+          <button onClick={() => setAboutOpen(true)} style={{ padding: "8px 12px", borderRadius: 7, border: "none", cursor: "pointer", background: "transparent", color: "#6b6860", fontFamily: "'DM Mono',monospace", fontSize: 13, minHeight: 36, display: "flex", alignItems: "center", gap: 4 }}><span style={{ fontSize: 12 }}>♥</span> About</button>
+        </div>
+
+        {/* Mobile hamburger */}
+        <button className="mobile-hamburger" onClick={() => setMenuOpen(!menuOpen)} style={{ display: "none", width: 44, height: 44, borderRadius: 10, border: "none", cursor: "pointer", background: menuOpen ? "rgba(255,255,255,0.1)" : "transparent", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 5, padding: 0 }}>
           <div style={{ width: 22, height: 2, borderRadius: 1, background: menuOpen ? "#e8e6e3" : "#888", transition: "all 0.2s", transform: menuOpen ? "rotate(45deg) translateY(3.5px)" : "none" }} />
           <div style={{ width: 22, height: 2, borderRadius: 1, background: menuOpen ? "#e8e6e3" : "#888", transition: "all 0.2s", transform: menuOpen ? "rotate(-45deg) translateY(-3.5px)" : "none" }} />
         </button>
-        {/* ── DROPDOWN MENU ── */}
+        {/* ── MOBILE DROPDOWN MENU ── */}
         {menuOpen && <>
           <div onClick={() => setMenuOpen(false)} style={{ position: "fixed", inset: 0, zIndex: 8 }} />
           <div style={{ position: "absolute", top: "100%", right: 0, zIndex: 9, width: 240, background: "#1e1e22", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 12, padding: "8px 0", boxShadow: "0 8px 24px rgba(0,0,0,0.5)", animation: "fadeIn 0.15s ease" }}>
-            {/* About & Sources */}
             <button onClick={() => { setAboutOpen(true); setMenuOpen(false); }} style={{ width: "100%", padding: "12px 16px", border: "none", background: "transparent", color: "#c7c4be", fontSize: 16, fontFamily: "'DM Mono',monospace", cursor: "pointer", display: "flex", alignItems: "center", gap: 10, textAlign: "left" }}>
               <span style={{ display: "flex", width: 20, justifyContent: "center", fontSize: 20 }}>♥</span> About
             </button>
@@ -157,7 +165,6 @@ export default function App() {
               <span style={{ display: "flex", width: 20, justifyContent: "center" }}><SourcesIcon /></span> Sources
             </button>
             <div style={{ height: 1, background: "rgba(255,255,255,0.06)", margin: "6px 0" }} />
-            {/* Nav items */}
             {TABS.filter(t => t.id !== "sources").map(t => <button key={t.id} onClick={() => { switchView(t.id); setMenuOpen(false); }} style={{ width: "100%", padding: "12px 16px", border: "none", background: view === t.id ? "rgba(255,255,255,0.06)" : "transparent", color: view === t.id ? "#e8e6e3" : "#8a8780", fontSize: 16, fontFamily: "'DM Mono',monospace", cursor: "pointer", display: "flex", alignItems: "center", gap: 10, textAlign: "left" }}>
               <span style={{ display: "flex", width: 20, justifyContent: "center", fontSize: 18 }}>{t.iconSvg ? <t.iconSvg /> : t.icon}</span> {t.label}
             </button>)}
@@ -323,11 +330,14 @@ export default function App() {
     {/* ── RESPONSIVE STYLES ── */}
     <style>{`
       @media (max-width: 768px) {
+        .desktop-nav { display: none !important; }
         .desktop-only { display: none !important; }
         .mobile-tab-bar { display: flex !important; }
+        .mobile-hamburger { display: flex !important; }
       }
       @media (min-width: 769px) {
         .mobile-tab-bar { display: none !important; }
+        .mobile-hamburger { display: none !important; }
         .crisis-fab { bottom: 24px !important; }
       }
     `}</style>

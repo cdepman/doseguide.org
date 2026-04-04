@@ -2,8 +2,9 @@ import { useState, useRef, useCallback, useEffect } from "react";
 import { createPortal } from "react-dom";
 
 const DEAD_ZONE = 15;
+const FOCUSABLE = 'a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])';
 
-export default function SwipePanel({ open, onClose, width = "min(520px, 94vw)", header, children }) {
+export default function SwipePanel({ open, onClose, width = "min(520px, 94vw)", header, label, children }) {
   const [dragX, setDragX] = useState(0);
   const [swiping, setSwiping] = useState(false);
   const [entered, setEntered] = useState(false);
@@ -11,14 +12,33 @@ export default function SwipePanel({ open, onClose, width = "min(520px, 94vw)", 
   const startY = useRef(0);
   const direction = useRef(null);
   const panelRef = useRef(null);
+  const triggerRef = useRef(null);
 
-  // Escape to close + focus panel on open
   useEffect(() => {
     if (!open) return;
-    const onEsc = e => { if (e.key === "Escape") onClose(); };
-    document.addEventListener("keydown", onEsc);
-    panelRef.current?.focus();
-    return () => document.removeEventListener("keydown", onEsc);
+    // Remember what was focused before opening
+    triggerRef.current = document.activeElement;
+    // Focus panel
+    setTimeout(() => panelRef.current?.focus(), 50);
+
+    const onKeyDown = e => {
+      if (e.key === "Escape") { onClose(); return; }
+      // Focus trap
+      if (e.key === "Tab" && panelRef.current) {
+        const focusable = panelRef.current.querySelectorAll(FOCUSABLE);
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      // Restore focus on close
+      triggerRef.current?.focus?.();
+    };
   }, [open, onClose]);
 
   const onTouchStart = useCallback(e => {
@@ -30,14 +50,11 @@ export default function SwipePanel({ open, onClose, width = "min(520px, 94vw)", 
   const onTouchMove = useCallback(e => {
     const dx = e.touches[0].clientX - startX.current;
     const dy = e.touches[0].clientY - startY.current;
-
     if (direction.current === null) {
       if (Math.abs(dx) < DEAD_ZONE && Math.abs(dy) < DEAD_ZONE) return;
       direction.current = Math.abs(dx) > Math.abs(dy) && dx > 0 ? "horizontal" : "vertical";
     }
-
     if (direction.current === "vertical") return;
-
     setSwiping(true);
     setDragX(Math.max(0, dx));
   }, []);
@@ -67,6 +84,7 @@ export default function SwipePanel({ open, onClose, width = "min(520px, 94vw)", 
       ref={panelRef}
       role="dialog"
       aria-modal="true"
+      aria-label={label || "Panel"}
       tabIndex={-1}
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
@@ -85,10 +103,7 @@ export default function SwipePanel({ open, onClose, width = "min(520px, 94vw)", 
         transition: swiping ? "none" : "transform 0.3s ease",
       }}
     >
-      {/* Fixed header area */}
       {header && <div style={{ flexShrink: 0, padding: "20px 20px 0" }}>{header}</div>}
-
-      {/* Scrollable content */}
       <div style={{
         flex: 1, overflowY: swiping ? "hidden" : "auto",
         WebkitOverflowScrolling: "touch",

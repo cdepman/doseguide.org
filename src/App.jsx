@@ -252,7 +252,7 @@ export default function App() {
     </main>
 
     {/* ── ABOUT PANEL ── */}
-    <SwipePanel open={aboutOpen} onClose={() => setAboutOpen(false)}>
+    <SwipePanel open={aboutOpen} onClose={() => setAboutOpen(false)} label="About OpenSubstance">
 
         {/* Header */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>

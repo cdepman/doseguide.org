@@ -7,7 +7,7 @@ export default function SubstancePanel({ substanceId, onClose, onNavigate }) {
   if (!s) return null;
   const c = CAT[s.cat];
 
-  return <SwipePanel open={true} onClose={onClose} width="min(440px, 92vw)">
+  return <SwipePanel open={true} onClose={onClose} width="min(440px, 92vw)" label={s.n}>
     {/* Header */}
     <div style={{
       display: "flex", justifyContent: "space-between",

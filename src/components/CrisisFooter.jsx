@@ -19,7 +19,7 @@ export default function CrisisFooter() {
   };
 
   return <>
-    <SwipePanel open={open} onClose={() => setOpen(false)} header={<>
+    <SwipePanel open={open} onClose={() => setOpen(false)} label="Emergency Help" header={<>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
         <h2 style={{ margin: 0, fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 24, color: "#ef4444", fontWeight: 400 }}>Emergency Help</h2>
         <button onClick={() => setOpen(false)} style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 8, padding: "6px 12px", color: "#888", fontSize: 13, cursor: "pointer", fontFamily: "'DM Mono',monospace" }}>Close</button>

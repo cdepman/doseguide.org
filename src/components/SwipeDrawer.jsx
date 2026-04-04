@@ -2,8 +2,9 @@ import { useState, useRef, useCallback, useEffect } from "react";
 import { createPortal } from "react-dom";
 
 const DEAD_ZONE = 10;
+const FOCUSABLE = 'a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])';
 
-export default function SwipeDrawer({ open, onClose, children }) {
+export default function SwipeDrawer({ open, onClose, label, children }) {
   const [dragY, setDragY] = useState(0);
   const [swiping, setSwiping] = useState(false);
   const [entered, setEntered] = useState(false);
@@ -13,25 +14,39 @@ export default function SwipeDrawer({ open, onClose, children }) {
   const startedInHandle = useRef(false);
   const handleRef = useRef(null);
   const drawerRef = useRef(null);
+  const triggerRef = useRef(null);
 
   useEffect(() => {
     if (open) setEntered(false);
   }, [open]);
 
-  // Escape to close + focus drawer on open
   useEffect(() => {
     if (!open) return;
-    const onEsc = e => { if (e.key === "Escape") onClose(); };
-    document.addEventListener("keydown", onEsc);
-    drawerRef.current?.focus();
-    return () => document.removeEventListener("keydown", onEsc);
+    triggerRef.current = document.activeElement;
+    setTimeout(() => drawerRef.current?.focus(), 50);
+
+    const onKeyDown = e => {
+      if (e.key === "Escape") { onClose(); return; }
+      if (e.key === "Tab" && drawerRef.current) {
+        const focusable = drawerRef.current.querySelectorAll(FOCUSABLE);
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      triggerRef.current?.focus?.();
+    };
   }, [open, onClose]);
 
   const onTouchStart = useCallback(e => {
     startY.current = e.touches[0].clientY;
     startX.current = e.touches[0].clientX;
     direction.current = null;
-    // Check once: did touch start in the handle zone?
     const handle = handleRef.current;
     if (handle) {
       const rect = handle.getBoundingClientRect();
@@ -43,17 +58,13 @@ export default function SwipeDrawer({ open, onClose, children }) {
 
   const onTouchMove = useCallback(e => {
     if (!startedInHandle.current) return;
-
     const dy = e.touches[0].clientY - startY.current;
     const dx = e.touches[0].clientX - startX.current;
-
     if (direction.current === null) {
       if (Math.abs(dy) < DEAD_ZONE && Math.abs(dx) < DEAD_ZONE) return;
       direction.current = Math.abs(dy) > Math.abs(dx) && dy > 0 ? "down" : "other";
     }
-
     if (direction.current !== "down") return;
-
     e.preventDefault();
     setSwiping(true);
     setDragY(Math.max(0, dy));
@@ -85,6 +96,7 @@ export default function SwipeDrawer({ open, onClose, children }) {
       ref={drawerRef}
       role="dialog"
       aria-modal="true"
+      aria-label={label || "Info"}
       tabIndex={-1}
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
@@ -94,8 +106,8 @@ export default function SwipeDrawer({ open, onClose, children }) {
         position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 210,
         background: "#1a1a1e",
         borderTopLeftRadius: 16, borderTopRightRadius: 16,
-        outline: "none",
         maxHeight: "70vh",
+        outline: "none",
         transform: `translateY(${dragY}px)`,
         transition: swiping ? "none" : "transform 0.3s ease",
         animation: entered ? "none" : "drawerUp 0.3s cubic-bezier(0.32, 0.72, 0, 1)",
@@ -104,7 +116,6 @@ export default function SwipeDrawer({ open, onClose, children }) {
         paddingBottom: "env(safe-area-inset-bottom, 0)",
       }}
     >
-      {/* Drag handle */}
       <div ref={handleRef} style={{ padding: "12px 0 6px", display: "flex", justifyContent: "center", cursor: "grab", touchAction: "none" }}>
         <div style={{ width: 36, height: 4, borderRadius: 2, background: "rgba(255,255,255,0.15)" }} />
       </div>

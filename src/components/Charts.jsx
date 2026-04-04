@@ -38,7 +38,7 @@ function InfoPanel({ substance, field, open, onClose }) {
   const srcKey = SRC_KEYS[field];
   const src = srcKey && substance._src?.[srcKey];
 
-  return <SwipeDrawer open={open} onClose={onClose}>
+  return <SwipeDrawer open={open} onClose={onClose} label={`${substance.n} — ${info.title}`}>
     <div style={{ padding: "4px 20px 10px", display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
       <div>
         <span style={{ fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 18, color: c.c }}>{substance.n}</span>
@@ -63,7 +63,7 @@ function InfoPanel({ substance, field, open, onClose }) {
 
 // Tiny info dot at end of row
 function Dot({ onClick }) {
-  return <span role="button" tabIndex={0} aria-label="More info" onClick={e => { e.stopPropagation(); onClick(); }} onKeyDown={e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); e.stopPropagation(); onClick(); }}} style={{ width: 28, height: 28, borderRadius: 14, background: "rgba(255,255,255,0.04)", color: "#555", fontSize: 12, cursor: "pointer", display: "inline-flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontFamily: "'DM Mono',monospace" }}>?</span>;
+  return <button aria-label="More info" onClick={e => { e.stopPropagation(); onClick(); }} style={{ width: 28, height: 28, borderRadius: 14, background: "rgba(255,255,255,0.04)", color: "#555", fontSize: 12, cursor: "pointer", display: "inline-flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontFamily: "'DM Mono',monospace", border: "none", padding: 0 }}>?</button>;
 }
 
 function marginColor(v) {

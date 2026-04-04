@@ -8,7 +8,7 @@ The most valuable contributions are **data corrections**. If you see something w
 
 ### How to report a data issue
 
-1. Go to [github.com/cdepman/doseguide.org/issues](https://github.com/cdepman/doseguide.org/issues)
+1. Go to [github.com/cdepman/opensubstance.org/issues](https://github.com/cdepman/opensubstance.org/issues)
 2. Click **New Issue**
 3. Choose the **Data Correction** template
 4. Fill in:
@@ -38,8 +38,8 @@ That's it. You don't need to touch any code. We'll review the source and update 
 ### Setup
 
 ```bash
-git clone https://github.com/cdepman/doseguide.org.git
-cd doseguide.org
+git clone https://github.com/cdepman/opensubstance.org.git
+cd opensubstance.org
 npm install
 npm run dev
 ```

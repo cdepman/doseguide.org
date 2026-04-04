@@ -247,7 +247,7 @@ export default function App() {
 
       <footer style={{ borderTop: "1px solid rgba(255,255,255,0.04)", padding: "16px", textAlign: "center" }}>
         <p style={{ fontSize: 12, color: "#3a3a3a", fontFamily: "'DM Mono',monospace", marginBottom: 4 }}>Data: TripSit · Nutt et al. 2010 · Broman et al. 2025 · Gable 2004 · DrugsData · DanceSafe · PsychonautWiki</p>
-        <p style={{ fontSize: 12, color: "#3a3a3a", fontFamily: "'DM Mono',monospace" }}>Open source — <a href="https://github.com/cdepman/doseguide.org" target="_blank" rel="noopener noreferrer" style={{ color: "#555", textDecoration: "none", borderBottom: "1px solid #333" }}>contribute on GitHub</a></p>
+        <p style={{ fontSize: 12, color: "#3a3a3a", fontFamily: "'DM Mono',monospace" }}>Open source — <a href="https://github.com/cdepman/opensubstance.org" target="_blank" rel="noopener noreferrer" style={{ color: "#555", textDecoration: "none", borderBottom: "1px solid #333" }}>contribute on GitHub</a></p>
       </footer>
     </main>
 
@@ -280,7 +280,7 @@ export default function App() {
         <div style={{ background: "rgba(255,255,255,0.03)", borderRadius: 10, border: "1px solid rgba(255,255,255,0.06)", padding: 14, marginBottom: 14 }}>
           <h4 style={{ margin: "0 0 8px", fontSize: 13, color: "#c7c4be", fontFamily: "'DM Mono',monospace" }}>Report a data issue</h4>
           <div style={{ fontSize: 13, color: "#8a8780", lineHeight: 1.6 }}>
-            <p style={{ margin: "0 0 4px" }}>1. Go to <a href="https://github.com/cdepman/doseguide.org/issues" target="_blank" rel="noopener noreferrer" style={{ color: "#60a5fa", textDecoration: "none", borderBottom: "1px solid rgba(96,165,250,0.3)" }}>GitHub Issues</a></p>
+            <p style={{ margin: "0 0 4px" }}>1. Go to <a href="https://github.com/cdepman/opensubstance.org/issues" target="_blank" rel="noopener noreferrer" style={{ color: "#60a5fa", textDecoration: "none", borderBottom: "1px solid rgba(96,165,250,0.3)" }}>GitHub Issues</a></p>
             <p style={{ margin: "0 0 4px" }}>2. Tell us which substance and what's wrong</p>
             <p style={{ margin: "0 0 4px" }}>3. Include a source (study, dataset, or article)</p>
             <p style={{ margin: 0 }}>We don't change data based on opinions — we need evidence.</p>
@@ -309,8 +309,8 @@ export default function App() {
         </div>
 
         <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 16 }}>
-          <a href="https://github.com/cdepman/doseguide.org/issues" target="_blank" rel="noopener noreferrer" style={{ flex: 1, minWidth: 140, padding: "12px 16px", borderRadius: 10, background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", color: "#c7c4be", fontSize: 13, fontFamily: "'DM Mono',monospace", textDecoration: "none", textAlign: "center" }}>Report an issue</a>
-          <a href="https://github.com/cdepman/doseguide.org" target="_blank" rel="noopener noreferrer" style={{ flex: 1, minWidth: 140, padding: "12px 16px", borderRadius: 10, background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", color: "#c7c4be", fontSize: 13, fontFamily: "'DM Mono',monospace", textDecoration: "none", textAlign: "center" }}>View source code</a>
+          <a href="https://github.com/cdepman/opensubstance.org/issues" target="_blank" rel="noopener noreferrer" style={{ flex: 1, minWidth: 140, padding: "12px 16px", borderRadius: 10, background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", color: "#c7c4be", fontSize: 13, fontFamily: "'DM Mono',monospace", textDecoration: "none", textAlign: "center" }}>Report an issue</a>
+          <a href="https://github.com/cdepman/opensubstance.org" target="_blank" rel="noopener noreferrer" style={{ flex: 1, minWidth: 140, padding: "12px 16px", borderRadius: 10, background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", color: "#c7c4be", fontSize: 13, fontFamily: "'DM Mono',monospace", textDecoration: "none", textAlign: "center" }}>View source code</a>
         </div>
 
     </SwipePanel>

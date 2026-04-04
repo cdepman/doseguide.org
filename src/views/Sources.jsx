@@ -109,7 +109,7 @@ export default function Sources() {
     </div>
     <div style={{ background: "rgba(245,158,11,0.06)", border: "1px solid rgba(245,158,11,0.15)", borderRadius: 8, padding: 14, marginTop: 10 }}>
       <h3 style={{ margin: "0 0 6px", fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 16, color: "#c4a050", fontWeight: 400 }}>A note on data quality</h3>
-      <p style={{ margin: 0, fontSize: 12.5, color: "#a09070", lineHeight: 1.6 }}>No single source is perfect. We cross-reference multiple sources and err on the side of caution — when sources disagree, we use the more conservative estimate. If you find an error, please <a href="https://github.com/cdepman/doseguide.org/issues" target="_blank" rel="noopener noreferrer" style={{ color: "#c4a050", textDecoration: "none", borderBottom: "1px solid rgba(196,160,80,0.3)" }}>open an issue on GitHub</a>.</p>
+      <p style={{ margin: 0, fontSize: 12.5, color: "#a09070", lineHeight: 1.6 }}>No single source is perfect. We cross-reference multiple sources and err on the side of caution — when sources disagree, we use the more conservative estimate. If you find an error, please <a href="https://github.com/cdepman/opensubstance.org/issues" target="_blank" rel="noopener noreferrer" style={{ color: "#c4a050", textDecoration: "none", borderBottom: "1px solid rgba(196,160,80,0.3)" }}>open an issue on GitHub</a>.</p>
     </div>
   </div>;
 }

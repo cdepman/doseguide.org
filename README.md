@@ -102,8 +102,8 @@ Citation keys map to the `CITE` table at the top of `substances.js` and to full 
 
 ```bash
 # Clone
-git clone https://github.com/cdepman/doseguide.org.git
-cd doseguide.org
+git clone https://github.com/cdepman/opensubstance.org.git
+cd opensubstance.org
 
 # Install
 npm install
@@ -152,7 +152,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the full guide.
 
 If you see a number that's wrong, outdated, or missing context:
 
-1. Go to [github.com/cdepman/doseguide.org/issues](https://github.com/cdepman/doseguide.org/issues)
+1. Go to [github.com/cdepman/opensubstance.org/issues](https://github.com/cdepman/opensubstance.org/issues)
 2. Click **New Issue**
 3. Tell us:
    - **Which substance?** — e.g., "MDMA"
@@ -163,12 +163,12 @@ If you see a number that's wrong, outdated, or missing context:
 
 ### Suggest a new substance
 
-1. Go to [Issues → New Issue](https://github.com/cdepman/doseguide.org/issues/new)
+1. Go to [Issues → New Issue](https://github.com/cdepman/opensubstance.org/issues/new)
 2. Include the substance name, common street names, why it should be added (how widely used?), and any data sources you can point to
 
 ### Report a bug or UI issue
 
-1. Go to [Issues → New Issue](https://github.com/cdepman/doseguide.org/issues/new)
+1. Go to [Issues → New Issue](https://github.com/cdepman/opensubstance.org/issues/new)
 2. Describe what's broken and include a screenshot if possible
 
 ### Code contributions

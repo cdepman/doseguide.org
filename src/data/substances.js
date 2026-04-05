@@ -286,7 +286,7 @@ export const S = [
     feels:["Vivid colors","Body euphoria","Enhanced touch","Mild empathy","Giggles","Music enhancement"],
     odRisk:["Severe nausea","Vasoconstriction","Hypertension at high doses"],
     longTerm:["Limited research","No known organ damage","No dependence"],
-    harm:8,harmEstimated:true,routes:[{nm:"Oral",onset:"45–90 min",dur:"4–6 hr"},{nm:"Insufflated",onset:"5–15 min",dur:"2–4 hr"}],
+    harm:8,harmEstimated:true,routes:[{nm:"Oral",onset:"45–90 min",dur:"4–6 hr"},{nm:"Insufflated (snorted)",onset:"5–15 min",dur:"2–4 hr"}],
     dose:{threshold:"5 mg",light:"8–15 mg",common:"15–25 mg",strong:"25–35 mg",heavy:"35+ mg"},
     lethal:{headline:"No established lethal dose — but effects jump dramatically with small increases.",note:"Steep dose-response curve. The difference between a comfortable experience and an overwhelming one can be just 5-10mg.",cmp:"pill",sz:22,realworld:"Going from 20mg to 30mg doesn't feel like 50% more — it can feel like a completely different drug. A milligram scale is the only reliable way to dose."},
     _src:{
@@ -315,7 +315,7 @@ export const S = [
     feels:["Intense euphoria","Deep empathy","Love for everyone","Enhanced touch","Music is incredible","Jaw clenching"],
     odRisk:["Hyperthermia (overheating → organ failure)","Hyponatremia (water intoxication)","Serotonin syndrome","Seizures"],
     longTerm:["Neurotoxicity from repeated use","Depression during comedowns","Memory impairment","Serotonin depletion — neurotoxicity research suggests 3+ months between uses for recovery"],
-    harm:9,routes:[{nm:"Oral",onset:"30–60 min",dur:"3–5 hr"},{nm:"Insufflated",onset:"5–15 min",dur:"2–4 hr"}],
+    harm:9,routes:[{nm:"Oral",onset:"30–60 min",dur:"3–5 hr"},{nm:"Insufflated (snorted)",onset:"5–15 min",dur:"2–4 hr"}],
     dose:{threshold:"30 mg",light:"40–75 mg",common:"75–125 mg",strong:"125–175 mg",heavy:"175+ mg"},
     lethal:{headline:"People have died from as little as 1-2 pills — but usually from overheating, not the drug itself.",note:"Most MDMA deaths are from hyperthermia (overheating in hot environments) or hyponatremia (drinking too much water). Heat, dehydration, and re-dosing are the primary risk multipliers.",cmp:"pill",sz:22,realworld:"1-2 pills (150-300mg) in a hot club without water breaks has killed otherwise healthy people. It's not about how much — it's about the environment.",gable:{ed:"125 mg",ld:"~2 g",ratio:"16:1"}},
     _src:{
@@ -344,7 +344,7 @@ export const S = [
     feels:["Euphoria & confidence","Extreme alertness","Numbness","Talkativeness","Feeling invincible"],
     odRisk:["Heart attack","Stroke","Seizures","Sudden death (cardiac arrhythmia)"],
     longTerm:["Nasal septum damage","Cardiovascular disease","Addiction","Paranoia","Financial ruin"],
-    harm:27,routes:[{nm:"Insufflated",onset:"1–5 min",dur:"15–45 min"},{nm:"Smoked (crack)",onset:"Seconds",dur:"5–15 min"},{nm:"Intravenous",onset:"Seconds",dur:"10–20 min"}],
+    harm:27,routes:[{nm:"Insufflated (snorted)",onset:"1–5 min",dur:"15–45 min"},{nm:"Smoked (crack)",onset:"Seconds",dur:"5–15 min"},{nm:"Intravenous",onset:"Seconds",dur:"10–20 min"}],
     dose:{threshold:"10 mg",light:"20–50 mg",common:"50–100 mg",strong:"100–150 mg",heavy:"150+ mg"},
     lethal:{headline:"Your heart decides — some people have died from a single line.",note:"Heart sensitivity varies wildly between individuals. There is no way to predict who will have a cardiac event.",cmp:"line",sz:[50,8],realworld:"A person with an undiagnosed heart condition can die from the same amount their friend does every weekend. There's no 'safe' test dose.",gable:{ed:"80 mg intranasal",ld:"~1.2 g",ratio:"15:1"}},
     _src:{
@@ -374,7 +374,7 @@ export const S = [
     feels:["Laser focus","Endless energy","Euphoria","Confidence","Appetite gone","Talkativeness"],
     odRisk:["Heart attack","Stroke","Hyperthermia","Psychosis"],
     longTerm:["Cardiovascular damage","Stimulant psychosis","Insomnia","Weight loss","Dependence","Dental issues"],
-    harm:23,routes:[{nm:"Oral",onset:"15–45 min",dur:"4–8 hr"},{nm:"Insufflated",onset:"5–15 min",dur:"3–6 hr"}],
+    harm:23,routes:[{nm:"Oral",onset:"15–45 min",dur:"4–8 hr"},{nm:"Insufflated (snorted)",onset:"5–15 min",dur:"3–6 hr"}],
     dose:{threshold:"5 mg",light:"10–20 mg",common:"20–40 mg",strong:"40–70 mg",heavy:"70+ mg"},
     lethal:{headline:"Lethal dose varies hugely — but heart strain is always there.",note:"Even tolerant users carry cardiovascular risk. The lethal dose depends on your heart, not just the amount.",cmp:"pill",sz:22,realworld:"A handful of pills could be fatal for one person and barely noticeable for another. It depends on your heart, not your tolerance."},
     _src:{
@@ -404,7 +404,7 @@ export const S = [
     feels:["Extreme euphoria","Superhuman energy","Invincibility","Hypersexuality","Extreme focus"],
     odRisk:["Hyperthermia","Heart failure","Stroke","Psychosis","Seizures","Rhabdomyolysis"],
     longTerm:["Severe brain damage","Psychosis (common)","Devastating addiction","Tooth decay ('meth mouth')","Premature aging","Cardiovascular disease"],
-    harm:33,routes:[{nm:"Smoked",onset:"Seconds",dur:"8–24 hr"},{nm:"Insufflated",onset:"3–5 min",dur:"8–24 hr"},{nm:"Oral",onset:"15–30 min",dur:"10–24 hr"}],
+    harm:33,routes:[{nm:"Smoked",onset:"Seconds",dur:"8–24 hr"},{nm:"Insufflated (snorted)",onset:"3–5 min",dur:"8–24 hr"},{nm:"Oral",onset:"15–30 min",dur:"10–24 hr"}],
     dose:{threshold:"5 mg",light:"5–15 mg",common:"15–30 mg",strong:"30–60 mg",heavy:"60+ mg"},
     lethal:{headline:"100mg — about a tenth of a gram — can kill someone without tolerance.",note:"The extreme duration (up to 24 hours) means your body has no chance to recover. Effects stack as you stay awake.",cmp:"pill",sz:22,realworld:"A tenth of a gram is a small pinch of powder. And unlike most drugs, the effects last so long that your body can't recover between doses.",gable:{ed:"15 mg oral",ld:">150 mg",ratio:"10:1"}},
     _src:{
@@ -494,7 +494,7 @@ export const S = [
     feels:["Floating/disconnection","Pain relief","Euphoria","K-hole (high dose)","Wonky movement","Music distortion"],
     odRisk:["Aspiration (choking on vomit)","Respiratory depression (with other downers)","Loss of consciousness"],
     longTerm:["BLADDER DAMAGE (chronic use — severe, irreversible)","Kidney damage","Psychological dependence","Cognitive impairment","Urinary tract issues — pain, frequency, blood"],
-    harm:15,routes:[{nm:"Insufflated",onset:"5–15 min",dur:"45–90 min"},{nm:"IM injection",onset:"2–5 min",dur:"45–90 min"},{nm:"Oral",onset:"15–30 min",dur:"1–2 hr"}],
+    harm:15,routes:[{nm:"Insufflated (snorted)",onset:"5–15 min",dur:"45–90 min"},{nm:"IM injection",onset:"2–5 min",dur:"45–90 min"},{nm:"Oral",onset:"15–30 min",dur:"1–2 hr"}],
     dose:{threshold:"10 mg",light:"15–30 mg",common:"30–75 mg",strong:"75–150 mg",heavy:"150+ mg",note:"Doses above are for insufflated. IM is roughly 2/3 the insufflated dose (IM common: 25–50 mg, K-hole: 75–100 mg). Oral requires ~3x the insufflated dose due to low bioavailability."},
     lethal:{headline:"Very rarely lethal alone — almost every death involves choking on vomit or mixing with downers.",note:"Ketamine itself has a wide safety margin. The danger is becoming unconscious and choking, or combining with alcohol/opioids/GHB.",cmp:"line",sz:[50,8],realworld:"Dying from ketamine alone would require a very large amount. But a moderate dose of K mixed with a few drinks has killed people.",gable:{ed:"70 mg intranasal",ld:"~2.7 g",ratio:"38:1",note:"†animal extrapolation"}},
     _src:{
@@ -523,7 +523,7 @@ export const S = [
     feels:["Dissociation","Numbness","Invincibility feeling","Distorted perception","Agitation"],
     odRisk:["Psychosis","Extreme agitation/violence","Seizures","Hyperthermia","Rhabdomyolysis","Death"],
     longTerm:["Psychosis (can persist)","Memory loss","Speech difficulties","Depression","Flashbacks"],
-    harm:20,harmEstimated:true,routes:[{nm:"Smoked (dipped)",onset:"2–5 min",dur:"4–8 hr"},{nm:"Insufflated",onset:"5–15 min",dur:"4–8 hr"},{nm:"Oral",onset:"15–60 min",dur:"6–24 hr"}],
+    harm:20,harmEstimated:true,routes:[{nm:"Smoked (dipped)",onset:"2–5 min",dur:"4–8 hr"},{nm:"Insufflated (snorted)",onset:"5–15 min",dur:"4–8 hr"},{nm:"Oral",onset:"15–60 min",dur:"6–24 hr"}],
     dose:{threshold:"1 mg",light:"2–3 mg",common:"3–5 mg",strong:"5–10 mg",heavy:"10+ mg (psychosis likely)"},
     lethal:{headline:"People have died at almost any dose — PCP is genuinely unpredictable.",note:"Deaths from extreme body temperature, muscle breakdown, or injuries from erratic violent behavior. The drug can make you unaware you're hurting yourself.",cmp:"pill",sz:22,realworld:"People on PCP have died from running into traffic, breaking through windows, or from their body overheating without them noticing."},
     _src:{
@@ -727,7 +727,7 @@ export const S = [
     feels:["Euphoria ('warm blanket')","Total pain relief","Deep sedation","Warmth","Nausea","Itching"],
     odRisk:["YOU STOP BREATHING","Aspiration","Cardiac arrest","Death — #1 cause of drug overdose death"],
     longTerm:["Severe addiction (often within days)","Tolerance escalation","Vein damage/infections (IV)","Constipation","Social destruction","Withdrawal (excruciating but not fatal)"],
-    harm:55,routes:[{nm:"Intravenous",onset:"Seconds",dur:"3–5 hr"},{nm:"Smoked",onset:"Seconds",dur:"3–5 hr"},{nm:"Insufflated",onset:"5–15 min",dur:"3–6 hr"},{nm:"Oral",onset:"15–45 min",dur:"4–6 hr"}],
+    harm:55,routes:[{nm:"Intravenous",onset:"Seconds",dur:"3–5 hr"},{nm:"Smoked",onset:"Seconds",dur:"3–5 hr"},{nm:"Insufflated (snorted)",onset:"5–15 min",dur:"3–6 hr"},{nm:"Oral",onset:"15–45 min",dur:"4–6 hr"}],
     dose:{threshold:"~5 mg morph eq",light:"5–15 mg",common:"15–30 mg",strong:"30–60 mg",heavy:"60+ mg"},
     lethal:{headline:"30mg of morphine — about two pills — can kill someone who doesn't use regularly.",note:"The gap between 'high' and 'stopped breathing' is terrifyingly small. If someone stops breathing: CALL 911 and give NARCAN immediately.",cmp:"pill",sz:22,realworld:"Two prescription morphine pills, or a single bag of street heroin, can be fatal if you don't have tolerance. And you can never be sure of street heroin potency.",gable:{ed:"8 mg IV",ld:"~50 mg",ratio:"6:1"}},
     _src:{

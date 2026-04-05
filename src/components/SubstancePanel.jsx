@@ -1,22 +1,24 @@
 import { useRef, useCallback } from "react";
 import Detail from "./Detail";
 import SwipePanel from "./SwipePanel";
-import { S, CAT } from "../data/substances";
-
-const SECTIONS = [
-  { id: "sp-overview", label: "Overview" },
-  { id: "sp-dosage", label: "Dosage" },
-  { id: "sp-chemistry", label: "Chemistry" },
-  { id: "sp-lethality", label: "Lethality" },
-  { id: "sp-effects", label: "Effects" },
-  { id: "sp-biggest-risks", label: "Risks" },
-  { id: "sp-long-term-risks", label: "Long-term" },
-];
+import { S, CAT, MED_WARNINGS } from "../data/substances";
 
 export default function SubstancePanel({ substanceId, onClose, onNavigate }) {
   const s = S.find(x => x.id === substanceId);
   if (!s) return null;
   const c = CAT[s.cat];
+  const hasContra = MED_WARNINGS.some(w => w.affectedCats.includes(s.cat) || w.affectedIds.includes(s.id));
+
+  const sections = [
+    { id: "sp-overview", label: "Overview" },
+    { id: "sp-dosage", label: "Dosage" },
+    s.chem && { id: "sp-chemistry", label: "Chemistry" },
+    { id: "sp-lethality", label: "Lethality" },
+    hasContra && { id: "sp-contraindications", label: "Contraindications" },
+    { id: "sp-effects", label: "Effects" },
+    { id: "sp-biggest-risks", label: "Risks" },
+    { id: "sp-long-term-risks", label: "Long-term" },
+  ].filter(Boolean);
   const scrollRef = useRef(null);
 
   const scrollTo = useCallback((id) => {
@@ -36,7 +38,7 @@ export default function SubstancePanel({ substanceId, onClose, onNavigate }) {
     </div>
     {/* Jump tabs */}
     <div style={{ display: "flex", gap: 6, flexWrap: "wrap", padding: "8px 0 10px", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-      {SECTIONS.map(sec => <button key={sec.id} onClick={() => scrollTo(sec.id)} style={{ padding: "5px 10px", borderRadius: 7, border: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.03)", color: "#8a8780", fontFamily: "'DM Mono',monospace", fontSize: 12, cursor: "pointer", minHeight: 30 }}>{sec.label}</button>)}
+      {sections.map(sec => <button key={sec.id} onClick={() => scrollTo(sec.id)} style={{ padding: "5px 10px", borderRadius: 7, border: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.03)", color: "#8a8780", fontFamily: "'DM Mono',monospace", fontSize: 12, cursor: "pointer", minHeight: 30 }}>{sec.label}</button>)}
     </div>
   </>}>
     <div ref={scrollRef}>

@@ -27,7 +27,7 @@ function LethalViz({ s }) {
   </div>;
 }
 
-export default function Detail({ s, onNavigate }) {
+export default function Detail({ s, onNavigate, sectionPrefix = "" }) {
   const c = CAT[s.cat];
 
   // Simplified view for medications
@@ -52,7 +52,8 @@ export default function Detail({ s, onNavigate }) {
   }
 
   const lvls = [{ l: "Threshold", v: s.dose.threshold, c: "#4ade80" }, { l: "Light", v: s.dose.light, c: "#86efac" }, { l: "Common", v: s.dose.common, c: "#fbbf24" }, { l: "Strong", v: s.dose.strong, c: "#f97316" }, { l: "Heavy", v: s.dose.heavy, c: "#ef4444" }];
-  const Sec = ({ title, children }) => <div style={{ marginBottom: 24 }}><h4 style={{ margin: "0 0 10px", fontSize: 13, color: "#6b6860", fontFamily: "'DM Mono',monospace", textTransform: "uppercase", letterSpacing: "0.08em" }}>{title}</h4>{children}</div>;
+  const sectionId = (title) => sectionPrefix + title.toLowerCase().replace(/[^a-z]+/g, "-");
+  const Sec = ({ title, children }) => <div data-section={sectionId(title)} style={{ marginBottom: 24, scrollMarginTop: 16 }}><h4 style={{ margin: "0 0 10px", fontSize: 13, color: "#6b6860", fontFamily: "'DM Mono',monospace", textTransform: "uppercase", letterSpacing: "0.08em" }}>{title}</h4>{children}</div>;
   const medWarnings = MED_WARNINGS.filter(w => w.affectedCats.includes(s.cat) || w.affectedIds.includes(s.id));
   return <div>
     {medWarnings.map(w => <div key={w.id} style={{ background: "rgba(239,68,68,0.08)", border: "1.5px solid rgba(239,68,68,0.35)", borderRadius: 10, padding: "14px 16px", marginBottom: 20 }}>
@@ -83,7 +84,7 @@ export default function Detail({ s, onNavigate }) {
         {s.chem.relatives.map(rid => { const rel = S.find(x => x.id === rid); if (!rel) return null; const rc = CAT[rel.cat]; return <span key={rid} onClick={e => { e.stopPropagation(); onNavigate?.(rid); }} style={{ fontSize: 14, padding: "3px 8px", borderRadius: 6, cursor: onNavigate ? "pointer" : "default", background: rc.b, color: rc.c, fontFamily: "'DM Mono',monospace", border: `1px solid ${rc.c}25` }}>{rel.sn || rel.n}</span>; })}
       </div>}
     </div></Sec>}
-    {(s.lethal.cmp || s.marginExplain) && <Sec title="Safety margin & lethality">{s.marginExplain && <p style={{ margin: "0 0 16px", fontSize: 16, color: "#8a8780", lineHeight: 1.6 }}>{s.marginExplain}</p>}<LethalViz s={s} /></Sec>}
+    {(s.lethal.cmp || s.marginExplain) && <Sec title="Lethality">{s.marginExplain && <p style={{ margin: "0 0 16px", fontSize: 16, color: "#8a8780", lineHeight: 1.6 }}>{s.marginExplain}</p>}<LethalViz s={s} /></Sec>}
     <Sec title="Effects"><div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>{s.feels.map(f => <span key={f} style={{ fontSize: 16, padding: "6px 12px", borderRadius: 8, background: "rgba(34,197,94,0.08)", color: "#5ab87a" }}>{f}</span>)}</div></Sec>
     <Sec title="Biggest risks"><div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>{s.odRisk.map(r => <span key={r} style={{ fontSize: 16, padding: "6px 12px", borderRadius: 8, background: "rgba(239,68,68,0.1)", color: "#e07070" }}>{r}</span>)}</div></Sec>
     <Sec title="Long-term risks"><div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>{s.longTerm.map(l => <span key={l} style={{ fontSize: 16, padding: "6px 12px", borderRadius: 8, background: "rgba(99,102,241,0.08)", color: "#8b8fd0" }}>{l}</span>)}</div></Sec>

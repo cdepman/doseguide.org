@@ -199,7 +199,7 @@ export const S = [
     odRisk:["Extreme psychological distress","No lethal overdose death recorded"],
     longTerm:["No organ damage","No dependence","May improve depression (clinical research)","Can surface latent psychosis"],
     harm:5,routes:[{nm:"Eaten",onset:"20–60 min",dur:"4–6 hr"},{nm:"Tea",onset:"10–30 min",dur:"3–5 hr"}],
-    dose:{threshold:"0.25 g",light:"0.5–1 g",common:"1–2.5 g",strong:"2.5–5 g",heavy:"5+ g"},
+    dose:{threshold:"0.25 g",light:"0.5–1 g",common:"1–2.5 g",strong:"2.5–5 g",heavy:"5+ g",note:"* Doses assume average Psilocybe cubensis (~0.6% psilocybin). Potency varies dramatically: psilocybin content spans a 1-to-40 range across species (e.g. P. azurescens is ~3x cubensis) and can vary 2x between individual mushrooms in the same batch. Start low with unfamiliar strains."},
     lethal:{headline:"You'd have to eat nearly 4 pounds of dried mushrooms. That's physically impossible.",note:"Lethal dose estimated at ~1.7 kg dried — roughly 4 grocery bags stuffed full. Your body would reject them long before you got close.",cmp:"bag",sz:60,realworld:"Imagine eating 4 pounds of dried mushrooms in one sitting. You'd vomit long before reaching a dangerous amount. It simply cannot happen.",gable:{ed:"6 mg psilocybin",ld:"~6 g",ratio:"1,000:1",note:"†animal extrapolation"}},
     _src:{
       harm:          {ref:"nutt2010", conf:"measured", note:"Nutt 2010: mushrooms overall harm = 5"},
@@ -465,7 +465,7 @@ export const S = [
     odRisk:["Severe anxiety/paranoia (edibles)","Psychotic episode (rare, high doses)","No lethal danger"],
     longTerm:["Mild psychological dependence","Memory impairment (reversible)","Respiratory issues (smoking only)","May affect brain development under age 25"],
     harm:20,routes:[{nm:"Smoked / Vaped",onset:"Seconds",dur:"1–4 hr"},{nm:"Edibles",onset:"30 min – 2 hr",dur:"4–10 hr"}],
-    dose:{threshold:"1 mg THC",light:"2–5 mg",common:"5–15 mg",strong:"15–30 mg",heavy:"30+ mg"},
+    dose:{threshold:"1 mg THC",light:"2–5 mg",common:"5–15 mg",strong:"15–30 mg",heavy:"30+ mg",note:"* Doses are in mg of THC. Flower potency ranges from ~5% to 35%+ THC across strains — a 7x range that makes '1 hit' mean very different things. Licensed dispensary products label THC content; street flower does not. Edibles are more predictable per-piece but onset is delayed 30 min – 2 hr."},
     lethal:{headline:"No human has ever died from a cannabis overdose. It is physically impossible.",note:"Even the most terrifying edible experience is not physically dangerous. No one has ever died from cannabis toxicity.",cmp:"bag",sz:60,realworld:"You would need to consume roughly 1,500 pounds of cannabis in 15 minutes. That's not a typo — fifteen hundred pounds.",gable:{ed:"15 mg THC",ld:">15 g",ratio:">1,000:1",note:"†animal extrapolation"}},
     _src:{
       harm:          {ref:"nutt2010", conf:"measured", note:"Nutt 2010: cannabis overall harm = 20"},

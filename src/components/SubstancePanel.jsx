@@ -41,12 +41,18 @@ export default function SubstancePanel({ substanceId, onClose, onNavigate }) {
       >Close</button>
     </div>
 
-    {/* Description */}
-    <p style={{ margin: "0 0 18px", fontSize: 16, color: "#a09d97", lineHeight: 1.6 }}>{s.blurb || s.desc}</p>
+    {/* Overview */}
+    <div style={{ marginBottom: 24 }}>
+      <h4 style={{ margin: "0 0 10px", fontSize: 13, color: "#6b6860", fontFamily: "'DM Mono',monospace", textTransform: "uppercase", letterSpacing: "0.08em" }}>Overview</h4>
+      <p style={{ margin: 0, fontSize: 16, color: "#a09d97", lineHeight: 1.6 }}>{s.blurb || s.desc}</p>
+    </div>
 
-    {/* Routes */}
-    <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 22 }}>
-      {s.routes.map(r => <span key={r.nm} style={{ fontSize: 15, padding: "5px 10px", borderRadius: 8, background: "rgba(255,255,255,0.04)", color: "#8a8780", fontFamily: "'DM Mono',monospace" }}>{r.nm} · <span style={{ color: "#5a8a70" }}>🚀 {r.onset}</span> · <span style={{ color: "#6878a0" }}>⏳ {r.dur}</span></span>)}
+    {/* Onset & Duration */}
+    <div style={{ marginBottom: 24 }}>
+      <h4 style={{ margin: "0 0 10px", fontSize: 13, color: "#6b6860", fontFamily: "'DM Mono',monospace", textTransform: "uppercase", letterSpacing: "0.08em" }}>Onset & Duration</h4>
+      <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+        {s.routes.map(r => <span key={r.nm} style={{ fontSize: 15, padding: "6px 12px", borderRadius: 8, background: "rgba(255,255,255,0.04)", color: "#8a8780", fontFamily: "'DM Mono',monospace" }}>{r.nm} · <span style={{ color: "#5a8a70" }}>🚀 {r.onset}</span> · <span style={{ color: "#6878a0" }}>⏳ {r.dur}</span></span>)}
+      </div>
     </div>
 
     {/* Full detail */}

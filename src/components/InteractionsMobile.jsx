@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import { S, CAT, RL } from "../data/substances";
-import { cr, getMech, getCoSrc } from "../data/combinations";
+import { cr, getMech, getCoSrc, getNicknames } from "../data/combinations";
 import { CITE } from "../data/substances";
 
 const GROUPS_ORDER = ["dangerous", "unsafe", "caution", "decrease", "low_risk", "synergy"];
@@ -40,7 +40,7 @@ export default function InteractionsMobile() {
     if (!selected) return [];
     const interactions = S
       .filter(s => s.id !== selected)
-      .map(s => ({ substance: s, risk: cr(selected, s.id), mech: getMech(selected, s.id), coSrc: getCoSrc(selected, s.id) }))
+      .map(s => ({ substance: s, risk: cr(selected, s.id), mech: getMech(selected, s.id), coSrc: getCoSrc(selected, s.id), nicks: getNicknames(selected, s.id) }))
       .filter(x => x.risk);
 
     return GROUPS_ORDER
@@ -106,14 +106,17 @@ export default function InteractionsMobile() {
 
       {/* Items */}
       <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-        {g.items.map(({ substance: sub, mech, coSrc }) => { const isOpen = srcOpen === sub.id; const srcLabel = coSrc.src === "dg_corrected" ? "OpenSubstance correction" : coSrc.src === "dg_added" ? "OpenSubstance addition" : "TripSit v4.0"; const refStr = coSrc.ref && coSrc.ref !== "tripsit" ? CITE[coSrc.ref]?.split(".")[0] || coSrc.ref : null; return <div key={sub.id} style={{
+        {g.items.map(({ substance: sub, mech, coSrc, nicks }) => { const isOpen = srcOpen === sub.id; const srcLabel = coSrc.src === "dg_corrected" ? "OpenSubstance correction" : coSrc.src === "dg_added" ? "OpenSubstance addition" : "TripSit v4.0"; const refStr = coSrc.ref && coSrc.ref !== "tripsit" ? CITE[coSrc.ref]?.split(".")[0] || coSrc.ref : null; return <div key={sub.id} style={{
           background: "rgba(255,255,255,0.025)", borderRadius: 8,
           border: `1px solid ${g.c}18`, padding: "10px 12px",
         }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-              <span style={{ fontSize: 13, color: g.c }}>{g.i}</span>
-              <span style={{ fontSize: 16, fontFamily: "'Instrument Serif',Georgia,serif", color: CAT[sub.cat].c }}>{sub.n}</span>
+            <div>
+              <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                <span style={{ fontSize: 13, color: g.c }}>{g.i}</span>
+                <span style={{ fontSize: 16, fontFamily: "'Instrument Serif',Georgia,serif" }}><span style={{ color: CAT[selSub.cat].c }}>{selSub.sn || selSub.n}</span> <span style={{ color: "#444" }}>×</span> <span style={{ color: CAT[sub.cat].c }}>{sub.n}</span></span>
+              </div>
+              {nicks.length > 0 && <p style={{ margin: "2px 0 0", fontSize: 14, color: "#6b6860", fontFamily: "'DM Mono',monospace", fontStyle: "italic" }}>"{nicks.join('", "')}"</p>}
             </div>
             <div role="button" tabIndex={0} aria-label="View source" onClick={e => { e.stopPropagation(); setSrcOpen(isOpen ? null : sub.id); }} onKeyDown={e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); e.stopPropagation(); setSrcOpen(isOpen ? null : sub.id); }}} style={{ width: 26, height: 26, borderRadius: 13, border: `1px solid ${isOpen ? g.c + "50" : "rgba(138,135,128,0.25)"}`, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", background: isOpen ? g.c + "12" : "transparent", flexShrink: 0, transition: "all 0.15s" }}>
               <span style={{ fontSize: 12, color: isOpen ? g.c : "#6b6860", fontWeight: 500 }}>i</span>

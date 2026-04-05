@@ -184,6 +184,9 @@ const MECH = {
   "cyp_inhibitor+lsd": "LOW RISK despite being a CYP substrate. LSD is metabolized by CYP3A4 and CYP2D6, so CYP inhibitors could increase blood levels. However, LSD's therapeutic index is >1000:1 — even a significant increase stays far below any dangerous physical threshold. The experience may be more intense or longer-lasting, but the physical safety margin remains enormous.",
   "cyp_inhibitor+antiretroviral": "Stacking CYP inhibitors. If you take both a cancer drug/antifungal AND an HIV medication containing ritonavir or cobicistat, the CYP3A4 inhibition compounds. This affects recreational drugs, the cancer treatment, and the HIV medication simultaneously (Antoniou & Tseng 2005).",
   "cyp_inhibitor+methadone_rx": "Methadone uses multiple metabolic pathways (CYP3A4, CYP2B6, CYP2C9), so it's less affected than fentanyl or MDMA. However, strong CYP3A4 inhibitors can still increase methadone levels enough to prolong QT interval and increase sedation.",
+  // ── PSYCHEDELIC + CANNABIS VARIABILITY ──
+  "cannabis+mushrooms": "Physically low-risk but extremely unpredictable. Cannabis intensifies psilocybin's visual and emotional effects and can trigger anxiety spirals. Potency varies enormously on both sides: psilocybin content spans a 1-to-40 range across mushroom strains and can vary 2x between individual mushrooms in the same batch. THC in cannabis ranges from ~5% to 35%+. The same '1 gram + a joint' produces completely different experiences depending on what you actually have.",
+  "cannabis+lsd": "Physically low-risk but can dramatically intensify the trip. Cannabis often triggers a second peak or re-intensification hours into an LSD experience, especially if smoked after the initial peak. Many difficult psychedelic experiences begin at this moment. Unlike mushrooms, LSD potency is more consistent per tab — but cannabis potency varies 5-7x across strains, making the combined intensity hard to predict.",
   // ── SYNERGY MECHANISMS ──
   "lsd+ketamine": "Both alter perception through different mechanisms — LSD via 5-HT2A agonism, ketamine via NMDA antagonism. The combination is more immersive than either alone. Physical risk is low, but psychological intensity is extreme and dose-dependent.",
   "mushrooms+nitrous": "N₂O dramatically intensifies the psychedelic peak for 30-60 seconds. The experience can be overwhelming and disorienting. Physical risk is low — the main danger is falling or losing awareness during the brief but intense dissociation.",
@@ -199,6 +202,44 @@ const MECH = {
 
 export function getMech(a, b) {
   return MECH[[a, b].sort().join("+")] || MECH[a + "+" + b] || MECH[b + "+" + a] || null;
+}
+
+// ── COMBINATION NICKNAMES ────────────────────────────────────────────────────
+// Common street/community names for drug combinations.
+// Source: Wikipedia "List of drug combinations" + community knowledge.
+const NICKNAMES = {
+  "lsd+mdma":           ["Candy flip"],
+  "mdma+mushrooms":     ["Hippie flip"],
+  "ketamine+mdma":      ["Kitty flip"],
+  "2cx+mdma":           ["Nexus flip"],
+  "dmt+mdma":           ["Shaman flip"],
+  "dxm+mdma":           ["Robo flip"],
+  "alcohol+mdma":       ["Tipsy flip"],
+  "ghb+mdma":           ["Gamma flip"],
+  "cannabis+mdma":      ["Stoner flip"],
+  "mdma+mescaline":     ["Love flip"],
+  "lsd+mushrooms":      ["Soul bomb", "Wizard flip"],
+  "dmt+lsd":            ["Cosmo flip"],
+  "dmt+mushrooms":      ["Terence flip"],
+  "dxm+mushrooms":      ["Cherry bomb"],
+  "ketamine+lsd":       ["Dolphin flip"],
+  "ketamine+mushrooms": ["Funky flip"],
+  "cocaine+opioids":    ["Speedball"],
+  "methamphetamine+opioids": ["Goofball"],
+  "alcohol+cocaine":    ["Snow-cone"],
+  "ghb+methamphetamine":["Cherry meth"],
+  "cocaine+ketamine":   ["Calvin Klein", "CK1"],
+  "alcohol+cannabis":   ["Cross-fading"],
+  "caffeine+cannabis":  ["Hippie speedball"],
+  "cannabis+pcp":       ["Wet"],
+  "lsd+nitrous":        ["Gasid"],
+  "mdma+nitrous":       ["Nox"],
+  "mdma+pde5":          ["Sextasy"],
+};
+
+export function getNicknames(a, b) {
+  const key = [a, b].sort().join("+");
+  return NICKNAMES[key] || [];
 }
 
 // ── PER-RATING SOURCE METADATA ──────────────────────────────────────────────

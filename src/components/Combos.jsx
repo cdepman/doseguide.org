@@ -1,5 +1,5 @@
 import { S, CAT, RL } from "../data/substances";
-import { cr, getMech, getCoSrc } from "../data/combinations";
+import { cr, getMech, getCoSrc, getNicknames } from "../data/combinations";
 
 export default function Combos({ selected }) {
   if (selected.length < 2) return null;
@@ -35,8 +35,8 @@ export default function Combos({ selected }) {
       <div style={{ fontSize: 13, fontWeight: 600, color: w.color, fontFamily: "'DM Mono',monospace", marginBottom: 4 }}>{w.title}</div>
       <p style={{ margin: 0, fontSize: 12.5, color: "#a09890", lineHeight: 1.5 }}>{w.text}</p>
     </div>)}
-    {pairs.map(({ a, b, risk, mech }) => { const lv = risk ? RL[risk] : null; const coSrc = getCoSrc(a.id, b.id); return <div key={`${a.id}-${b.id}`} style={{ padding: "10px 12px", borderRadius: 8, marginBottom: 5, background: "rgba(255,255,255,0.02)", borderLeft: `3px solid ${lv?.c || "#555"}` }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 5, marginBottom: 4, fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 14 }}><span style={{ color: CAT[a.cat].c }}>{a.n}</span><span style={{ color: "#444" }}>+</span><span style={{ color: CAT[b.cat].c }}>{b.n}</span></div>
+    {pairs.map(({ a, b, risk, mech }) => { const lv = risk ? RL[risk] : null; const coSrc = getCoSrc(a.id, b.id); const nicks = getNicknames(a.id, b.id); return <div key={`${a.id}-${b.id}`} style={{ padding: "10px 12px", borderRadius: 8, marginBottom: 5, background: "rgba(255,255,255,0.02)", borderLeft: `3px solid ${lv?.c || "#555"}` }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 5, marginBottom: 4, fontFamily: "'Instrument Serif',Georgia,serif", fontSize: 14, flexWrap: "wrap" }}><span style={{ color: CAT[a.cat].c }}>{a.n}</span><span style={{ color: "#444" }}>+</span><span style={{ color: CAT[b.cat].c }}>{b.n}</span>{nicks.length > 0 && <span style={{ fontSize: 12, color: "#6b6860", fontFamily: "'DM Mono',monospace" }}>"{nicks.join('", "')}"</span>}</div>
       <div style={{ display: "flex", gap: 6, alignItems: "flex-start" }}><span style={{ fontSize: 18, color: lv?.c || "#666" }}>{lv?.i || "?"}</span><div><div style={{ fontSize: 13, fontWeight: 600, color: lv?.c || "#888", fontFamily: "'DM Mono',monospace" }}>{lv?.l || "Unknown"}</div><p style={{ margin: "2px 0 0", fontSize: 13, color: "#7a7670", lineHeight: 1.5 }}>{lv?.d || "No data. Absence ≠ safety."}</p>
       {mech && <p style={{ margin: "6px 0 0", fontSize: 13, color: lv?.c === "#ef4444" ? "#e08080" : lv?.c === "#f97316" ? "#d09060" : "#a0a090", lineHeight: 1.5, background: "rgba(255,255,255,0.03)", padding: "8px 10px", borderRadius: 6, borderLeft: `2px solid ${lv?.c || "#555"}44` }}><strong style={{ fontFamily: "'DM Mono',monospace", fontSize: 12 }}>WHY:</strong> {mech}</p>}
       <p style={{ margin: "4px 0 0", fontSize: 12, color: "#444", fontFamily: "'DM Mono',monospace" }}>{coSrc.src === "dg_corrected" ? "OpenSubstance correction" : coSrc.src === "dg_added" ? "OpenSubstance" : "TripSit v4.0"}{coSrc.ref && coSrc.ref !== "tripsit" ? ` · ${coSrc.ref}` : ""}</p>

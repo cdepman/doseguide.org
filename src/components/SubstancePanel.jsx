@@ -2,12 +2,14 @@ import { useRef, useCallback } from "react";
 import Detail from "./Detail";
 import SwipePanel from "./SwipePanel";
 import { S, CAT, MED_WARNINGS } from "../data/substances";
+import { cr } from "../data/combinations";
 
 export default function SubstancePanel({ substanceId, onClose, onNavigate }) {
   const s = S.find(x => x.id === substanceId);
   if (!s) return null;
   const c = CAT[s.cat];
-  const hasContra = MED_WARNINGS.some(w => w.affectedCats.includes(s.cat) || w.affectedIds.includes(s.id));
+  const hasContra = MED_WARNINGS.some(w => w.affectedCats.includes(s.cat) || w.affectedIds.includes(s.id))
+    || S.some(m => m.isMedication && { dangerous: 1, unsafe: 1 }[cr(s.id, m.id)]);
 
   const sections = [
     { id: "sp-overview", label: "Overview" },

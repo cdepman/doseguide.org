@@ -56,11 +56,6 @@ export default function Detail({ s, onNavigate, sectionPrefix = "" }) {
   const Sec = ({ title, children }) => <div data-section={sectionId(title)} style={{ marginBottom: 24, scrollMarginTop: 16 }}><h4 style={{ margin: "0 0 10px", fontSize: 13, color: "#6b6860", fontFamily: "'DM Mono',monospace", textTransform: "uppercase", letterSpacing: "0.08em" }}>{title}</h4>{children}</div>;
   const medWarnings = MED_WARNINGS.filter(w => w.affectedCats.includes(s.cat) || w.affectedIds.includes(s.id));
   return <div>
-    {medWarnings.map(w => <div key={w.id} style={{ background: "rgba(239,68,68,0.08)", border: "1.5px solid rgba(239,68,68,0.35)", borderRadius: 10, padding: "14px 16px", marginBottom: 20 }}>
-      <div style={{ fontSize: 14, fontWeight: 700, color: w.color, fontFamily: "'DM Mono',monospace", marginBottom: 6 }}>{w.title}</div>
-      <p style={{ margin: 0, fontSize: 16, color: "#c08080", lineHeight: 1.6 }}>{w.text}</p>
-      <p style={{ margin: "8px 0 0", fontSize: 12, color: "#555", fontFamily: "'DM Mono',monospace" }}>Source: {w.source}</p>
-    </div>)}
     {s.supplyRisk >= 3 && <Sec title="Supply & purity"><p style={{ margin: 0, fontSize: 16, color: "#d4a040", background: "rgba(245,158,11,0.06)", padding: "8px 10px", borderRadius: 6, lineHeight: 1.5 }}>{s.supplyExplain}</p></Sec>}
     <Sec title="Dosage"><>
       {lvls.map((l, i) => <div key={l.l} style={{ display: "flex", alignItems: "center", gap: 7, marginBottom: 8 }}>
@@ -85,6 +80,11 @@ export default function Detail({ s, onNavigate, sectionPrefix = "" }) {
       </div>}
     </div></Sec>}
     {(s.lethal.cmp || s.marginExplain) && <Sec title="Lethality">{s.marginExplain && <p style={{ margin: "0 0 16px", fontSize: 16, color: "#8a8780", lineHeight: 1.6 }}>{s.marginExplain}</p>}<LethalViz s={s} /></Sec>}
+    {medWarnings.length > 0 && <Sec title="Contraindications">{medWarnings.map(w => <div key={w.id} style={{ background: "rgba(239,68,68,0.08)", border: "1.5px solid rgba(239,68,68,0.35)", borderRadius: 10, padding: "14px 16px", marginBottom: 10 }}>
+      <div style={{ fontSize: 14, fontWeight: 700, color: w.color, fontFamily: "'DM Mono',monospace", marginBottom: 6 }}>{w.title}</div>
+      <p style={{ margin: 0, fontSize: 16, color: "#c08080", lineHeight: 1.6 }}>{w.text}</p>
+      <p style={{ margin: "8px 0 0", fontSize: 12, color: "#555", fontFamily: "'DM Mono',monospace" }}>Source: {w.source}</p>
+    </div>)}</Sec>}
     <Sec title="Effects"><div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>{s.feels.map(f => <span key={f} style={{ fontSize: 16, padding: "6px 12px", borderRadius: 8, background: "rgba(34,197,94,0.08)", color: "#5ab87a" }}>{f}</span>)}</div></Sec>
     <Sec title="Biggest risks"><div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>{s.odRisk.map(r => <span key={r} style={{ fontSize: 16, padding: "6px 12px", borderRadius: 8, background: "rgba(239,68,68,0.1)", color: "#e07070" }}>{r}</span>)}</div></Sec>
     <Sec title="Long-term risks"><div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>{s.longTerm.map(l => <span key={l} style={{ fontSize: 16, padding: "6px 12px", borderRadius: 8, background: "rgba(99,102,241,0.08)", color: "#8b8fd0" }}>{l}</span>)}</div></Sec>
